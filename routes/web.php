@@ -2,6 +2,7 @@
 
 use App\Livewire\Cashier\Home;
 use App\Livewire\Waiter\Test;
+use App\Livewire\Waiter\WaiterCartMenu;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Test::class);
+Route::get('/waiter', WaiterCartMenu::class);
 
 Route::get('/test', Home::class);

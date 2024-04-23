@@ -6,7 +6,24 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'Poppins': ['Poppins', 'sans-serif'],
+    },
+    colors: {
+        mainColor: '#F3B835',
+        secondaryColor: '#F7A623',
+        tertiaryColor: '#A7D3D4',
+        background: '#EEF5F6',
+        semiBlack: 'rgba(0,0,0,0.4)',
+        lightGrey: '#EDEDED',
+        darkGrey: '#5F5F5F',
+        mediumGrey: '#5c5c5c',
+        mediumRed: '#FF0000',
+        semiWhite: '#fefefe',
+        plat: '#dedede',
+    },
+    },
   },
   plugins: [require('daisyui')],
 

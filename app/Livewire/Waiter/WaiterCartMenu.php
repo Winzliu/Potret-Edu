@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Livewire\Cashier;
+namespace App\Livewire\Waiter;
 
 use Livewire\Component;
 
-class Home extends Component
+class WaiterCartMenu extends Component
 {
     public function render()
     {
-        return view('livewire.cashier.home')
+        return view('livewire.waiter.waiter-cart-menu')
             ->layout('components.layouts.app', ['title' => 'Show Posts']);
     }
 }
