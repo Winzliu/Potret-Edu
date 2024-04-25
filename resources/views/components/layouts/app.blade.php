@@ -19,7 +19,14 @@
   @livewireStyles
 </head>
 
-<body class="min-h-screen h-[20000px] bg-background font-Poppins">
+<body class="min-h-screen bg-background font-Poppins">
+  {{-- tampilan Mobile --}}
+  <div class="md:hidden flex flex-col justify-center items-center w-screen h-screen">
+    <img src="{{ asset('img/logo.png') }}" class="w-20 mb-10" alt="">
+    <p class="text-center font-bold text-red-500 text-xl">Perangkat Ini Tidak Mendukung!</p>
+    <p class="text-center ">Silahkan Menggunakan Perangkat Yang Lebih Lebar</p>
+  </div>
+  {{-- akhir tampilan Mobile --}}
   {{-- tampilan Laptop/Tablet --}}
   <div class="md:flex hidden">
     {{-- navbar --}}
@@ -41,13 +48,6 @@
     </div>
   </div>
   {{-- akhir tampilan Laptop/Tablet --}}
-  {{-- tampilan Mobile --}}
-  <div class="md:hidden flex flex-col justify-center items-center w-screen h-screen">
-    <img src="{{ asset('img/logo.png') }}" class="w-20 mb-10" alt="">
-    <p class="text-center font-bold text-red-500 text-xl">Perangkat Ini Tidak Mendukung!</p>
-    <p class="text-center ">Silahkan Menggunakan Perangkat Yang Lebih Lebar</p>
-  </div>
-  {{-- akhir tampilan Mobile --}}
   @livewireScripts
 
   {{-- icon --}}

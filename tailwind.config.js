@@ -13,7 +13,7 @@ export default {
     colors: {
         mainColor: '#F3B835',
         secondaryColor: '#F7A623',
-        tertiaryColor: '#A7D3D4',
+        tertiaryColor: '#FECD33',
         background: '#EEF5F6',
         semiBlack: 'rgba(0,0,0,0.4)',
         lightGrey: '#EDEDED',

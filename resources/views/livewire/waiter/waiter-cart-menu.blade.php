@@ -17,7 +17,7 @@
     {{-- akhir kategori makanan --}}
 
     {{-- card makanan --}}
-    <div class="flex flex-wrap gap-4 justify-evenly xl:justify-start">
+    <div class="flex flex-wrap gap-4 justify-start">
         {{-- card 1 --}}
         <div class="card min-w-1/4 px-4 py-4 bg-base-100 shadow-[0_0_15px_2px_rgba(0,0,0,0.1)]">
             <figure class="mb-3 cursor-pointer" onclick="my_modal_1.showModal()">
@@ -143,11 +143,181 @@
         </div>
         <div class="drawer-side">
             <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
-            <div class="menu p-4 w-96 min-h-full bg-base-200 text-base-content">
-                <img src="{{ asset('img/logo.png') }}" class="w-12" alt="">
+            {{-- isi konten --}}
+            <div class="menu px-10 py-12 xl:w-5/12 w-1/2 min-h-full bg-base-200 text-base-content ">
+                <p class="xl:text-3xl text-2xl font-bold mb-5">Detail Pesanan</p>
+                {{-- kumpulan card --}}
+                <div class="overflow-y-scroll h-3/5 fixed w-full left-0 top-20 px-10 py-5">
+                    {{-- card --}}
+                    <div class="card card-side px-5 py-5 bg-tertiaryColor shadow-xl flex-col mb-5">
+                        <div class="flex">
+                            <div class="w-10/12">
+                                <div class="flex">
+                                    <figure><img src="img/makanan.jpg" class="mask mask-squircle w-14 me-4"
+                                            alt="Movie" />
+                                    </figure>
+                                    <div class="self-center w-10/12">
+                                        <p class="font-semibold mb-2">Nasi Goreng Telur Putih</p>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-10">
+                                                <p>Rp 20.000</p>
+                                                <div class="join h-5">
+                                                    <button class="bg-red-500 rounded-full w-5 h-5 font-bold">-</button>
+                                                    <input type="text"
+                                                        class="join-item mx-1 w-5 text-center bg-transparent" value="2"
+                                                        disabled />
+                                                    <button
+                                                        class="bg-green-400 rounded-full w-5 h-5 font-bold">+</button>
+                                                </div>
+                                            </div>
+                                            <p class="">Rp 40.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <input type="text" placeholder="Type here"
+                                        class="input input-bordered input-primary w-full mb-0 h-8 text-sm mt-3 rounded-full" />
+                                </div>
+                            </div>
+                            <ion-icon name="trash" class="text-red-500 w-1/12 h-8 text-xl self-center ms-5">
+                            </ion-icon>
+                        </div>
+                    </div>
+                    {{-- akhir card --}}
+                    {{-- card --}}
+                    <div class="card card-side px-5 py-5 bg-tertiaryColor shadow-xl flex-col mb-5">
+                        <div class="flex">
+                            <div class="w-10/12">
+                                <div class="flex">
+                                    <figure><img src="img/makanan.jpg" class="mask mask-squircle w-14 me-4"
+                                            alt="Movie" />
+                                    </figure>
+                                    <div class="self-center w-10/12">
+                                        <p class="font-semibold mb-2">Nasi Goreng Telur Putih</p>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-10">
+                                                <p>Rp 20.000</p>
+                                                <div class="join h-5">
+                                                    <button class="bg-red-500 rounded-full w-5 h-5 font-bold">-</button>
+                                                    <input type="text"
+                                                        class="join-item mx-1 w-5 text-center bg-transparent" value="2"
+                                                        disabled />
+                                                    <button
+                                                        class="bg-green-400 rounded-full w-5 h-5 font-bold">+</button>
+                                                </div>
+                                            </div>
+                                            <p class="">Rp 40.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <input type="text" placeholder="Type here"
+                                        class="input input-bordered input-primary w-full mb-0 h-8 text-sm mt-3 rounded-full" />
+                                </div>
+                            </div>
+                            <ion-icon name="trash" class="text-red-500 w-1/12 h-8 text-xl self-center ms-5">
+                            </ion-icon>
+                        </div>
+                    </div>
+                    {{-- akhir card --}}
+                    {{-- card --}}
+                    <div class="card card-side px-5 py-5 bg-tertiaryColor shadow-xl flex-col mb-5">
+                        <div class="flex">
+                            <div class="w-10/12">
+                                <div class="flex">
+                                    <figure><img src="img/makanan.jpg" class="mask mask-squircle w-14 me-4"
+                                            alt="Movie" />
+                                    </figure>
+                                    <div class="self-center w-10/12">
+                                        <p class="font-semibold mb-2">Nasi Goreng Telur Putih</p>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-10">
+                                                <p>Rp 20.000</p>
+                                                <div class="join h-5">
+                                                    <button class="bg-red-500 rounded-full w-5 h-5 font-bold">-</button>
+                                                    <input type="text"
+                                                        class="join-item mx-1 w-5 text-center bg-transparent" value="2"
+                                                        disabled />
+                                                    <button
+                                                        class="bg-green-400 rounded-full w-5 h-5 font-bold">+</button>
+                                                </div>
+                                            </div>
+                                            <p class="">Rp 40.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <input type="text" placeholder="Type here"
+                                        class="input input-bordered input-primary w-full mb-0 h-8 text-sm mt-3 rounded-full" />
+                                </div>
+                            </div>
+                            <ion-icon name="trash" class="text-red-500 w-1/12 h-8 text-xl self-center ms-5">
+                            </ion-icon>
+                        </div>
+                    </div>
+                    {{-- akhir card --}}
+                    {{-- card --}}
+                    <div class="card card-side px-5 py-5 bg-tertiaryColor shadow-xl flex-col mb-5">
+                        <div class="flex">
+                            <div class="w-10/12">
+                                <div class="flex">
+                                    <figure><img src="img/makanan.jpg" class="mask mask-squircle w-14 me-4"
+                                            alt="Movie" />
+                                    </figure>
+                                    <div class="self-center w-10/12">
+                                        <p class="font-semibold mb-2">Nasi Goreng Telur Putih</p>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-10">
+                                                <p>Rp 20.000</p>
+                                                <div class="join h-5">
+                                                    <button class="bg-red-500 rounded-full w-5 h-5 font-bold">-</button>
+                                                    <input type="text"
+                                                        class="join-item mx-1 w-5 text-center bg-transparent" value="2"
+                                                        disabled />
+                                                    <button
+                                                        class="bg-green-400 rounded-full w-5 h-5 font-bold">+</button>
+                                                </div>
+                                            </div>
+                                            <p class="">Rp 40.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <input type="text" placeholder="Type here"
+                                        class="input input-bordered input-primary w-full mb-0 h-8 text-sm mt-3 rounded-full" />
+                                </div>
+                            </div>
+                            <ion-icon name="trash" class="text-red-500 w-1/12 h-8 text-xl self-center ms-5">
+                            </ion-icon>
+                        </div>
+                    </div>
+                    {{-- akhir card --}}
+                </div>
+                {{-- akhir kumpulan card --}}
+
+                {{-- Buat Pesanan --}}
+                <div class="bg-base-200 border-t-2 fixed bottom-0 w-full h-1/3 left-0 px-10 py-3">
+                    <label class="form-control w-full">
+                        <div class="label">
+                            <span class="label-text opacity-50">Nomor Meja</span>
+                        </div>
+                        <input type="text" placeholder="Nomor Meja" class="input input-bordered w-full h-10 text-sm" />
+                        <div class="label">
+                        </div>
+                    </label>
+                    <div class="flex justify-between mb-5">
+                        <button class="py-2 rounded-lg bg-mainColor w-[48%] shadow-xl">Dine
+                            In</button>
+                        <button
+                            class="py-2 hover:bg-slate-300 transition-all duration-300 rounded-lg bg-base-300 w-[48%] shadow-xl">Take
+                            Away</button>
+                    </div>
+                    <button class="btn bg-mainColor hover:bg-amber-500 w-full shadow-xl">Buat pesanan</button>
+                </div>
+                {{-- Akhir buat pesanan --}}
             </div>
+            {{-- akhir isi konten --}}
         </div>
+        {{-- akhir sidebar kanan --}}
+        <a wire:navigate href="/test">Back</a>
     </div>
-    {{-- akhir sidebar kanan --}}
-    <a wire:navigate href="/test">Back</a>
-</div>
