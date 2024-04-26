@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Cashier\CashierDetailOrder;
 use App\Livewire\Cashier\Home;
 use App\Livewire\Waiter\Test;
 use App\Livewire\Waiter\WaiterCartMenu;
@@ -17,5 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/waiter', WaiterCartMenu::class);
+
+Route::get('/cashier/order/{order}', CashierDetailOrder::class);
 
 Route::get('/test', Home::class);
