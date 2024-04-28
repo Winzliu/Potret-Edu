@@ -1,21 +1,29 @@
-<div class="h-screen md:block fixed hidden w-[22%] xl:w-1/6 ps-12 py-5 bg-background">
+<div class="h-screen md:block fixed hidden w-[22%] xl:w-1/6  py-5 bg-background">
   {{-- parent sidebar --}}
-  <div class="h-full flex flex-col justify-between">
+  <div class="h-full flex flex-col justify-between items-center">
     {{-- bagian atas --}}
     <div class="">
       {{-- logo --}}
       <button class="flex items-center gap-5">
         <img src="{{ asset('img/logo.png') }}" class="w-12 xl:w-9" alt="">
+        @if(0 == 0)
         <p class="text-xl xl:text-lg font-bold">Waiter</p>
+        @elseif(0 == 0)
+        <p class="text-xl xl:text-lg font-bold">Cashier</p>
+        @elseif(1==1)
+        <p class="text-xl xl:text-lg font-bold">Kitchen</p>
+        @endif
       </button>
       {{-- akhir logo --}}
 
       {{-- menu --}}
-      <div class="mt-12 xl:mt-7 flex flex-col gap-14 xl:gap-10">
+      <div class="flex items-center mt-12 xl:mt-7 flex flex-col gap-14 xl:gap-10">
+      {{-- WAITER START --}}
+        @if(0==0)
         {{-- menu 1 --}}
         <button class="text-mainColor text-center w-20 leading-3">
           <ion-icon name="home" class="text-2xl xl:text-xl"></ion-icon>
-          <p>Home</p>
+          <p>Beranda</p>
         </button>
         {{-- akhir menu 1 --}}
         {{-- menu 2 --}}
@@ -24,13 +32,33 @@
           <p>Pesanan</p>
         </button>
         {{-- akhir menu 2 --}}
+      {{-- WAITER END --}}
+
+      {{-- KITCHEN START--}}
+        @elseif(1==1)
+        {{-- menu 1 --}}
+        <button class="text-mainColor text-center w-20 leading-3">
+          <figure>
+            <img src="{{ asset('img/wok.svg') }}" alt="">
+          </figure>
+          <p>Pesanan</p>
+        </button>
+        {{-- akhir menu 1 --}}
+        {{-- menu 2 --}}
+        <button class="text-black text-center w-20 leading-3">
+          <ion-icon name="cart" class="text-2xl xl:text-xl"></ion-icon>
+          <p>Menu</p>
+        </button>
+        {{-- akhir menu 2 --}}
+      {{-- KITCHEN END --}}
+      @endif
       </div>
       {{-- akhir menu --}}
     </div>
     {{-- akhir bagian atas --}}
 
     {{-- bagian bawah --}}
-    <div class=" flex flex-col gap-10">
+    <div class=" flex flex-col gap-10 ml-3">
       {{-- menu 1 --}}
       <button class="flex items-center gap-3 text-left">
         <ion-icon name="person-circle" class="text-5xl xl:text-4xl"></ion-icon>
@@ -41,7 +69,7 @@
       </button>
       {{-- akhir menu 1 --}}
       {{-- menu 2 --}}
-      <button class="flex items-center gap-3 text-red-500">
+      <button class="flex items-center gap-3 ml-2 text-red-500">
         <ion-icon name="log-out-outline" class="text-4xl xl:text-3xl"></ion-icon>
         <p class="font-bold text-xl xl:text-base">Logout</p>
       </button>

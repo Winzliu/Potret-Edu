@@ -32,7 +32,7 @@
     {{-- navbar --}}
     @include('components.layouts.sidebar')
     {{-- akhir navbar --}}
-
+    
     {{-- sidebar position --}}
     <div class="md:block hidden w-[22%] xl:w-1/6"></div>
     {{-- akhir sidebar position --}}
