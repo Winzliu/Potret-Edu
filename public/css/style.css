@@ -1,0 +1,40 @@
+/* print */
+@media print {
+    .modal {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: #fff !important;
+        overflow: visible !important;
+        z-index: 9999 !important;
+    }
+
+    .modal-box {
+        position: relative !important;
+        margin: 0 auto !important;
+        padding: 10px !important;
+        background-color: #fff !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    @page {
+        size: auto;
+        /* Let the browser decide the page size */
+        margin: 0;
+        /* No margin on the printed page */
+    }
+
+    .noprint {
+        display: none !important;
+    }
+
+    .print {
+        display: flex !important;
+    }
+}
+/* akhir print */

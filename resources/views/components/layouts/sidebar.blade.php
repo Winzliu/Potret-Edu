@@ -1,4 +1,4 @@
-<div class="h-screen md:block fixed hidden w-[22%] xl:w-1/6 ps-12 py-5 bg-background">
+<div class="h-screen md:block fixed hidden w-[22%] xl:w-1/6 xl:ps-12 ps-8 py-5 bg-background">
   {{-- parent sidebar --}}
   <div class="h-full flex flex-col justify-between">
     {{-- bagian atas --}}
@@ -11,19 +11,26 @@
       {{-- akhir logo --}}
 
       {{-- menu --}}
-      <div class="mt-12 xl:mt-7 flex flex-col w-32 items-center gap-14 xl:gap-10">
+      <div class="mt-12 xl:mt-7 flex flex-col w-32 items-center gap-10 xl:gap-7">
         {{-- menu 1 --}}
         <a href="/waiter" wire:navigate
-          class="{{ ($active == 'home') ? 'text-mainColor' : 'text-black' }} text-center w-20 leading-3">
-          <ion-icon name="home" class="text-2xl xl:text-xl"></ion-icon>
+          class="{{ ($active == 'home') ? 'text-mainColor' : 'text-black' }} text-center leading-3 hover:bg-base-300 rounded-lg py-2 w-full">
+          <ion-icon name="fast-food" class="text-2xl"></ion-icon>
           <p>Home</p>
         </a>
         {{-- akhir menu 1 --}}
         {{-- menu 2 --}}
-        <a href="/cashier/order/1" wire:navigate
-          class="{{ ($active == 'pesanan') ? 'text-mainColor' : 'text-black' }}  text-center w-20 leading-3">
-          <ion-icon name="cart" class="text-2xl xl:text-xl"></ion-icon>
+        <a href="/cashier/pesanan/1" wire:navigate
+          class="{{ ($active == 'pesanan') ? 'text-mainColor' : 'text-black' }}  text-center leading-3 hover:bg-base-300 rounded-lg py-2 w-full">
+          <ion-icon name="cart" class="text-2xl"></ion-icon>
           <p>Pesanan</p>
+        </a>
+        {{-- akhir menu 2 --}}
+        {{-- menu 2 --}}
+        <a href="/cashier/riwayat" wire:navigate
+          class="{{ ($active == 'riwayat') ? 'text-mainColor' : 'text-black' }}  text-center leading-3 hover:bg-base-300 rounded-lg py-2">
+          <ion-icon name="timer" class="text-2xl"></ion-icon>
+          <p>Riwayat Pesanan</p>
         </a>
         {{-- akhir menu 2 --}}
       </div>
@@ -32,7 +39,7 @@
     {{-- akhir bagian atas --}}
 
     {{-- bagian bawah --}}
-    <div class=" flex flex-col gap-5 mb-5">
+    <div class=" flex flex-col gap-5 mb-3">
       {{-- menu 1 --}}
       <button class="flex items-center gap-3 text-left">
         <ion-icon name="person-circle" class="text-5xl xl:text-4xl"></ion-icon>
@@ -43,7 +50,8 @@
       </button>
       {{-- akhir menu 1 --}}
       {{-- menu 2 --}}
-      <button class="flex items-center gap-3 text-red-500">
+      <button
+        class="flex items-center gap-3 text-red-500 hover:bg-base-300 rounded-lg transition-all duration-300 py-2 px-1">
         <ion-icon name="log-out-outline" class="text-4xl xl:text-3xl"></ion-icon>
         <p class="font-bold text-xl xl:text-base">Logout</p>
       </button>
