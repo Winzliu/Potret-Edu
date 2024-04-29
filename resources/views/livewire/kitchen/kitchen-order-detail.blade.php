@@ -1,9 +1,9 @@
-<div>
+<div class="pe-24">
     <div class="flex justify-start mx-4 mb-4">
         <a wire:navigate href="/kitchen" class="font-medium bg-white border-2 bg-slate-200 rounded-md px-4 py-2">kembali</a>
     </div>
-    <div class="pe-24 flex justify-center">
-        <div class="flex justify-center w-4/5 h-full flex flex-col bg-white  border border-4 border-tertiaryColor shadow-[0_0_15px_2px_rgba(0,0,0,0.1)] rounded-3xl p-4">
+    <div class="flex justify-center">
+        <div class="mb-8 flex justify-center w-[700px]  h-full flex flex-col bg-white  border border-4 border-tertiaryColor shadow-[0_0_15px_2px_rgba(0,0,0,0.1)] rounded-3xl p-4">
             <div class="flex flex-col items-center gap-2">
                 <p class="font-semibold">#123456</p>
                 <p class="text-purpleRed font-semibold text-xl">Dine-In/Take Away</p>
