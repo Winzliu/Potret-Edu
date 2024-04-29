@@ -1,6 +1,6 @@
 <div class="mt-20">
     {{-- Kembali --}}
-    <a href="/" class="flex items-center gap-2 font-bold">
+    <a href="/waiter/pesanan" wire:navigate class="flex items-center gap-2 font-bold">
         <ion-icon name="arrow-back-outline"></ion-icon>
         <p>Kembali</p>
     </a>
@@ -138,7 +138,7 @@
             </div>
             {{-- Akhir Bagian Kiri Detail Menu --}}
             {{-- Bagian Kanan Bill --}}
-            <div class="bg-tertiaryColor shadow-xl rounded-lg p-5 mx-auto xl:w-1/3 w-1/2 text-center">
+            <div class="bg-secondaryColor shadow-xl rounded-lg p-5 mx-auto xl:w-1/3 w-1/2 text-center">
                 <p class="font-bold text-lg mb-3">#12345678</p>
                 <div class="flex justify-between mb-2">
                     <p class="font-bold tex-sm">Tanggal</p>
@@ -218,7 +218,7 @@
                 class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-green-600 border-2 border-green-600 transition-all duration-300 font-bold"
                 onclick="BayarButton.showModal()">Bayar</button>
             <dialog id="BayarButton" class="modal print">
-                <div class="modal-box py-10 px-10 xl:max-w-xl max-w-2xl">
+                <div class="modal-box py-10 px-10 xl:max-w-xl max-w-2xl scrollbar-hidden">
                     <form method="dialog" class="noprint">
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>

@@ -149,7 +149,7 @@
                 {{-- kumpulan card --}}
                 <div class="overflow-y-scroll h-3/5 fixed w-full left-0 top-14 px-10 py-5">
                     {{-- card --}}
-                    <div class="card card-side px-5 py-5 bg-tertiaryColor shadow-xl flex-col mb-5">
+                    <div class="card card-side px-5 py-5 bg-secondaryColor shadow-xl flex-col mb-5">
                         <div class="flex">
                             <div class="w-10/12">
                                 <div class="flex">
@@ -216,5 +216,4 @@
             {{-- akhir isi konten --}}
         </div>
         {{-- akhir sidebar kanan --}}
-        <a wire:navigate href="/test">Back</a>
     </div>

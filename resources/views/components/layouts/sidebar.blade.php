@@ -1,4 +1,9 @@
-<div class="h-screen md:block fixed hidden w-[22%] xl:w-1/6 xl:ps-12 ps-8 py-5 bg-background">
+<div class="h-screen md:block fixed hidden w-[22%] xl:w-1/6 xl:ps-12 ps-8 py-5 
+@if ($role == 'admin')
+bg-blue-50 
+@else
+bg-background 
+@endif">
   {{-- parent sidebar --}}
   <div class="h-full flex flex-col justify-between">
     {{-- bagian atas --}}
@@ -12,27 +17,36 @@
 
       {{-- menu --}}
       <div class="mt-12 xl:mt-7 flex flex-col w-32 items-center gap-10 xl:gap-7">
-        {{-- menu 1 --}}
+        @if ($role == 'waiter')
+        {{-- menu waiter --}}
         <a href="/waiter" wire:navigate
           class="{{ ($active == 'home') ? 'text-mainColor' : 'text-black' }} text-center leading-3 hover:bg-base-300 rounded-lg py-2 w-full">
           <ion-icon name="fast-food" class="text-2xl"></ion-icon>
-          <p>Home</p>
+          <p>Beranda</p>
         </a>
-        {{-- akhir menu 1 --}}
-        {{-- menu 2 --}}
-        <a href="/cashier/pesanan/1" wire:navigate
+        {{-- akhir menu waiter --}}
+        {{-- menu waiter --}}
+        <a href="/waiter/pesanan" wire:navigate
           class="{{ ($active == 'pesanan') ? 'text-mainColor' : 'text-black' }}  text-center leading-3 hover:bg-base-300 rounded-lg py-2 w-full">
           <ion-icon name="cart" class="text-2xl"></ion-icon>
           <p>Pesanan</p>
         </a>
-        {{-- akhir menu 2 --}}
-        {{-- menu 2 --}}
+        {{-- akhir menu waiter --}}
+        @elseif ($role == 'cashier')
+        {{-- menu cashier --}}
         <a href="/cashier/riwayat" wire:navigate
           class="{{ ($active == 'riwayat') ? 'text-mainColor' : 'text-black' }}  text-center leading-3 hover:bg-base-300 rounded-lg py-2">
           <ion-icon name="timer" class="text-2xl"></ion-icon>
           <p>Riwayat Pesanan</p>
         </a>
-        {{-- akhir menu 2 --}}
+        {{-- akhir menu cashier --}}
+        @elseif ($role == 'admin')
+        <a href="/admin" wire:navigate
+          class="{{ ($active == 'admin') ? 'text-mainColor' : 'text-black' }} text-center leading-3 hover:bg-base-300 rounded-lg py-2 w-full">
+          <ion-icon name="home" class="text-2xl"></ion-icon>
+          <p>Beranda</p>
+        </a>
+        @endif
       </div>
       {{-- akhir menu --}}
     </div>

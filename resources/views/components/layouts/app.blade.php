@@ -20,7 +20,12 @@
   @livewireStyles
 </head>
 
-<body class="min-h-screen bg-background font-Poppins ">
+<body class="min-h-screen 
+    @if ($role == 'admin')
+    bg-blue-50 
+    @else
+    bg-background 
+    @endif font-Poppins ">
   {{-- tampilan Mobile --}}
   @include('components.mobile')
   {{-- akhir tampilan Mobile --}}
