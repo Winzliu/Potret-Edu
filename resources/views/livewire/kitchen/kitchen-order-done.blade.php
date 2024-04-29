@@ -5,7 +5,7 @@
             Menunggu
             <p class="bg-red-500 w-6 rounded-full text-white text-center font-medium">5</p>
         </button>
-       <a wire:navigate href="/kitchen-selesai" class="text-black font-bold flex flex-row gap-2">
+       <a wire:navigate href="" class="text-black font-bold flex flex-row gap-2">
             Selesai
             <p class="bg-red-500 w-6 rounded-full text-white text-center font-medium">2</p>
        </a>
@@ -26,7 +26,7 @@
     {{-- akhir dine-in / takeaway menu --}}
 
     {{-- Card Menu --}}
-    <div class="w-full mt-4 pb-6">
+    <div class="w-full mt-4">
         <div class="flex flex-col justify-center space-y-4">
             <div class="bg-tertiaryColor rounded-xl py-4 px-8">
                     <p class="text-center font-semibold">ID Pesanan: #1234567</p>
@@ -424,6 +424,7 @@
                         </div>
                     </div>
             </div>
+
         </div>
     </div>
 </div>

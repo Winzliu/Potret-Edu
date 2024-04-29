@@ -22,6 +22,7 @@ export default {
                 mediumGrey: "#5c5c5c",
                 mediumRed: "#FF0000",
                 purpleRed: "#DD3363",
+                greenConfirm: "#4DAC3F",
                 semiWhite: "#fefefe",
                 plat: "#dedede",
             },
