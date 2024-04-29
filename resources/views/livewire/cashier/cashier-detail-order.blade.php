@@ -1,4 +1,4 @@
-<div>
+<div class="mt-20">
     {{-- Kembali --}}
     <a href="/" class="flex items-center gap-2 font-bold">
         <ion-icon name="arrow-back-outline"></ion-icon>
@@ -13,7 +13,7 @@
             <p class="py-1 px-3 rounded-lg border-2 bg-white border-pink-500 text-pink-500 font-bold">Take Away</p>
         </div>
         <div class="divider"></div>
-        <div class="flex xl:flex-row flex-col flex-col-reverse gap-10">
+        <div class="flex xl:flex-row flex-col-reverse gap-10">
             {{-- Bagian Kiri Detail Menu --}}
             <div class="flex flex-col gap-5 xl:w-1/2 xl:mx-0 w-11/12 mx-auto px-5 max-h-[20rem] overflow-y-scroll">
                 {{-- Menu --}}
@@ -172,7 +172,7 @@
         <div class="divider"></div>
         {{-- bagian bawah --}}
         {{-- button edit --}}
-        <div class="mb-10 flex gap-5 justify-end">
+        <div class="mb-10 flex gap-5 justify-end w-11/12">
             <button class="w-24 py-2 rounded-lg bg-mainColor hover:bg-amber-500 transition-all duration-300 font-bold"
                 onclick="EditButton.showModal()">Edit</button>
             <dialog id="EditButton" class="modal">

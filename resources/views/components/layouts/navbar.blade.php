@@ -14,5 +14,5 @@
     </label>
   </form>
   {{-- Akhir Search Bar --}}
-  @endif
 </div>
+@endif
