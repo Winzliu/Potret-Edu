@@ -1,4 +1,6 @@
-<div class="my-6 w-96">
+<div class="my-6 w-96 h-10">
+  {{-- @if ($active == 'home') --}}
+  {{-- Search Bar --}}
   <form action="">
     <label class="input input-bordered flex items-center gap-2 rounded-full h-10 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
       <input type="text" class="grow text-sm" placeholder="Cari Menu" />
@@ -11,4 +13,6 @@
       </button>
     </label>
   </form>
+  {{-- Akhir Search Bar --}}
+  {{-- @endif --}}
 </div>

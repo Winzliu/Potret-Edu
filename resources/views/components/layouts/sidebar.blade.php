@@ -4,7 +4,7 @@
     {{-- bagian atas --}}
     <div class="">
       {{-- logo --}}
-      <button class="flex items-center gap-5">
+      <button class="flex items-center justify-center gap-5">
         <img src="{{ asset('img/logo.png') }}" class="w-12 xl:w-9" alt="">
         @if(0 == 0)
         <p class="text-xl xl:text-lg font-bold">Waiter</p>
@@ -17,20 +17,20 @@
       {{-- akhir logo --}}
 
       {{-- menu --}}
-      <div class="flex items-center mt-12 xl:mt-7 flex flex-col gap-14 xl:gap-10">
-      {{-- WAITER START --}}
-        @if(0==0)
+      <div class="mt-12 xl:mt-7 flex flex-col gap-14 xl:gap-10">
         {{-- menu 1 --}}
-        <button class="text-mainColor text-center w-20 leading-3">
+        <a href="/waiter" wire:navigate
+          class="{{ ($active == 'home') ? 'text-mainColor' : 'text-black' }} text-center w-20 leading-3">
           <ion-icon name="home" class="text-2xl xl:text-xl"></ion-icon>
-          <p>Beranda</p>
+          <p>Home</p>
         </button>
         {{-- akhir menu 1 --}}
         {{-- menu 2 --}}
-        <button class="text-black text-center w-20 leading-3">
+        <a href="/cashier/order/1" wire:navigate
+          class="{{ ($active == 'pesanan') ? 'text-mainColor' : 'text-black' }}  text-center w-20 leading-3">
           <ion-icon name="cart" class="text-2xl xl:text-xl"></ion-icon>
           <p>Pesanan</p>
-        </button>
+        </a>
         {{-- akhir menu 2 --}}
       {{-- WAITER END --}}
 
@@ -58,7 +58,7 @@
     {{-- akhir bagian atas --}}
 
     {{-- bagian bawah --}}
-    <div class=" flex flex-col gap-10 ml-3">
+    <div class=" flex flex-col gap-10">
       {{-- menu 1 --}}
       <button class="flex items-center gap-3 text-left">
         <ion-icon name="person-circle" class="text-5xl xl:text-4xl"></ion-icon>
