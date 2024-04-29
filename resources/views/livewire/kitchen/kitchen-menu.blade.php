@@ -1,4 +1,4 @@
-<div class="">
+<div class="pe-24">
     {{-- katergori makanan --}}
     <div class="flex gap-5 my-5 flex-wrap justify-center">
         <button class="rounded-lg min-w-24 shadow-md bg-mainColor px-3 py-1 font-semibold text-lg">Nasi</button>

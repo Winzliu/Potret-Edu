@@ -1,4 +1,4 @@
-<div class="">
+<div class="pe-24">
     {{-- section wait-done menu --}}
     <div class="gap-5 flex flex-row">
        <a wire:navigate href="" class="text-secondaryColor font-bold flex flex-row gap-2">
