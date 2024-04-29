@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Cashier\CashierDetailOrder;
+use App\Livewire\Cashier\CashierHistory;
 use App\Livewire\Cashier\Home;
 use App\Livewire\Kitchen\KitchenMenu;
 use App\Livewire\Kitchen\KitchenOrder;
@@ -21,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/waiter', WaiterCartMenu::class);
 
-Route::get('/cashier/order/{order}', CashierDetailOrder::class);
+Route::get('/cashier/pesanan/{pesanan}', CashierDetailOrder::class);
+
+Route::get('/cashier/riwayat', CashierHistory::class);
 
 Route::get('/test', Home::class);
 
