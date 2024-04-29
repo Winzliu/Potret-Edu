@@ -6,9 +6,9 @@
       {{-- logo --}}
       <button class="flex items-center justify-center gap-5">
         <img src="{{ asset('img/logo.png') }}" class="w-12 xl:w-9" alt="">
-        @if(0 == 0)
+        @if(0 == 1)
         <p class="text-xl xl:text-lg font-bold">Waiter</p>
-        @elseif(0 == 0)
+        @elseif(0 == 1)
         <p class="text-xl xl:text-lg font-bold">Cashier</p>
         @elseif(1==1)
         <p class="text-xl xl:text-lg font-bold">Kitchen</p> 
