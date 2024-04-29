@@ -96,20 +96,24 @@
         </div>
         {{-- akhir card 3 --}}
         {{-- card 4 --}}
+        {{-- card 5 --}}
         <div class="card min-w-1/4 px-4 py-4 bg-base-100 shadow-[0_0_15px_2px_rgba(0,0,0,0.1)]">
             <figure class="mb-3">
-                <img src="{{ asset('img/makanan.jpg') }}" alt="Shoes" class="filter grayscale rounded-xl h-36 w-full object-cover" />
+                <img src="{{ asset('img/makanan.jpg') }}" alt="Shoes"  class="{{ $isOn ? 'filter-none' : 'filter grayscale' }} rounded-xl h-36 w-full object-cover" />
             </figure>
             <div class="items-center text-left">
                 <h2 class="text-lg font-bold">Nasi Goreng Telur Putih</h2>
                 <div class="flex items-end justify-between mt-2">
                     <p class="text-xs w-32">Nasi, Telur, Kerupuk, Timun , dkk</p>
-                    <button class="bg-white hover:bg-greenConfirm border border-2 text-greenConfirm hover:text-white text-sm border-tertiaryColor w-10 h-10 rounded-full font-bold text-2xl">
-                        Off
+                    <button wire:click="confirmToggle" 
+                    class="{{ $isOn ? 'bg-white hover:bg-purpleRed text-purpleRed hover:text-white' : 'bg-white hover:bg-greenConfirm text-greenConfirm hover:text-white' }} 
+                    border border-2  text-sm border-tertiaryColor w-10 h-10 rounded-full font-bold text-2xl">
+                        {{ $isOn ? 'Off' : 'On' }}
                     </button>
                 </div>
             </div>
         </div>
+        {{-- akhir card 5 --}}
         {{-- akhir card 4 --}}
         {{-- card 5 --}}
         <div class="card min-w-1/4 px-4 py-4 bg-base-100 shadow-[0_0_15px_2px_rgba(0,0,0,0.1)]">

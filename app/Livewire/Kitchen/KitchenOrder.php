@@ -11,4 +11,6 @@ class KitchenOrder extends Component
         return view('livewire.kitchen.kitchen-order')
             ->layout('components.layouts.app', ['title' => 'Dapur | Pesanan', 'active'=>'masakan' ]);
     }
+
+
 }

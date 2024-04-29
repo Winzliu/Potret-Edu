@@ -123,7 +123,7 @@
                             <p class="font-medium">Catatan : Ada</p>
                         </div>
                         <div>
-                            <a wire:navigate href="" class="bg-white rounded-lg border px-6 py-1 font-semibold">Lihat</a>
+                            <a wire:navigate href="/kitchen-order-detail" class="bg-white rounded-lg border px-6 py-1 font-semibold">Lihat</a>
                         </div>
                     </div>
             </div>

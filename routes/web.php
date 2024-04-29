@@ -5,6 +5,7 @@ use App\Livewire\Cashier\CashierHistory;
 use App\Livewire\Cashier\Home;
 use App\Livewire\Kitchen\KitchenMenu;
 use App\Livewire\Kitchen\KitchenOrder;
+use App\Livewire\Kitchen\KitchenOrderDetail;
 use App\Livewire\Waiter\Test;
 use App\Livewire\Waiter\WaiterCartMenu;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +30,5 @@ Route::get('/cashier/riwayat', CashierHistory::class);
 Route::get('/test', Home::class);
 
 Route::get('/kitchen', KitchenOrder::class);
+Route::get('/kitchen-order-detail', KitchenOrderDetail::class);
 Route::get('/kitchen-menu', KitchenMenu::class);
