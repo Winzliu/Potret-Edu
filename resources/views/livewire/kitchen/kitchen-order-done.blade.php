@@ -28,7 +28,7 @@
     {{-- Card Menu --}}
     <div class="w-full mt-4">
         <div class="flex flex-col justify-center space-y-4">
-            <div class="bg-tertiaryColor rounded-xl py-4 px-8">
+            <div class="bg-secondaryColor rounded-xl py-4 px-8">
                     <p class="text-center font-semibold">ID Pesanan: #1234567</p>
                     <div class="flex flex-row justify-between">
                         <div class="flex flex-col font-semibold">
@@ -127,7 +127,7 @@
                         </div>
                     </div>
             </div>
-            <div class="bg-tertiaryColor rounded-xl py-4 px-8">
+            <div class="bg-secondaryColor rounded-xl py-4 px-8">
                     <p class="text-center font-semibold">ID Pesanan: #1234567</p>
                     <div class="flex flex-row justify-between">
                         <div class="flex flex-col font-semibold">
@@ -226,7 +226,7 @@
                         </div>
                     </div>
             </div>
-            <div class="bg-tertiaryColor rounded-xl py-4 px-8">
+            <div class="bg-secondaryColor rounded-xl py-4 px-8">
                     <p class="text-center font-semibold">ID Pesanan: #1234567</p>
                     <div class="flex flex-row justify-between">
                         <div class="flex flex-col font-semibold">
@@ -325,7 +325,7 @@
                         </div>
                     </div>
             </div>
-            <div class="bg-tertiaryColor rounded-xl py-4 px-8">
+            <div class="bg-secondaryColor rounded-xl py-4 px-8">
                     <p class="text-center font-semibold">ID Pesanan: #1234567</p>
                     <div class="flex flex-row justify-between">
                         <div class="flex flex-col font-semibold">

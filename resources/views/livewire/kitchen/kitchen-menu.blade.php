@@ -27,7 +27,7 @@
                 <h2 class="text-lg font-bold">Nasi Goreng Telur Putih</h2>
                 <div class="flex items-end justify-between mt-2">
                     <p class="text-xs w-32">Nasi, Telur, Kerupuk, Timun , dkk</p>
-                    <button class="bg-white hover:bg-purpleRed border border-2 text-purpleRed hover:text-white text-sm border-tertiaryColor w-10 h-10 rounded-full font-bold text-2xl">
+                    <button class="bg-white hover:bg-purpleRed border border-2 text-purpleRed hover:text-white text-sm border-secondaryColor w-10 h-10 rounded-full font-bold text-2xl">
                         Off
                     </button>
                 </div>
@@ -72,7 +72,7 @@
                 <h2 class="text-lg font-bold">Nasi Goreng Telur Putih</h2>
                 <div class="flex items-end justify-between mt-2">
                     <p class="text-xs w-32">Nasi, Telur, Kerupuk, Timun , dkk</p>
-                    <button class="bg-white hover:bg-purpleRed border border-2 text-purpleRed hover:text-white text-sm border-tertiaryColor w-10 h-10 rounded-full font-bold text-2xl">
+                    <button class="bg-white hover:bg-purpleRed border border-2 text-purpleRed hover:text-white text-sm border-secondaryColor w-10 h-10 rounded-full font-bold text-2xl">
                         Off
                     </button>
                 </div>
@@ -88,7 +88,7 @@
                 <h2 class="text-lg font-bold">Nasi Goreng Telur Putih</h2>
                 <div class="flex items-end justify-between mt-2">
                     <p class="text-xs w-32">Nasi, Telur, Kerupuk, Timun , dkk</p>
-                    <button class="bg-white hover:bg-purpleRed border border-2 text-purpleRed hover:text-white text-sm border-tertiaryColor w-10 h-10 rounded-full font-bold text-2xl">
+                    <button class="bg-white hover:bg-purpleRed border border-2 text-purpleRed hover:text-white text-sm border-secondaryColor w-10 h-10 rounded-full font-bold text-2xl">
                         Off
                     </button>
                 </div>
@@ -107,7 +107,7 @@
                     <p class="text-xs w-32">Nasi, Telur, Kerupuk, Timun , dkk</p>
                     <button wire:click="confirmToggle" 
                     class="{{ $isOn ? 'bg-white hover:bg-purpleRed text-purpleRed hover:text-white' : 'bg-white hover:bg-greenConfirm text-greenConfirm hover:text-white' }} 
-                    border border-2  text-sm border-tertiaryColor w-10 h-10 rounded-full font-bold text-2xl">
+                    border border-2  text-sm border-secondaryColor w-10 h-10 rounded-full font-bold text-2xl">
                         {{ $isOn ? 'Off' : 'On' }}
                     </button>
                 </div>
@@ -126,7 +126,7 @@
                     <p class="text-xs w-32">Nasi, Telur, Kerupuk, Timun , dkk</p>
                     <button wire:click="confirmToggle" 
                     class="{{ $isOn ? 'bg-white hover:bg-purpleRed text-purpleRed hover:text-white' : 'bg-white hover:bg-greenConfirm text-greenConfirm hover:text-white' }} 
-                    border border-2  text-sm border-tertiaryColor w-10 h-10 rounded-full font-bold text-2xl">
+                    border border-2  text-sm border-secondaryColor w-10 h-10 rounded-full font-bold text-2xl">
                         {{ $isOn ? 'Off' : 'On' }}
                     </button>
                 </div>
