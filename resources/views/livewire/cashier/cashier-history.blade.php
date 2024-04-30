@@ -1,4 +1,4 @@
-<div class="mt-6 w-[95%] xl:w-full">
+<div class="xl:mt-6 mt-8 w-[95%] xl:w-full">
     <div class="flex justify-between items-start pb-5 ">
         <h1 class="text-2xl font-bold">Riwayat Pesanan</h1>
         <form action="">
@@ -21,7 +21,7 @@
             <table class="table ">
                 <!-- head -->
                 <thead>
-                    <tr class="text-base text-black bg-tertiaryColor">
+                    <tr class="text-base text-black bg-secondaryColor">
                         <th scope="col" class="px-6 py-3 text-center">No</th>
                         <th scope="col" class="px-6 py-3 text-center">ID Pesanan</th>
                         <th scope="col" class="px-6 py-3 text-center">Total Harga</th>
@@ -42,7 +42,7 @@
                         <td class="whitespace-nowrap text-center">23-03-2024</td>
                         <td class="whitespace-nowrap text-center">
                             <button
-                                class="pt-1 w-full h-full hover:bg-tertiaryColor rounded-lg transition-all duration-300 ">
+                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300 ">
                                 <ion-icon name="information-circle" class="text-xl"></ion-icon>
                             </button>
                         </td>
@@ -57,7 +57,7 @@
                         <td class="whitespace-nowrap text-center">23-03-2024</td>
                         <td class="whitespace-nowrap">
                             <button
-                                class="pt-1 w-full h-full hover:bg-tertiaryColor rounded-lg transition-all duration-300">
+                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
                                 <ion-icon name="information-circle" class="text-xl"></ion-icon>
                             </button>
                         </td>
@@ -72,7 +72,7 @@
                         <td class="whitespace-nowrap text-center">23-03-2024</td>
                         <td class="whitespace-nowrap">
                             <button
-                                class="pt-1 w-full h-full hover:bg-tertiaryColor rounded-lg transition-all duration-300">
+                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
                                 <ion-icon name="information-circle" class="text-xl"></ion-icon>
                             </button>
                         </td>
@@ -87,7 +87,7 @@
                         <td class="whitespace-nowrap text-center">23-03-2024</td>
                         <td class="whitespace-nowrap">
                             <button
-                                class="pt-1 w-full h-full hover:bg-tertiaryColor rounded-lg transition-all duration-300">
+                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
                                 <ion-icon name="information-circle" class="text-xl"></ion-icon>
                             </button>
                         </td>
@@ -102,7 +102,7 @@
                         <td class="whitespace-nowrap text-center">23-03-2024</td>
                         <td class="whitespace-nowrap">
                             <button
-                                class="pt-1 w-full h-full hover:bg-tertiaryColor rounded-lg transition-all duration-300">
+                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
                                 <ion-icon name="information-circle" class="text-xl"></ion-icon>
                             </button>
                         </td>
@@ -117,7 +117,7 @@
                         <td class="whitespace-nowrap text-center">23-03-2024</td>
                         <td class="whitespace-nowrap">
                             <button
-                                class="pt-1 w-full h-full hover:bg-tertiaryColor rounded-lg transition-all duration-300">
+                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
                                 <ion-icon name="information-circle" class="text-xl"></ion-icon>
                             </button>
                         </td>
@@ -132,7 +132,7 @@
                         <td class="whitespace-nowrap text-center">23-03-2024</td>
                         <td class="whitespace-nowrap">
                             <button
-                                class="pt-1 w-full h-full hover:bg-tertiaryColor rounded-lg transition-all duration-300">
+                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
                                 <ion-icon name="information-circle" class="text-xl"></ion-icon>
                             </button>
                         </td>
@@ -147,7 +147,7 @@
                         <td class="whitespace-nowrap text-center">23-03-2024</td>
                         <td class="whitespace-nowrap">
                             <button
-                                class="pt-1 w-full h-full hover:bg-tertiaryColor rounded-lg transition-all duration-300">
+                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
                                 <ion-icon name="information-circle" class="text-xl"></ion-icon>
                             </button>
                         </td>

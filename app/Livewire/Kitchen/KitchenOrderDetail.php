@@ -14,7 +14,7 @@ class KitchenOrderDetail extends Component
     public function render()
     {
         return view('livewire.kitchen.kitchen-order-detail')
-            ->layout('components.layouts.app', ['title' => 'Dapur | Pesanan', 'active'=>'masakan' ]);
+            ->layout('components.layouts.app', ['title' => 'Dapur | Pesanan', 'active'=>'masakan', 'role' => 'kitchen']);
     }
 
     public function toggleSelesaiButton()

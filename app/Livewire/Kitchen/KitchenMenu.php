@@ -12,7 +12,7 @@ class KitchenMenu extends Component
     public function render()
     {
         return view('livewire.kitchen.kitchen-menu')
-            ->layout('components.layouts.app', ['title' => 'Dapur | Pesanan', 'active'=>'kelolaMenu' ]);
+            ->layout('components.layouts.app', ['title' => 'Dapur | Menu', 'active'=>'kelolaMenu', 'role' => 'kitchen' ]);
     }
 
     public function confirmToggle()

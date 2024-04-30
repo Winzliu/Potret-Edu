@@ -216,5 +216,4 @@
             {{-- akhir isi konten --}}
         </div>
         {{-- akhir sidebar kanan --}}
-        <a wire:navigate href="/test">Back</a>
     </div>
