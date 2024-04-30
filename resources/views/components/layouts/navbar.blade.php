@@ -1,4 +1,4 @@
-@if ($active == 'home')
+@if ($active == 'home' || $active == 'kelolaMenu' || $active == 'masakan' )
 <div class="my-6 w-96 h-10">
   {{-- Search Bar --}}
   <form action="">
