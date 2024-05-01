@@ -16,6 +16,8 @@ export default {
         tertiaryColor: '#12AAC0',
         fourthColor: '#C4D9E0',
         background: '#EEF5F6',
+        purpleRed: "#DD3363",
+        greenConfirm: "#4DAC3F",
           },
        },
   },
