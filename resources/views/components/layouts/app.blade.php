@@ -40,9 +40,9 @@
 
   {{-- login --}}
   {{-- @auth --}}
-  <div class="md:flex hidden bg-blue-500">
+  <div class="md:flex hidden">
     {{-- sidebar --}}
-    {{-- @include('components.layouts.sidebar') --}}
+    @include('components.layouts.sidebar')
     {{-- akhir sidebar --}}
 
     {{-- sidebar position --}}

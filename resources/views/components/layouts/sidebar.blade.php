@@ -1,4 +1,9 @@
-<div class="h-screen md:block fixed hidden w-[22%] xl:w-1/6 xl:ps-12 ps-8 py-5">
+<div class="h-screen md:block fixed hidden w-[22%] xl:w-1/6 xl:ps-12 ps-8 py-5 
+@if ($role == 'admin')
+bg-blue-50 
+@else
+bg-background 
+@endif">
   {{-- parent sidebar --}}
   <div class="h-full flex flex-col justify-between items-center">
     {{-- bagian atas --}}
@@ -75,11 +80,11 @@
         </div>
         {{-- akhir menu 2 --}}
         {{-- KITCHEN END --}}
+        @endif
       </div>
       {{-- akhir menu --}}
     </div>
     {{-- akhir bagian atas --}}
-    @endif
 
     {{-- bagian bawah --}}
     <div class=" flex flex-col gap-10">
