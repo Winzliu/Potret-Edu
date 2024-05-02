@@ -25,7 +25,7 @@
     bg-blue-50 
     @else
     bg-background 
-    @endif font-Poppins ">
+    @endif font-Poppins">
   {{-- tampilan Mobile --}}
   @include('components.mobile')
   {{-- akhir tampilan Mobile --}}
@@ -40,11 +40,11 @@
 
   {{-- login --}}
   {{-- @auth --}}
-  <div class="md:flex hidden print">
-    {{-- navbar --}}
+  <div class="md:flex hidden">
+    {{-- sidebar --}}
     @include('components.layouts.sidebar')
-    {{-- akhir navbar --}}
-    
+    {{-- akhir sidebar --}}
+
     {{-- sidebar position --}}
     <div class="md:block hidden w-[22%] xl:w-1/6"></div>
     {{-- akhir sidebar position --}}
