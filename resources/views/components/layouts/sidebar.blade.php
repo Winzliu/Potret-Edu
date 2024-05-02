@@ -11,7 +11,7 @@ bg-background
       {{-- logo --}}
       <button class="flex items-center justify-center gap-5">
         <img src="{{ asset('img/logo.png') }}" class="w-12 xl:w-9" alt="">
-        @if($role = 'waiter')
+        @if($role == 'waiter')
         <p class="text-xl xl:text-lg font-bold">Waiter</p>
         @elseif($role == 'cashier')
         <p class="text-xl xl:text-lg font-bold">Cashier</p>
@@ -22,7 +22,7 @@ bg-background
       {{-- akhir logo --}}
 
       {{-- menu --}}
-      <div class="mt-12 xl:mt-7 flex flex-col w-32 items-center gap-10 xl:gap-7">
+      <div class="mt-7 flex flex-col w-32 items-center gap-10 xl:gap-7">
         @if ($role == 'waiter')
         {{-- menu waiter --}}
         <a href="/waiter" wire:navigate
@@ -47,12 +47,13 @@ bg-background
         </a>
         {{-- akhir menu cashier --}}
         @elseif ($role == 'admin')
+        {{-- role admin --}}
         <a href="/admin" wire:navigate
           class="{{ ($active == 'admin') ? 'text-mainColor' : 'text-black' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
           <ion-icon name="home" class="text-2xl"></ion-icon>
           <p>Beranda</p>
         </a>
-
+        {{-- akhir role admin --}}
         @elseif ($role == 'kitchen')
         {{-- KITCHEN START--}}
         {{-- menu 1 --}}
