@@ -10,11 +10,11 @@ class KitchenOrderDetail extends Component
     public $showKosongButton = false;
     public $buttonClicked = false;
 
-    
+
     public function render()
     {
         return view('livewire.kitchen.kitchen-order-detail')
-            ->layout('components.layouts.app', ['title' => 'Dapur | Pesanan', 'active'=>'masakan', 'role' => 'kitchen']);
+            ->layout('components.layouts.app', ['title' => 'Dapur | Detail Pesanan', 'active' => 'kithcen-detail-pesanan', 'role' => 'kitchen']);
     }
 
     public function toggleSelesaiButton()
