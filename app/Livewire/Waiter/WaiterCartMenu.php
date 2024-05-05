@@ -9,6 +9,6 @@ class WaiterCartMenu extends Component
     public function render()
     {
         return view('livewire.waiter.waiter-cart-menu')
-            ->layout('components.layouts.app', ['title' => 'Waiter | Menu', 'active' => 'home', 'role' => 'waiter']);
+            ->layout('components.layouts.app', ['title' => 'Waiter | Menu', 'active' => 'waiter-home', 'role' => 'waiter']);
     }
 }

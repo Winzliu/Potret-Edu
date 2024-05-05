@@ -139,7 +139,7 @@
             {{-- Akhir Bagian Kiri Detail Menu --}}
             {{-- Bagian Kanan Bill --}}
             <div class="bg-secondaryColor shadow-xl rounded-lg p-5 mx-auto xl:w-1/3 w-1/2 text-center">
-                <p class="font-bold text-lg mb-3">#12345678</p>
+                <p class="font-bold text-xl mb-3">#12345678</p>
                 <div class="flex justify-between mb-2">
                     <p class="font-bold tex-sm">Tanggal</p>
                     <p class="font-bold tex-sm">13 April 2024, 19:00</p>
@@ -171,53 +171,12 @@
         </div>
         <div class="divider"></div>
         {{-- bagian bawah --}}
-        {{-- button edit --}}
         <div class="mb-10 flex gap-5 justify-end w-11/12">
-            <button class="w-24 py-2 rounded-lg bg-mainColor hover:bg-amber-500 transition-all duration-300 font-bold"
-                onclick="EditButton.showModal()">Edit</button>
-            <dialog id="EditButton" class="modal">
-                <div class="modal-box py-10 border-[4px] border-mainColor">
-                    <p class="text-center font-bold text-xl">Apakah Anda Ingin Mengedit Pesanan?</p>
-                    <div class="flex justify-evenly mt-10">
-                        <form method="dialog">
-                            <button
-                                class="w-24 font-bold bg-red-500 hover:bg-red-600 transition-all duration-300 rounded-lg py-3 text-white">Tidak</button>
-                        </form>
-                        <button
-                            class="w-24 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white">Ya</button>
-                    </div>
-                </div>
-                <form method="dialog" class="modal-backdrop">
-                    <button>close</button>
-                </form>
-            </dialog>
-            {{-- akhir button edit --}}
-            {{-- button batal --}}
+            {{-- button print --}}
             <button
-                class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-red-500 transition-all duration-300 border-2 border-red-500 font-bold"
-                onclick="BatalButton.showModal()">Batal</button>
-            <dialog id="BatalButton" class="modal">
-                <div class="modal-box py-10 border-[4px] border-red-500">
-                    <p class="text-center font-bold text-xl">Apakah Anda Ingin Menghapus Pesanan?</p>
-                    <div class="flex justify-evenly mt-10">
-                        <form method="dialog">
-                            <button
-                                class="w-24 font-bold bg-red-500 hover:bg-red-600 transition-all duration-300 rounded-lg py-3 text-white">Tidak</button>
-                        </form>
-                        <button
-                            class="w-24 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white">Ya</button>
-                    </div>
-                </div>
-                <form method="dialog" class="modal-backdrop">
-                    <button>close</button>
-                </form>
-            </dialog>
-            {{-- akhir button batal --}}
-            {{-- button bayar --}}
-            <button
-                class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-green-600 border-2 border-green-600 transition-all duration-300 font-bold"
-                onclick="BayarButton.showModal()">Bayar</button>
-            <dialog id="BayarButton" class="modal print">
+                class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-black border-2 border-black transition-all duration-300 font-bold"
+                onclick="StrukButton.showModal()">Struk</button>
+            <dialog id="StrukButton" class="modal print">
                 <div class="modal-box py-10 px-10 xl:max-w-xl max-w-2xl scrollbar-hidden">
                     <form method="dialog" class="noprint">
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -410,6 +369,126 @@
                     <button>close</button>
                 </form>
             </dialog>
+            {{-- akhir button print --}}
+            {{-- button edit --}}
+            <button
+                class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-mainColor border-2 border-mainColor transition-all duration-300 font-bold"
+                onclick="EditButton.showModal()">Edit</button>
+            <dialog id="EditButton" class="modal">
+                <div class="modal-box py-10 border-[4px] border-mainColor">
+                    <p class="text-center font-bold text-xl">Apakah Anda Ingin Mengedit Pesanan?</p>
+                    <div class="flex justify-evenly mt-10">
+                        <form method="dialog">
+                            <button
+                                class="w-24 font-bold bg-red-500 hover:bg-red-600 transition-all duration-300 rounded-lg py-3 text-white">Tidak</button>
+                        </form>
+                        <button
+                            class="w-24 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white">Ya</button>
+                    </div>
+                </div>
+                <form method="dialog" class="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
+            {{-- akhir button edit --}}
+            {{-- button batal --}}
+            <button
+                class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-red-500 transition-all duration-300 border-2 border-red-500 font-bold"
+                onclick="BatalButton.showModal()">Batal</button>
+            <dialog id="BatalButton" class="modal">
+                <div class="modal-box py-10 border-[4px] border-red-500">
+                    <p class="text-center font-bold text-xl">Apakah Anda Ingin Menghapus Pesanan?</p>
+                    <div class="flex justify-evenly mt-10">
+                        <form method="dialog">
+                            <button
+                                class="w-24 font-bold bg-red-500 hover:bg-red-600 transition-all duration-300 rounded-lg py-3 text-white">Tidak</button>
+                        </form>
+                        <button
+                            class="w-24 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white">Ya</button>
+                    </div>
+                </div>
+                <form method="dialog" class="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
+            {{-- akhir button batal --}}
+            {{-- button bayar --}}
+            <button
+                class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-green-600 border-2 border-green-600 transition-all duration-300 font-bold"
+                onclick="BayarButton.showModal()">Bayar</button>
+            <dialog id="BayarButton" class="modal">
+                <div class="modal-box py-10 border-[4px] border-green-600 max-w-3xl">
+                    <div class="flex w-full px-5 justify-between bg-green-600 absolute top-0 left-0 py-3">
+                        <p class="font-semibold text-lg text-white">Total Pembayaran</p>
+                        <p class="font-semibold text-lg text-white">Rp 400.000</p>
+                    </div>
+                    <p class="text-center font-bold text-xl my-6">Pilih Metode Pembayaran</p>
+                    <div class="flex flex-wrap gap-y-5">
+                        <div class="flex gap-3 items-center w-1/4 justify-center">
+                            <input type="radio" id="radio-6" name="radio-6" class="radio radio-warning" />
+                            <label for="radio-6" class="font-bold text-xl">BCA</label>
+                        </div>
+                        <div class="flex gap-3 items-center w-1/4 justify-center">
+                            <input type="radio" id="radio-7" name="radio-6" class="radio radio-warning" />
+                            <label for="radio-7" class="font-bold text-xl">Mandiri</label>
+                        </div>
+                        <div class="flex gap-3 items-center w-1/4 justify-center">
+                            <input type="radio" id="radio-8" name="radio-6" class="radio radio-warning" />
+                            <label for="radio-8" class="font-bold text-xl">BRI</label>
+                        </div>
+                        <div class="flex gap-3 items-center w-1/4 justify-center">
+                            <input type="radio" id="radio-9" name="radio-6" class="radio radio-warning" checked />
+                            <label for="radio-9" class="font-bold text-xl">QRIS</label>
+                        </div>
+                        <div class="flex gap-3 items-center w-1/4 justify-center">
+                            <input type="radio" id="radio-1" name="radio-6" class="radio radio-warning" />
+                            <label for="radio-1" class="font-bold text-xl">Cash</label>
+                        </div>
+                    </div>
+                    <div class="flex justify-evenly mt-10">
+                        <button
+                            class="w-24 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white"
+                            onclick="KonfirmasiBayar.showModal()">Bayar</button>
+                    </div>
+                </div>
+                <form method="dialog" class="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
+            {{-- modal konfirmasi bayar --}}
+            <dialog id="KonfirmasiBayar" class="modal">
+                <div class="modal-box py-10 border-[4px] border-green-600 max-w-3xl">
+                    <div class="flex w-full px-5 justify-between bg-green-600 absolute top-0 left-0 py-3">
+                        <p class="font-semibold text-lg text-white">Metode Pembayaran</p>
+                        <p class="font-semibold text-lg text-white">Cash</p>
+                    </div>
+                    <p class="text-center font-bold text-xl my-6">Pilih Metode Pembayaran</p>
+                    <div class="flex flex-col w-4/5 mx-auto gap-y-5">
+                        <div class="flex justify-between">
+                            <p class="font-semibold text-xl">Total Pembayaran</p>
+                            <p class="font-semibold text-xl">Rp 400.000</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p class="font-semibold text-xl">Nominal Pembayaran</p>
+                            <input type="number" placeholder="Nominal Pembayaran"
+                                class="input input-bordered input-warning text-sm w-32 font-semibold h-8 text-end" />
+                        </div>
+                        <div class="flex justify-between">
+                            <p class="font-semibold text-xl">Kembalian</p>
+                            <p class="font-semibold text-xl">Rp 0</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-evenly mt-10">
+                        <button
+                            class="w-24 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white"
+                            onclick="KonfirmasiBayar.showModal()">Bayar</button>
+                    </div>
+                </div>
+                <form method="dialog" class="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
+            {{-- akhir modal konfirmasi bayar --}}
             {{-- akhir button bayar --}}
         </div>
         {{-- akhir bagian bawah --}}
