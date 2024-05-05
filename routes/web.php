@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Admin\AdminHome;
+use App\Livewire\Admin\AdminKaryawan;
 use App\Livewire\Admin\AdminOrderHistory;
 use App\Livewire\Cashier\CashierDetailOrder;
 use App\Livewire\Cashier\CashierHistory;
@@ -40,6 +41,8 @@ Route::get('/cashier/riwayat', CashierHistory::class);
 Route::get('/admin', AdminHome::class);
 
 Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
+
+Route::get('/admin/karyawan', AdminKaryawan::class);
 // Akhir Admin
 
 Route::get('/kitchen', KitchenOrder::class);
