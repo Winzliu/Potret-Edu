@@ -4,7 +4,7 @@
   {{-- Search Bar --}}
   <form action="">
     <label class=" input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
-      <input type="text" class="grow text-xs" placeholder="Cari Menu" />
+      <input type="text" class="grow text-xs border-0 input" placeholder="Cari Menu" />
       <button>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
           <path fill-rule="evenodd"

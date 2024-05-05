@@ -4,6 +4,7 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js"
     ],
     theme: {
         extend: {
@@ -19,9 +20,9 @@ export default {
         purpleRed: "#DD3363",
         greenConfirm: "#4DAC3F",
           },
-       },
+      },
   },
-  plugins: [require('daisyui')],
+  plugins: [require('daisyui'), require('flowbite/plugin')],
 
 //Apabila warna background tampilan web menjadi hitam, tambahkan kode berikut
   daisyui: {
