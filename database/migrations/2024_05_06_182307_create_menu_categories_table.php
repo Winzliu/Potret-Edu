@@ -10,12 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->uuid('user_id')->primary();
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->enum('role', ['admin', 'waiter', 'cashier', 'kitchen']);
-            $table->timestamps();
+        Schema::create('menu_categories', function (Blueprint $table) {
+            $table->uuid('menu_category_id')->primary();
+            $table->string('menu_category_name')->notNullable();
         });
     }
 
@@ -24,6 +21,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('menu_categories');
     }
 };

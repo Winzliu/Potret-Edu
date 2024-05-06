@@ -10,12 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->uuid('user_id')->primary();
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->enum('role', ['admin', 'waiter', 'cashier', 'kitchen']);
-            $table->timestamps();
+        Schema::create('discounts', function (Blueprint $table) {
+            $table->uuid('discount_id')->primary();
+            $table->string('discount_name')->notNullable();
+            $table->float('discount_rate');
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('discounts');
     }
 };
