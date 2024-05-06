@@ -1,4 +1,4 @@
-<div class="h-screen md:block fixed hidden w-[22%] xl:w-1/6 xl:ps-12 ps-8 py-5 
+<div class="h-screen md:block fixed hidden w-[22%] xl:w-1/6 xl:ps-12 ps-8 py-7 
 @if ($role == 'admin')
 bg-blue-50 
 @else
@@ -28,14 +28,14 @@ bg-background
         @if ($role == 'waiter')
         {{-- menu waiter --}}
         <a href="/waiter" wire:navigate
-          class="{{ ($active == 'waiter-home') ? 'text-mainColor' : 'text-black' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
+          class="{{ ($active == 'waiter-home') ? 'text-mainColor' : 'text-black opacity-60' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
           <ion-icon name="fast-food" class="text-2xl"></ion-icon>
           <p>Beranda</p>
         </a>
         {{-- akhir menu waiter --}}
         {{-- menu waiter --}}
         <a href="/waiter/pesanan" wire:navigate
-          class="{{ ($active == 'waiter-pesanan') ? 'text-mainColor' : 'text-black' }}  text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
+          class="{{ ($active == 'waiter-pesanan') ? 'text-mainColor' : 'text-black  opacity-60' }}  text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
           <ion-icon name="cart" class="text-2xl"></ion-icon>
           <p>Pesanan</p>
         </a>
@@ -43,7 +43,7 @@ bg-background
         @elseif ($role == 'cashier')
         {{-- menu cashier --}}
         <a href="/cashier/riwayat" wire:navigate
-          class="{{ ($active == 'cashier-riwayat') ? 'text-mainColor' : 'text-black' }}  text-center leading-3 hover:bg-slate-200 rounded-lg py-2">
+          class="{{ ($active == 'cashier-riwayat') ? 'text-mainColor' : 'text-black  opacity-60' }}  text-center leading-3 hover:bg-slate-200 rounded-lg py-2">
           <ion-icon name="timer" class="text-2xl"></ion-icon>
           <p>Riwayat Pesanan</p>
         </a>
@@ -51,12 +51,12 @@ bg-background
         @elseif ($role == 'admin')
         {{-- role admin --}}
         <a href="/admin" wire:navigate
-          class="{{ ($active == 'admin-home') ? 'text-tertiaryColor' : 'text-black' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
+          class="{{ ($active == 'admin-home') ? 'text-tertiaryColor' : 'text-black opacity-60' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
           <ion-icon name="home" class="text-2xl"></ion-icon>
           <p>Beranda</p>
         </a>
         <a href="/admin/riwayat-pesanan" wire:navigate
-          class="{{ ($active == 'admin-riwayat') ? 'text-tertiaryColor' : 'text-black' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
+          class="{{ ($active == 'admin-riwayat') ? 'text-tertiaryColor' : 'text-black opacity-60' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
           <ion-icon name="timer" class="text-2xl"></ion-icon>
           <p>Riwayat Pesanan</p>
         </a>
@@ -64,6 +64,11 @@ bg-background
           class="{{ ($active == 'admin-menu') ? 'text-tertiaryColor' : 'text-black' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
           <ion-icon name="timer" class="text-2xl"></ion-icon>
           <p>Riwayat Pesanan</p>
+        </a>
+        <a href="/admin/karyawan" wire:navigate
+          class="{{ ($active == 'admin-karyawan') ? 'text-tertiaryColor' : 'text-black opacity-60' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
+          <ion-icon name="person" class="text-2xl"></ion-icon>
+          <p>Karyawan</p>
         </a>
         {{-- akhir role admin --}}
         @elseif ($role == 'kitchen')

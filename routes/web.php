@@ -3,6 +3,7 @@
 use App\Livewire\Profil\Profil;
 use App\Livewire\Admin\AdminHome;
 use App\Livewire\Admin\AdminMenu;
+use App\Livewire\Admin\AdminKaryawan;
 use App\Livewire\Admin\AdminOrderHistory;
 use App\Livewire\Cashier\CashierDetailOrder;
 use App\Livewire\Cashier\CashierHistory;
@@ -41,9 +42,9 @@ Route::get('/cashier/riwayat', CashierHistory::class);
 
 // Admin
 Route::get('/admin', AdminHome::class);
-
 Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
 Route::get('/admin/menu', AdminMenu::class);
+Route::get('/admin/karyawan', AdminKaryawan::class);
 // Akhir Admin
 
 //Awal Kitchen
