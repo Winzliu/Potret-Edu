@@ -1,3 +1,5 @@
+const { addDynamicIconSelectors } = require('@iconify/tailwind');
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -21,7 +23,9 @@ export default {
           },
        },
   },
-  plugins: [require('daisyui')],
+  plugins: [require('daisyui'),
+    addDynamicIconSelectors(),
+  ],
 
 //Apabila warna background tampilan web menjadi hitam, tambahkan kode berikut
   daisyui: {
