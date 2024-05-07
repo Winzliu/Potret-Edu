@@ -39,6 +39,36 @@
             </div>
         </div>      
     </div>
-
+    <div class="flex items-center gap-5 mt-12">
+        <p class="text-3xl font-bold">Pengaturan Font</p>
+    </div>
     <div class="divider"></div>
+    <div class="mx-2">
+        <div class="w-full flex justify-between px-2 font-medium">
+            <span class="text-base ml-4">Kecil</span>
+            <span class="text-xl ml-4">Sedang</span>
+            <span class="text-2xl">Besar</span>
+        </div>
+    </div>
+    <div class="mx-10">
+        <label for="labels-range-input" class="sr-only">Labels range</label>
+        <input id="labels-range-input" type="range" step="2" value="0" min="0" max="4" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">        
+        <div class="w-full flex justify-between text-xs px-2">
+            <span>|</span>
+            <span>|</span>
+            <span>|</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-5 mt-12">
+        <p class="text-3xl font-bold">Tema</p>
+    </div>
+    <div class="divider"></div>
+    <div class="mb-10 font-medium">     
+        <label class="inline-flex items-center cursor-pointer gap-4">
+            <span class="label-text">Default</span> 
+            <input type="checkbox" value="" class="sr-only peer">
+                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            <span class="label-text">Night Mode</span> 
+        </label>
+    </div>
 </div>

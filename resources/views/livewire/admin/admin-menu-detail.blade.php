@@ -24,6 +24,7 @@
                 <input type="file" id="gambar" name="gambar" class="hidden" accept="image/*"
                     onchange="previewFile()">
             </label>
+            
             <div class="text-start mx-5 2xl:mx-40 mt-2 font-semibold">
                 <p id="fileInfo" class="mt-0 mb-0 font-medium"></p>
                 <i class="text-red-500">*klik gambar di atas untuk mengunggah file</i>
@@ -33,8 +34,10 @@
                 </p>
                 @enderror
             </div>
-        </div>
 
+            {{-- <input type="file" id="gambar2" name="gambar" accept="image/*" onchange="previewFile()"
+            class="file-input file-input-bordered file-input-info w-full my-4"/> --}}
+        </div>
 
         <div class="flex flex-col gap-4">
             {{-- NAMA MENU --}}
