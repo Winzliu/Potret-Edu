@@ -61,7 +61,7 @@ bg-background
           <p>Riwayat Pesanan</p>
         </a>
         <a href="/admin/menu" wire:navigate
-          class="{{ ($active == 'admin-menu') ? 'text-tertiaryColor' : 'text-black' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
+          class="{{ ($active == 'admin-menu') ? 'text-tertiaryColor' : 'text-black opacity-60' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
           <ion-icon name="restaurant" class="text-2xl"></ion-icon>
           <p>Menu</p>
         </a>
