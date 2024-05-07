@@ -38,13 +38,14 @@
                         <td class="whitespace-nowrap text-center cursor-default">12</td>
                         <td class="whitespace-nowrap text-center cursor-default">Cash</td>
                         <td class="whitespace-nowrap text-center cursor-default">23-03-2024</td>
-                        <td class="whitespace-nowrap text-center cursor-default">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-fourthColor rounded-lg transition-all duration-300 ">
+                        <td class="whitespace-nowrap text-center cursor-default flex justify-center">
+                            <a href="/admin/menu/1" wire-navigate
+                                class="flex items-center justify-center w-3/4 h-full hover:bg-fourthColor rounded-md transition-all duration-300 ">
                                 <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
+                            </a>
                         </td>
                     </tr>
+                    @for($i=0; $i < 6;$i++)
                     <!-- row 2 -->
                     <tr class="hover:bg-tertiaryColor transition-all duration-300 even:bg-base-300">
                         <th class="whitespace-nowrap text-center cursor-default">2</th>
@@ -53,88 +54,14 @@
                         <td class="whitespace-nowrap text-center cursor-default">12</td>
                         <td class="whitespace-nowrap text-center cursor-default">Cash</td>
                         <td class="whitespace-nowrap text-center cursor-default">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-fourthColor rounded-lg transition-all duration-300">
+                        <td class="whitespace-nowrap text-center cursor-default flex justify-center">
+                            <a href="/admin/menu/1" wire-navigate
+                                class="flex items-center justify-center w-3/4 h-full hover:bg-fourthColor rounded-md transition-all duration-300 ">
                                 <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
+                            </a>
                         </td>
                     </tr>
-                    <!-- row 3 -->
-                    <tr class="hover:bg-tertiaryColor transition-all duration-300 ">
-                        <th class="whitespace-nowrap text-center cursor-default">3</th>
-                        <td class="whitespace-nowrap text-center cursor-default">4587198751</td>
-                        <td class="whitespace-nowrap text-center cursor-default">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center cursor-default">12</td>
-                        <td class="whitespace-nowrap text-center cursor-default">Cash</td>
-                        <td class="whitespace-nowrap text-center cursor-default">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-fourthColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- row 4 -->
-                    <tr class="hover:bg-tertiaryColor transition-all duration-300 even:bg-base-300">
-                        <th class="whitespace-nowrap text-center cursor-default">4</th>
-                        <td class="whitespace-nowrap text-center cursor-default">4587198751</td>
-                        <td class="whitespace-nowrap text-center cursor-default">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center cursor-default">12</td>
-                        <td class="whitespace-nowrap text-center cursor-default">Cash</td>
-                        <td class="whitespace-nowrap text-center cursor-default">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-fourthColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- row 5 -->
-                    <tr class="hover:bg-tertiaryColor transition-all duration-300 even:bg-base-300">
-                        <th class="whitespace-nowrap text-center cursor-default">5</th>
-                        <td class="whitespace-nowrap text-center cursor-default">4587198751</td>
-                        <td class="whitespace-nowrap text-center cursor-default">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center cursor-default">12</td>
-                        <td class="whitespace-nowrap text-center cursor-default">Cash</td>
-                        <td class="whitespace-nowrap text-center cursor-default">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-fourthColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- row 6 -->
-                    <tr class="hover:bg-tertiaryColor transition-all duration-300 even:bg-base-300">
-                        <th class="whitespace-nowrap text-center cursor-default">6</th>
-                        <td class="whitespace-nowrap text-center cursor-default">4587198751</td>
-                        <td class="whitespace-nowrap text-center cursor-default">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center cursor-default">12</td>
-                        <td class="whitespace-nowrap text-center cursor-default">Cash</td>
-                        <td class="whitespace-nowrap text-center cursor-default">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-fourthColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- row 7 -->
-                    <tr class="hover:bg-tertiaryColor transition-all duration-300 even:bg-base-300">
-                        <th class="whitespace-nowrap text-center cursor-default">7</th>
-                        <td class="whitespace-nowrap text-center cursor-default">4587198751</td>
-                        <td class="whitespace-nowrap text-center cursor-default">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center cursor-default">12</td>
-                        <td class="whitespace-nowrap text-center cursor-default">Cash</td>
-                        <td class="whitespace-nowrap text-center cursor-default">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-fourthColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
+                    @endfor
                 </tbody>
             </table>
         </div>

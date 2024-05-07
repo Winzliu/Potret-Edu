@@ -60,10 +60,10 @@ bg-background
           <ion-icon name="timer" class="text-2xl"></ion-icon>
           <p>Riwayat Pesanan</p>
         </a>
-        <a href="/admin/admin-menu" wire:navigate
+        <a href="/admin/menu" wire:navigate
           class="{{ ($active == 'admin-menu') ? 'text-tertiaryColor' : 'text-black' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">
-          <ion-icon name="timer" class="text-2xl"></ion-icon>
-          <p>Riwayat Pesanan</p>
+          <ion-icon name="restaurant" class="text-2xl"></ion-icon>
+          <p>Menu</p>
         </a>
         <a href="/admin/karyawan" wire:navigate
           class="{{ ($active == 'admin-karyawan') ? 'text-tertiaryColor' : 'text-black opacity-60' }} text-center leading-3 hover:bg-slate-200 rounded-lg py-2 w-full">

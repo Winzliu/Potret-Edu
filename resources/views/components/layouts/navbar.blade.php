@@ -1,5 +1,5 @@
 @if ($active == 'waiter-home' || $active == 'waiter-pesanan' || $active == 'kitchen-pesanan' || $active ==
-'kitchen-kelolaMenu' || $active == 'cashier-riwayat' || $active == "admin-riwayat" )
+'kitchen-kelolaMenu' || $active == 'cashier-riwayat' || $active == "admin-riwayat" || $active == "admin-menu" )
 <div class="my-6 w-96 h-10">
   {{-- Search Bar --}}
   <form action="">

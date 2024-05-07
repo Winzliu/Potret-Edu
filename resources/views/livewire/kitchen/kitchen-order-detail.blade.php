@@ -14,7 +14,7 @@
     </div> --}}
     <div class="flex flex-col justify-center gap-4">
         <div class="flex text-center">
-            <p class="font-semibold text-purpleRed">Waiter/Kasir: &nbsp;</p>
+            <p class="font-semibold text-purpleRed">Kasir: &nbsp;</p>
             <p class="font-medium">Tatang Subarjo</p>
         </div>
         <div class="flex text-center">
@@ -22,6 +22,7 @@
             <p class="font-medium">3/6 Menu (12 Item)</p>
         </div>
         <div class="flex text-center">
+            <p class="font-medium text-purpleRed">Tanggal, Waktu: &nbsp;</p>
             <p class="font-medium">10 Februari 2024, 19.01</p>
         </div>
     </div>
