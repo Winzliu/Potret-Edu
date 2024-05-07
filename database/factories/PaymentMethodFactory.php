@@ -17,7 +17,9 @@ class PaymentMethodFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'payment_method_id' => fake()->uuid(),
+            'method'            => fake()->word(),
+            'taxes'             => fake()->randomFloat(2, 0, 100),
         ];
     }
 }

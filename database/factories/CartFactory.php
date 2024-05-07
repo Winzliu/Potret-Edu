@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\menu;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,16 @@ class CartFactory extends Factory
      */
     public function definition(): array
     {
+        $menus_id = menu::pluck('menu_id')->all();
+        $menu_id = fake()->randomElement($menus_id);
+
+        $users_id = User::pluck('user_id')->all();
+        $user_id = fake()->randomElement($users_id);
+
         return [
-            //
+            'cart_id' => fake()->uuid(),
+            'menu_id' => $menu_id,
+            'user_id' => $user_id,
         ];
     }
 }

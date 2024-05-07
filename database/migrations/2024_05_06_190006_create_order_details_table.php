@@ -26,6 +26,7 @@ return new class extends Migration {
                 ->onDelete('cascade');
             $table->integer('quantity')->notNullable();
             $table->string('notes');
+            $table->enum('status', ['baru', 'tambahan']);
             $table->enum('menu_status', ['kosong', 'masak', 'selesai']);
         });
     }

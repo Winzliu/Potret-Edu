@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\history;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,16 @@ class HistoryDetailFactory extends Factory
      */
     public function definition(): array
     {
+        $histories_id = history::pluck('history_id')->all();
+        $history_id = fake()->randomElement($histories_id);
+
         return [
-            //
+            'history_detail_id' => fake()->uuid(),
+            'history_id'        => $history_id,
+            'menu_name'         => fake()->name(),
+            'menu_notes'        => fake()->words(3, true),
+            'quantity'          => fake()->numberBetween(1, 10),
+            'price'             => fake()->numberBetween(10000, 30000),
         ];
     }
 }

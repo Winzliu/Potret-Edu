@@ -17,7 +17,9 @@ class DiscountFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'discount_id'   => fake()->uuid(),
+            'discount_name' => fake()->word(),
+            'discount_rate' => fake()->randomFloat(2, 0, 100),
         ];
     }
 }

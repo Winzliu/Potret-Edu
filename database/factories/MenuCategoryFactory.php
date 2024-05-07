@@ -17,7 +17,8 @@ class MenuCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'menu_category_id'   => fake()->uuid(),
+            'menu_category_name' => fake()->word(),
         ];
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Livewire\Admin\AdminHome;
 use App\Livewire\Admin\AdminKaryawan;
 use App\Livewire\Admin\AdminOrderHistory;
@@ -9,9 +10,12 @@ use App\Livewire\Cashier\Home;
 use App\Livewire\Kitchen\KitchenMenu;
 use App\Livewire\Kitchen\KitchenOrder;
 use App\Livewire\Kitchen\KitchenOrderDetail;
+use App\Livewire\Login;
 use App\Livewire\Waiter\Test;
 use App\Livewire\Waiter\WaiterCartMenu;
 use App\Livewire\Waiter\WaiterProgressOrder;
+use App\Models\User;
+use App\Models\userDetail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,27 +28,48 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/test', function () {
+  return userDetail::first()->user;
+});
 
-// Waiter
-Route::get('/waiter', WaiterCartMenu::class);
+// Login
+Route::get('/', [UserController::class, 'login'])->middleware('guest')->name('login');
+Route::post('/login', [UserController::class, 'loginPost'])->middleware('guest');
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+// Akhir Login
 
-Route::get('/waiter/pesanan', WaiterProgressOrder::class);
-// Akhir Waiter
+Route::group(['middleware' => 'auth'], function () {
+  // Waiter
+  Route::group(['middleware' => 'cekRole:waiter'], function () {
+    Route::get('/waiter', WaiterCartMenu::class)->middleware('auth');
 
-// Cashier
-Route::get('/cashier/pesanan/{pesanan}', CashierDetailOrder::class);
+    Route::get('/waiter/pesanan', WaiterProgressOrder::class);
+  });
+  // Akhir Waiter
 
-Route::get('/cashier/riwayat', CashierHistory::class);
-// Akhir Cashier
+  // Cashier
+  Route::group(['middleware' => 'cekRole:cashier'], function () {
+    Route::get('/cashier/pesanan/{pesanan}', CashierDetailOrder::class);
 
-// Admin
-Route::get('/admin', AdminHome::class);
+    Route::get('/cashier/riwayat', CashierHistory::class);
+  });
+  // Akhir Cashier
 
-Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
+  // Admin
+  Route::group(['middleware' => 'cekRole:admin'], function () {
+    Route::get('/admin', AdminHome::class)->middleware('auth');
 
-Route::get('/admin/karyawan', AdminKaryawan::class);
-// Akhir Admin
+    Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
 
-Route::get('/kitchen', KitchenOrder::class);
-Route::get('/kitchen-order-detail', KitchenOrderDetail::class);
-Route::get('/kitchen-menu', KitchenMenu::class);
+    Route::get('/admin/karyawan', AdminKaryawan::class);
+  });
+  // Akhir Admin
+
+  // Kitchen
+  Route::group(['middleware' => 'cekRole:kitchen'], function () {
+    Route::get('/kitchen', KitchenOrder::class);
+    Route::get('/kitchen-order-detail', KitchenOrderDetail::class);
+    Route::get('/kitchen-menu', KitchenMenu::class);
+  });
+  // Akhir Kitchen
+});
