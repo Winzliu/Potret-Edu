@@ -11,4 +11,4 @@ class AdminHome extends Component
         return view('livewire.admin.admin-home')
             ->layout('components.layouts.app', ['title' => 'Admin | Beranda', 'active' => 'admin-home', 'role' => 'admin']);
     }
-}
+}   

@@ -1,10 +1,12 @@
+const { addDynamicIconSelectors } = require("@iconify/tailwind");
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
-        "./node_modules/flowbite/**/*.js"
+        "./node_modules/flowbite/**/*.js",
     ],
     theme: {
         extend: {
@@ -16,8 +18,9 @@ export default {
             secondaryColor: '#FECD33',
             tertiaryColor: '#12AAC0',
             fourthColor: '#C4D9E0',
-            purpleRed: "#DD3363",
-            greenConfirm: "#4DAC3F",
+            purpleRed: '#DD3363',
+            greenConfirm: '#4DAC3F',
+            background: '#EEF5F6',
             },
         animation: {
             scale: 'scale 3s infinite linear',
@@ -52,10 +55,14 @@ export default {
         },
         },
     },
-    plugins: [require('daisyui'), require('flowbite/plugin')],
+    plugins: [
+      require('daisyui'), 
+      addDynamicIconSelectors(),
+      require('flowbite/plugin')
+    ],
 
 //Apabila warna background tampilan web menjadi hitam, tambahkan kode berikut
     daisyui: {
-        themes: ["light"],
+        themes: ['light'],
     },
-}
+};

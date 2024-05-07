@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Livewire\Profil\Profil;
 use App\Livewire\Admin\AdminHome;
+use App\Livewire\Admin\AdminMenu;
+use App\Livewire\Admin\AdminMenuDetail;
+use App\Livewire\Admin\AdminMenuEdit;
 use App\Livewire\Admin\AdminKaryawan;
 use App\Livewire\Admin\AdminOrderHistory;
 use App\Livewire\Cashier\CashierDetailOrder;
@@ -17,6 +21,7 @@ use App\Livewire\Waiter\WaiterProgressOrder;
 use App\Models\User;
 use App\Models\userDetail;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +56,21 @@ Route::group(['middleware' => 'auth'], function () {
   Route::group(['middleware' => 'cekRole:cashier'], function () {
     Route::get('/cashier/pesanan/{pesanan}', CashierDetailOrder::class);
 
+// Admin
+Route::get('/admin', AdminHome::class);
+Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
+Route::get('/admin/menu', AdminMenu::class);
+Route::get('/admin/tambah-menu', AdminMenuDetail::class);
+Route::get('/admin/edit-menu/{id_pesanan}', AdminMenuEdit::class);
+Route::get('/admin/karyawan', AdminKaryawan::class);
+// Akhir Admin
+
+//Awal Kitchen
+Route::get('/kitchen', KitchenOrder::class);
+Route::get('/kitchen-order-detail', KitchenOrderDetail::class);
+Route::get('/kitchen-menu', KitchenMenu::class);
+//Akhir Kitchen
+Route::get('/profil/{id}', Profil::class);
     Route::get('/cashier/riwayat', CashierHistory::class);
   });
   // Akhir Cashier
