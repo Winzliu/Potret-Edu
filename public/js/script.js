@@ -4,6 +4,25 @@
     window.print();
   }
 
+  // show password
+    function showPassword() {
+        const toggle = document.getElementById('toggle');
+        const passwordInput = document.getElementById('password');
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+
+        if (toggle.getAttribute('name') === 'eye') {
+            toggle.setAttribute('name', 'eye-off');;
+        } else {
+          toggle.setAttribute('name', 'eye');;
+        }
+    }
+  // akhir show password
+
   // Location API
   const alamat = document.getElementById('alamat');
   const pelengkap_alamat = document.getElementById('pelengkap-alamat');

@@ -20,26 +20,14 @@
   @livewireStyles
 </head>
 
-<body class="min-h-screen 
-    @if ($role == 'admin')
-    bg-blue-50 
-    @else
-    bg-background 
-    @endif font-Poppins">
+<body class="min-h-screen bg-blue-50 font-Poppins">
   {{-- tampilan Mobile --}}
   @include('components.mobile')
   {{-- akhir tampilan Mobile --}}
 
   {{-- tampilan Laptop/Tablet --}}
-
-  {{-- belum login --}}
-  {{-- @guest
-  @include('components.login')
-  @endguest --}}
-  {{-- akhir belum login --}}
-
   {{-- login --}}
-  {{-- @auth --}}
+  @auth
   <div class="md:flex hidden">
     {{-- sidebar --}}
     @include('components.layouts.sidebar')
@@ -59,7 +47,7 @@
       {{-- akhir content --}}
     </div>
   </div>
-  {{-- @endauth --}}
+  @endauth
   {{-- akhir login --}}
 
   {{-- akhir tampilan Laptop/Tablet --}}
