@@ -29,7 +29,6 @@ export default {
         addDynamicIconSelectors(),
         require("flowbite/plugin"),
     ],
-    darkMode: "class", // atau 'class', 'media' mengikuti preferensi perangkat
 
     //Apabila warna background tampilan web menjadi hitam, tambahkan kode berikut
     daisyui: {
