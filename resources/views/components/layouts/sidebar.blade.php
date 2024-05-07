@@ -102,17 +102,27 @@ bg-background
       <a href="/profil/1"class="flex items-center gap-3 text-left">
         <ion-icon name="person-circle" class="text-5xl xl:text-4xl"></ion-icon>
         <div class="leading-5">
-          <p class="font-bold xl:text-sm">Tatang Subarjo</p>
+          <p class="font-bold xl:text-sm">{{ auth()->user()->username }}</p>
+          @if($role == 'waiter')
           <p class="xl:text-sm">Waiter</p>
+          @elseif($role == 'cashier')
+          <p class="xl:text-sm">Cashier</p>
+          @elseif($role== 'kitchen')
+          <p class="xl:text-sm">Kitchen</p>
+          @elseif($role== 'admin')
+          <p class="xl:text-sm">Admin</p>
+          @endif
         </div>
       </a>
       {{-- akhir menu 1 --}}
       {{-- menu 2 --}}
-      <button
-        class="flex items-center gap-3 text-red-500 hover:bg-base-300 rounded-lg transition-all duration-300 py-2 px-1">
-        <ion-icon name="log-out-outline" class="text-4xl xl:text-3xl"></ion-icon>
-        <p class="font-bold text-xl xl:text-base">Logout</p>
-      </button>
+      <form action="/logout" method="POST" class="hover:bg-base-300 rounded-lg transition-all duration-300">
+        @csrf
+        <button class="flex items-center gap-3 text-red-500 w-full h-full py-2 px-1">
+          <ion-icon name="log-out-outline" class="text-4xl xl:text-3xl"></ion-icon>
+          <p class="font-bold text-xl xl:text-base">Logout</p>
+        </button>
+      </form>
       {{-- akhir menu 2 --}}
     </div>
     {{-- akhir bagian bawah --}}

@@ -17,11 +17,31 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $primaryKey = 'user_id';
+    public $incrementing = false;
+
     protected $fillable = [
-        'name',
-        'email',
+        'user_id',
+        'username',
         'password',
+        'role'
     ];
+
+    public function order()
+    {
+        return $this->hasMany(order::class, 'user_id');
+    }
+
+    public function userDetail()
+    {
+        return $this->hasOne(userDetail::class, 'user_id');
+    }
+
+    public function cart()
+    {
+        return $this->hasMany(cart::class, 'user_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -40,6 +60,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'password'          => 'hashed',
     ];
 }
