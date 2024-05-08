@@ -24,8 +24,8 @@ class MenuFactory extends Factory
             'menu_id'          => fake()->uuid(),
             'menu_category_id' => $menu_category_id,
             'menu_name'        => fake()->word(),
-            'menu_allergen'    => "Menu Alergi",
-            'menu_description' => fake()->words(3, true),
+            'menu_allergen'    => 'kacang, bawang, ayam, kuda, teh, susu, tempe, kucing',
+            'menu_description' => 'nasi, ayam, tempe, kuda, timun, manisan, kucing',
             'menu_price'       => fake()->numberBetween(10000, 30000),
             'menu_image'       => "Makanan.jpg"
         ];

@@ -17,7 +17,6 @@ class cekRole
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         if (in_array($request->user()->role, $roles)) {
-            DB::setDefaultConnection($request->user()->role);
             return $next($request);
         }
         return redirect('/' . $request->user()->role);

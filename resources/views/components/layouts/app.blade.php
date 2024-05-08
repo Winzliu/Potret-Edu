@@ -38,9 +38,6 @@
     {{-- akhir sidebar position --}}
 
     <div class="w-[80%] ps-5 z-50">
-      {{-- navbar --}}
-      @include('components.layouts.navbar')
-      {{-- akhir navbar --}}
 
       {{-- content --}}
       {{ $slot }}
@@ -51,22 +48,21 @@
   {{-- akhir login --}}
 
   {{-- akhir tampilan Laptop/Tablet --}}
-  @livewireScripts
 
   {{-- flowbite --}}
   <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
   {{-- akhir flowbite --}}
 
-  {{-- icon --}}
+  {{-- ionicons --}}
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  {{-- akhir icon --}}
-
+  {{-- akhir ionicons --}}
 
   {{-- script --}}
   <script src="{{ asset('js/script.js') }}"></script>
   {{-- akhir script --}}
+  @livewireScripts
 </body>
 
 </html>
