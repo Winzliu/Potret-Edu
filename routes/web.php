@@ -44,6 +44,7 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 // Akhir Login
 
 Route::group(['middleware' => 'auth'], function () {
+  Route::get('/profil/{id}', Profil::class);
   // Waiter
   Route::group(['middleware' => 'cekRole:waiter'], function () {
     Route::get('/waiter', WaiterCartMenu::class)->middleware('auth');
@@ -56,30 +57,21 @@ Route::group(['middleware' => 'auth'], function () {
   Route::group(['middleware' => 'cekRole:cashier'], function () {
     Route::get('/cashier/pesanan/{pesanan}', CashierDetailOrder::class);
 
-// Admin
-Route::get('/admin', AdminHome::class);
-Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
-Route::get('/admin/menu', AdminMenu::class);
-Route::get('/admin/tambah-menu', AdminMenuDetail::class);
-Route::get('/admin/edit-menu/{id_pesanan}', AdminMenuEdit::class);
-Route::get('/admin/karyawan', AdminKaryawan::class);
-// Akhir Admin
-
-//Awal Kitchen
-Route::get('/kitchen', KitchenOrder::class);
-Route::get('/kitchen-order-detail', KitchenOrderDetail::class);
-Route::get('/kitchen-menu', KitchenMenu::class);
-//Akhir Kitchen
-Route::get('/profil/{id}', Profil::class);
     Route::get('/cashier/riwayat', CashierHistory::class);
   });
   // Akhir Cashier
 
   // Admin
   Route::group(['middleware' => 'cekRole:admin'], function () {
-    Route::get('/admin', AdminHome::class)->middleware('auth');
+    Route::get('/admin', AdminHome::class);
 
     Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
+
+    Route::get('/admin/menu', AdminMenu::class);
+
+    Route::get('/admin/tambah-menu', AdminMenuDetail::class);
+
+    Route::get('/admin/edit-menu/{id_pesanan}', AdminMenuEdit::class);
 
     Route::get('/admin/karyawan', AdminKaryawan::class);
   });
@@ -88,7 +80,9 @@ Route::get('/profil/{id}', Profil::class);
   // Kitchen
   Route::group(['middleware' => 'cekRole:kitchen'], function () {
     Route::get('/kitchen', KitchenOrder::class);
+
     Route::get('/kitchen-order-detail', KitchenOrderDetail::class);
+
     Route::get('/kitchen-menu', KitchenMenu::class);
   });
   // Akhir Kitchen
