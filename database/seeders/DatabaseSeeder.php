@@ -39,5 +39,23 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
             'role'     => 'admin',
         ]);
+        User::factory()->create([
+            'user_id'  => fake()->uuid(),
+            'username' => 'waiter',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'role'     => 'waiter',
+        ]);
+        User::factory()->create([
+            'user_id'  => fake()->uuid(),
+            'username' => 'cashier',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'role'     => 'cashier',
+        ]);
+        User::factory()->create([
+            'user_id'  => fake()->uuid(),
+            'username' => 'kitchen',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'role'     => 'kitchen',
+        ]);
     }
 }
