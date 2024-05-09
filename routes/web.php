@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
 
   // Admin
   Route::group(['middleware' => 'cekRole:admin'], function () {
-    Route::get('/admin', AdminHome::class)->middleware('auth');
+    Route::get('/admin', AdminHome::class);
 
     Route::get('/admin/menu', AdminMenu::class);
 
@@ -72,6 +72,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
 
+    Route::get('/admin/menu', AdminMenu::class);
+
+    Route::get('/admin/tambah-menu', AdminMenuDetail::class);
+
+    Route::get('/admin/edit-menu/{id_pesanan}', AdminMenuEdit::class);
+
     Route::get('/admin/karyawan', AdminKaryawan::class);
   });
   // Akhir Admin
@@ -79,7 +85,9 @@ Route::group(['middleware' => 'auth'], function () {
   // Kitchen
   Route::group(['middleware' => 'cekRole:kitchen'], function () {
     Route::get('/kitchen', KitchenOrder::class);
+
     Route::get('/kitchen-order-detail', KitchenOrderDetail::class);
+
     Route::get('/kitchen-menu', KitchenMenu::class);
   });
   // Akhir Kitchen
