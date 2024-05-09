@@ -1,4 +1,25 @@
 <div class="flex flex-wrap gap-4 justify-start overflow-y-scroll h-[75vh] scrollbar-hidden">
+    {{-- notif --}}
+    @if (session()->has('notif_gagal'))
+    <div role="alert"
+        class="alert alert-error rounded-lg absolute top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>{{ session('notif_gagal') }}</span>
+    </div>
+    @elseif (session()->has('notif_berhasil'))
+    <div role="alert"
+        class="alert alert-success rounded-lg absolute top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>{{ session('notif_berhasil') }}</span>
+    </div>
+    @endif
+    {{-- akhir notif --}}
     @php
     $i = 1;
     @endphp
@@ -16,7 +37,8 @@
                     <p class="text-xs w-32">{{ Str::limit($menu->menu_description, 15) }}</p>
                     <p class="font-semibold">Rp. {{ number_format($menu->menu_price,0, ',', '.') }}</p>
                 </div>
-                <button class="bg-mainColor w-10 h-10 rounded-full font-bold text-2xl">
+                <button wire:click="addToCart('{{ $menu->menu_id }}')"
+                    class="bg-mainColor w-10 h-10 rounded-full font-bold text-2xl">
                     +
                 </button>
             </div>
@@ -61,4 +83,13 @@
     $i++;
     @endphp
     @endforeach
+    <script>
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('refresh_notif', (event) => {
+                setTimeout(() => {
+                    Livewire.dispatch('refresh');
+                }, 1500);
+            });
+        });
+    </script>
 </div>

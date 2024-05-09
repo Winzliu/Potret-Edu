@@ -2,8 +2,11 @@
 
 namespace App\Livewire\Waiter\Component;
 
+use App\Models\cart;
 use App\Models\menu;
 use App\Models\menuCategory;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class CardMenuMakanan extends Component
@@ -14,7 +17,7 @@ class CardMenuMakanan extends Component
 
     public $search;
 
-    protected $listeners = ['getMenu' => 'getMenu', 'searchMenu' => 'searchMenu'];
+    protected $listeners = ['getMenu' => 'getMenu', 'searchMenu' => 'searchMenu', 'refresh' => 'refresh'];
 
     public function mount()
     {
@@ -49,6 +52,34 @@ class CardMenuMakanan extends Component
         } else {
             $this->menus = menu::where('menu_name', 'like', '%' . $search . '%')->get();
         }
+    }
+
+    public function addToCart($id)
+    {
+        if (cart::where('menu_id', $id)->where('user_id', auth()->user()->user_id)->exists()) {
+            request()->session()->flash('notif_gagal', 'Menu sudah ada di keranjang');
+        } else {
+            DB::beginTransaction();
+            try {
+                cart::create([
+                    'cart_id' => Str::uuid(),
+                    'user_id' => auth()->user()->user_id,
+                    'menu_id' => $id
+                ]);
+                $this->dispatch('getCart');
+                request()->session()->flash('notif_berhasil', "Menu berhasil ditambahkan");
+                DB::commit();
+            } catch (\Exception $e) {
+                request()->session()->flash('notif_gagal', 'Menu gagal ditambahkan');
+                DB::rollBack();
+            }
+        }
+        $this->dispatch('refresh_notif');
+    }
+
+    public function refresh()
+    {
+        '$refresh';
     }
 
     public function render()
