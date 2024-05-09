@@ -22,7 +22,7 @@
             <p class="font-medium">3/6 Menu (12 Item)</p>
         </div>
         <div class="flex text-center">
-            <p class="font-medium text-purpleRed">Tanggal, Waktu: &nbsp;</p>
+            <p class="font-semibold text-purpleRed">Tanggal, Waktu: &nbsp;</p>
             <p class="font-medium">10 Februari 2024, 19.01</p>
         </div>
     </div>
@@ -52,7 +52,8 @@
 
                     <div class="flex flex-row gap-2 items-center  mr-4 w-1/3">
                         {{-- Jikas pesanan ada ubah atribut class agar menyesuaikan --}}
-                        <button wire:click="toggleKosongButton" wire:loading.attr="disabled"
+                        <button wire:click="toggleKosongButton" wire:loading.attr="disabled" 
+
                             class="w-1/2 flex items-center justify-center rounded-md py-2 bg-purpleRed" @if($buttonClicked) style="display:none" @endif>
                             <span class="icon-[ph--empty-bold] text-2xl  mx-5 text-white"></span>
                         </button>

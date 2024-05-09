@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::group(['middleware' => 'cekRole:kitchen'], function () {
     Route::get('/kitchen', KitchenOrder::class);
 
-    Route::get('/kitchen-order-detail', KitchenOrderDetail::class);
+    Route::get('/kitchen-order-detail/{id}', KitchenOrderDetail::class);
 
     Route::get('/kitchen-menu', KitchenMenu::class);
   });
