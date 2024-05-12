@@ -88,7 +88,7 @@
             Livewire.on('refresh_notif', (event) => {
                 setTimeout(() => {
                     Livewire.dispatch('refresh');
-                }, 1500);
+                }, 1000);
             });
         });
     </script>

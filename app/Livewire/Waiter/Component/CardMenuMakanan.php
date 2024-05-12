@@ -62,11 +62,11 @@ class CardMenuMakanan extends Component
             DB::beginTransaction();
             try {
                 cart::create([
-                    'cart_id' => Str::uuid(),
-                    'user_id' => auth()->user()->user_id,
-                    'menu_id' => $id
+                    'cart_id'  => Str::uuid(),
+                    'user_id'  => auth()->user()->user_id,
+                    'menu_id'  => $id,
+                    'quantity' => 1
                 ]);
-                $this->dispatch('getCart');
                 request()->session()->flash('notif_berhasil', "Menu berhasil ditambahkan");
                 DB::commit();
             } catch (\Exception $e) {
@@ -74,6 +74,7 @@ class CardMenuMakanan extends Component
                 DB::rollBack();
             }
         }
+        $this->dispatch('getCart');
         $this->dispatch('refresh_notif');
     }
 

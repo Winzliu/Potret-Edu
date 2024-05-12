@@ -28,7 +28,7 @@ class orderDetail extends Model
         'order_id',
         'menu_id',
         'quantity',
-        'note',
+        'notes',
         'status',
         'menu_status'
     ];
