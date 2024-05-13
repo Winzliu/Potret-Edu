@@ -13,6 +13,7 @@
             </svg>
         </label>
     </div>
+
     <div class="drawer-side">
         <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
         {{-- isi konten --}}
@@ -21,7 +22,6 @@
                 <p class="xl:text-3xl text-2xl font-bold">Detail Pesanan</p>
                 <p class="xl:text-base text-sm font-semibold">Total Menu: {{ $cart_total }}</p>
             </div>
-            {{-- kumpulan card --}}
             {{-- notif --}}
             @if (session()->has('notif_gagal'))
             <div role="alert"
@@ -45,11 +45,13 @@
             </div>
             @endif
             {{-- akhir notif --}}
+            @php
+            $total_harga = 0;
+            @endphp
+            {{-- kumpulan card --}}
+            @if ($carts->count() > 0)
             <div class="overflow-y-scroll h-3/5 fixed w-full left-0 top-14 px-10 py-5">
                 {{-- card --}}
-                @php
-                $total_harga = 0;
-                @endphp
                 @foreach ($carts as $cart)
                 <div class="card card-side px-5 py-5 bg-secondaryColor shadow-xl flex-col mb-5">
                     <div class="flex">
@@ -76,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="">
-                                <input onkeyup="saveText('{{ $cart->cart_id }}')" wire:model="n.{{ $cart->cart_id }}"
+                                <input wire:keyup="saveText('{{ $cart->cart_id }}')" wire:model="n.{{ $cart->cart_id }}"
                                     type="text" placeholder="Isi Catatan Menu" name="notes[{{ $cart->cart_id }}]"
                                     id="notes{{ $cart->cart_id }}"
                                     class="input input-bordered input-primary w-full mb-0 h-8 text-sm mt-3 rounded-lg"
@@ -101,6 +103,9 @@
                 @endforeach
                 {{-- akhir card --}}
             </div>
+            @else
+            <p class="text-center font-bold text-xl mt-10">Belum Ada Pesanan</p>
+            @endif
             {{-- akhir kumpulan card --}}
 
             {{-- Buat Pesanan --}}
@@ -147,6 +152,7 @@
         </div>
         {{-- akhir isi konten --}}
     </div>
+
     {{-- akhir sidebar kanan --}}
 
     {{-- loading --}}
@@ -164,56 +170,5 @@
                 }, 1000);
             });
         });
-
-        
-        // Fungsi untuk menyimpan teks pada localStorage
-        let id_text = JSON.parse(localStorage.getItem("id_text")) ? JSON.parse(localStorage.getItem("id_text")) : [];
-
-        function deleteSaveText(id) {
-            localStorage.removeItem("savedText" + id);
-
-            // Mendapatkan array dari local storage
-            let savedArray = JSON.parse(localStorage.getItem('id_text'));
-
-            // Mencari indeks elemen yang memiliki nilai yang sama dengan variabel id
-            const indexToRemove = savedArray.indexOf(id);
-            console.log(indexToRemove);
-
-            // Hapus elemen dari array jika ditemukan
-            if (indexToRemove !== -1) {
-                savedArray.splice(indexToRemove, 1);
-            }
-
-            // Menyimpan kembali array yang sudah diubah ke local storage
-            localStorage.setItem('id_text', JSON.stringify(savedArray));
-        }
-
-        function saveText(id) {
-            // Mendapatkan id dari input teks
-            if (!id_text.includes(id)){
-                id_text.push(id);
-            }
-        // Mendapatkan nilai dari input teks
-            const textValue = document.getElementById("notes" + id).value;
-    
-        // Menyimpan nilai pada localStorage dengan kunci "savedText"
-            localStorage.setItem("savedText" + id, textValue);
-            localStorage.setItem("id_text", JSON.stringify(id_text));
-        }
-    
-        // Ketika halaman dimuat, cek apakah ada teks yang disimpan dan memuatnya ke dalam input
-        window.onload = function() {
-            for (let i = 0; i < id_text.length; i++) {
-                console.log("savedText" + id_text[i]);
-                // Mendapatkan nilai yang disimpan pada localStorage dengan kunci "savedText"
-                savedText = localStorage.getItem("savedText" + id_text[i]);
-            
-                // Memeriksa apakah ada nilai yang disimpan
-                if(savedText !== null) {
-                    // Jika ada, memuat nilai tersebut ke dalam input
-                    document.getElementById("notes" + id_text[i]).value = savedText;
-                }
-        }
-    }
     </script>
 </div>

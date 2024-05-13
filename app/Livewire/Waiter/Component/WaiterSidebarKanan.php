@@ -6,6 +6,7 @@ use App\Models\cart;
 use App\Models\order;
 use App\Models\orderDetail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Rule;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -32,6 +33,9 @@ class WaiterSidebarKanan extends Component
     {
         $this->carts = cart::where('user_id', auth()->user()->user_id)->get();
         $this->cart_total = cart::where('user_id', auth()->user()->user_id)->count();
+        foreach ($this->carts as $cart) {
+            $this->n[$cart->cart_id] = Session::get($cart->cart_id, '');
+        }
         $this->input_service = 'Dine In';
     }
 
@@ -39,7 +43,15 @@ class WaiterSidebarKanan extends Component
     {
         $this->carts = cart::where('user_id', auth()->user()->user_id)->get();
         $this->cart_total = cart::where('user_id', auth()->user()->user_id)->count();
+        foreach ($this->carts as $cart) {
+            $this->n[$cart->cart_id] = Session::get($cart->cart_id, '');
+        }
         '$refresh';
+    }
+
+    public function saveText($id)
+    {
+        Session::put($id, $this->n[$id]);
     }
 
     public function deleteCart($id)
@@ -99,7 +111,7 @@ class WaiterSidebarKanan extends Component
             order::create([
                 'order_id'     => $order_id,
                 'user_id'      => auth()->user()->user_id,
-                'table_number' => $this->input_nomor_meja,
+                'table_number' => $this->input_nomor_meja ? $this->input_nomor_meja : '',
                 'order_type'   => $this->input_service,
                 'order_status' => 'masak',
             ]);
