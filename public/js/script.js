@@ -4,11 +4,6 @@
     window.print();
   }
 
-  document.addEventListener('click', function() {
-    console.log('hello world');
-
-  })
-
   // show password
     function showPassword() {
         const toggle = document.getElementById('toggle');

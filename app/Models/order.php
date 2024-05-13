@@ -27,6 +27,7 @@ class order extends Model
         'order_id',
         'user_id',
         'table_number',
+        'order_type',
         'order_status'
     ];
 }

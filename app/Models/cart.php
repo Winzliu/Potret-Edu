@@ -26,5 +26,6 @@ class cart extends Model
         'cart_id',
         'menu_id',
         'user_id',
+        'quantity',
     ];
 }

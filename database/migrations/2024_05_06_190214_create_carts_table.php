@@ -18,6 +18,7 @@ return new class extends Migration {
                 ->on('menus')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->integer('quantity');
             $table->uuid('user_id');
             $table->foreign('user_id')
                 ->references('user_id')
