@@ -20,7 +20,7 @@ class order extends Model
 
     public function orderDetail()
     {
-        return $this->hasMany(orderDetail::class, 'order_id');
+        return $this->hasMany(orderDetail::class, 'order_id')->orderByRaw("FIELD(menu_status, 'batal', 'selesai', 'masak')");
     }
 
     protected $fillable = [
