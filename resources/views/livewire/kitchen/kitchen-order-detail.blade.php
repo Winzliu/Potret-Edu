@@ -27,6 +27,7 @@
         </div>
     </div>
     <div class="divider"></div>
+    
     <div class="flex my-2">
         <div class="w-full">
             <div class="max-h-[20rem] max-w-full overflow-y-scroll overflow-x-hidden mx-4">
@@ -51,23 +52,60 @@
                     </div>
 
                     <div class="flex flex-row gap-2 items-center  mr-4 w-1/3">
-                        {{-- Jikas pesanan ada ubah atribut class agar menyesuaikan --}}
-                        <button wire:click="toggleKosongButton" wire:loading.attr="disabled" 
-
-                            class="w-1/2 flex items-center justify-center rounded-md py-2 bg-purpleRed" @if($buttonClicked) style="display:none" @endif>
+                        {{-- BUTTON KOSONG --}}
+                        <button onclick="kosong_{{ $i }}.showModal()"
+                            class="w-1/2 flex items-center justify-center rounded-md py-2 bg-purpleRed" >
                             <span class="icon-[ph--empty-bold] text-2xl  mx-5 text-white"></span>
                         </button>
+
+                        {{-- BUTTON SELESAI --}}
+                        <button onclick="selesai_{{ $i }}.showModal()"
+                            class="w-1/2 flex justify-center items-center rounded-md py-3 bg-greenConfirm">
+                            <span class="icon-[el--ok] mx-5 text-white"></span>                        
+                        </button>
+
+                        <dialog id="selesai_{{ $i }}" class="modal">
+                            <div class="modal-box flex flex-col w-full justify-center items-center border-4 border-green-500 font-semibold">
+                                <p>Apakah Anda yakin  menu ini Kosong?</p>
+                                <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                                        <form method="dialog">
+                                            <button id="selesai{{ $i }}"
+                                                class="bg-red-500 px-8 py-2 text-white rounded-md">
+                                                Tidak
+                                            </button>
+                                          </form>
+                                        <button class="bg-greenConfirm text-white px-12 py-2 rounded-md mr-2">Ya</button>
+                                    </div>
+                            </div>
+                            <form method="dialog" class="modal-backdrop">
+                                <button>close</button>
+                            </form>
+                        </dialog>
+
+                        <dialog id="kosong_{{ $i }}" class="modal">
+                            <div class="modal-box flex flex-col w-full justify-center items-center border-4 border-red-500 font-semibold">
+                                <p>Apakah Anda yakin  menu ini Kosong?</p>
+                                <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                                        <form method="dialog">
+                                            <button id="kosong{{ $i }}"
+                                                class="bg-red-500 px-8 py-2 text-white rounded-md">
+                                                Tidak
+                                            </button>
+                                          </form>
+                                        <button class="bg-greenConfirm text-white px-12 py-2 rounded-md mr-2">Ya</button>
+                                    </div>
+                            </div>
+                            <form method="dialog" class="modal-backdrop">
+                                <button>close</button>
+                            </form>
+                        </dialog>
+
                         @if($showKosongButton)
                         <div class="mr-4 rounded-md py-1 w-full bg-white border-2 border-purpleRed">
                             <p class="text-purpleRed font-semibold text-center">Kosong</p>
                         </div>
                         @endif
-
-                        <button wire:click="toggleSelesaiButton" wire:loading.attr="disabled"
-                            class="w-1/2 flex justify-center items-center rounded-md py-3 bg-greenConfirm" @if($buttonClicked) style="display:none" @endif>
-                            <span class="icon-[el--ok] mx-5 text-white"></span>                        
-                        </button>
-
+                        
                         @if($showSelesaiButton)
                         <div class="mr-4 rounded-md py-1  w-full bg-white border-2 border-greenConfirm">
                             <p class="text-greenConfirm font-semibold text-center">
@@ -80,5 +118,19 @@
             @endfor
         </div>
     </div>
+    {{-- MODAL POPUP SELESAI KOSONG --}}
+    {{-- @if($confirmingToggle)
+    <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 py-10 rounded-xl shadow-lg text-center border-4 border-mainColor font-semibold">
+            <p>Apakah Anda yakin ingin {{ $isOn ? 'Menonaktifkan' : 'Mengaktifkan' }} menu ini?</p>
+            <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                <button wire:click="$set('confirmingToggle', false)"
+                    class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
+                <button wire:click="toggle" class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
+            </div>
+        </div>
+    </div>
+    @endif --}}
+    {{-- MODAL POPUP SELESAI KOSONG --}}
 </div>
 <div class="divider"></div>

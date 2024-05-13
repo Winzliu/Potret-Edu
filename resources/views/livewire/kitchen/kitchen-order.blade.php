@@ -38,17 +38,22 @@
 
     {{-- Pesanan --}}
     <div class="mt-5 text-sm flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden rounded-lg">
-        @for($j = 0; $j < 5; $j++)
+        @foreach($orders as $order)
         {{-- Pesanan 1 --}}
         <div
             class="bg-secondaryColor rounded-lg flex flex-col items-center py-3 px-8 shadow-[0_0_20px_0_rgba(0,0,0,0.1)]">
-            <p class="font-bold">ID Pesanan: #12345678</p>
+            <p class="font-bold">{{ $order->order_id }}</p>
             <div class="flex justify-between w-full items-center">
                 <div class="">
-                    <p class="font-semibold leading-5">Nomor Meja: 02</p>
+                    <p class="font-semibold leading-5">Meja: {{ $order->table_number }}</p>
                     <p class="font-semibold leading-5">Pesanan Selesai: 3/6</p>
                 </div>
-                <p class="font-semibold">Waiter: Tatang Subarjo</p>
+                <p class="font-semibold">
+                    @if( $order->user->role =='waiter') Pelayan 
+                    @elseif ($order->user->role =='cashier') Kasir 
+                    @endif
+                    : {{ $order->user->username }}
+                </p>
             </div>
             {{-- Menu --}}
             <div class="flex justify-around w-full mt-4">
@@ -75,7 +80,7 @@
                     <a href="/kitchen-order-detail/1" wire:navigate class="px-7 py-2 bg-white rounded-lg font-bold">Lihat</a>
             </div>
         </div>
-        @endfor
+        @endforeach
         {{-- Akhir Pesanan 1 --}}
 
     </div>

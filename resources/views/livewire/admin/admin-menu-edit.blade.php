@@ -1,4 +1,4 @@
-<div class="mt-10">
+<div class="mt-10 me-12">
     <a href="/admin/menu" wire:navigate class="flex items-center gap-2 font-bold">
         <ion-icon name="arrow-back-outline"></ion-icon>
         <p>Kembali</p>
@@ -48,6 +48,13 @@
                 <label for="harga_menu" class="mx-5 font-semibold">Harga Menu</label>
                 <input type="text" class="w-[25%] rounded-lg mx-5" name="harga" placeholder="Masukkan Harga">
             </div>
+
+            {{-- ALERGEN MENU --}}
+            <div class="flex flex-col w-full gap-2">
+                <label for="alergen_menu" class="mx-5 font-semibold">Alergen</label>
+                <input type="text" class="rounded-lg mx-5" name="alergen" placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
+            </div>
+    
             {{-- WYSWYG Deskripsi --}}
             <div class="flex flex-col w-full gap-2">
                 <label for="deskripsi" class="mx-5 font-semibold">Deskripsi</label>
@@ -133,7 +140,7 @@
     }
 </script>
 {{-- WYSIWYG EDITOR START --}}
-<script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
+{{-- <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 
 <script>
     tinymce.init({
@@ -152,5 +159,5 @@
             });
         }
     });
-</script>
+</script> --}}
 {{-- WYSIWYG EDITOR END --}}

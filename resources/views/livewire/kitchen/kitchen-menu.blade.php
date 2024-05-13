@@ -35,6 +35,7 @@
 
     {{-- card makanan --}}
     <div class="flex flex-wrap gap-4 justify-start">
+        @for($i=0; $i < 5; $i++)
         {{-- card 1 --}}
         <div class="card min-w-1/4 px-4 py-4 bg-base-100 shadow-[0_0_15px_2px_rgba(0,0,0,0.1)]">
             <figure class="mb-3 cursor-pointer" onclick="my_modal_1.showModal()">
@@ -82,78 +83,7 @@
         </dialog>
         {{-- akhir modal 1 --}}
         {{-- akhir card 1 --}}
-        {{-- card 2 --}}
-        <div class="card min-w-1/4 px-4 py-4 bg-base-100 shadow-[0_0_15px_3px_rgba(0,0,0,0.02)]">
-            <figure class="mb-3">
-                <img src="{{ asset('img/makanan.jpg') }}" alt="Shoes"
-                    class="rounded-xl h-36 w-full object-cover {{ $isOn ? 'filter-none' : 'filter grayscale' }}" />
-            </figure>
-            <div class="items-center text-left">
-                <h2 class="text-lg font-bold">Nasi Goreng Telur Putih</h2>
-                <div class="flex items-end justify-between mt-2">
-                    <p class="text-xs w-32">Nasi, Telur, Kerupuk, Timun , dkk</p>
-                    <button wire:click="confirmToggle" class="{{ $isOn ? 'bg-white hover:bg-purpleRed text-purpleRed hover:text-white' : 'bg-white hover:bg-greenConfirm text-greenConfirm hover:text-white' }} 
-                    border-2  text-sm border-secondaryColor w-10 h-10 rounded-full font-bold">
-                        {{ $isOn ? 'Off' : 'On' }}
-                    </button>
-                </div>
-            </div>
-        </div>
-        {{-- akhir card 2 --}}
-        {{-- card 3 --}}
-        <div class="card min-w-1/4 px-4 py-4 bg-base-100 shadow-[0_0_15px_2px_rgba(0,0,0,0.1)]">
-            <figure class="mb-3">
-                <img src="{{ asset('img/makanan.jpg') }}" alt="Shoes"
-                    class="rounded-xl h-36 w-full object-cover {{ $isOn ? 'filter-none' : 'filter grayscale' }}" />
-            </figure>
-            <div class="items-center text-left">
-                <h2 class="text-lg font-bold">Nasi Goreng Telur Putih</h2>
-                <div class="flex items-end justify-between mt-2">
-                    <p class="text-xs w-32">Nasi, Telur, Kerupuk, Timun , dkk</p>
-                    <button wire:click="confirmToggle" class="{{ $isOn ? 'bg-white hover:bg-purpleRed text-purpleRed hover:text-white' : 'bg-white hover:bg-greenConfirm text-greenConfirm hover:text-white' }} 
-                    border-2  text-sm border-secondaryColor w-10 h-10 rounded-full font-bold">
-                        {{ $isOn ? 'Off' : 'On' }}
-                    </button>
-                </div>
-            </div>
-        </div>
-        {{-- akhir card 3 --}}
-        {{-- card 4 --}}
-        <div class="card min-w-1/4 px-4 py-4 bg-base-100 shadow-[0_0_15px_2px_rgba(0,0,0,0.1)]">
-            <figure class="mb-3">
-                <img src="{{ asset('img/makanan.jpg') }}" alt="Shoes"
-                    class="rounded-xl h-36 w-full object-cover {{ $isOn ? 'filter-none' : 'filter grayscale' }}" />
-            </figure>
-            <div class="items-center text-left">
-                <h2 class="text-lg font-bold">Nasi Goreng Telur Putih</h2>
-                <div class="flex items-end justify-between mt-2">
-                    <p class="text-xs w-32">Nasi, Telur, Kerupuk, Timun , dkk</p>
-                    <button wire:click="confirmToggle" class="{{ $isOn ? 'bg-white hover:bg-purpleRed text-purpleRed hover:text-white' : 'bg-white hover:bg-greenConfirm text-greenConfirm hover:text-white' }} 
-                    border-2  text-sm border-secondaryColor w-10 h-10 rounded-full font-bold">
-                        {{ $isOn ? 'Off' : 'On' }}
-                    </button>
-                </div>
-            </div>
-        </div>
-        {{-- akhir card 4 --}}
-        {{-- card 5 --}}
-        <div class="card min-w-1/4 px-4 py-4 bg-base-100 shadow-[0_0_15px_2px_rgba(0,0,0,0.1)]">
-            <figure class="mb-3">
-                <img src="{{ asset('img/makanan.jpg') }}" alt="Shoes"
-                    class="rounded-xl h-36 w-full object-cover {{ $isOn ? 'filter-none' : 'filter grayscale' }}" />
-            </figure>
-            <div class="items-center text-left">
-                <h2 class="text-lg font-bold">Nasi Goreng Telur Putih</h2>
-                <div class="flex items-end justify-between mt-2">
-                    <p class="text-xs w-32">Nasi, Telur, Kerupuk, Timun , dkk</p>
-                    <button wire:click="confirmToggle" class="{{ $isOn ? 'bg-white hover:bg-purpleRed text-purpleRed hover:text-white' : 'bg-white hover:bg-greenConfirm text-greenConfirm hover:text-white' }} 
-                    border-2  text-sm border-secondaryColor w-10 h-10 rounded-full font-bold">
-                        {{ $isOn ? 'Off' : 'On' }}
-                    </button>
-                </div>
-            </div>
-        </div>
-        {{-- akhir card 5 --}}
+        @endfor
     </div>
     {{-- akhir card makanan --}}
     @if($confirmingToggle)

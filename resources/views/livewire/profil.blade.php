@@ -1,4 +1,4 @@
-<div class="mt-20">
+<div class="mt-20 mb-10">
     <a href="/kitchen" wire:navigate class="flex items-center gap-2 font-bold">
         <ion-icon name="arrow-back-outline"></ion-icon>
         <p>Kembali</p>

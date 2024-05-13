@@ -10,6 +10,9 @@ class KitchenOrderDetail extends Component
     public $showKosongButton = false;
     public $buttonClicked = false;
 
+    public $isOn = false;
+    public $emptyMenu = false;
+
 
     public function render()
     {
@@ -31,6 +34,17 @@ class KitchenOrderDetail extends Component
         $this->showSelesaiButton = false;
         $this->buttonClicked = true;
 
+    }
+
+    public function emptyMenu()
+    {
+        $this->emptyMenu = true;
+    }
+
+    public function toggle()
+    {
+        $this->isOn = !$this->isOn;
+        $this->confirmingToggle = false;
     }
 
 

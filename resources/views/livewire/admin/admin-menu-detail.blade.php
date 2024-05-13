@@ -45,11 +45,17 @@
                 <label for="nama_menu" class="mx-5 font-semibold">Nama Menu</label>
                 <input type="text" class="rounded-lg mx-5" name="nama" placeholder="Masukkan Nama Menu Baru">
             </div>
-    
+            
             {{-- HARGA MENU --}}
             <div class="flex flex-col w-full gap-2">
                 <label for="harga_menu" class="mx-5 font-semibold">Harga Menu</label>
                 <input type="text" class="w-[28%] rounded-lg mx-5" name="harga" placeholder="Masukkan Harga">
+            </div>
+
+            {{-- ALEGERGEN --}}
+            <div class="flex flex-col w-full gap-2">
+                <label for="alergen_menu" class="mx-5 font-semibold">Alergen</label>
+                <input type="text" class="rounded-lg mx-5" name="alergen" placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
             </div>
             {{-- WYSWYG Deskripsi --}}
             <div class="flex flex-col w-full gap-2">
@@ -138,7 +144,7 @@
 </script>
 
 {{-- WYSIWYG EDITOR START --}}
-<script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
+{{-- <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 
 <script>
     tinymce.init({
@@ -157,5 +163,5 @@
             });
         }
     });
-</script>
+</script> --}}
 {{-- WYSIWYG EDITOR END --}}
