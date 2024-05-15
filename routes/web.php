@@ -17,6 +17,7 @@ use App\Livewire\Kitchen\KitchenOrderDetail;
 use App\Livewire\Login;
 use App\Livewire\Waiter\Test;
 use App\Livewire\Waiter\WaiterCartMenu;
+use App\Livewire\Waiter\WaiterDetailOrder;
 use App\Livewire\Waiter\WaiterProgressOrder;
 use App\Models\User;
 use App\Models\userDetail;
@@ -44,12 +45,17 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 // Akhir Login
 
 Route::group(['middleware' => 'auth'], function () {
-  Route::get('/profil/{id}', Profil::class);
+  Route::get('/profile', Profil::class);
   // Waiter
   Route::group(['middleware' => 'cekRole:waiter'], function () {
-    Route::get('/waiter', WaiterCartMenu::class)->middleware('auth');
+
+    Route::get('/waiter', WaiterCartMenu::class);
 
     Route::get('/waiter/pesanan', WaiterProgressOrder::class);
+
+    Route::get('/waiter/pesanan/{pesanan}', WaiterDetailOrder::class);
+
+    Route::get('/waiter/pesanan/edit/{pesanan}', WaiterCartMenu::class);
   });
   // Akhir Waiter
 

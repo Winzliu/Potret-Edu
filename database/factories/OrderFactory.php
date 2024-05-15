@@ -22,6 +22,7 @@ class OrderFactory extends Factory
 
         return [
             'order_id'     => fake()->uuid(),
+            'date'         => now(),
             'user_id'      => $user_id,
             'table_number' => fake()->numberBetween(1, 15),
             'order_type'   => ['Dine In', 'Take Away'][rand(0, 1)],

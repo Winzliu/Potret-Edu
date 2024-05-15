@@ -20,7 +20,14 @@
   @livewireStyles
 </head>
 
-<body class="min-h-screen bg-blue-50 font-Poppins">
+<body class="min-h-screen bg-blue-50 font-Poppins
+@if(auth()->user()->userDetail->custom == 'kecil')
+text-sm
+@elseif(auth()->user()->userDetail->custom == 'normal')
+text-base
+@elseif(auth()->user()->userDetail->custom == 'besar')
+text-lg
+@endif">
   {{-- tampilan Mobile --}}
   @include('components.mobile')
   {{-- akhir tampilan Mobile --}}
@@ -38,7 +45,6 @@
     {{-- akhir sidebar position --}}
 
     <div class="w-[80%] ps-5 z-50">
-
       {{-- content --}}
       {{ $slot }}
       {{-- akhir content --}}

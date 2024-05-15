@@ -103,6 +103,13 @@ class WaiterSidebarKanan extends Component
         sleep(2);
 
         $order_id = Str::uuid();
+
+        if ($this->input_nomor_meja != null && $this->input_service == "Dine In" && order::where('table_number', $this->input_nomor_meja)->where('order_type', 'Dine In')->exists()) {
+            request()->session()->flash('notif_gagal', 'Nomor Meja Sudah Ada');
+            $this->dispatch('refresh_notif');
+            return;
+        }
+
         DB::beginTransaction();
 
         try {
@@ -110,6 +117,7 @@ class WaiterSidebarKanan extends Component
 
             order::create([
                 'order_id'     => $order_id,
+                'date'         => NOW(),
                 'user_id'      => auth()->user()->user_id,
                 'table_number' => $this->input_nomor_meja ? $this->input_nomor_meja : '',
                 'order_type'   => $this->input_service,

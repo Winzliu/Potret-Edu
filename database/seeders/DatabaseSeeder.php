@@ -23,15 +23,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
-        userDetail::factory(10)->create();
-        discount::factory(3)->create();
-        menuCategory::factory(5)->create();
-        menu::factory(40)->create();
-        order::factory(10)->create();
-        orderDetail::factory(100)->create();
-        history::factory(30)->create();
-        historyDetail::factory(80)->create();
-        cart::factory(10)->create();
 
         User::factory()->create([
             'user_id'  => fake()->uuid(),
@@ -57,5 +48,15 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
             'role'     => 'kitchen',
         ]);
+
+        userDetail::factory(14)->create();
+        discount::factory(3)->create();
+        menuCategory::factory(5)->create();
+        menu::factory(40)->create();
+        order::factory(10)->create();
+        orderDetail::factory(100)->create();
+        history::factory(30)->create();
+        historyDetail::factory(80)->create();
+        cart::factory(10)->create();
     }
 }

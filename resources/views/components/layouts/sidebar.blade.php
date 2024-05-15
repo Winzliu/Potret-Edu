@@ -7,7 +7,15 @@
       <button class="flex items-center justify-center gap-5">
         <img src="{{ asset('img/logo.png') }}" class="w-12 xl:w-9" alt="">
         @if($role == 'waiter')
-        <p class="text-xl xl:text-lg font-bold">Waiter</p>
+        <p class="
+        @if(auth()->user()->userDetail->custom == 'kecil')
+        text-lg xl:text-base
+        @elseif(auth()->user()->userDetail->custom == 'normal')
+        text-xl xl:text-lg
+        @elseif(auth()->user()->userDetail->custom == 'besar')
+        text-2xl xl:text-xl
+        @endif
+        font-bold">Waiter</p>
         @elseif($role == 'cashier')
         <p class="text-xl xl:text-lg font-bold">Cashier</p>
         @elseif($role== 'kitchen')
@@ -92,7 +100,7 @@
     {{-- bagian bawah --}}
     <div class=" flex flex-col gap-10">
       {{-- menu 1 --}}
-      <a href="/profil/1" class="flex items-center gap-3 text-left">
+      <a href="/profile" class="flex items-center gap-3 text-left">
         <ion-icon name="person-circle" class="text-5xl xl:text-4xl"></ion-icon>
         <div class="leading-5">
           <p class="font-bold xl:text-sm">{{ auth()->user()->username }}</p>
