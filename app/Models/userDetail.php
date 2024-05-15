@@ -22,6 +22,7 @@ class userDetail extends Model
         'user_detail_id',
         'user_id',
         'name',
+        'custom',
         'phone_number',
         'employment_date',
         'address'

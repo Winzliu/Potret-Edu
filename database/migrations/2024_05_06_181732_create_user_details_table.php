@@ -19,6 +19,8 @@ return new class extends Migration {
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('name', 200)->notNullable();
+            $table->string('custom');
+            $table->string('description');
             $table->string('phone_number', 14)->notNullable();
             $table->date('employment_date')->notNullable();
             $table->string('address')->notNullable();

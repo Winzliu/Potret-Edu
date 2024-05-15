@@ -31,14 +31,38 @@
             <img src="{{ asset('img/makanan.jpg') }}" alt="Shoes" class="rounded-xl h-36 w-full object-cover" />
         </figure>
         <div class="items-center text-left">
-            <h2 class="text-lg font-bold">{{ $menu->menu_name }}</h2>
+            <h2 class="
+            @if(auth()->user()->userDetail->custom == 'kecil')
+            text-base
+            @elseif(auth()->user()->userDetail->custom == 'normal')
+            text-lg
+            @elseif(auth()->user()->userDetail->custom == 'besar')
+            text-xl
+            @endif
+            font-bold">{{ $menu->menu_name }}</h2>
             <div class="flex items-end justify-between mt-2">
                 <div class="">
-                    <p class="text-xs w-32">{{ Str::limit($menu->menu_description, 15) }}</p>
+                    <p class="
+                    @if(auth()->user()->userDetail->custom == 'kecil')
+                    text-xs
+                    @elseif(auth()->user()->userDetail->custom == 'normal')
+                    text-xs
+                    @elseif(auth()->user()->userDetail->custom == 'besar')
+                    text-sm
+                    @endif
+                    w-32">{{ Str::limit($menu->menu_description, 15) }}</p>
                     <p class="font-semibold">Rp. {{ number_format($menu->menu_price,0, ',', '.') }}</p>
                 </div>
-                <button wire:click="addToCart('{{ $menu->menu_id }}')"
-                    class="bg-mainColor w-10 h-10 rounded-full font-bold text-2xl">
+                <button @if($pesanan_id) wire:click="addToPesanan('{{ $menu->menu_id }}')" @else
+                    wire:click="addToCart('{{ $menu->menu_id }}')" @endif class="bg-mainColor w-10 h-10 rounded-full font-bold
+                    @if(auth()->user()->userDetail->custom == 'kecil')
+                    text-xl
+                    @elseif(auth()->user()->userDetail->custom == 'normal')
+                    text-2xl
+                    @elseif(auth()->user()->userDetail->custom == 'besar')
+                    text-3xl
+                    @endif
+                    ">
                     +
                 </button>
             </div>
@@ -47,7 +71,15 @@
     {{-- modal 1 --}}
     <dialog id="my_modal_{{ $i }}" class="modal">
         <div class="modal-box">
-            <h3 class="font-bold text-2xl text-center">{{ $menu->menu_name }}</h3>
+            <h3 class="font-bold 
+            @if(auth()->user()->userDetail->custom == 'kecil')
+            text-xl
+            @elseif(auth()->user()->userDetail->custom == 'normal')
+            text-2xl
+            @elseif(auth()->user()->userDetail->custom == 'besar')
+            text-3xl
+            @endif
+            text-center">{{ $menu->menu_name }}</h3>
             <div class="flex justify-evenly">
                 <div class="w-32">
                     <p class="pt-4 font-semibold">Bahan :</p>
@@ -88,7 +120,7 @@
             Livewire.on('refresh_notif', (event) => {
                 setTimeout(() => {
                     Livewire.dispatch('refresh');
-                }, 1000);
+                }, 750);
             });
         });
     </script>

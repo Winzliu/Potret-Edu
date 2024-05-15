@@ -1,4 +1,4 @@
-<div class="flex gap-5 my-5 flex-wrap">
+<div class="flex gap-5 my-5 flex-wrap w-10/12">
     <button wire:click="categoryActive('0')" class="
     @if ($active == '0')
     bg-mainColor

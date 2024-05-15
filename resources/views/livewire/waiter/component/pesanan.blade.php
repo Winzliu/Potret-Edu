@@ -1,4 +1,12 @@
-<div class="mt-5 text-sm flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden rounded-lg">
+<div class="mt-5 
+@if(auth()->user()->userDetail->custom == 'kecil')
+text-xs
+@elseif(auth()->user()->userDetail->custom == 'normal')
+text-sm
+@elseif(auth()->user()->userDetail->custom == 'besar')
+text-base
+@endif
+flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden rounded-lg">
 
     {{-- notif --}}
     @if (session()->has('notif_gagal'))
@@ -21,9 +29,6 @@
     </div>
     @endif
     {{-- akhir notif --}}
-    @php
-    $notes = 'Tidak Ada';
-    @endphp
     @if($pesanans->count() > 0)
     @foreach ($pesanans as $pesanan)
     {{-- Pesanan 1 --}}
@@ -39,6 +44,9 @@
         </div>
         {{-- Menu --}}
         <div class="flex justify-left gap-10 overflow-x-scroll scrollbar-hidden pt-4 w-full mt-4">
+            @php
+            $notes = 'Tidak Ada';
+            @endphp
             @foreach ($pesanan->orderDetail as $menu)
             {{-- Menu 1 --}}
             <div class="flex flex-col gap-1 items-center">
@@ -71,7 +79,15 @@
                     @endif
                 </div>
                 <div class="text-center">
-                    <p class="font-semibold text-xs text-wrap w-24 xl:w-28">{{ $menu->menu->menu_name }}</p>
+                    <p class="font-semibold 
+                    @if(auth()->user()->userDetail->custom == 'kecil')
+                    text-xs
+                    @elseif(auth()->user()->userDetail->custom == 'normal')
+                    text-xs
+                    @elseif(auth()->user()->userDetail->custom == 'besar')
+                    text-sm
+                    @endif
+                    text-wrap w-24 xl:w-28">{{ $menu->menu->menu_name }}</p>
                     <p>x{{ $menu->quantity }}</p>
                 </div>
             </div>
@@ -87,7 +103,7 @@
         <div class="flex mt-4 items-center justify-between w-full px-6">
             <p class="font-bold">Catatan: {{ $notes }}</p>
             <div class="flex gap-x-5">
-                <a href="/cashier/pesanan/1" wire:navigate
+                <a href="/waiter/pesanan/{{ $pesanan->order_id }}" wire:navigate
                     class="px-7 py-2 bg-white hover:bg-gray-300 transition-all duration-300 rounded-lg font-bold">Lihat</a>
                 @if ($pesanan->order_status == 'selesai')
                 <button wire:click="saji('{{ $pesanan->order_id }}')"
@@ -100,6 +116,14 @@
     {{-- Akhir Pesanan 1 --}}
     @endforeach
     @else
-    <p class="text-center font-bold text-xl mt-10">Belum ada pesanan</p>
+    <p class="text-center font-bold
+    @if(auth()->user()->userDetail->custom == 'kecil')
+    text-lg
+    @elseif(auth()->user()->userDetail->custom == 'normal')
+    text-xl
+    @elseif(auth()->user()->userDetail->custom == 'besar')
+    text-2xl
+    @endif
+    mt-10">Belum ada pesanan</p>
     @endif
 </div>

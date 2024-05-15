@@ -10,11 +10,13 @@ class WaiterCartMenu extends Component
     public $categories;
     public $category_id;
     public $active;
+    public $pesanan_id;
 
     protected $listeners = ['categoryActive' => 'categoryActive'];
 
-    public function mount()
+    public function mount($pesanan = null)
     {
+        $this->pesanan_id = $pesanan;
         $this->category_id = '0';
         $this->active = '0';
         $this->categories = menuCategory::all();
