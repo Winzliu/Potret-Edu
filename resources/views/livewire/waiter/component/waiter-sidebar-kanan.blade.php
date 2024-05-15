@@ -83,7 +83,13 @@
                                 <figure><img src="img/makanan.jpg" class="mask mask-squircle w-14 me-4" alt="Movie" />
                                 </figure>
                                 <div class="self-center w-10/12">
-                                    <p class="font-semibold mb-2">{{ $cart->menu->menu_name }}</p>
+                                    <p class="font-semibold mb-2 @if(auth()->user()->userDetail->custom == 'kecil')
+                                        text-md
+                                        @elseif(auth()->user()->userDetail->custom == 'normal')
+                                        text-base
+                                        @elseif(auth()->user()->userDetail->custom == 'besar')
+                                        text-lg
+                                        @endif">{{ $cart->menu->menu_name }}</p>
                                     <div class="flex me-2 h-7 justify-between">
                                         <div class="h-5">
                                             <button wire:click="decrement('{{ $cart->cart_id }}')" class="bg-red-500 rounded-full w-7 h-7 font-bold 
@@ -109,7 +115,15 @@
                                                 @endif
                                                 ">+</button>
                                         </div>
-                                        <p class="self-center font-semibold text-nowrap">Rp {{
+                                        <p class="self-center font-semibold text-nowrap 
+                                        @if(auth()->user()->userDetail->custom == 'kecil')
+                                        text-md
+                                        @elseif(auth()->user()->userDetail->custom == 'normal')
+                                        text-base
+                                        @elseif(auth()->user()->userDetail->custom == 'besar')
+                                        text-lg
+                                        @endif
+                                        ">Rp {{
                                             number_format($cart->menu->menu_price * $cart->quantity, 0, ',', '.') }}</p>
                                     </div>
                                 </div>
