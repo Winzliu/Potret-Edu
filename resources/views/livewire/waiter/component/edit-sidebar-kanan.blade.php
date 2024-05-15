@@ -198,7 +198,15 @@ text-lg
                                                 @endif
                                                 ">+</button>
                                         </div>
-                                        <p class="self-center font-semibold text-nowrap">Rp {{
+                                        <p class="self-center font-semibold text-nowrap
+                                        @if(auth()->user()->userDetail->custom == 'kecil')
+                                        text-md
+                                        @elseif(auth()->user()->userDetail->custom == 'normal')
+                                        text-base
+                                        @elseif(auth()->user()->userDetail->custom == 'besar')
+                                        text-lg
+                                        @endif
+                                        ">Rp {{
                                             number_format($pBaru['menu_price'] * $quantity[$pBaru['order_detail_id']],
                                             0, ',', '.') }}</p>
                                     </div>
