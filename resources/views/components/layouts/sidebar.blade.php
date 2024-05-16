@@ -7,7 +7,7 @@
       <button class="flex items-center justify-center gap-5">
         <img src="{{ asset('img/logo.png') }}" class="w-12 xl:w-9" alt="">
         @if($role == 'waiter')
-        <p class="
+        <a href="/waiter" class="
         @if(auth()->user()->userDetail->custom == 'kecil')
         text-lg xl:text-base
         @elseif(auth()->user()->userDetail->custom == 'normal')
@@ -15,13 +15,37 @@
         @elseif(auth()->user()->userDetail->custom == 'besar')
         text-2xl xl:text-xl
         @endif
-        font-bold">Waiter</p>
+        font-bold">Waiter</a>
         @elseif($role == 'cashier')
-        <p class="text-xl xl:text-lg font-bold">Cashier</p>
+        <a href="/cashier" class="
+        @if(auth()->user()->userDetail->custom == 'kecil')
+        text-lg xl:text-base
+        @elseif(auth()->user()->userDetail->custom == 'normal')
+        text-xl xl:text-lg
+        @elseif(auth()->user()->userDetail->custom == 'besar')
+        text-2xl xl:text-xl
+        @endif
+        font-bold">Cashier</a>
         @elseif($role== 'kitchen')
-        <p class="text-xl xl:text-lg font-bold">Kitchen</p>
+        <a href="/kitchen" class="
+        @if(auth()->user()->userDetail->custom == 'kecil')
+        text-lg xl:text-base
+        @elseif(auth()->user()->userDetail->custom == 'normal')
+        text-xl xl:text-lg
+        @elseif(auth()->user()->userDetail->custom == 'besar')
+        text-2xl xl:text-xl
+        @endif
+        font-bold">Kitchen</a>
         @elseif($role== 'admin')
-        <p class="text-xl xl:text-lg font-bold">Admin</p>
+        <a href="/admin" class="
+        @if(auth()->user()->userDetail->custom == 'kecil')
+        text-lg xl:text-base
+        @elseif(auth()->user()->userDetail->custom == 'normal')
+        text-xl xl:text-lg
+        @elseif(auth()->user()->userDetail->custom == 'besar')
+        text-2xl xl:text-xl
+        @endif
+        font-bold">Admin</a>
         @endif
       </button>
       {{-- akhir logo --}}
@@ -36,21 +60,35 @@
           <p>Beranda</p>
         </a>
         {{-- akhir menu waiter --}}
-        {{-- menu waiter --}}
+        {{-- pesanan waiter --}}
         <a href="/waiter/pesanan" wire:navigate
           class="{{ ($active == 'waiter-pesanan') ? 'text-mainColor' : 'text-black  opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }}  text-center leading-3  rounded-lg py-2 w-full">
           <ion-icon name="cart" class="text-2xl"></ion-icon>
           <p>Pesanan</p>
         </a>
-        {{-- akhir menu waiter --}}
+        {{-- akhir pesanan waiter --}}
         @elseif ($role == 'cashier')
         {{-- menu cashier --}}
+        <a href="/cashier" wire:navigate
+          class="{{ ($active == 'cashier-home') ? 'text-mainColor' : 'text-black opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }} text-center leading-3 rounded-lg py-2 w-full">
+          <ion-icon name="fast-food" class="text-2xl"></ion-icon>
+          <p>Beranda</p>
+        </a>
+        {{-- akhir menu cashier --}}
+        {{-- pesanan cashier --}}
+        <a href="/cashier/pesanan" wire:navigate
+          class="{{ ($active == 'cashier-pesanan') ? 'text-mainColor' : 'text-black  opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }}  text-center leading-3  rounded-lg py-2 w-full">
+          <ion-icon name="cart" class="text-2xl"></ion-icon>
+          <p>Pesanan</p>
+        </a>
+        {{-- akhir pesanan cashier --}}
+        {{-- riwayat cashier --}}
         <a href="/cashier/riwayat" wire:navigate
           class="{{ ($active == 'cashier-riwayat') ? 'text-mainColor' : 'text-black  opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }}  text-center leading-3  rounded-lg py-2">
           <ion-icon name="timer" class="text-2xl"></ion-icon>
           <p>Riwayat Pesanan</p>
         </a>
-        {{-- akhir menu cashier --}}
+        {{-- akhir riwayat cashier --}}
         @elseif ($role == 'admin')
         {{-- role admin --}}
         <a href="/admin" wire:navigate
