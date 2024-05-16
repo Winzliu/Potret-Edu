@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Livewire\Cashier\CashierCartMenu;
+use App\Livewire\Cashier\CashierProgressOrder;
 use App\Livewire\Profil\Profil;
 use App\Livewire\Admin\AdminHome;
 use App\Livewire\Admin\AdminMenu;
@@ -61,6 +63,10 @@ Route::group(['middleware' => 'auth'], function () {
 
   // Cashier
   Route::group(['middleware' => 'cekRole:cashier'], function () {
+    Route::get('/cashier', CashierCartMenu::class);
+
+    Route::get('/cashier/pesanan', CashierProgressOrder::class);
+
     Route::get('/cashier/pesanan/{pesanan}', CashierDetailOrder::class);
 
     Route::get('/cashier/riwayat', CashierHistory::class);
