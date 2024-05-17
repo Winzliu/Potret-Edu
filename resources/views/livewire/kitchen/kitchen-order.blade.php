@@ -16,32 +16,15 @@
         </div>
     {{-- Akhir Search Bar --}}
 
-    {{-- Status Menunggu/Selesai --}}
-    <div class="flex gap-5">
-        <button class="font-semibold text-mainColor">Menunggu</button>
-        <button class="font-semibold">Selesai</button>
-    </div>
-    {{-- Akhir Status Menunggu/Selesai --}}
+    {{-- @livewire('kitchen.component.order-type') --}}
 
-    {{-- Status Take Away/Dine-In --}}
-    <div class="flex gap-5 w-full justify-center items-center">
-        <button class="flex gap-1 items-center">
-            <p class="font-semibold text-mainColor">Take Away</p>
-            <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">3</p>
-        </button>
-        <button class="flex gap-1 items-center">
-            <p class="font-semibold">Dine-In</p>
-            <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">2</p>
-        </button>
-    </div>
-    {{-- Akhir Status Take Away/Dine-In --}}
 
     {{-- Pesanan --}}
-    <div class="mt-5 text-sm flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden rounded-lg">
+    <div class="mt-5 text-sm flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden rounded-2xl">
         @foreach($orders as $order)
         {{-- Pesanan 1 --}}
         <div
-            class="bg-secondaryColor rounded-lg flex flex-col items-center py-3 px-8 shadow-[0_0_20px_0_rgba(0,0,0,0.1)]">
+            class="bg-secondaryColor rounded-2xl flex flex-col items-center py-3 px-8 shadow-[0_0_20px_0_rgba(0,0,0,0.1)]">
             <p class="font-bold">{{ $order->order_id }}</p>
             <div class="flex justify-between w-full items-center">
                 <div class="">
@@ -52,8 +35,7 @@
                     @if( $order->user->role =='waiter') Pelayan 
                     @elseif ($order->user->role =='cashier') Kasir 
                     @endif
-                    : {{ $order->user->username }}
-                </p>
+                    : {{ $order->user->username }}</p>
             </div>
             {{-- Menu --}}
             <div class="flex justify-around w-full mt-4">

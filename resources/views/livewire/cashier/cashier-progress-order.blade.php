@@ -1,25 +1,25 @@
 <div class="md:mt-7 me-10">
     {{-- search --}}
-    @livewire('waiter.component.search-pesanan', ['status' => $status, 'type' => $type])
+    @livewire('cashier.component.search-pesanan', ['status' => $status, 'type' => $type])
     {{-- akhir search --}}
 
     {{-- Status Menunggu/Selesai --}}
     <div class="flex gap-5">
-        <button wire:click="getPesanans('Menunggu', '{{ $type }}')"
+        <button wire:click="getPesanansCashier('Menunggu', '{{ $type }}')"
             class="font-semibold flex gap-1 justify-center items-center @if($status == 'Menunggu') text-mainColor @endif">
             <p>Menunggu</p>
             <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">
                 {{$pesanans->where('order_status', 'masak')->count() }}
             </p>
         </button>
-        <button wire:click="getPesanans('Selesai', '{{ $type }}')"
+        <button wire:click="getPesanansCashier('Selesai', '{{ $type }}')"
             class="font-semibold flex gap-1 justify-center items-center @if($status == 'Selesai') text-mainColor @endif">
             <p>Selesai</p>
             <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">
                 {{$pesanans->where('order_status', 'selesai')->count() }}
             </p>
         </button>
-        <button wire:click="getPesanans('Saji', '{{ $type }}')"
+        <button wire:click="getPesanansCashier('Saji', '{{ $type }}')"
             class="font-semibold flex gap-1 justify-center items-center @if($status == 'Saji') text-mainColor @endif">
             <p>Saji</p>
             <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">
@@ -31,7 +31,7 @@
 
     {{-- Status Take Away/Dine-In --}}
     <div class="flex gap-5 w-full justify-center items-center">
-        <button wire:click="getPesanans('{{ $status }}','Dine In')" class="flex gap-1 items-center">
+        <button wire:click="getPesanansCashier('{{ $status }}','Dine In')" class="flex gap-1 items-center">
             <p class="font-semibold @if($type == 'Dine In') text-mainColor @endif">Dine-In</p>
             <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">
                 @if ($status == 'Menunggu')
@@ -43,7 +43,7 @@
                 @endif
             </p>
         </button>
-        <button wire:click="getPesanans('{{ $status }}','Take Away')" class="flex gap-1 items-center">
+        <button wire:click="getPesanansCashier('{{ $status }}','Take Away')" class="flex gap-1 items-center">
             <p class="font-semibold @if($type == 'Take Away') text-mainColor @endif">Take Away</p>
             <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">
                 @if ($status == 'Menunggu')
@@ -59,7 +59,7 @@
     {{-- Akhir Status Take Away/Dine-In --}}
 
     {{-- Pesanan --}}
-    @livewire('waiter.component.pesanan')
+    @livewire('cashier.component.pesanan')
     {{-- Akhir Pesanan --}}
 
     {{-- loading --}}

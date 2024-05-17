@@ -10,7 +10,7 @@ class KitchenOrder extends Component
 {    
     public function render()
     {
-        $orders = order::where('order_status', 'masak');
+        $orders = order::where('order_status', 'masak')->get();
         // dd($orders);
         return view('livewire.kitchen.kitchen-order',[
             'orders' => $orders,

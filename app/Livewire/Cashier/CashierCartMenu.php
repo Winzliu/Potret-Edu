@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire\Waiter;
+namespace App\Livewire\Cashier;
 
 use App\Models\menuCategory;
 use Livewire\Component;
 
-class WaiterCartMenu extends Component
+class CashierCartMenu extends Component
 {
     public $categories;
     public $category_id;
@@ -29,12 +29,12 @@ class WaiterCartMenu extends Component
         } else {
             $this->category_id = $id;
         }
-        $this->dispatch('getMenu', $this->category_id);
+        $this->dispatch('getMenuCashier', $this->category_id);
     }
 
     public function render()
     {
-        return view('livewire.waiter.waiter-cart-menu', [
-        ])->layout('components.layouts.app', ['title' => 'Waiter | Menu', 'active' => 'waiter-home', 'role' => 'waiter']);
+        return view('livewire.cashier.cashier-cart-menu')
+            ->layout('components.layouts.app', ['title' => 'Cashier | Menu', 'active' => 'cashier-home', 'role' => 'cashier']);
     }
 }

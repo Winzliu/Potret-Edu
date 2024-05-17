@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Livewire\Waiter\Component;
+namespace App\Livewire\Cashier\Component;
 
 use App\Models\cart;
 use App\Models\menu;
-use App\Models\menuCategory;
-use App\Models\order;
 use App\Models\orderDetail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -21,14 +19,14 @@ class CardMenuMakanan extends Component
 
     public $pesanan_id;
 
-    protected $listeners = ['getMenu' => 'getMenu', 'searchMenu' => 'searchMenu', 'refresh' => 'refresh'];
+    protected $listeners = ['getMenuCashier' => 'getMenuCashier', 'searchMenuCashier' => 'searchMenuCashier', 'refresh' => 'refresh'];
 
     public function mount()
     {
         $this->menus = menu::all();
     }
 
-    public function getMenu($categoryId)
+    public function getMenuCashier($categoryId)
     {
         $this->categoryId = $categoryId;
 
@@ -47,7 +45,7 @@ class CardMenuMakanan extends Component
         }
     }
 
-    public function searchMenu($search)
+    public function searchMenuCashier($search)
     {
         $this->search = $search;
 
@@ -78,7 +76,7 @@ class CardMenuMakanan extends Component
                 DB::rollBack();
             }
         }
-        $this->dispatch('getCart');
+        $this->dispatch('getCartCashier');
         $this->dispatch('refresh_notif');
     }
 
@@ -87,7 +85,7 @@ class CardMenuMakanan extends Component
         if (orderDetail::where('menu_id', $id)->where('order_id', $this->pesanan_id)->exists()) {
             request()->session()->flash('notif_gagal', 'Menu sudah ada di pesanan');
         } else {
-            $this->dispatch('buatPesanan', $id);
+            $this->dispatch('buatPesananCashier', $id);
             request()->session()->flash('notif_berhasil', "Menu berhasil ditambahkan");
         }
         $this->dispatch('refresh_notif');
@@ -100,6 +98,6 @@ class CardMenuMakanan extends Component
 
     public function render()
     {
-        return view('livewire.waiter.component.card-menu-makanan');
+        return view('livewire.cashier.component.card-menu-makanan');
     }
 }

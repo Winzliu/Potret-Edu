@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Livewire\Waiter\Component;
+namespace App\Livewire\Cashier\Component;
 
 use App\Models\cart;
 use App\Models\order;
 use App\Models\orderDetail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use Livewire\Attributes\Rule;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
-class WaiterSidebarKanan extends Component
+class CashierSidebarKanan extends Component
 {
     public $carts;
     public $cart_total;
@@ -27,7 +26,7 @@ class WaiterSidebarKanan extends Component
         'input_nomor_meja.max'      => 'Nomor Meja Tidak Boleh Lebih dari 2 Angka',
     ];
 
-    protected $listeners = ['getCart' => 'getCart', 'refresh' => 'refresh'];
+    protected $listeners = ['getCartCashier' => 'getCartCashier', 'refresh' => 'refresh'];
 
     public function mount()
     {
@@ -39,7 +38,7 @@ class WaiterSidebarKanan extends Component
         $this->input_service = 'Dine In';
     }
 
-    public function getCart()
+    public function getCartCashier()
     {
         $this->carts = cart::where('user_id', auth()->user()->user_id)->get();
         $this->cart_total = cart::where('user_id', auth()->user()->user_id)->count();
@@ -78,14 +77,14 @@ class WaiterSidebarKanan extends Component
     public function increment($cart_id)
     {
         cart::where('cart_id', $cart_id)->increment('quantity', 1);
-        $this->dispatch('getCart');
+        $this->dispatch('getCartCashier');
     }
     public function decrement($cart_id)
     {
         if (cart::where('cart_id', $cart_id)->first()->quantity > 1) {
             cart::where('cart_id', $cart_id)->decrement('quantity', 1);
         }
-        $this->dispatch('getCart');
+        $this->dispatch('getCartCashier');
     }
 
     public function input_meja()
@@ -156,6 +155,6 @@ class WaiterSidebarKanan extends Component
 
     public function render()
     {
-        return view('livewire.waiter.component.waiter-sidebar-kanan');
+        return view('livewire.cashier.component.cashier-sidebar-kanan');
     }
 }

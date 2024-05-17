@@ -2,7 +2,7 @@
     <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content fixed end-7 bottom-1/2 ">
         <!-- Page content here -->
-        <label wire:click="getCart" for="my-drawer-4" class="drawer-button rounded-full">
+        <label wire:click="getCartCashier" for="my-drawer-4" class="drawer-button rounded-full">
             <div class="fixed end-0 top-0 h-screen w-14 bg-white shadow-[0_0_65px_3px_rgba(0,0,0,0.2)]"></div>
             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 192 512" class="
                 @if(auth()->user()->userDetail->custom == 'kecil')
