@@ -69,6 +69,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/cashier/pesanan/{pesanan}', CashierDetailOrder::class);
 
+    Route::get('/cashier/pesanan/edit/{pesanan}', CashierCartMenu::class);
+
     Route::get('/cashier/riwayat', CashierHistory::class);
   });
   // Akhir Cashier

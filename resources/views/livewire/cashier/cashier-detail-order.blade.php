@@ -224,7 +224,7 @@ text-lg mt-10
                 <div class="divider m-1"></div>
                 <div class="flex justify-between">
                     <p class="font-bold">Pelayan</p>
-                    <p class="font-bold">{{ $pesanan->user->username }}</p>
+                    <p class="font-bold">{{ $pesanan->user->userDetail->name }}</p>
                 </div>
             </div>
             {{-- Akhir Bagian Kanan Bill --}}
@@ -466,20 +466,20 @@ text-lg mt-10
             <dialog id="BatalButton" class="modal">
                 <div class="modal-box py-10 border-[4px] border-red-500">
                     <p class="text-center font-bold text-xl">Apakah Anda Ingin Menghapus Pesanan?</p>
-                    <div class="flex justify-evenly mt-10">
-                        <form method="dialog">
-                            <button
-                                class="w-24 font-bold bg-red-500 hover:bg-red-600 transition-all duration-300 rounded-lg py-3 text-white">Tidak</button>
-                        </form>
+                    <p class="text-center mt-3">Pesanan yang telah dibatalkan tidak bisa dikembalikan</p>
+                    <form class="flex justify-evenly mt-10" method="dialog">
                         <button
+                            class="w-24 font-bold bg-red-500 hover:bg-red-600 transition-all duration-300 rounded-lg py-3 text-white">Tidak</button>
+                        <button wire:click="deleteOrder('{{ $pesanan->order_id }}')"
                             class="w-24 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white">Ya</button>
-                    </div>
+                    </form>
                 </div>
                 <form method="dialog" class="modal-backdrop">
                     <button>close</button>
                 </form>
             </dialog>
             {{-- akhir button batal --}}
+            @if ($pesanan->order_status == 'saji')
             {{-- button bayar --}}
             <button
                 class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-green-600 border-2 border-green-600 transition-all duration-300 font-bold"
@@ -558,8 +558,16 @@ text-lg mt-10
             </dialog>
             {{-- akhir modal konfirmasi bayar --}}
             {{-- akhir button bayar --}}
+            @endif
         </div>
         {{-- akhir bagian bawah --}}
     </div>
     {{-- Akhir Detail Pesanan --}}
+
+    {{-- loading --}}
+    <dialog wire:loading wire:target="deleteOrder" wire:loading.attr="open" class="modal bg-black/30 z-50">
+        <span
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
+    </dialog>
+    {{-- akhir loading --}}
 </div>

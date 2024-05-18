@@ -86,7 +86,7 @@ text-lg
                 @foreach ($pesanan->orderDetail as $cart)
                 <div class="card card-side px-5 py-5 bg-secondaryColor shadow-xl flex-col mb-5">
                     <div class="flex">
-                        <div class="w-full">
+                        <div class="w-full @if ($cart->menu_status == 'kosong') w-10/12 @endif">
                             <div class="flex">
                                 <figure><img src="{{ asset('img/'.$cart->menu->menu_image) }}"
                                         class="mask mask-squircle w-14 me-4" alt="Movie" />
@@ -146,6 +146,47 @@ text-lg
                                     mt-3 rounded-lg" autocomplete="off" />
                             </div>
                         </div>
+                        @if ($cart->menu_status == 'kosong')
+                        <button wire:click="deletePopup('{{ $cart->order_detail_id }}')"
+                            class="w-1/12 h-12 self-center ms-5">
+                            <svg stroke="currentColor" class="text-red-500 ps-2" fill="currentColor" stroke-width="0"
+                                viewBox="0 0 448 512" height="35px" width="35px" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z">
+                                </path>
+                            </svg>
+                        </button>
+                        @if ($showDialog && $popUp_id == $cart->order_detail_id)
+                        <dialog open class="modal mx-auto top-0 h-40 w-10/12 bg-none shadow-none">
+                            <div class="modal-box">
+                                <form method="dialog">
+                                    <button wire:click="closePopup"
+                                        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                </form>
+                                <h3 class="font-bold text-center
+                            @if(auth()->user()->userDetail->custom == 'kecil')
+                            text-md
+                            @elseif(auth()->user()->userDetail->custom == 'normal')
+                            text-lg
+                            @elseif(auth()->user()->userDetail->custom == 'besar')
+                            text-xl
+                            @endif
+                            ">Yakin Ingin Menghapus Menu?</h3>
+                                <div class="flex justify-evenly mt-2">
+                                    <button wire:click="deleteOrder('{{ $cart->order_detail_id }}')" class="w-24 font-bold py-3 bg-red-500 hover:bg-red-600 transition-all duration-300 rounded-lg
+                                    @if(auth()->user()->userDetail->custom == 'kecil')
+                                    text-sm
+                                    @elseif(auth()->user()->userDetail->custom == 'normal')
+                                    text-base
+                                    @elseif(auth()->user()->userDetail->custom == 'besar')
+                                    text-lg
+                                    @endif
+                                    text-white">Ya</button>
+                                </div>
+                            </div>
+                        </dialog>
+                        @endif
+                        @endif
                     </div>
                 </div>
                 @php

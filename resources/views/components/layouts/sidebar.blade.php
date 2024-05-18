@@ -141,7 +141,7 @@
       <a href="/profile" class="flex items-center gap-3 text-left">
         <ion-icon name="person-circle" class="text-5xl xl:text-4xl"></ion-icon>
         <div class="leading-5">
-          <p class="font-bold xl:text-sm">{{ auth()->user()->username }}</p>
+          <p class="font-bold xl:text-sm">{{ auth()->user()->userDetail->name }}</p>
           @if($role == 'waiter')
           <p class="xl:text-sm">Waiter</p>
           @elseif($role == 'cashier')

@@ -224,7 +224,7 @@ text-lg mt-10
                 <div class="divider m-1"></div>
                 <div class="flex justify-between">
                     <p class="font-bold">Pelayan</p>
-                    <p class="font-bold">{{ $pesanan->user->username }}</p>
+                    <p class="font-bold">{{ $pesanan->user->userDetail->name }}</p>
                 </div>
             </div>
             {{-- Akhir Bagian Kanan Bill --}}

@@ -40,7 +40,7 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden r
                 <p class="font-semibold leading-5">Pesanan Selesai: {{ $pesanan->orderDetail->where('menu_status',
                     'selesai')->count() }}/{{ $pesanan->orderDetail->count() }}</p>
             </div>
-            <p class="font-semibold">Waiter: {{ $pesanan->user->username }}</p>
+            <p class="font-semibold">Waiter: {{ $pesanan->user->userDetail->name }}</p>
         </div>
         {{-- Menu --}}
         <div class="flex justify-left gap-10 overflow-x-scroll scrollbar-hidden pt-4 w-full mt-4">
