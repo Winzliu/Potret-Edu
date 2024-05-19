@@ -45,7 +45,7 @@
                         @if(1==1)
                         {{-- KONDISI CATATAN MENU --}}
                         <div class="line-clamp-2">
-                            <i class=" text-red-500 text-sm ml-12 font-medium line-clamp-2">Notes: {{ 'Ini Adalah Pesan
+                            <i class=" text-red-500 text-sm ml-12 font-medium line-clamp-2">Catatan: {{ 'Ini Adalah Pesan
                                 Panjang Yang harus dilihat lalalllaa' }}</i>
                         </div>
                         @endif
@@ -66,7 +66,7 @@
 
                         <dialog id="selesai_{{ $i }}" class="modal">
                             <div class="modal-box flex flex-col w-full justify-center items-center border-4 border-green-500 font-semibold">
-                                <p>Apakah Anda yakin  menu ini Kosong?</p>
+                                <p>Apakah Anda yakin ingin menyelesaikan menu ini?</p>
                                 <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
                                         <form method="dialog">
                                             <button id="selesai{{ $i }}"
@@ -84,7 +84,7 @@
 
                         <dialog id="kosong_{{ $i }}" class="modal">
                             <div class="modal-box flex flex-col w-full justify-center items-center border-4 border-red-500 font-semibold">
-                                <p>Apakah Anda yakin  menu ini Kosong?</p>
+                                <p>Apakah Anda yakin menu ini Kosong?</p>
                                 <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
                                         <form method="dialog">
                                             <button id="kosong{{ $i }}"
