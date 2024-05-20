@@ -18,7 +18,9 @@ class Pesanan extends Component
 
     public function mount()
     {
-        $this->pesanans = Order::where('order_type', 'Dine In')->where('order_status', 'masak')->get();
+        $this->pesanans = Order::where('order_type', 'Dine In')->where('order_status', 'masak')
+        ->orderBy('date', 'asc')
+        ->get();
     }
 
 
@@ -45,14 +47,24 @@ class Pesanan extends Component
             $this->dispatch('getPesanansKitchen', [$this->status, $this->type, $this->search]);
             $this->dispatch('updatePesananKitchen');
             DB::commit();
+            $this->refreshPesanan();
         } catch (\Exception $e) {
             request()->session()->flash('notif_gagal', 'Gagal Menyelesaikan Pesanan');
             DB::rollBack();
+            $this->refreshPesanan();
+
         }
     }
 
     public function render()
     {
         return view('livewire.kitchen.component.pesanan');
+    }
+
+    public function refreshPesanan()
+    {
+        $this->pesanans = Order::where('order_type', 'Dine In')->where('order_status', 'masak')
+        ->orderBy('date', 'asc')
+        ->get();
     }
 }

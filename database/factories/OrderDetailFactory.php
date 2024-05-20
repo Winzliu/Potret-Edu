@@ -26,6 +26,7 @@ class OrderDetailFactory extends Factory
 
         return [
             'order_detail_id' => fake()->uuid(),
+            'menu_date'       => now(),
             'order_id'        => $order_id,
             'menu_id'         => $menu_id,
             'quantity'        => fake()->numberBetween(1, 10),

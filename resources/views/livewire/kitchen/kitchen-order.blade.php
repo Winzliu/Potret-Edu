@@ -6,7 +6,8 @@
      {{-- Status Menunggu/Selesai --}}
      <div class="flex gap-5">
         <button wire:click="getPesanansKitchen('Menunggu', '{{ $type }}')"
-            class="font-semibold flex gap-1 justify-center items-center @if($status == 'Menunggu') text-mainColor @endif">
+            data-tip="Pesanan Baru"
+            class="tooltip font-semibold flex gap-1 justify-center items-center @if($status == 'Menunggu') text-mainColor @endif">
             <p>Menunggu</p>
             <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">
                 {{$pesanans->where('order_status', 'masak')->count() }}
@@ -20,7 +21,8 @@
             </p>
         </button> --}}
         <button wire:click="getPesanansKitchen('Saji', '{{ $type }}')"
-            class="font-semibold flex gap-1 justify-center items-center @if($status == 'Saji') text-mainColor @endif">
+            data-tip="Pesanan Selesai"
+            class="tooltip font-semibold flex gap-1 justify-center items-center @if($status == 'Saji') text-mainColor @endif">
             <p>Saji</p>
             <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">
                 {{$pesanans->where('order_status', 'saji')->count() }}
@@ -31,7 +33,9 @@
 
     {{-- Status Take Away/Dine-In --}}
     <div class="flex gap-5 w-full justify-center items-center">
-        <button wire:click="getPesanansKitchen('{{ $status }}','Dine In')" class="flex gap-1 items-center">
+        <button wire:click="getPesanansKitchen('{{ $status }}','Dine In')" 
+        data-tip="Makan di tempat"
+        class="tooltip flex gap-1 items-center">
             <p class="font-semibold @if($type == 'Dine In') text-mainColor @endif">Dine-In</p>
             <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">
                 @if ($status == 'Menunggu')
@@ -43,7 +47,9 @@
                 @endif
             </p>
         </button>
-        <button wire:click="getPesanansKitchen('{{ $status }}','Take Away')" class="flex gap-1 items-center">
+        <button wire:click="getPesanansKitchen('{{ $status }}','Take Away')" 
+        data-tip="Pesanan Bungkus"
+        class="tooltip flex gap-1 items-center">
             <p class="font-semibold @if($type == 'Take Away') text-mainColor @endif">Take Away</p>
             <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">
                 @if ($status == 'Menunggu')

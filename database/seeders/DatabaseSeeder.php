@@ -53,8 +53,8 @@ class DatabaseSeeder extends Seeder
         discount::factory(3)->create();
         menuCategory::factory(5)->create();
         menu::factory(40)->create();
-        order::factory(10)->create();
-        orderDetail::factory(100)->create();
+        order::factory(20)->create();
+        orderDetail::factory(200)->create();
         history::factory(30)->create();
         historyDetail::factory(80)->create();
         cart::factory(10)->create();

@@ -11,7 +11,7 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden r
     {{-- notif --}}
     @if (session()->has('notif_gagal'))
     <div role="alert"
-        class="alert alert-error rounded-lg absolute z-50 top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
+        class="text-white  font-semibold alert alert-error rounded-lg absolute z-50 top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -20,7 +20,7 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden r
     </div>
     @elseif (session()->has('notif_berhasil'))
     <div role="alert"
-        class="alert alert-success rounded-lg absolute z-50 top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
+        class="text-white font-semibold alert alert-success rounded-lg absolute z-50 top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -30,6 +30,9 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden r
     @endif
     {{-- akhir notif --}}
     @if($pesanans->count() > 0)
+    @php
+        $j=0;
+    @endphp
     @foreach ($pesanans as $pesanan)
     {{-- Pesanan 1 --}}
     <div class="bg-secondaryColor rounded-lg flex flex-col items-center py-3 px-8 shadow-[0_0_20px_0_rgba(0,0,0,0.1)]">
@@ -47,6 +50,8 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden r
             @php
             $notes = 'Tidak Ada';
             @endphp
+
+
             @foreach ($pesanan->orderDetail as $menu)
             {{-- Menu 1 --}}
             <div class="flex flex-col gap-1 items-center">
@@ -92,9 +97,9 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden r
                 </div>
             </div>
             @if ($menu->notes != null)
-            @php
-            $notes = 'Ada';
-            @endphp
+                @php
+                $notes = 'Ada';
+                @endphp
             @endif
             {{-- Akhir Menu 1 --}}
             @endforeach
@@ -103,8 +108,9 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden r
         <div class="flex mt-4 items-center justify-between w-full px-6">
             <p class="font-bold">Catatan: {{ $notes }}</p>
             <div class="flex gap-x-5">
-                <a href="/kitchen-order/{{ $pesanan->order_id }}" wire:navigate
-                    class="px-7 py-2 bg-white hover:bg-gray-300 transition-all duration-300 rounded-lg font-bold">Lihat</a>        
+                <a href="/kitchen-pesanan/{{ $pesanan->order_id }}" wire:navigate
+                    data-tip="Lihat detail pesanan"
+                    class="tooltip px-7 py-2 bg-white hover:bg-gray-300 transition-all duration-300 rounded-lg font-bold">Lihat</a>        
                 
                 {{-- Logika Hitung Menu Sedang Dimasak --}}
                 @php
@@ -120,26 +126,56 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden r
                 {{-- Akhir Logika Hitung Menu Sedang Dimasak --}}
 
                 @if ($pesanan->order_status == 'masak')
-                <button {{--  @if ($count == 0) --}} wire:click="saji('{{ $pesanan->order_id }}')" {{-- @endif --}}
-                    class="px-7 py-2 bg-green-600 text-white hover:bg-green-800
-                    @if ($count > 0) bg-slate-400 hover:bg-slate-400 @endif 
-                    transition-all duration-300 rounded-lg font-bold">Selesai
-                </button>
+                    @if ($count > 0)   
+                    {{-- Pesanan belum siap --}}
+                    <button data-tip="Semua menu belum selesai!"
+                        class="tooltip px-7 py-2 text-white bg-slate-400 hover:bg-slate-500 
+                        transition-all duration-300 rounded-lg font-bold">Selesai
+                    </button>
+                    @endif
+                    @if ($count == 0)
+                    {{-- Pesanan semua sudah dimasak --}}
+                    <button data-tip="Selesaikan Pesanan" onclick="selesai_{{ $j }}.showModal()"
+                        class="tooltip px-7 py-2 bg-green-600 text-white hover:bg-green-800 
+                        transition-all duration-300 rounded-lg font-bold">Selesai
+                    </button>
+
+                    <dialog id="selesai_{{ $j }}" class="modal">
+                        <div class="modal-box flex flex-col w-full justify-center items-center border-4 border-green-500 font-semibold">
+                            <p>Apakah Anda yakin ingin menyelesaikan pesanan ini?</p>
+                            <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                                    <form method="dialog">
+                                        <button id="selesai{{ $j }}"
+                                            class="bg-red-500 px-8 py-2 text-white rounded-md">
+                                            Tidak
+                                        </button>
+                                      </form>
+                                    <button wire:click="saji('{{ $pesanan->order_id }}')" class="bg-greenConfirm text-white px-12 py-2 rounded-md mr-2">Ya</button>
+                                </div>
+                        </div>
+                        <form method="dialog" class="modal-backdrop">
+                            <button>close</button>
+                        </form>
+                    </dialog>
+                    @endif
                 @endif
             </div>
         </div>
     </div>
+    @php
+        $j++;
+    @endphp
     {{-- Akhir Pesanan 1 --}}
     @endforeach
     @else
-    <p class="text-center font-bold
-    @if(auth()->user()->userDetail->custom == 'kecil')
-    text-lg
-    @elseif(auth()->user()->userDetail->custom == 'normal')
-    text-xl
-    @elseif(auth()->user()->userDetail->custom == 'besar')
-    text-2xl
-    @endif
-    mt-10">Tidak ada pesanan</p>
+        <p class="text-center font-bold
+        @if(auth()->user()->userDetail->custom == 'kecil')
+        text-lg
+        @elseif(auth()->user()->userDetail->custom == 'normal')
+        text-xl
+        @elseif(auth()->user()->userDetail->custom == 'besar')
+        text-2xl
+        @endif
+        mt-10">Tidak ada pesanan</p>
     @endif
 </div>
