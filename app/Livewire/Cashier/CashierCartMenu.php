@@ -14,9 +14,8 @@ class CashierCartMenu extends Component
 
     protected $listeners = ['categoryActive' => 'categoryActive'];
 
-    public function mount($pesanan = null)
+    public function mount()
     {
-        $this->pesanan_id = $pesanan;
         $this->category_id = '0';
         $this->active = '0';
         $this->categories = menuCategory::all();

@@ -26,7 +26,7 @@ class OrderFactory extends Factory
             'user_id'      => $user_id,
             'table_number' => fake()->numberBetween(1, 15),
             'order_type'   => ['Dine In', 'Take Away'][rand(0, 1)],
-            'order_status' => ['masak', 'saji', 'selesai'][rand(0, 2)],
+            'order_status' => ['masak', 'saji', 'selesai', 'batal'][rand(0, 3)],
         ];
     }
 }
