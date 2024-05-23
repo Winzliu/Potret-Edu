@@ -22,6 +22,7 @@ class HistoryDetailFactory extends Factory
 
         return [
             'history_detail_id' => fake()->uuid(),
+            'menu_date'         => now(),
             'history_id'        => $history_id,
             'menu_name'         => fake()->name(),
             'menu_notes'        => fake()->words(3, true),

@@ -24,7 +24,7 @@ class HistoryFactory extends Factory
             'table_number' => fake()->numberBetween(1, 15),
             'order_status' => ['selesai', 'batal'][rand(0, 1)],
             'payment_date' => fake()->dateTimeBetween('-1 years', 'now'),
-            'discount'     => fake()->randomFloat(2, 0, 100),
+            'discount'     => fake()->randomFloat(2, 0, 100),    
         ];
     }
 }
