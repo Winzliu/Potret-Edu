@@ -2,9 +2,11 @@
 
 namespace App\Livewire\Cashier;
 
+use App\Models\discount;
 use App\Models\history;
 use App\Models\historyDetail;
 use App\Models\order;
+use App\Models\paymentMethod;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -12,10 +14,19 @@ use Livewire\Component;
 class CashierDetailOrder extends Component
 {
     public $pesanan;
+    public $payments;
+    public $discounts;
+    public $input_discount;
+    public $discount_pembayaran;
+    public $taxes_pembayaran;
 
     public function mount($pesanan)
     {
         $this->pesanan = order::where('order_id', $pesanan)->first();
+        $this->payments = paymentMethod::all();
+        $this->discounts = discount::all();
+        $this->discount_pembayaran = 0;
+        $this->taxes_pembayaran = 0;
     }
 
     public function deleteOrder($id)
@@ -31,6 +42,7 @@ class CashierDetailOrder extends Component
                 'cashier_name' => auth()->user()->userDetail->name,
                 'waiter_name'  => $this->pesanan->user->userDetail->name,
                 'table_number' => $this->pesanan->table_number,
+                'order_type'   => $this->pesanan->order_type,
                 'order_status' => 'batal',
                 'payment_date' => NOW(),
             ]);

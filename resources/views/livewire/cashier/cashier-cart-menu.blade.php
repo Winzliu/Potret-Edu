@@ -24,4 +24,5 @@
     @livewire('cashier.component.cashier-sidebar-kanan')
     {{-- akhir sidebar kanan --}}
     @endif
+
 </div

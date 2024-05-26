@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Livewire\Cashier\CashierCartMenu;
+use App\Livewire\Cashier\CashierPembayaran;
 use App\Livewire\Cashier\CashierProgressOrder;
 use App\Livewire\Profil\Profil;
 use App\Livewire\Admin\AdminHome;
@@ -72,6 +73,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/cashier/pesanan/edit/{pesanan}', CashierCartMenu::class);
 
     Route::get('/cashier/riwayat', CashierHistory::class);
+
+    Route::get('/cashier/pesanan/{pesanan}/bayar', CashierPembayaran::class);
   });
   // Akhir Cashier
 

@@ -369,11 +369,11 @@ text-lg
                     </div>
                 </label>
                 <div class="flex justify-between mb-5">
-                    <label for="DineIn" class="text-center py-2 rounded-lg bg-base-300 w-[48%] shadow-xl  
+                    <label for="DineIn" class="text-center py-2 rounded-lg bg-base-300 w-[48%] shadow-xl cursor-not-allowed 
                         @if ($input_service == 'Dine In') bg-mainColor @endif">Dine
                         In</label>
                     <label for="TakeAway"
-                        class="text-center py-2 transition-all duration-300 rounded-lg bg-base-300 w-[48%] shadow-xl @if ($input_service == 'Take Away') bg-mainColor @endif">Take
+                        class="text-center py-2 transition-all duration-300 rounded-lg bg-base-300 w-[48%] shadow-xl cursor-not-allowed @if ($input_service == 'Take Away') bg-mainColor @endif">Take
                         Away</label>
                 </div>
                 <button wire:click="editPesanan('{{ $pesanan->order_id }}')" wire:loading.attr="disabled"

@@ -246,147 +246,37 @@ text-lg mt-10
                         Medan, Indonesia
                         20353.</p>
                     <div class="flex justify-between mt-5">
-                        <p class="font-bold text-pink-500">Take Away</p>
-                        <p class="font-bold">Kasir: Lee Haechan</p>
+                        <p class="font-bold text-pink-500">{{ $pesanan->order_type }}</p>
+                        <p class="font-bold">Kasir: {{ $pesanan->user->userDetail->name }}</p>
                     </div>
                     <div class="divider mt-0"></div>
                     {{-- menu --}}
-                    <div class="flex flex-col gap-5">
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
+                    <div class="flex flex-col gap-5 w-full">
+                        @php
+                        $total_harga = 0
+                        @endphp
+                        @foreach ($pesanan->orderDetail as $menu)
+                        <div class="flex justify-between items-center">
+                            <div class="w-[60%]">
+                                <p class="text-sm font-bold">{{ $menu->menu->menu_name }}</p>
+                                <p class="text-sm"><span class="font-bold">Catatan:</span> {{ $menu->notes }}</p>
                             </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
+                            <div class="flex w-[40%] justify-between">
+                                <p class="text-sm font-semibold">Rp {{ number_format($menu->menu->menu_price, 0, ',',
+                                    '.')
+                                    }}
+                                </p>
+                                <p class="text-sm font-bold">x{{ $menu->quantity }}</p>
+                                <p class="text-sm font-bold">Rp {{ number_format($menu->menu->menu_price *
+                                    $menu->quantity,
+                                    0, ',', '.') }}
+                                </p>
                             </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
                         </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
-                        <div class="flex justify-evenly items-center">
-                            <div class="">
-                                <p class="text-sm font-bold">Nasi Goreng Telur Putih</p>
-                                <p class="text-sm">Catatan: Tidak Pedas, Berkuah</p>
-                            </div>
-                            <p class="text-sm font-bold">Rp 20.000</p>
-                            <p class="text-sm font-bold">x3</p>
-                            <p class="text-sm font-bold">Rp 60.000</p>
-                        </div>
+                        @php
+                        $total_harga += $menu->menu->menu_price * $menu->quantity
+                        @endphp
+                        @endforeach
                     </div>
                     {{-- akhir menu --}}
                     <div class="divider"></div>
@@ -394,35 +284,24 @@ text-lg mt-10
                     <div class="flex flex-col gap-4">
                         <div class="flex justify-between">
                             <p class="text-sm font-bold">Subtotal</p>
-                            <p class="text-sm font-bold">Rp 360.000</p>
+                            <p class="text-sm font-bold">Rp {{ number_format($total_harga, 0, ',', '.') }}</p>
                         </div>
                         <div class="flex justify-between">
                             <p class="text-sm font-bold">Pajak (10%)</p>
-                            <p class="text-sm font-bold">Rp 36.000</p>
+                            <p class="text-sm font-bold">Rp {{ number_format($total_harga * 0.1, 0, ',', '.') }}</p>
                         </div>
                         <div class="flex justify-between">
                             <p class="text-sm font-bold">Total Harga</p>
-                            <p class="text-sm font-bold">Rp 396.000</p>
+                            <p class="text-sm font-bold">Rp {{ number_format($total_harga + ($total_harga * 0.1), 0,
+                                ',', '.') }}</p>
                         </div>
                     </div>
                     {{-- akhir bagian total harga --}}
                     <div class="divider"></div>
-                    {{-- bagian pembayaran --}}
-                    <div class="flex flex-col gap-4">
-                        <div class="flex justify-between">
-                            <p class="text-sm font-bold">Nominal Pembayaran</p>
-                            <p class="text-sm font-bold">Rp 400.000</p>
-                        </div>
-                        <div class="flex justify-between">
-                            <p class="text-sm font-bold">Kembalian</p>
-                            <p class="text-sm font-bold">Rp 4.000</p>
-                        </div>
-                    </div>
-                    {{-- akhir bagian pembayaran --}}
                     <div class="flex justify-center mt-7 noprint">
-                        <button onclick="printStruk()"
+                        <button onclick="printStruks()"
                             class="w-32 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white">Cetak
-                            Resi</button>
+                            Struk</button>
                     </div>
                 </div>
                 <form method="dialog" class="modal-backdrop">
@@ -485,78 +364,49 @@ text-lg mt-10
                 class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-green-600 border-2 border-green-600 transition-all duration-300 font-bold"
                 onclick="BayarButton.showModal()">Bayar</button>
             <dialog id="BayarButton" class="modal">
-                <div class="modal-box py-10 border-[4px] border-green-600 max-w-3xl">
+                <div class="modal-box scrollbar-hidden py-10 border-[4px] border-green-600 max-w-3xl">
                     <div class="flex w-full px-5 justify-between bg-green-600 absolute top-0 left-0 py-3">
                         <p class="font-semibold text-lg text-white">Total Pembayaran</p>
-                        <p class="font-semibold text-lg text-white">Rp 400.000</p>
+                        <p class="font-semibold text-lg text-white">Rp {{ number_format($total_harga + (0.1 *
+                            $total_harga),0,',','.') }}</p>
                     </div>
-                    <p class="text-center font-bold text-xl my-6">Pilih Metode Pembayaran</p>
-                    <div class="flex flex-wrap gap-y-5">
-                        <div class="flex gap-3 items-center w-1/4 justify-center">
-                            <input type="radio" id="radio-6" name="radio-6" class="radio radio-warning" />
-                            <label for="radio-6" class="font-bold text-xl">BCA</label>
+                    <form method="GET" action="/cashier/pesanan/{{ $pesanan->order_id }}/bayar">
+                        <p class="text-center font-bold text-xl my-6">Pilih Metode Pembayaran</p>
+                        <div class="flex flex-wrap gap-y-5 gap-10">
+                            @foreach ($payments as $payment)
+                            <div class="flex items-center justify-center">
+                                <input type="radio" id="payment-{{ $payment->payment_method_id }}" name="payment"
+                                    value="{{ $payment->payment_method_id }}" class="radio radio-warning" required />
+                                <label for="payment-{{ $payment->payment_method_id }}" class="font-bold text-xl ps-3">{{
+                                    $payment->method
+                                    }} <span class="text-xs font-semibold">({{ $payment->taxes }})</span></label>
+                            </div>
+                            @endforeach
                         </div>
-                        <div class="flex gap-3 items-center w-1/4 justify-center">
-                            <input type="radio" id="radio-7" name="radio-6" class="radio radio-warning" />
-                            <label for="radio-7" class="font-bold text-xl">Mandiri</label>
+                        <div class="divider my-4"></div>
+                        <p class="text-center font-bold text-xl mb-6">Pilih Discount</p>
+                        <div class="flex flex-wrap gap-y-5 gap-10">
+                            @foreach ($discounts as $discount)
+                            <div class="flex items-center justify-center ">
+                                <input type="radio" id="discount-{{ $discount->discount_id }}" name="discount"
+                                    value="{{ $discount->discount_id }}" class="radio radio-warning" />
+                                <label for="discount-{{ $discount->discount_id }}" class="font-bold text-xl ps-3">{{
+                                    $discount->discount_name
+                                    }} <span class="text-xs font-semibold">({{ $discount->discount_rate
+                                        }})</span></label>
+                            </div>
+                            @endforeach
                         </div>
-                        <div class="flex gap-3 items-center w-1/4 justify-center">
-                            <input type="radio" id="radio-8" name="radio-6" class="radio radio-warning" />
-                            <label for="radio-8" class="font-bold text-xl">BRI</label>
+                        <div class="flex justify-evenly mt-10">
+                            <button
+                                class="w-24 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-center text-white">Bayar</button>
                         </div>
-                        <div class="flex gap-3 items-center w-1/4 justify-center">
-                            <input type="radio" id="radio-9" name="radio-6" class="radio radio-warning" checked />
-                            <label for="radio-9" class="font-bold text-xl">QRIS</label>
-                        </div>
-                        <div class="flex gap-3 items-center w-1/4 justify-center">
-                            <input type="radio" id="radio-1" name="radio-6" class="radio radio-warning" />
-                            <label for="radio-1" class="font-bold text-xl">Cash</label>
-                        </div>
-                    </div>
-                    <div class="flex justify-evenly mt-10">
-                        <button
-                            class="w-24 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white"
-                            onclick="KonfirmasiBayar.showModal()">Bayar</button>
-                    </div>
+                    </form>
                 </div>
                 <form method="dialog" class="modal-backdrop">
                     <button>close</button>
                 </form>
             </dialog>
-            {{-- modal konfirmasi bayar --}}
-            <dialog id="KonfirmasiBayar" class="modal">
-                <div class="modal-box py-10 border-[4px] border-green-600 max-w-3xl">
-                    <div class="flex w-full px-5 justify-between bg-green-600 absolute top-0 left-0 py-3">
-                        <p class="font-semibold text-lg text-white">Metode Pembayaran</p>
-                        <p class="font-semibold text-lg text-white">Cash</p>
-                    </div>
-                    <p class="text-center font-bold text-xl my-6">Pilih Metode Pembayaran</p>
-                    <div class="flex flex-col w-4/5 mx-auto gap-y-5">
-                        <div class="flex justify-between">
-                            <p class="font-semibold text-xl">Total Pembayaran</p>
-                            <p class="font-semibold text-xl">Rp 400.000</p>
-                        </div>
-                        <div class="flex justify-between">
-                            <p class="font-semibold text-xl">Nominal Pembayaran</p>
-                            <input type="number" placeholder="Nominal Pembayaran"
-                                class="input input-bordered input-warning text-sm w-32 font-semibold h-8 text-end" />
-                        </div>
-                        <div class="flex justify-between">
-                            <p class="font-semibold text-xl">Kembalian</p>
-                            <p class="font-semibold text-xl">Rp 0</p>
-                        </div>
-                    </div>
-                    <div class="flex justify-evenly mt-10">
-                        <button
-                            class="w-24 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white"
-                            onclick="KonfirmasiBayar.showModal()">Bayar</button>
-                    </div>
-                </div>
-                <form method="dialog" class="modal-backdrop">
-                    <button>close</button>
-                </form>
-            </dialog>
-            {{-- akhir modal konfirmasi bayar --}}
             {{-- akhir button bayar --}}
             @endif
         </div>
@@ -570,4 +420,12 @@ text-lg mt-10
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
     </dialog>
     {{-- akhir loading --}}
+
+    <script>
+        var modal = document.getElementById('StrukButton');
+        function printStruks() {
+        modal.scrollTo(0,0);
+        window.print();
+        }
+    </script>
 </div>

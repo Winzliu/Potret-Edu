@@ -11,9 +11,11 @@ use App\Models\menu;
 use App\Models\menuCategory;
 use App\Models\order;
 use App\Models\orderDetail;
+use App\Models\paymentMethod;
 use App\Models\User;
 use App\Models\userDetail;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -58,5 +60,26 @@ class DatabaseSeeder extends Seeder
         history::factory(30)->create();
         historyDetail::factory(80)->create();
         cart::factory(10)->create();
+
+        paymentMethod::factory()->create([
+            'payment_method_id' => Str::uuid(),
+            'method'            => 'Cash',
+            'taxes'             => 0,
+        ]);
+        paymentMethod::factory()->create([
+            'payment_method_id' => Str::uuid(),
+            'method'            => 'QRIS',
+            'taxes'             => 0,
+        ]);
+        paymentMethod::factory()->create([
+            'payment_method_id' => Str::uuid(),
+            'method'            => 'BRI',
+            'taxes'             => 0.02,
+        ]);
+        paymentMethod::factory()->create([
+            'payment_method_id' => Str::uuid(),
+            'method'            => 'BCA',
+            'taxes'             => 0,
+        ]);
     }
 }

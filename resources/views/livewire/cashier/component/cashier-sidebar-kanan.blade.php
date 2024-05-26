@@ -205,9 +205,9 @@
                 </label>
                 <div class="flex justify-between mb-5">
                     <input wire:change="changeService" wire:model="input_service" type="radio" name="service"
-                        id="DineIn" value="Dine In" class="peer/DineIn hidden">
+                        id="DineIn" value="Dine In" class="peer/DineIn hidden" disabled>
                     <label for="DineIn"
-                        class="text-center py-2 hover:bg-slate-300 rounded-lg bg-base-300 w-[48%] shadow-xl  peer-checked/DineIn:bg-mainColor">Dine
+                        class="text-center py-2  cursor-not-allowed rounded-lg bg-base-300 w-[48%] shadow-xl  peer-checked/DineIn:bg-mainColor">Dine
                         In</label>
                     <input wire:change="changeService" wire:model="input_service" type="radio" name="service"
                         id="TakeAway" value="Take Away" class="peer/TakeAway hidden">

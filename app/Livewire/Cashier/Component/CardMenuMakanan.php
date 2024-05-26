@@ -71,6 +71,7 @@ class CardMenuMakanan extends Component
                 ]);
                 request()->session()->flash('notif_berhasil', "Menu berhasil ditambahkan");
                 DB::commit();
+                sleep(1);
             } catch (\Exception $e) {
                 request()->session()->flash('notif_gagal', 'Menu gagal ditambahkan');
                 DB::rollBack();

@@ -19,7 +19,7 @@ class DiscountFactory extends Factory
         return [
             'discount_id'   => fake()->uuid(),
             'discount_name' => fake()->word(),
-            'discount_rate' => fake()->randomFloat(2, 0, 100),
+            'discount_rate' => fake()->randomFloat(2, 0, 1),
         ];
     }
 }

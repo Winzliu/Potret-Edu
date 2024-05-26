@@ -67,6 +67,12 @@
                 </button>
             </div>
         </div>
+        {{-- loading --}}
+        <dialog wire:loading wire:target="addToCart" wire:loading.attr="open" class="modal">
+            <span
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg bg-mainColor"></span>
+        </dialog>
+        {{-- akhir loading --}}
     </div>
     {{-- modal 1 --}}
     <dialog id="my_modal_{{ $i }}" class="modal">
@@ -111,6 +117,9 @@
     </dialog>
     {{-- akhir modal 1 --}}
     {{-- akhir card 1 --}}
+
+
+
     @php
     $i++;
     @endphp

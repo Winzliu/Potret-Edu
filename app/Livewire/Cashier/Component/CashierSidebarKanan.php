@@ -8,6 +8,7 @@ use App\Models\orderDetail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 class CashierSidebarKanan extends Component
@@ -35,7 +36,7 @@ class CashierSidebarKanan extends Component
         foreach ($this->carts as $cart) {
             $this->n[$cart->cart_id] = Session::get($cart->cart_id, '');
         }
-        $this->input_service = 'Dine In';
+        $this->input_service = 'Take Away';
     }
 
     public function getCartCashier()
