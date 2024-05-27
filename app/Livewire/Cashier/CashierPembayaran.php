@@ -36,11 +36,11 @@ class CashierPembayaran extends Component
         '$refresh';
     }
 
-    public function bayar()
+    public function bayar($id)
     {
         DB::beginTransaction();
 
-        $history_id = str()->uuid();
+        $history_id = $id;
 
         try {
             history::create([

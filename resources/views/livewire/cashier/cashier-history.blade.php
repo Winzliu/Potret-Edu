@@ -30,123 +30,44 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($histories as $history)
                     <!-- row 1 -->
-                    <tr class="hover:bg-mainColor transition-all duration-300 ">
-                        <th class="whitespace-nowrap text-center">1</th>
-                        <td class="whitespace-nowrap text-center">4587198751</td>
-                        <td class="whitespace-nowrap text-center">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center">12</td>
-                        <td class="whitespace-nowrap text-center">Cash</td>
-                        <td class="whitespace-nowrap text-center">23-03-2024</td>
-                        <td class="whitespace-nowrap text-center">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300 ">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- row 2 -->
                     <tr class="hover:bg-mainColor transition-all duration-300 even:bg-base-300">
-                        <th class="whitespace-nowrap text-center">2</th>
-                        <td class="whitespace-nowrap text-center">4587198751</td>
-                        <td class="whitespace-nowrap text-center">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center">12</td>
-                        <td class="whitespace-nowrap text-center">Cash</td>
-                        <td class="whitespace-nowrap text-center">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
+                        <th class="whitespace-nowrap text-center">{{ ($histories->currentPage() - 1) *
+                            $histories->perPage() + $loop->iteration }}</th>
+                        </th>
+                        <td class="whitespace-nowrap text-center">#{{ strtoupper(substr($history->history_id, 0, 8)) }}
+                        </td>
+                        <td class="whitespace-nowrap text-center">Rp {{ number_format($history->total_payment,0,
+                            ',','.')
+                            }}</td>
+                        <td class="whitespace-nowrap text-center">{{ $history->table_number }}</td>
+                        <td class="whitespace-nowrap text-center">{{ $history->payment_method }}</td>
+                        <td class="whitespace-nowrap text-center">@php
+                            try {
+                            $dateTime = new \DateTime($history->payment_date);
+                            $formattedDate = $dateTime->format('d-m-Y');
+                            } catch (\Exception $e) {
+                            $formattedDate = 'Invalid date format';
+                            }
+                            @endphp
+                            {{ $formattedDate }}
+                        </td>
+                        <td class="whitespace-nowrap text-center tooltip flex justify-center" data-tip="Detail">
+                            <button class="p-1 hover:bg-secondaryColor rounded-lg transition-all duration-300 ">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
+                                    aria-hidden="true" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z">
+                                    </path>
+                                </svg>
                             </button>
                         </td>
                     </tr>
-                    <!-- row 3 -->
-                    <tr class="hover:bg-mainColor transition-all duration-300 ">
-                        <th class="whitespace-nowrap text-center">3</th>
-                        <td class="whitespace-nowrap text-center">4587198751</td>
-                        <td class="whitespace-nowrap text-center">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center">12</td>
-                        <td class="whitespace-nowrap text-center">Cash</td>
-                        <td class="whitespace-nowrap text-center">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- row 4 -->
-                    <tr class="hover:bg-mainColor transition-all duration-300 even:bg-base-300">
-                        <th class="whitespace-nowrap text-center">4</th>
-                        <td class="whitespace-nowrap text-center">4587198751</td>
-                        <td class="whitespace-nowrap text-center">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center">12</td>
-                        <td class="whitespace-nowrap text-center">Cash</td>
-                        <td class="whitespace-nowrap text-center">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- row 5 -->
-                    <tr class="hover:bg-mainColor transition-all duration-300 even:bg-base-300">
-                        <th class="whitespace-nowrap text-center">5</th>
-                        <td class="whitespace-nowrap text-center">4587198751</td>
-                        <td class="whitespace-nowrap text-center">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center">12</td>
-                        <td class="whitespace-nowrap text-center">Cash</td>
-                        <td class="whitespace-nowrap text-center">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- row 6 -->
-                    <tr class="hover:bg-mainColor transition-all duration-300 even:bg-base-300">
-                        <th class="whitespace-nowrap text-center">6</th>
-                        <td class="whitespace-nowrap text-center">4587198751</td>
-                        <td class="whitespace-nowrap text-center">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center">12</td>
-                        <td class="whitespace-nowrap text-center">Cash</td>
-                        <td class="whitespace-nowrap text-center">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- row 7 -->
-                    <tr class="hover:bg-mainColor transition-all duration-300 even:bg-base-300">
-                        <th class="whitespace-nowrap text-center">7</th>
-                        <td class="whitespace-nowrap text-center">4587198751</td>
-                        <td class="whitespace-nowrap text-center">Rp 500.000</td>
-                        <td class="whitespace-nowrap text-center">12</td>
-                        <td class="whitespace-nowrap text-center">Cash</td>
-                        <td class="whitespace-nowrap text-center">23-03-2024</td>
-                        <td class="whitespace-nowrap">
-                            <button
-                                class="pt-1 w-full h-full hover:bg-secondaryColor rounded-lg transition-all duration-300">
-                                <ion-icon name="information-circle" class="text-xl"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="items-end text-right mt-5">
-        <div class="join shadow-[0_0_30px_0_rgba(0,0,0,0.1)]">
-            <button class="join-item btn bg-slate-300 hover:bg-slate-400">«</button>
-            <button class="join-item btn">1</button>
-            <button class="join-item btn bg-mainColor hover:bg-mainColor">2</button>
-            <button class="join-item btn">3</button>
-            <button class="join-item btn">4</button>
-            <button class="join-item btn bg-slate-300 hover:bg-slate-400">»</button>
-        </div>
-    </div>
+    {{ $histories->links('livewire.cashier.component.cashier-pagination-link') }}
 </div>

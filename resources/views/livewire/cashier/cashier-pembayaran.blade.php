@@ -89,6 +89,10 @@
                 Medan, Indonesia
                 20353.</p>
             <div class="flex justify-between mt-5">
+                <p class="font-bold">#{{ strtoupper(substr($pesanan->order_id, 0, 8)) }}</p>
+                <p class="font-bold">{{ date_format(NOW(), 'd/m/Y, H:i:s') }}</p>
+            </div>
+            <div class="flex justify-between mt-5">
                 <p class="font-bold text-pink-500">{{ $pesanan->order_type }}</p>
                 <p class="font-bold">Kasir: {{ $pesanan->user->userDetail->name }}</p>
             </div>
@@ -150,21 +154,23 @@
                 </div>
                 <div class="flex justify-between">
                     <p class="text-sm font-bold">Nominal Pembayaran</p>
-                    <p class="text-sm font-bold">Rp {{ number_format($nominal_pembayaran, 0,
-                        ',', '.') }}</p>
+                    <p class="text-sm font-bold">
+                        @if($nominal_pembayaran < ($total_harga + ($total_harga * 0.1) - ($total_harga * $discount) +
+                            ($total_harga * $pajak))) Rp 0 @else Rp {{ number_format($nominal_pembayaran, 0, ',' , '.' )
+                            }} @endif</p>
                 </div>
                 <div class="flex justify-between">
                     <p class="text-sm font-bold">Kembalian</p>
-                    <p class="text-sm font-bold">Rp {{ number_format($nominal_pembayaran - ($total_harga + ($total_harga
-                        * 0.1) - ($total_harga
-                        * $discount) + ($total_harga * $pajak)) , 0,
-                        ',', '.') }}</p>
+                    <p class="text-sm font-bold">@if($nominal_pembayaran < ($total_harga + ($total_harga * 0.1) -
+                            ($total_harga * $discount) + ($total_harga * $pajak))) Rp 0 @else Rp {{
+                            number_format($nominal_pembayaran - ($total_harga + ($total_harga * 0.1) - ($total_harga *
+                            $discount) + ($total_harga * $pajak)),0,',','.') }} @endif</p>
                 </div>
             </div>
             {{-- akhir bagian total harga --}}
             <div class="divider"></div>
             <div class="flex justify-center mt-7 noprint">
-                <button wire:click="bayar({{ $total_harga }})" onclick="printStruks()"
+                <button wire:click="bayar('{{ $pesanan->order_id }}')" onclick="printStruks()"
                     class="w-32 font-bold bg-green-600 hover:bg-green-700 transition-all duration-300 rounded-lg py-3 text-white">Bayar</button>
             </div>
         </div>
