@@ -10,16 +10,35 @@ use Illuminate\Support\Facades\DB;
 
 class KitchenOrderDetail extends Component
 {
-    // public $showSelesaiButton = false;
-    // public $showKosongButton = false;
-    // public $buttonClicked = false;
-    // public $isOn = false;
-    // public $emptyMenu = false;
+
+    public $modalKosong = false;
+    public $modalSelesai = false;
     public $pesanan;
     public $orderDetails;
     public $flashMessage = null;
 
+    public $order_detail_id;
 
+    protected $listeners = ['refresh' => 'refresh'];
+
+    public function modal_kosong($order_detail_id)
+    {
+        $this->order_detail_id = $order_detail_id;
+        $this->modalKosong = true;  
+    }
+    public function modal_selesai($order_detail_id)
+    {
+        $this->order_detail_id = $order_detail_id;
+        $this->modalSelesai = true;  
+    }
+
+    
+    public function refresh()
+    {
+        '$refresh';
+    }
+
+    
     public function mount($pesanan)
     {
         $this->pesanan = order::where('order_id', $pesanan)->orderBy('date', 'asc')->first();
@@ -33,31 +52,35 @@ class KitchenOrderDetail extends Component
             ->layout('components.layouts.app', ['title' => 'Dapur | Detail Pesanan', 'active' => 'kitchen-pesanan', 'role' => 'kitchen']);
     }
 
-    public function switchKosong($id)
+    public function switchKosong()
     {
         DB::beginTransaction();
         try {
-            orderDetail::where('order_detail_id', $id)->update(['menu_status' => 'kosong']);
+            orderDetail::where('order_detail_id', $this->order_detail_id)->update(['menu_status' => 'kosong']);
             request()->session()->flash('kosong_berhasil', 'Mengubah Pesanan Menjadi Kosong!');
             DB::commit();
+            $this->modalKosong = false;
             $this->refreshPesanan();
         } catch (\Exception $e) {
             request()->session()->flash('kosong_gagal', 'Gagal mengubah status!');
             DB::rollBack();
         }
+        // $this->dispatch('refresh_notif');
     }
-    public function switchSelesai($id)
+    public function switchSelesai()
     {
         DB::beginTransaction();
         try {
-            orderDetail::where('order_detail_id', $id)->update(['menu_status' => 'selesai']);
+            orderDetail::where('order_detail_id', $this->order_detail_id)->update(['menu_status' => 'selesai']);
             request()->session()->flash('selesai_berhasil', 'Berhasil Menyelesaikan Pesanan!');
             DB::commit();
+            $this->modalSelesai = false;
             $this->refreshPesanan();
         } catch (\Exception $e) {
             request()->session()->flash('selesai_gagal', 'Gagal mengubah status!');
             DB::rollBack();
         }
+        // $this->dispatch('refresh_notif');
     }
 
     public function refreshPesanan()
