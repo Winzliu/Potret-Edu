@@ -1,4 +1,4 @@
-<div class="flex flex-wrap gap-4 justify-start overflow-y-scroll h-[75vh] scrollbar-hidden">
+<div class="flex flex-wrap gap-4 justify-start overflow-y-scroll md:h-[75vh] xl:h-[75vh] scrollbar-hidden">
     {{-- notif --}}
     @if (session()->has('aktif_gagal'))
     <div role="alert"
@@ -78,14 +78,14 @@
                     <p class="font-semibold">Rp. {{ number_format($menu->menu_price,0, ',', '.') }}</p>
                 </div>
                 @if($menu->menu_state == 'tidak_aktif')
-                    <button  onclick="aktif_{{ $j }}.showModal()"
+                    <button  wire:click="modal_aktif('{{ $menu->menu_id }}')"
                     data-tip="Aktifkan"
                     class="tooltip bg-white hover:bg-greenConfirm text-greenConfirm hover:text-white 
                     border-2  text-sm border-secondaryColor w-10 h-10 rounded-full font-bold">
                         On
                     </button>
                 @elseif($menu->menu_state == 'aktif')
-                    <button  onclick="nonaktif_{{ $j }}.showModal()"
+                    <button  wire:click="modal_nonaktif('{{ $menu->menu_id }}')"
                     data-tip="Nonaktifkan"
                     class="tooltip bg-white hover:bg-purpleRed text-purpleRed hover:text-white
                     border-2  text-sm border-secondaryColor w-10 h-10 rounded-full font-bold">
@@ -95,54 +95,61 @@
             </div>
         </div>
     </div>
-    {{-- modal aktif --}}
-    <dialog id="aktif_{{ $j }}" class="modal">
-        <div class="modal-box flex flex-col w-full justify-center items-center border-4 font-semibold border-green-500">
-                <p class="text-center">Apakah Anda yakin ingin mengaktifkan Menu ini?<br>Kasir/pelayan dapat membuat pesanan setelahnya.</p>
-            <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
-                    <form method="dialog">
-                        <button id="aktif{{ $j }}"
-                            class="bg-red-500 px-8 py-2 text-white rounded-md">
-                            Tidak
-                        </button>
-                      </form>
-                    <button wire:click="aktif('{{ $menu->menu_id }}')" class="bg-greenConfirm text-white px-12 py-2 rounded-md mr-2">Ya</button>
+      {{-- MODAL POPUP NONAKTIF --}}
+      @if($modalNonaktif)
+        <div class="fixed top-0 left-0 w-full z-10 h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
+            <div class="bg-white p-6 py-10 rounded-xl text-center border-4 border-purpleRed font-semibold">
+                <p 
+                    @if(auth()->user()->userDetail->custom == 'kecil')
+                    text-xs
+                    @elseif(auth()->user()->userDetail->custom == 'normal')
+                    text-xs
+                    @elseif(auth()->user()->userDetail->custom == 'besar')
+                    text-sm
+                    @endif
+                >Apakah Anda yakin ingin menonaktifkan menu ini?</p>
+                <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                    <button wire:click="$set('modalNonaktif', false)"
+                        class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
+                    <button wire:click="nonaktif" class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
                 </div>
+            </div>
         </div>
-        <form method="dialog" class="modal-backdrop">
-            <button>close</button>
-        </form>
-    </dialog>
-    {{-- akhir modal aktif --}}
-    {{-- modal nonaktif --}}
-    <dialog id="nonaktif_{{ $j }}" class="modal">
-        <div class="modal-box flex flex-col w-full justify-center items-center border-4 font-semibold border-red-500">
-                <p class="text-center">Apakah Anda yakin ingin menonaktifkan pesanan ini? Kasir/pelayan tidak bisa membuat pesanan ini setelahnya</p>
-            <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
-                    <form method="dialog">
-                        <button id="nonaktif{{ $j }}"
-                            class="bg-red-500 px-8 py-2 text-white rounded-md">
-                            Tidak
-                        </button>
-                      </form>
-                    <button wire:click="nonaktif('{{ $menu->menu_id }}')" class="bg-greenConfirm text-white px-12 py-2 rounded-md mr-2">Ya</button>
+      @endif
+      {{-- MODAL POPUP AKTIF --}}
+      @if($modalAktif)
+        <div class="fixed top-0 left-0 w-full z-10 h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
+            <div class="bg-white p-6 py-10 rounded-xl text-center border-4 border-green-500 font-semibold">
+                <p 
+                    @if(auth()->user()->userDetail->custom == 'kecil')
+                    text-xs
+                    @elseif(auth()->user()->userDetail->custom == 'normal')
+                    text-xs
+                    @elseif(auth()->user()->userDetail->custom == 'besar')
+                    text-sm
+                    @endif
+                >Apakah Anda yakin ingin mengaktifkan menu ini?</p>
+                <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                    <button wire:click="$set('modalAktif', false)"
+                        class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
+                    <button wire:click="aktif" class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
                 </div>
+            </div>
         </div>
-        <form method="dialog" class="modal-backdrop">
-            <button>close</button>
-        </form>
-    </dialog>
-    {{-- akhir modal nonaktif --}}
-    {{-- modal 2 --}}
+      @endif
+      {{-- AKHIR MODAL POPUP AKTIF --}}
+
+
+          {{-- modal 1 --}}
     <dialog id="my_modal_{{ $i }}" class="modal">
         <div class="modal-box">
             <h3 class="font-bold 
             @if(auth()->user()->userDetail->custom == 'kecil')
-                text-xl
+            text-xl
             @elseif(auth()->user()->userDetail->custom == 'normal')
-                text-2xl
+            text-2xl
             @elseif(auth()->user()->userDetail->custom == 'besar')
-                text-3xl
+            text-3xl
             @endif
             text-center">{{ $menu->menu_name }}</h3>
             <div class="flex justify-evenly">
@@ -174,8 +181,7 @@
             <button>close</button>
         </form>
     </dialog>
-    {{-- akhir modal 2 --}}
-    {{-- akhir card 1 --}}
+    {{-- akhir modal 1 --}}
     @php
         $i++; $j++;
     @endphp

@@ -148,8 +148,8 @@ text-lg mt-10
                                 {{-- MODAL POPUP KOSONG --}}
                                 @if($modalKosong)
                                 <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
-                                    <div class="bg-white p-6 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
-                                        <p>Apakah Anda yakin ingin menonaktifkan menu ini?</p>
+                                    <div class="bg-white px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
+                                        <p>Apakah Anda yakin ingin menu ini kosong?</p>
                                         <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
                                             <button wire:click="$set('modalKosong', false)"
                                                 class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
@@ -170,7 +170,7 @@ text-lg mt-10
                             @if($modalSelesai)
                             <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
                                 <div class="bg-white p-6 py-10 rounded-xl shadow-lg text-center border-4 border-green-500 font-semibold">
-                                    <p>Apakah Anda yakin ingin menonaktifkan menu ini?</p>
+                                    <p>Apakah Anda yakin ingin menyelesaikan menu ini?</p>
                                     <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
                                         <button wire:click="$set('modalSelesai', false)"
                                             class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
