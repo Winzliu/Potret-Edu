@@ -6,7 +6,7 @@ text-sm
 @elseif(auth()->user()->userDetail->custom == 'besar')
 text-base
 @endif
-flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden rounded-lg">
+flex flex-col gap-7 md:h-[75vh] xl:h-[70vh] overflow-y-scroll scrollbar-hidden rounded-lg">
 
     {{-- notif --}}
     @if (session()->has('notif_gagal'))

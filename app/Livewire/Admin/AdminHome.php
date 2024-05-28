@@ -41,7 +41,7 @@ class AdminHome extends Component
             ->orderBy('total_orders', 'desc')
             ->get();
         
-            dd($this->mostOrdered);
+            // dd($this->mostOrdered);
     }
     
     public function render()
