@@ -1,7 +1,7 @@
 <div class="flex flex-wrap gap-4 justify-start overflow-y-scroll md:h-[75vh] xl:h-[75vh] scrollbar-hidden">
     {{-- notif --}}
     @if (session()->has('aktif_gagal'))
-    <div role="alert"
+    <div role="alert" 
         class="text-white font-semibold alert alert-error rounded-lg absolute top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -10,7 +10,7 @@
         <span>{{ session('aktif_gagal') }}</span>
     </div>
     @elseif (session()->has('aktif_berhasil'))
-    <div role="alert"
+    <div role="alert" id="aktif_berhasil"
         class="text-white font-semibold alert alert-success rounded-lg absolute top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -28,7 +28,7 @@
         <span>{{ session('nonaktif_gagal') }}</span>
     </div>
     @elseif (session()->has('nonaktif_berhasil'))
-    <div role="alert"
+    <div role="alert" id="nonaktif_berhasil"
         class="text-white font-semibold alert alert-success rounded-lg absolute top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

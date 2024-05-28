@@ -27,6 +27,10 @@ class CardMenuMakanan extends Component
         $this->menus = menu::orderBy('menu_name', 'asc')->get();
     }
 
+    public function refresh()
+    {
+        '$refresh';
+    }
     public function modal_nonaktif($id)
     {
         $this->menu_id = $id;
@@ -46,7 +50,7 @@ class CardMenuMakanan extends Component
             request()->session()->flash('nonaktif_berhasil', 'Berhasil menonaktifkan menu!');
             DB::commit();
             $this->modalNonaktif = false;
-            $this->refreshMenu();
+            // $this->refreshMenu();
         } catch (\Exception $e) {
             request()->session()->flash('nonaktif_gagal', 'Gagal menonaktifkan menu!' . $e->getMessage());
             DB::rollBack();
@@ -61,7 +65,7 @@ class CardMenuMakanan extends Component
             request()->session()->flash('aktif_berhasil', 'Berhasil mengaktifkan menu!');
             DB::commit();
             $this->modalAktif = false;
-            $this->refreshMenu();
+            // $this->refreshMenu();
         } catch (\Exception $e) {
             request()->session()->flash('aktif_gagal', 'Gagal mengaktifkan menu!' . $e->getMessage());
             DB::rollBack();
@@ -81,13 +85,16 @@ class CardMenuMakanan extends Component
         
         if ($this->search) {
             if ($this->categoryId != '0') {
-                $this->menus = menu::where('menu_category_id', $this->categoryId)->where('menu_name', 'like', '%' . $this->search . '%')->get();
+                $this->menus = menu::where('menu_category_id', $this->categoryId)->where('menu_name', 'like', '%' . $this->search . '%')
+                ->orderBy('menu_name', 'asc')->get();
             } else {
-                $this->menus = menu::where('menu_name', 'like', '%' . $this->search . '%')->get();
+                $this->menus = menu::where('menu_name', 'like', '%' . $this->search . '%')
+                ->orderBy('menu_name', 'asc')->get();
             }
         } else {
             if ($this->categoryId != '0') {
-                $this->menus = menu::where('menu_category_id', $this->categoryId)->get();
+                $this->menus = menu::where('menu_category_id', $this->categoryId)
+                ->orderBy('menu_name', 'asc')->get();
             } else {
                 $this->menus = menu::all();
             }
@@ -103,11 +110,6 @@ class CardMenuMakanan extends Component
         } else {
             $this->menus = menu::where('menu_name', 'like', '%' . $search . '%')->get();
         }
-    }
-
-    public function refresh()
-    {
-        '$refresh';
     }
 
     public function render()
