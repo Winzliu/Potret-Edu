@@ -97,7 +97,7 @@
     </div>
       {{-- MODAL POPUP NONAKTIF --}}
       @if($modalNonaktif)
-        <div class="fixed top-0 left-0 w-full z-10 h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
+        <div class="fixed top-0 left-0 w-full z-10 h-full bg-transparent flex justify-center items-center">
             <div class="bg-white p-6 py-10 rounded-xl text-center border-4 border-purpleRed font-semibold">
                 <p 
                     @if(auth()->user()->userDetail->custom == 'kecil')
@@ -118,7 +118,7 @@
       @endif
       {{-- MODAL POPUP AKTIF --}}
       @if($modalAktif)
-        <div class="fixed top-0 left-0 w-full z-10 h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
+        <div class="fixed top-0 left-0 w-full z-10 h-full bg-transparent flex justify-center items-center">
             <div class="bg-white p-6 py-10 rounded-xl text-center border-4 border-green-500 font-semibold">
                 <p 
                     @if(auth()->user()->userDetail->custom == 'kecil')

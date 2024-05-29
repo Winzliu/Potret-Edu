@@ -65,7 +65,7 @@ class CardMenuMakanan extends Component
             request()->session()->flash('aktif_berhasil', 'Berhasil mengaktifkan menu!');
             DB::commit();
             $this->modalAktif = false;
-            // $this->refreshMenu();
+            $this->refreshMenu();
         } catch (\Exception $e) {
             request()->session()->flash('aktif_gagal', 'Gagal mengaktifkan menu!' . $e->getMessage());
             DB::rollBack();
@@ -96,7 +96,7 @@ class CardMenuMakanan extends Component
                 $this->menus = menu::where('menu_category_id', $this->categoryId)
                 ->orderBy('menu_name', 'asc')->get();
             } else {
-                $this->menus = menu::all();
+                $this->menus = menu::orderBy('menu_name', 'asc')->get();
             }
         }
     }
