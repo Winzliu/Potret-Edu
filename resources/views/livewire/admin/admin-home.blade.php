@@ -5,7 +5,7 @@
         <div class="flex gap-4 bg-fourthColor px-8 py-4 rounded-lg items-center">
             <ion-icon name="restaurant" class="text-3xl p-3 bg-base-200 rounded-lg"></ion-icon>
             <div class="text-center w-20">
-                <p class="font-bold text-3xl">130</p>
+                <p class="font-bold text-3xl">{{ $totalMenu }}</p>
                 <p class="text-base font-semibold">Menu</p>
             </div>
         </div>
@@ -14,7 +14,7 @@
         <div class="flex gap-4 bg-fourthColor px-8 py-4 rounded-lg items-center">
             <ion-icon name="people" class="text-3xl p-3 bg-base-200 rounded-lg"></ion-icon>
             <div class="text-center w-20">
-                <p class="font-bold text-3xl">20</p>
+                <p class="font-bold text-3xl">{{ $totalUser }}</p>
                 <p class="text-base font-semibold">Karyawan</p>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <div class="flex gap-4 bg-fourthColor px-8 py-4 rounded-lg items-center">
             <ion-icon name="cash" class="text-3xl p-3 bg-base-200 rounded-lg"></ion-icon>
             <div class="text-center w-20">
-                <p class="font-bold text-3xl">130</p>
+                <p class="font-bold text-3xl">{{ $totalHistory }}</p>
                 <p class="text-base font-semibold">Transaksi</p>
             </div>
         </div>

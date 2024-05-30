@@ -70,9 +70,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/cashier/pesanan', CashierProgressOrder::class);
 
     Route::get('/cashier/pesanan/{pesanan}', CashierDetailOrder::class);
-
+    
     Route::get('/cashier/pesanan/edit/{pesanan}', CashierCartMenu::class);
-
+    
     Route::get('/cashier/riwayat', CashierHistory::class);
 
     Route::get('/cashier/pesanan/{pesanan}/bayar', CashierPembayaran::class);
@@ -84,6 +84,12 @@ Route::group(['middleware' => 'auth'], function () {
   // Admin
   Route::group(['middleware' => 'cekRole:admin'], function () {
     Route::get('/admin', AdminHome::class);
+
+    Route::get('/admin/menu', AdminMenu::class);
+
+    Route::get('/admin/tambah-menu', AdminMenuDetail::class);
+    
+    Route::get('/admin/edit-menu/{id_pesanan}', AdminMenuEdit::class);
 
     Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
 
@@ -101,7 +107,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::group(['middleware' => 'cekRole:kitchen'], function () {
     Route::get('/kitchen', KitchenOrder::class);
 
-    Route::get('/kitchen-order-detail', KitchenOrderDetail::class);
+    Route::get('/kitchen-pesanan/{pesanan}', KitchenOrderDetail::class);
 
     Route::get('/kitchen-menu', KitchenMenu::class);
   });

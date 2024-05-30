@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->uuid('order_detail_id')->primary();
+            $table->timestamp('menu_date');
             $table->uuid('order_id');
             $table->foreign('order_id')
                 ->references('order_id')

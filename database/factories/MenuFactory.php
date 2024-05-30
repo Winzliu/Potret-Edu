@@ -27,7 +27,8 @@ class MenuFactory extends Factory
             'menu_allergen'    => 'kacang, bawang, ayam, kuda, teh, susu, tempe, kucing',
             'menu_description' => 'nasi, ayam, tempe, kuda, timun, manisan, kucing',
             'menu_price'       => fake()->numberBetween(10000, 30000),
-            'menu_image'       => "Makanan.jpg"
+            'menu_image'       => "Makanan.jpg",
+            'menu_state'       => ['aktif', 'tidak_aktif'] [rand(0, 1)],
         ];
     }
 }

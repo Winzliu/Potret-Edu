@@ -19,9 +19,9 @@ return new class extends Migration {
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->string('table_number', 2)->nullable();
+            $table->string('table_number', 2)->notNullable();
             $table->enum('order_type', ['Dine In', 'Take Away']);
-            $table->enum('order_status', ['masak', 'saji', 'selesai']);
+            $table->enum('order_status', ['masak', 'saji', 'selesai', 'batal']);
         });
     }
 

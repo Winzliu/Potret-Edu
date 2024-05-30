@@ -6,8 +6,18 @@
     text-lg
     @endif">
     <a href="/kitchen" wire:navigate class="flex items-center gap-2 font-bold">
-        <p>
-            <- Kembali</p>
+        <svg class="
+            @if(auth()->user()->userDetail->custom == 'kecil')
+                w-4
+            @elseif(auth()->user()->userDetail->custom == 'normal')
+                w-6
+            @elseif(auth()->user()->userDetail->custom == 'besar')
+                w-8
+            @endif"
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292" />
+        </svg>        
+        <p>Kembali</p>
     </a>
 
     {{-- notif --}}
@@ -22,7 +32,7 @@
     </div>
     @elseif (session()->has('notif_berhasil'))
     <div role="alert"
-        class="alert alert-success rounded-lg absolute z-50 top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
+        class=" text-white font-semibold alert alert-success rounded-lg absolute z-50 top-10 w-auto left-1/2 -translate-x-1/2 opacity-0 animate-notif unselectable">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
