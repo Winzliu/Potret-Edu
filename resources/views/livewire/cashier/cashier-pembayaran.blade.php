@@ -89,8 +89,8 @@
                 Medan, Indonesia
                 20353.</p>
             <div class="flex justify-between mt-5">
-                <p class="font-bold">#{{ strtoupper(substr($pesanan->order_id, 0, 8)) }}</p>
                 <p class="font-bold">{{ date_format(NOW(), 'd/m/Y, H:i:s') }}</p>
+                <p class="font-bold">#{{ strtoupper(substr($pesanan->order_id, 0, 8)) }}</p>
             </div>
             <div class="flex justify-between mt-5">
                 <p class="font-bold text-pink-500">{{ $pesanan->order_type }}</p>
@@ -138,11 +138,11 @@
                     <p class="text-sm font-bold">Rp {{ number_format($total_harga * 0.1, 0, ',', '.') }}</p>
                 </div>
                 <div class="flex justify-between">
-                    <p class="text-sm font-bold">Pajak Pembayaran</p>
+                    <p class="text-sm font-bold">Pajak Pembayaran ({{ $pajak * 100 }}%)</p>
                     <p class="text-sm font-bold">Rp {{ number_format($total_harga * $pajak, 0, ',', '.') }}</p>
                 </div>
                 <div class="flex justify-between">
-                    <p class="text-sm font-bold">Total Discount</p>
+                    <p class="text-sm font-bold">Total Discount ({{ $discount * 100 }}%)</p>
                     <p class="text-sm font-bold">-Rp {{ number_format($total_harga * $discount, 0, ',', '.') }}</p>
                 </div>
                 <div class="divider"></div>
