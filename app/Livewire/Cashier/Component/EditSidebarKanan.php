@@ -107,6 +107,20 @@ class EditSidebarKanan extends Component
         $this->dispatch('refresh_notif');
     }
 
+    public function deleteOrder($id)
+    {
+        DB::beginTransaction();
+        try {
+            orderDetail::where('order_detail_id', $id)->delete();
+            DB::commit();
+            request()->session()->flash('notif_berhasil', 'Pesanan Berhasil Dihapus');
+        } catch (\Exception $e) {
+            DB::rollback();
+            request()->session()->flash('notif_gagal', 'Pesanan Gagal Dihapus');
+        }
+        $this->dispatch('refresh_notif');
+    }
+
     public function deletePopup($id)
     {
         $this->showDialog = true;
@@ -207,7 +221,7 @@ class EditSidebarKanan extends Component
         }
 
         $this->dispatch('refresh_notif_edit');
-        return redirect('/waiter/pesanan');
+        return redirect('/cashier/pesanan');
     }
 
     public function render()

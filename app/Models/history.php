@@ -23,8 +23,12 @@ class history extends Model
         'cashier_name',
         'waiter_name',
         'table_number',
+        'order_type',
         'order_status',
+        'payment_method',
         'payment_date',
-        'discount'
+        'discount',
+        'total_payment',
+        'taxes',
     ];
 }

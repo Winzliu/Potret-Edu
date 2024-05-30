@@ -1,4 +1,4 @@
-  var modal = document.getElementById('BayarButton');
+  var modal = document.getElementById('StrukButton');
   function printStruk() {
     modal.scrollTo(0,0);
     window.print();

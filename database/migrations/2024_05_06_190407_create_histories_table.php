@@ -16,8 +16,12 @@ return new class extends Migration {
             $table->string('waiter_name')->nullable();
             $table->string('table_number', 2)->nullable();
             $table->enum('order_status', ['selesai', 'batal']);
+            $table->enum('order_type', ['Dine In', 'Take Away']);
+            $table->string('payment_method')->nullable();
             $table->timestamp('payment_date')->nullable();
+            $table->integer('total_payment')->nullable();
             $table->float('discount')->nullable();
+            $table->float('taxes')->nullable();
         });
     }
 
