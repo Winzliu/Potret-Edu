@@ -128,6 +128,7 @@ class CashierSidebarKanan extends Component
                 $order_detail_id = Str::uuid();
                 orderDetail::create([
                     'order_detail_id' => $order_detail_id,
+                    'menu_date'       => NOW(),
                     'order_id'        => $order_id,
                     'menu_id'         => $cart->menu_id,
                     'quantity'        => $cart->quantity,

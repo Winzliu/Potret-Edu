@@ -230,7 +230,6 @@
         </div>
         {{-- akhir isi konten --}}
     </div>
-
     {{-- akhir sidebar kanan --}}
 
     {{-- loading --}}

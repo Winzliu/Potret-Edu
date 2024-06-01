@@ -28,7 +28,9 @@
     <div
         class="card min-w-1/4 w-[15.5rem] h-[17rem] px-4 py-4 bg-base-100 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl">
         <figure class="mb-3 cursor-pointer" onclick="my_modal_{{ $i }}.showModal()">
-            <img src="{{ asset('img/makanan.jpg') }}" alt="Shoes" class="rounded-xl h-36 w-full object-cover" />
+            <img src="{{ asset('img/makanan.jpg') }}" alt="Shoes"
+                class="rounded-xl h-36 w-full object-cover @if($menu->menu_state == 'tidak_aktif') filter grayscale @endif"
+                onclick="my_modal_{{ $i }}.showModal()" />
         </figure>
         <div class="items-center text-left">
             <h2 class="
@@ -62,13 +64,20 @@
                     @elseif(auth()->user()->userDetail->custom == 'besar')
                     text-3xl
                     @endif
-                    ">
+                    @if($menu->menu_state == 'tidak_aktif') filter grayscale cursor-not-allowed @endif
+                    " @if($menu->menu_state == 'tidak_aktif') disabled @endif>
                     +
                 </button>
             </div>
         </div>
         {{-- loading --}}
         <dialog wire:loading wire:target="addToCart" wire:loading.attr="open" class="modal">
+            <span
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg bg-mainColor"></span>
+        </dialog>
+        {{-- akhir loading --}}
+        {{-- loading --}}
+        <dialog wire:loading wire:target="addToPesanan" wire:loading.attr="open" class="modal">
             <span
                 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg bg-mainColor"></span>
         </dialog>
@@ -117,8 +126,6 @@
     </dialog>
     {{-- akhir modal 1 --}}
     {{-- akhir card 1 --}}
-
-
 
     @php
     $i++;

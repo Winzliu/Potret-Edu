@@ -25,7 +25,7 @@ class CardMenuMakanan extends Component
 
     public function mount()
     {
-        $this->menus = menu::all();
+        $this->menus = menu::orderBy('menu_state', 'asc')->get();
     }
 
     public function getMenu($categoryId)
@@ -34,15 +34,15 @@ class CardMenuMakanan extends Component
 
         if ($this->search) {
             if ($this->categoryId != '0') {
-                $this->menus = menu::where('menu_category_id', $this->categoryId)->where('menu_name', 'like', '%' . $this->search . '%')->get();
+                $this->menus = menu::where('menu_category_id', $this->categoryId)->where('menu_name', 'like', '%' . $this->search . '%')->orderBy('menu_state', 'asc')->get();
             } else {
-                $this->menus = menu::where('menu_name', 'like', '%' . $this->search . '%')->get();
+                $this->menus = menu::where('menu_name', 'like', '%' . $this->search . '%')->orderBy('menu_state', 'asc')->get();
             }
         } else {
             if ($this->categoryId != '0') {
-                $this->menus = menu::where('menu_category_id', $this->categoryId)->get();
+                $this->menus = menu::where('menu_category_id', $this->categoryId)->orderBy('menu_state', 'asc')->get();
             } else {
-                $this->menus = menu::all();
+                $this->menus = menu::orderBy('menu_state', 'asc')->get();
             }
         }
     }
@@ -73,6 +73,7 @@ class CardMenuMakanan extends Component
                 ]);
                 request()->session()->flash('notif_berhasil', "Menu berhasil ditambahkan");
                 DB::commit();
+                sleep(1);
             } catch (\Exception $e) {
                 request()->session()->flash('notif_gagal', 'Menu gagal ditambahkan');
                 DB::rollBack();
