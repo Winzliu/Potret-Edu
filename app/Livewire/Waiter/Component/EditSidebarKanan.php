@@ -80,6 +80,7 @@ class EditSidebarKanan extends Component
             $this->quantity[$uuid] = 1;
             $this->pesanan_total += 1;
         }
+        sleep(1);
     }
 
     public function getPesanan()
@@ -200,6 +201,7 @@ class EditSidebarKanan extends Component
             foreach ($this->pesananBaru as $pesanan) {
                 orderDetail::create([
                     'order_detail_id' => $pesanan['order_detail_id'],
+                    'menu_date'       => NOW(),
                     'order_id'        => $pesanan['order_id'],
                     'menu_id'         => $pesanan['menu_id'],
                     'quantity'        => $this->quantity[$pesanan['order_detail_id']],
