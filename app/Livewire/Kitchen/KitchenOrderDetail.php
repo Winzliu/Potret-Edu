@@ -42,7 +42,9 @@ class KitchenOrderDetail extends Component
     public function mount($pesanan)
     {
         $this->pesanan = order::where('order_id', $pesanan)->orderBy('date', 'asc')->first();
-        $this->orderDetails = orderDetail::where('order_id', $pesanan)->orderBy('menu_date', 'asc')->get();
+        $this->orderDetails = orderDetail::where('order_id', $pesanan)->orderBy('menu_date', 'desc')->get();
+        // dd($this->orderDetails);
+
     }
 
 
@@ -87,8 +89,9 @@ class KitchenOrderDetail extends Component
     {
         // Memuat ulang orderDetails dan mengurutkannya berdasarkan menu_date
         $this->orderDetails = OrderDetail::where('order_id', $this->pesanan->order_id)
-                                         ->orderBy('menu_date', 'asc')
+                                         ->orderBy('menu_date', 'desc')
                                          ->get();
+        dd($this->orderDetails);
     }
 
 }

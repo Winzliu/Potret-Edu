@@ -38,95 +38,19 @@
             <p class="font-bold text-xl mb-3">Menu Terlaris</p>
             {{-- Menu --}}
             <div class="h-[70vh] xl:h-[62vh] flex flex-col gap-5 overflow-y-scroll">
+                @foreach ($mostOrdered as $terlaris)
                 {{-- Menu 1 --}}
                 <div class="flex gap-3">
+                    {{-- @foreach ($historyDetail as $item) --}}
                     <img src="{{ asset('img/makanan.jpg') }}" class="mask mask-squircle w-[4.5rem] h-[4.5rem]" alt="">
-                    <div class="flex flex-col justify-between">
-                        <p class="font-bold text-lg">Nasi Goreng Telur Putih</p>
-                        <p class="font-semibold">Rp 23.000</p>
-                        <p class="text-xs">Dipesan 40 kali bulan ini</p>
+                    {{-- @endforeach --}}
+                    <div class="flex flex-col justify-center">
+                        <p class="font-bold text-lg">{{ $terlaris->menu_name }}</p>                        
+                        {{-- <p class="font-semibold">Rp {{ number_format($terlaris->price,0, ',', '.') }} </p> --}}
+                        <p class="text-xs">Dipesan {{ $terlaris->total_orders }} kali bulan ini</p>
                     </div>
                 </div>
-                {{-- Akhir Menu 1 --}}
-                {{-- Menu 1 --}}
-                <div class="flex gap-3">
-                    <img src="{{ asset('img/makanan.jpg') }}" class="mask mask-squircle w-[4.5rem] h-[4.5rem]" alt="">
-                    <div class="flex flex-col justify-between">
-                        <p class="font-bold text-lg">Nasi Goreng Telur Putih</p>
-                        <p class="font-semibold">Rp 23.000</p>
-                        <p class="text-xs">Dipesan 40 kali bulan ini</p>
-                    </div>
-                </div>
-                {{-- Akhir Menu 1 --}}
-                {{-- Menu 1 --}}
-                <div class="flex gap-3">
-                    <img src="{{ asset('img/makanan.jpg') }}" class="mask mask-squircle w-[4.5rem] h-[4.5rem]" alt="">
-                    <div class="flex flex-col justify-between">
-                        <p class="font-bold text-lg">Nasi Goreng Telur Putih</p>
-                        <p class="font-semibold">Rp 23.000</p>
-                        <p class="text-xs">Dipesan 40 kali bulan ini</p>
-                    </div>
-                </div>
-                {{-- Akhir Menu 1 --}}
-                {{-- Menu 1 --}}
-                <div class="flex gap-3">
-                    <img src="{{ asset('img/makanan.jpg') }}" class="mask mask-squircle w-[4.5rem] h-[4.5rem]" alt="">
-                    <div class="flex flex-col justify-between">
-                        <p class="font-bold text-lg">Nasi Goreng Telur Putih</p>
-                        <p class="font-semibold">Rp 23.000</p>
-                        <p class="text-xs">Dipesan 40 kali bulan ini</p>
-                    </div>
-                </div>
-                {{-- Akhir Menu 1 --}}
-                {{-- Menu 1 --}}
-                <div class="flex gap-3">
-                    <img src="{{ asset('img/makanan.jpg') }}" class="mask mask-squircle w-[4.5rem] h-[4.5rem]" alt="">
-                    <div class="flex flex-col justify-between">
-                        <p class="font-bold text-lg">Nasi Goreng Telur Putih</p>
-                        <p class="font-semibold">Rp 23.000</p>
-                        <p class="text-xs">Dipesan 40 kali bulan ini</p>
-                    </div>
-                </div>
-                {{-- Akhir Menu 1 --}}
-                {{-- Menu 1 --}}
-                <div class="flex gap-3">
-                    <img src="{{ asset('img/makanan.jpg') }}" class="mask mask-squircle w-[4.5rem] h-[4.5rem]" alt="">
-                    <div class="flex flex-col justify-between">
-                        <p class="font-bold text-lg">Nasi Goreng Telur Putih</p>
-                        <p class="font-semibold">Rp 23.000</p>
-                        <p class="text-xs">Dipesan 40 kali bulan ini</p>
-                    </div>
-                </div>
-                {{-- Akhir Menu 1 --}}
-                {{-- Menu 1 --}}
-                <div class="flex gap-3">
-                    <img src="{{ asset('img/makanan.jpg') }}" class="mask mask-squircle w-[4.5rem] h-[4.5rem]" alt="">
-                    <div class="flex flex-col justify-between">
-                        <p class="font-bold text-lg">Nasi Goreng Telur Putih</p>
-                        <p class="font-semibold">Rp 23.000</p>
-                        <p class="text-xs">Dipesan 40 kali bulan ini</p>
-                    </div>
-                </div>
-                {{-- Akhir Menu 1 --}}
-                {{-- Menu 1 --}}
-                <div class="flex gap-3">
-                    <img src="{{ asset('img/makanan.jpg') }}" class="mask mask-squircle w-[4.5rem] h-[4.5rem]" alt="">
-                    <div class="flex flex-col justify-between">
-                        <p class="font-bold text-lg">Nasi Goreng Telur Putih</p>
-                        <p class="font-semibold">Rp 23.000</p>
-                        <p class="text-xs">Dipesan 40 kali bulan ini</p>
-                    </div>
-                </div>
-                {{-- Akhir Menu 1 --}}
-                {{-- Menu 1 --}}
-                <div class="flex gap-3">
-                    <img src="{{ asset('img/makanan.jpg') }}" class="mask mask-squircle w-[4.5rem] h-[4.5rem]" alt="">
-                    <div class="flex flex-col justify-between">
-                        <p class="font-bold text-lg">Nasi Goreng Telur Putih</p>
-                        <p class="font-semibold">Rp 23.000</p>
-                        <p class="text-xs">Dipesan 40 kali bulan ini</p>
-                    </div>
-                </div>
+                @endforeach
                 {{-- Akhir Menu 1 --}}
             </div>
             {{-- Akhir Menu --}}
@@ -142,162 +66,31 @@
             </div>
             {{-- Pesanan --}}
             <div class="h-[70vh] xl:h-[62vh] flex flex-col gap-5 overflow-y-scroll">
+                @foreach ($histories as $history)                    
                 {{-- Pesanan 1 --}}
                 <div class="flex justify-between pe-5 items-center">
                     <div class="flex gap-5 items-center">
                         <ion-icon name="storefront" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
                         </ion-icon>
                         <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
+                                @php
+                                    $j=0;
+                                    $harga=0;
+                                @endphp
+                            @foreach ($history->historyDetail as $pesanan)
+                                @php
+                                    $j++;
+                                    $harga = $pesanan->price;
+                                @endphp
+                            @endforeach
+                            <p class="font-bold ">Meja {{ $pesanan->table_number }} ({{ $j }} Pesanan)</p>
+                            <p class="text-sm">{{ date('d F Y, H:i', strtotime($history->payment_date)) }}</p>
                         </div>
                     </div>
-                    <p class="font-semibold">Rp 23.000</p>
+                    <p class="font-semibold">Rp {{ number_format($harga,0, ',', '.') }} </p>
                 </div>
                 {{-- Akhir Pesanan 1 --}}
-                {{-- Pesanan 2 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="bag-handle" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 2 --}}
-                {{-- Pesanan 1 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="storefront" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 1 --}}
-                {{-- Pesanan 2 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="bag-handle" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 2 --}}
-                {{-- Pesanan 1 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="storefront" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 1 --}}
-                {{-- Pesanan 2 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="bag-handle" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 2 --}}
-                {{-- Pesanan 1 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="storefront" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 1 --}}
-                {{-- Pesanan 2 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="bag-handle" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 2 --}}
-                {{-- Pesanan 1 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="storefront" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 1 --}}
-                {{-- Pesanan 2 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="bag-handle" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 2 --}}
-                {{-- Pesanan 1 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="storefront" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 1 --}}
-                {{-- Pesanan 2 --}}
-                <div class="flex justify-between pe-5 items-center">
-                    <div class="flex gap-5 items-center">
-                        <ion-icon name="bag-handle" class="bg-tertiaryColor p-3 text-2xl rounded-lg text-white">
-                        </ion-icon>
-                        <div class="flex flex-col justify-between">
-                            <p class="font-bold ">#12345678</p>
-                            <p class="text-sm">Minggu, 17 Nov 2024 13:59</p>
-                        </div>
-                    </div>
-                    <p class="font-semibold">Rp 23.000</p>
-                </div>
-                {{-- Akhir Pesanan 2 --}}
+                @endforeach
             </div>
             {{-- Akhir Pesanan --}}
         </div>
