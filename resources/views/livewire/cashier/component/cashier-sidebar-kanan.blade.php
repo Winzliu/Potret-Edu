@@ -80,7 +80,8 @@
                     <div class="flex">
                         <div class="w-10/12">
                             <div class="flex">
-                                <figure><img src="img/makanan.jpg" class="mask mask-squircle w-14 me-4" alt="Movie" />
+                                <figure><img src="{{ asset('img/' . $cart->menu->menu_image) }}"
+                                        class="mask mask-squircle w-14 me-4" alt="Movie" />
                                 </figure>
                                 <div class="self-center w-10/12">
                                     <p class="font-semibold mb-2 @if(auth()->user()->userDetail->custom == 'kecil')
