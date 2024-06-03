@@ -11,15 +11,15 @@
         <div class="flex flex-col justify-center items-center ">
 
         {{-- FORM --}}
-        <form action="" method="post" enctype="multipart/form-data">
+        <form wire:submit.prevent="modal_tambah" enctype="multipart/form-data">
         @csrf
             {{-- GAMBAR --}}
-            <label for="gambar" class="cursor-pointer relative h-[200px] shadow-[0_0_10px_0px_rgba(0,0,0,0.3)] rounded-xl flex items-center justify-center">
+            <label id="label_gambar" for="gambar" class="cursor-pointer relative h-[200px] shadow-[0_0_10px_0px_rgba(0,0,0,0.3)] rounded-xl flex items-center justify-center">
                 <i id="placeholderIcon"
                     class='icon-[icon-park-outline--add-picture] text-gray-400   
-                    text-9xl text-center shadow-[0_0_15px_0_rgba(0,0,0,0.5)] rounded-md'></i>
+                    text-9xl text-center rounded-md'></i>
                 <img id="previewImage"
-                    class="object-contain w-3/5 h-[200px] hadow-xl hidden"
+                    class="object-contain h-[200px] hidden"
                     src="" alt="Preview Image">
                 <input type="file" id="gambar" name="gambar" class="hidden" accept="image/*"
                     onchange="previewFile()">
@@ -74,36 +74,22 @@
             </div>
         </div>
         <div class="mx-5 flex justify-end my-4">
- <button type="button" onclick="modal_submit.showModal()" 
-            class="bg-greenConfirm px-8 py-1 rounded-md text-white">Simpan</button>
-            <dialog id="modal_submit" class="modal">
-                    <div class="modal-box bg-background">
-                    <div class="flex flex-col bg-background items-center">
-                        {{-- <div class="border-4 border-greenConfirm p-8 rounded-full">
-                            <i class='icon-[ic--outline-question-mark] text-6xl text-greenConfirm'></i>
-                        </div> --}}
-                        <h3 class="font-dalfitra text-[30px] md:text-[50px] max-sm:text-[30px]">Simpan?</h3>
-                        <p class="font-poppins text-[18px] md:text-[20px] max-sm:text-[18px] text-center mb-5">
-                            Apakah anda yakin ingin menambah <br>menu baru ini?</p>
-                        <div class="flex flex-row-reverse justify-center gap-4 w-full">
-                            <button type="submit"
-                                class="flex justify-center items-center w-full text-xl font-poppins bg-greenConfirm text-center text-white rounded-md h-12">
-                                SIMPAN
-                            </button>
-        </form>
-                        <form method="dialog" class="w-full">
-                            <button
-                                class="w-full text-[20px] font-poppins h-12 rounded-md  bg-red-500 text-white text-center">
-                                BATAL
-                            </button>
-                        </form>
+            <button type="button" wire:click="modal_tambah" 
+                class="bg-greenConfirm px-8 py-1 rounded-md text-white">Simpan</button>
+            {{-- MODAL TAMBAH  --}}
+                @if($modalTambah)
+                <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                    <div class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-greenConfirm font-semibold">
+                        <p>Apakah Anda yakin ingin menghapus menu ini?</p>
+                        <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                            <button wire:click="$set('modalTambah', false)"
+                                class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
+                            <button wire:click="switchKosong" class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
                         </div>
                     </div>
                 </div>
-                <form method="dialog" class="modal-backdrop">
-                    <button>close</button>
-                </form>
-            </dialog>
+                @endif
+            {{-- AKHIR MODAL HAPUS --}}
         </div>
     </form>
     </div>
