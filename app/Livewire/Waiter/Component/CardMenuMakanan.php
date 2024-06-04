@@ -65,7 +65,7 @@ class CardMenuMakanan extends Component
         } else {
             DB::beginTransaction();
             try {
-                cart::create([
+                cart::crate([
                     'cart_id'  => Str::uuid(),
                     'user_id'  => auth()->user()->user_id,
                     'menu_id'  => $id,
