@@ -41,8 +41,14 @@ class KitchenOrderDetail extends Component
     
     public function mount($pesanan)
     {
-        $this->pesanan = order::where('order_id', $pesanan)->orderBy('date', 'asc')->first();
-        $this->orderDetails = orderDetail::where('order_id', $pesanan)->orderBy('menu_date', 'asc')->get();
+        $this->pesanan = order::where('order_id', $pesanan)->first();
+        $this->orderDetails = orderDetail::where('order_id', $pesanan)->orderByRaw("CASE 
+        WHEN menu_status = 'masak' THEN 1 
+        WHEN menu_status = 'kosong' THEN 2 
+        WHEN menu_status = 'selesai' THEN 3 
+        ELSE 4 END")->get();
+        // dd($this->orderDetails);
+
     }
 
 
@@ -87,8 +93,12 @@ class KitchenOrderDetail extends Component
     {
         // Memuat ulang orderDetails dan mengurutkannya berdasarkan menu_date
         $this->orderDetails = OrderDetail::where('order_id', $this->pesanan->order_id)
-                                         ->orderBy('menu_date', 'asc')
-                                         ->get();
+                                         ->orderByRaw("CASE 
+                                         WHEN menu_status = 'masak' THEN 1 
+                                         WHEN menu_status = 'kosong' THEN 2 
+                                         WHEN menu_status = 'selesai' THEN 3 
+                                         ELSE 4 END")->get();
+        // dd($this->orderDetails);
     }
 
 }

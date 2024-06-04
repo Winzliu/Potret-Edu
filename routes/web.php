@@ -93,12 +93,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
 
-    Route::get('/admin/menu', AdminMenu::class);
-
-    Route::get('/admin/tambah-menu', AdminMenuDetail::class);
-
-    Route::get('/admin/edit-menu/{id_pesanan}', AdminMenuEdit::class);
-
     Route::get('/admin/karyawan', AdminKaryawan::class);
   });
   // Akhir Admin

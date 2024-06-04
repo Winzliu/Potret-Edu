@@ -42,7 +42,7 @@ class Pesanan extends Component
     {
         DB::beginTransaction();
         try {
-            order::where('order_id', $id)->update(['order_status' => 'saji']);
+            order::where('order_id', $id)->update(['order_status' => 'selesai']);
             request()->session()->flash('notif_berhasil', 'Pesanan Siap Disajikan!');
             $this->dispatch('getPesanansKitchen', [$this->status, $this->type, $this->search]);
             $this->dispatch('updatePesananKitchen');

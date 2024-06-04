@@ -6,5 +6,4 @@
     @livewire('kitchen.component.kategori-makanan', ['active' => $active, 'categories' => $categories])
     
     @livewire('kitchen.component.card-menu-makanan', ['categoryId' => $category_id])
-
 </div>

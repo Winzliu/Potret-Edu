@@ -50,7 +50,7 @@ class CardMenuMakanan extends Component
             request()->session()->flash('nonaktif_berhasil', 'Berhasil menonaktifkan menu!');
             DB::commit();
             $this->modalNonaktif = false;
-            // $this->refreshMenu();
+            $this->refreshMenu();
         } catch (\Exception $e) {
             request()->session()->flash('nonaktif_gagal', 'Gagal menonaktifkan menu!' . $e->getMessage());
             DB::rollBack();

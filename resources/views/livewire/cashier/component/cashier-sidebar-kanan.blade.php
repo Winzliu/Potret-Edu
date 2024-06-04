@@ -206,7 +206,7 @@
                 </label>
                 <div class="flex justify-between mb-5">
                     <input wire:change="changeService" wire:model="input_service" type="radio" name="service"
-                        id="DineIn" value="Dine In" class="peer/DineIn hidden" disabled>
+                        id="DineIn" value="Dine In" data-tip="Pesanan Dine-In hanya bisa dibuat pelayan!" class="tooltip peer/DineIn hidden" disabled>
                     <label for="DineIn"
                         class="text-center py-2  cursor-not-allowed rounded-lg bg-base-300 w-[48%] shadow-xl  peer-checked/DineIn:bg-mainColor">Dine
                         In</label>
