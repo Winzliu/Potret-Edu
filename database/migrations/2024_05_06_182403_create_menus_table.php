@@ -19,7 +19,7 @@ return new class extends Migration {
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('menu_name')->notNullable();
-            $table->string('menu_allergen');
+            $table->string('menu_allergen')->nullable();
             $table->string('menu_description');
             $table->string('menu_price')->nullable();
             $table->string('menu_image')->nullable();
