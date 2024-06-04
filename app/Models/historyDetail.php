@@ -20,6 +20,7 @@ class historyDetail extends Model
 
     protected $fillable = [
         'history_detail_id',
+        'menu_date',
         'history_id',
         'menu_name',
         'menu_notes',

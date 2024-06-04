@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Livewire\Admin\DetailHistory;
 use App\Livewire\Cashier\CashierCartMenu;
 use App\Livewire\Cashier\CashierDetailHistory;
 use App\Livewire\Cashier\CashierPembayaran;
@@ -92,6 +93,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/edit-menu/{id_pesanan}', AdminMenuEdit::class);
 
     Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
+
+    Route::get('/admin/riwayat/{history}', DetailHistory::class);
 
     Route::get('/admin/karyawan', AdminKaryawan::class);
   });
