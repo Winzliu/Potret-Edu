@@ -60,6 +60,7 @@ class CashierPembayaran extends Component
             foreach ($this->pesanan->orderDetail as $order) {
                 historyDetail::create([
                     'history_detail_id' => str()->uuid(),
+                    'menu_date'         => NOW(),
                     'history_id'        => $history_id,
                     'menu_name'         => $order->menu->menu_name,
                     'menu_notes'        => $order->notes,
@@ -76,7 +77,8 @@ class CashierPembayaran extends Component
             request()->session()->flash('notif_berhasil', 'Pesanan Berhasil Dibayar');
         } catch (\Exception $e) {
             DB::rollBack();
-            request()->session()->flash('notif_gagal', 'Pesanan Gagal Dibayar');
+            // request()->session()->flash('notif_gagal', 'Pesanan Gagal Dibayar');
+            throw $e;
         }
 
         return redirect('/cashier/pesanan');

@@ -31,7 +31,17 @@
                             class="whitespace-nowrap text-center font-bold @if($history->order_status == 'selesai') text-green-500 @else text-pink-500 @endif">
                             {{ strtoupper($history->order_status) }}
                         </td>
-                        <td class="whitespace-nowrap text-center">Rp {{ number_format($history->total_payment,0,
+                        @php
+                        $total_price = 0;
+                        @endphp
+                        @foreach ($history->historyDetail as $detail)
+                        @php
+                        $total_price += $detail->price * $detail->quantity
+                        @endphp
+                        @endforeach
+                        <td class="whitespace-nowrap text-center">Rp {{ number_format($total_price + ($total_price *
+                            0.1) + ($total_price *
+                            $history->taxes) - ($total_price * $history->discount),0,
                             ',','.')
                             }}</td>
                         <td class="whitespace-nowrap text-center">{{ $history->table_number }}</td>
