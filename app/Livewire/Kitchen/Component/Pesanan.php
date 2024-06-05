@@ -14,7 +14,7 @@ class Pesanan extends Component
     public $type;
     public $search;
 
-    protected $listeners = ['getPesanansKitchen' => 'getPesanansKitchen'];
+    protected $listeners = ['getPesanansKitchen' => 'getPesanansKitchen', 'refreshPesanan' => 'refreshPesanan'];
 
     public function mount()
     {
@@ -47,13 +47,11 @@ class Pesanan extends Component
             $this->dispatch('getPesanansKitchen', [$this->status, $this->type, $this->search]);
             $this->dispatch('updatePesananKitchen');
             DB::commit();
-            $this->refreshPesanan();
         } catch (\Exception $e) {
             request()->session()->flash('notif_gagal', 'Gagal Menyelesaikan Pesanan');
             DB::rollBack();
-            $this->refreshPesanan();
-
         }
+        $this->dispatch('refreshPesanan')->self();
     }
 
     public function render()

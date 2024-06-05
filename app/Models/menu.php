@@ -11,7 +11,7 @@ class menu extends Model
 
     protected $primaryKey = 'menu_id';
     public $incrementing = false;
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function cart()
     {
@@ -35,6 +35,8 @@ class menu extends Model
         'menu_allergen',
         'menu_description',
         'menu_price',
-        'menu_image'
+        'menu_image',
+        'created_at',
+        'updated_at',
     ];
 }

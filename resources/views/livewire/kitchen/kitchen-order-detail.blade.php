@@ -77,8 +77,8 @@ text-lg mt-10
     </div> --}}
     <div class="flex flex-col justify-center gap-4">
         <div class="flex text-center">
-            <p class="font-semibold text-purpleRed">{{ $pesanan->user->role }}: &nbsp;</p>
-            <p class="font-medium">{{ $pesanan->user->username }}</p>
+            <p class="font-semibold text-purpleRed">Waiter: &nbsp;</p>
+            <p class="font-medium">{{ $pesanan->user->userDetail->name }}</p>
         </div>
         <div class="flex text-center">
             <p class="font-semibold text-purpleRed">Progress Pesanan:&nbsp;</p>
@@ -129,7 +129,7 @@ text-lg mt-10
                             @if($menu->menu_status == 'masak' && $menu->status == 'baru')
                                 <i class="text-purpleRed text-sm ml-12 font-medium line-clamp-2">Catatan: {{ $menu->notes }}</i>
                             @elseif($menu->menu_status == 'masak' && $menu->status == 'tambahan')
-                                <i class="text-purpleRed text-sm ml-12 font-medium line-clamp-2"><span class="text-greenConfirm">Catatan: </span>{{ $menu->notes }}</i>
+                                <i class="text-purpleRed text-sm ml-12 font-medium line-clamp-2"><span class="text-green-500">Catatan: </span>{{ $menu->notes }}</i>
                             @else
                                 <i class="text-gray-500 text-sm ml-12 font-normal line-clamp-2">Catatan: {{ $menu->notes }}</i>
                             @endif
@@ -162,13 +162,13 @@ text-lg mt-10
 
                         {{-- BUTTON SELESAI --}}
                         <button wire:click="modal_selesai('{{ $menu->order_detail_id }}')"  
-                            class="w-1/2 flex justify-center items-center rounded-md py-3 bg-greenConfirm">
+                            class="w-1/2 flex justify-center items-center rounded-md py-3 bg-green-500">
                             <span class="icon-[el--ok] mx-5 text-white"></span>                        
                         </button>
 
                         {{-- MODAL POPUP SELESAI --}}
                             @if($modalSelesai)
-                            <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
+                            <div class="fixed z-0 top-0 left-0 w-full h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
                                 <div class="bg-white p-6 py-10 rounded-xl shadow-lg text-center border-4 border-green-500 font-semibold">
                                     <p>Apakah Anda yakin ingin menyelesaikan menu ini?</p>
                                     <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
@@ -192,7 +192,7 @@ text-lg mt-10
                                                 Tidak
                                             </button>
                                           </form>
-                                        <button wire:click="switchSelesai('{{ $menu->order_detail_id }}')" class="bg-greenConfirm text-white px-12 py-2 rounded-md mr-2">Ya</button>
+                                        <button wire:click="switchSelesai('{{ $menu->order_detail_id }}')" class="bg-green-500 text-white px-12 py-2 rounded-md mr-2">Ya</button>
                                     </div>
                             </div>
                             <form method="dialog" class="modal-backdrop">
@@ -211,7 +211,7 @@ text-lg mt-10
                                                 Tidak
                                             </button>
                                           </form>
-                                        <button wire:click="switchKosong('{{ $menu->order_detail_id }}')" class="bg-greenConfirm text-white px-12 py-2 rounded-md mr-2">Ya</button>
+                                        <button wire:click="switchKosong('{{ $menu->order_detail_id }}')" class="bg-green-500 text-white px-12 py-2 rounded-md mr-2">Ya</button>
                                     </div>
                             </div>
                             <form method="dialog" class="modal-backdrop">
@@ -225,8 +225,8 @@ text-lg mt-10
                         </div>
                         
                         @elseif($menu->menu_status == 'selesai')
-                        <div class="rounded-md py-1  w-full bg-white border-2 border-greenConfirm">
-                            <p class="text-greenConfirm font-semibold text-center">
+                        <div class="rounded-md py-1  w-full bg-white border-2 border-green-500">
+                            <p class="text-green-500 font-semibold text-center">
                                 Selesai
                             </p>
                         </div>

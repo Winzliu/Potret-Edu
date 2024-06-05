@@ -6,7 +6,7 @@ text-sm
 @elseif(auth()->user()->userDetail->custom == 'besar')
 text-base
 @endif
-flex flex-col gap-7 md:h-[75vh] xl:h-[70vh] overflow-y-scroll scrollbar-hidden rounded-lg">
+flex flex-col gap-7 md:h-[75vh] xl:h-[70vh] overflow-y-scroll overflow-x-hidden scrollbar-hidden rounded-lg">
 
     {{-- notif --}}
     @if (session()->has('notif_gagal'))
@@ -43,15 +43,13 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[70vh] overflow-y-scroll scrollbar-hidden r
                 <p class="font-semibold leading-5">Pesanan Selesai: {{ $pesanan->orderDetail->where('menu_status',
                     'selesai')->count() }}/{{ $pesanan->orderDetail->count() }}</p>
             </div>
-            <p class="font-semibold">{{ $pesanan->user->role }}: {{ $pesanan->user->username }}</p>
+            <p class="font-semibold">Waiter: {{ $pesanan->user->userDetail->name }}</p>
         </div>
         {{-- Menu --}}
         <div class="flex justify-left gap-10 overflow-x-scroll scrollbar-hidden pt-4 w-full mt-4">
             @php
             $notes = 'Tidak Ada';
             @endphp
-
-
             @foreach ($pesanan->orderDetail as $menu)
             {{-- Menu 1 --}}
             <div class="flex flex-col gap-1 items-center">
@@ -117,7 +115,7 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[70vh] overflow-y-scroll scrollbar-hidden r
                     $count = 0;
                 @endphp
                 @foreach ($pesanan->orderDetail as $menu)
-                    @if ($menu->menu_status == 'masak')
+                    @if ($menu->menu_status == 'masak' || $menu->menu_status == 'kosong')
                         @php
                             $count++;
                         @endphp
@@ -128,7 +126,7 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[70vh] overflow-y-scroll scrollbar-hidden r
                 @if ($pesanan->order_status == 'masak')
                     @if ($count > 0)   
                     {{-- Pesanan belum siap --}}
-                    <button data-tip="Semua menu belum selesai!"
+                    <button data-tip="Semua menu belum selesai/kosong"
                         class="tooltip px-7 py-2 text-white bg-slate-400 hover:bg-slate-500 
                         transition-all duration-300 rounded-lg font-bold">Selesai
                     </button>

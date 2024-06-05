@@ -77,7 +77,7 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="harga_menu" class="mx-5 font-semibold">Harga Menu</label>
-                    <input autocomplete="off" type="text" wire:model.live.debounce.150ms="menu_price" 
+                    <input autocomplete="off" type="number" wire:model.live.debounce.150ms="menu_price" 
                     class="rounded-lg mx-5" name="menu_price" placeholder="Masukkan Harga">
                     @error('menu_price')
                     <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
@@ -89,20 +89,25 @@
 
             {{-- ALERGEN --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="alergen_menu" class="mx-5 font-semibold">Alergen</label>
+                <label for="alergen_menu" class="mx-5 font-semibold">Alergen <i class="font-medium text-slate-500">*Gunakan format koma. Cth: Udang, Susu</i></label>
                 <input  autocomplete="off" type="text" wire:model.live.debounce.300ms="menu_allergen"class="rounded-lg mx-5" name="menu_allergen" placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
+                @error('menu_allergen')
+                <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
+                    *{{ $message }}
+                </i>
+                @enderror
             </div>
             {{-- WYSWYG Deskripsi --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="menu_description" class="mx-5 font-semibold">Bahan Menu</label>
+                <label for="menu_description" class="mx-5 font-semibold">Bahan Menu <i class="font-medium text-slate-500">*Gunakan format koma. Cth: Nasi, 3 Butir Bakso</i></label>
                 <div class="mx-5">
                     <input wire:model.live.debounce.300ms="menu_description"
                     autocomplete="off" class="w-full rounded-md p-2 border border-black focus:outline-none focus:border-primaryColor"
-                        id="menu_description" name="menu_description" placeholder="Masukkan Deskripsi"/>
+                        id="menu_description" name="menu_description" placeholder="Masukkan Bahan Menu"/>
                     @error('menu_description')
-                    <p class="text-red-500 mt-0 mb-0 font-semibold">
-                        *({{ $message }})
-                    </p>
+                    <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
+                        *{{ $message }}
+                    </i>
                     @enderror
                 </div>
             </div>
@@ -126,6 +131,13 @@
             {{-- AKHIR MODAL TAMBAH --}}
         </div>
     </div>
+    {{-- loading --}}
+    <dialog wire:loading wire:target="buatMenu" wire:loading.attr="open"
+        class="modal bg-black/30">
+        <span
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
+    </dialog>
+        {{-- akhir loading --}}
     {{-- <style>
         .tox-tinymce {
         border: 1px solid #000000; /* Warna hitam */
