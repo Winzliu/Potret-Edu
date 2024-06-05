@@ -22,8 +22,8 @@
     {{-- AKHIR ALERT HAPUS --}}
     <div class="flex justify-between items-start pb-5">
         <h1 class="text-2xl font-bold">Menu</h1>
-        <a href="/admin/tambah-menu" wire:navigate
-        class="bg-purpleRed hover:bg-red-700 px-4 py-1 flex rounded-md text-white items-center justify-center">
+        <a href="/admin/tambah-menu" wire:navigate data-tip="Tambah menu baru"
+        class="tooltip tooltip-bottom bg-purpleRed hover:bg-red-700 px-4 py-1 flex rounded-md text-white items-center justify-center">
             <i class="icon-[ic--round-add] text-2xl font-mediumd text-white px-4"></i>
             <p class="font-medium pt-[2px]">Tambah Menu</p>
         </a>
@@ -35,9 +35,10 @@
                 <thead>
                     <tr class="text-base text-black bg-fourthColor">
                         <th scope="col" class="px-6 py-3 text-center cursor-default">No</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Nama</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Gambar</th>
+                        <th scope="col" class="px-10 py-3 text-center cursor-default">Nama</th>
+                        <th scope="col" class="py-3 text-center cursor-default">Gambar</th>
                         <th scope="col" class="px-6 py-3 text-center cursor-default">Harga</th>
+                        <th scope="col" class="px-6 py-3 text-center cursor-default">Alergen</th>
                         <th scope="col" class="px-6 py-3 text-center cursor-default">Deskripsi</th>
                         <th scope="col" class="px-6 py-3 text-center cursor-default">Aksi</th>
                     </tr>
@@ -45,23 +46,24 @@
                 <tbody>
                     @foreach($menus as $menu)
                     <!-- row 1 -->
-                    <tr class="hover:bg-fourth  Color transition-all duration-300 even:bg-slate-200">
+                    <tr class="hover:bg-fourthColor/40  Color transition-all duration-300 even:bg-slate-200">
                         <th class="whitespace-nowrap text-center cursor-default">{{ ($menus->currentPage() - 1) *
                             $menus->perPage() + $loop->iteration }}</th>
-                        <th class="whitespace-nowrap text-center cursor-default">{{ $menu->menu_name }}</th>
-                        <th class="whitespace-nowrap text-center cursor-default flex justify-center">
-                            <img src="{{ asset('img/Makanan.jpg') }}" alt='menu' class="w-7 rounded-full">
+                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate">{{ $menu->menu_name }}</th>
+                        <th class=" whitespace-nowrap text-center cursor-default flex justify-center">
+                            <img src="{{ asset('storage/menu-images/' . $menu->menu_image) }}" alt='menu' class="w-7 rounded-full">
                         </th>
                         <td class="whitespace-nowrap text-center cursor-default">Rp{{number_format($menu->menu_price, 0, ',', '.')}}</td>
-                        <td class="whitespace-nowrap text-center cursor-default">{{ $menu->menu_description}}</td>
+                        <td class="max-w-10 whitespace-nowrap text-center cursor-default truncate">{{ $menu->menu_allergen}}</td>
+                        <td class="max-w-10 whitespace-nowrap text-center cursor-default truncate">{{ $menu->menu_description}}</td>
                         <td class="whitespace-nowrap ">
                             <div class="text-center flex justify-center gap-2">
-                                <a href="/admin/edit-menu/{{ $menu->menu_id }}" wire-navigate
-                                    class="bg-mainColor hover:bg-yellow-500 flex items-center justify-center px-2 rounded-md transition-all duration-300 ">
+                                <a href="/admin/edit-menu/{{ $menu->menu_id }}" wire-navigate data-tip="Edit Menu"
+                                    class="tooltip bg-mainColor hover:bg-yellow-500 flex items-center justify-center px-3 py-2 rounded-md transition-all duration-300 ">
                                     <i class="icon-[tabler--edit] rounded-md text-white text-xl">H</i>
                                 </a>
-                                    <button wire:click="modal_hapus('{{ $menu->menu_id }}')"
-                                        class="bg-red-500 flex items-center justify-center px-2 h-full hover:bg-red-700 rounded-md transition-all duration-300">
+                                    <button wire:click="modal_hapus('{{ $menu->menu_id }}')" data-tip="Hapus Menu"
+                                        class="tooltip bg-red-500 flex items-center justify-center px-3 py-2 h-full hover:bg-red-700 rounded-md transition-all duration-300">
                                         <i class="icon-[typcn--trash] text-white text-xl"></i>
                                     </button>
                             </div>
@@ -91,14 +93,4 @@
         {{ $menus->links('livewire.admin.component.admin-pagination-link') }}
     </div>
     {{-- akhir pagination --}}
-
-    {{-- <script>
-        document.addEventListener('livewire:init', () => {
-            Livewire.on('refresh_notif', (event) => {
-                setTimeout(() => {
-                    Livewire.dispatch('refresh');
-                }, 750);
-            });
-        });
-    </script> --}}
 </div>

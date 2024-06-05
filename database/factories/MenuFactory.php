@@ -29,6 +29,7 @@ class MenuFactory extends Factory
             'menu_price'       => fake()->numberBetween(10000, 30000),
             'menu_image'       => "Makanan.jpg",
             'menu_state'       => ['aktif', 'tidak_aktif'] [rand(0, 1)],
+            'created_at'       => now(),
         ];
     }
 }
