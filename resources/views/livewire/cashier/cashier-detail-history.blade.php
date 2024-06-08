@@ -223,9 +223,11 @@ text-lg mt-10
         {{-- bagian bawah --}}
         <div class="mb-10 flex gap-5 justify-end w-11/12">
             {{-- button print --}}
+            @if ($history->status == 'selesai')
             <button
                 class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-black border-2 border-black transition-all duration-300 font-bold"
                 onclick="StrukButton.showModal()">Struk</button>
+            @endif
             <dialog id="StrukButton" class="modal print">
                 <div class="modal-box py-10 px-10 xl:max-w-xl max-w-2xl scrollbar-hidden">
                     <form method="dialog" class="noprint">
