@@ -21,7 +21,7 @@ class CardMenuMakanan extends Component
     public $menu_id;
 
     protected $listeners = ['getMenuKitchen' => 'getMenuKitchen', 'searchMenuKitchen' => 'searchMenuKitchen', 'refresh' => 'refresh'];
-    
+
     public function mount()
     {
         $this->menus = menu::orderBy('menu_name', 'asc')->get();
@@ -34,12 +34,12 @@ class CardMenuMakanan extends Component
     public function modal_nonaktif($id)
     {
         $this->menu_id = $id;
-        $this->modalNonaktif = true;  
+        $this->modalNonaktif = true;
     }
     public function modal_aktif($id)
     {
         $this->menu_id = $id;
-        $this->modalAktif = true;  
+        $this->modalAktif = true;
     }
 
     public function nonaktif()
@@ -82,19 +82,19 @@ class CardMenuMakanan extends Component
     public function getMenuKitchen($categoryId)
     {
         $this->categoryId = $categoryId;
-        
+
         if ($this->search) {
             if ($this->categoryId != '0') {
                 $this->menus = menu::where('menu_category_id', $this->categoryId)->where('menu_name', 'like', '%' . $this->search . '%')
-                ->orderBy('menu_name', 'asc')->get();
+                    ->orderBy('menu_name', 'asc')->get();
             } else {
                 $this->menus = menu::where('menu_name', 'like', '%' . $this->search . '%')
-                ->orderBy('menu_name', 'asc')->get();
+                    ->orderBy('menu_name', 'asc')->get();
             }
         } else {
             if ($this->categoryId != '0') {
                 $this->menus = menu::where('menu_category_id', $this->categoryId)
-                ->orderBy('menu_name', 'asc')->get();
+                    ->orderBy('menu_name', 'asc')->get();
             } else {
                 $this->menus = menu::orderBy('menu_name', 'asc')->get();
             }
