@@ -19,7 +19,7 @@ class AdminMenu extends Component
     protected $listeners = ['refresh' => 'refresh'];
 
     public function mount(){
-        $this->menus=menu::All();
+        $this->menus=menu::orderBy('created_at', 'desc')->get();
     }
     public function modal_hapus($menu_id){
         $this->menu_id = $menu_id;
@@ -42,7 +42,7 @@ class AdminMenu extends Component
     }
     public function render()
     {
-        $menus = Menu::paginate(8);
+        $menus = Menu::orderBy('created_at', 'desc')->paginate(7);
 
         return view('livewire.admin.admin-menu',[
             'menus'=> $menus,

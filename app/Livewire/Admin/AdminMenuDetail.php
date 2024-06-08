@@ -7,7 +7,6 @@ use Livewire\WithFileUploads;
 use App\Models\Menu;
 use App\Models\menuCategory;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class AdminMenuDetail extends Component
 {
@@ -37,15 +36,15 @@ class AdminMenuDetail extends Component
     }
 
     public function buatMenu()
-    {
+    {        
         $this->modalTambah = false;
         $this->validate([
             'gambar' => 'required|file|max:5120|mimes:jpeg,jpg,png', // maksimal 1MB
             'menu_name' => 'required|string|max:255|unique:menus',
             'menu_price' => 'required|numeric',
             'menu_category' => 'required|string',
-            'menu_allergen' => 'nullable|string',
-            'menu_description' => 'nullable|string',        
+            'menu_allergen' => 'nullable|string|regex:/^(\d*\s*[a-zA-Z]+(?:\s+[a-zA-Z]+)*)(,\s*\d*\s*[a-zA-Z]+(?:\s+[a-zA-Z]+)*)*$/',
+            'menu_description' => 'nullable|string|regex:/^(\d*\s*[a-zA-Z]+(?:\s+[a-zA-Z]+)*)(,\s*\d*\s*[a-zA-Z]+(?:\s+[a-zA-Z]+)*)*$/',        
         ],
         [
             'gambar.required'  => 'Gambar harus diisi',
@@ -56,14 +55,18 @@ class AdminMenuDetail extends Component
             'menu_name.unique'  => 'Menu ini sudah ada.',
             'menu_price.required'  => 'Harga Menu harus diisi',            
             'menu_price.numeric'  => 'Harga Menu harus angka.',            
-            'menu_category.required'  => 'Kategori Menu harus diisi',            
+            'menu_category.required'  => 'Kategori Menu harus diisi', 
+            'menu_allergen.regex' => 'Gunakan format yang sesuai',           
+            'menu_description.regex' => 'Gunakan format yang sesuai',           
         ]);
 
         // dd('alwin');
         DB::beginTransaction();
 
         try {
-            $imageName['menu_image'] = $this->gambar->store('menu-images');
+            $imageName['menu_image'] = $this->gambar->store('public/menu-images');
+            $imageName['menu_image'] = basename($imageName['menu_image']);
+            sleep(1);
 
             Menu::create([
                 'menu_id' => str()->uuid(),
@@ -73,7 +76,6 @@ class AdminMenuDetail extends Component
                 'menu_description' => $this->menu_description,
                 'menu_category_id' => $this->menu_category,
                 'menu_image' => str_replace("gambar_menu/", "", $imageName['menu_image']),
-                
             ]);
 
             DB::commit();

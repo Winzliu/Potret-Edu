@@ -20,9 +20,9 @@
                 {{$pesanans->where('order_status', 'selesai')->count() }}
             </p>
         </button> --}}
-        <button wire:click="getPesanansKitchen('Saji', '{{ $type }}')"
+        <button wire:click="getPesanansKitchen('Selesai', '{{ $type }}')"
             data-tip="Pesanan Selesai"
-            class="tooltip font-semibold flex gap-1 justify-center items-center @if($status == 'Saji') text-mainColor @endif">
+            class="tooltip font-semibold flex gap-1 justify-center items-center @if($status == 'Selesai') text-mainColor @endif">
             <p>Selesai</p>
             <p class="bg-red-500 rounded-full w-5 h-5 text-center font-semibold text-white text-sm">
                 {{$pesanans->where('order_status', 'selesai')->count() }}

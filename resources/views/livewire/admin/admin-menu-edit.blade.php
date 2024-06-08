@@ -1,144 +1,180 @@
-<div class="mt-10 me-12">
+<div class="mt-7">
+    {{-- START --}}
     <a href="/admin/menu" wire:navigate class="flex items-center gap-2 font-bold">
-        <ion-icon name="arrow-back-outline"></ion-icon>
+        <svg class="
+            @if(auth()->user()->userDetail->custom == 'kecil')
+                w-4
+            @elseif(auth()->user()->userDetail->custom == 'normal')
+                w-6
+            @elseif(auth()->user()->userDetail->custom == 'besar')
+                w-8
+            @endif"
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292" />
+        </svg>                
         <p>Kembali</p>
     </a>
-    <div class="flex items-center gap-5 mb-2 mt-8">
+    <div class="flex items-center gap-5 my-2">
         <p class="text-3xl font-bold">Edit Menu</p>
     </div>
-    <div class="w-full font-medium">
+    <div class="w-full mt-8 font-medium h-[80vh] overflow-y-scroll scrollbar-hidden">
         <p class="mx-5 mb-2 font-semibold">Gambar Menu</p>
-        <div class="flex flex-col items-center ">
+        <div class="flex flex-col justify-center items-center">
         {{-- FORM --}}
-        <form action="" method="POST" enctype="multipart/form-data">
-            @csrf
             {{-- GAMBAR --}}
-            <label for="gambar" class="cursor-pointer relative h-[200px] shadow-[0_0_10px_0px_rgba(0,0,0,0.3)] rounded-xl flex items-center justify-center">
-                <i id="placeholderIcon"
-                    class='icon-[icon-park-outline--add-picture] text-gray-400   
-                    text-9xl text-center shadow-[0_0_15px_0_rgba(0,0,0,0.5)] rounded-md'></i>
+            <label id="label_gambar" for="gambar" class="w-5/12 cursor-pointer relative h-[200px] 
+            shadow-[0_0_10px_0px_rgba(0,0,0,0.3)] rounded-xl flex items-center justify-center">
+            @if ($gambar)
+            <img id="previewImage"
+                 class="object-contain h-[200px]"
+                 src="{{ $gambar->temporaryUrl() }}" alt="Preview Image">
+            @elseif($oldImageUrl)
                 <img id="previewImage"
-                    class="object-contain w-3/5 h-[200px] hadow-xl hidden"
-                    src="{{ asset('img/Makanan.jpg') }}" alt="Preview Image">
-                <input type="file" id="gambar" name="gambar" class="hidden" accept="image/*"
-                    onchange="previewFile()">
+                    class="object-contain h-[200px]"
+                    src="{{ asset("storage/menu-images/" . $oldImageUrl) }}" alt="Old Image">
+            @else
+                <i id="placeholderIcon"
+                class='icon-[icon-park-outline--add-picture] text-gray-400   
+                text-9xl text-center rounded-md'></i>
+            @endif
+                <input wire:model="gambar"
+                type="file" id="gambar" name="gambar" class="hidden" accept="image/*">
             </label>
-            <!-- menampilkan namam file yang dipilih -->
+            
             <div class="text-start mx-5 2xl:mx-40 mt-2 font-semibold">
                 <p id="fileInfo" class="mt-0 mb-0 font-medium"></p>
-                <i class="text-red-500">*klik gambar di atas untuk mengunggah file</i>
                 @error('gambar')
-                <p class="text-red-500 mt-0 mb-0 font-bold">
-                    *({{ $message }})
-                </p>
+                <i class="text-red-500 font-medium">
+                    *{{ $message }}
+                </i><br>
                 @enderror
+                <i class="text-red-500">*klik gambar di atas untuk mengunggah file</i>
             </div>
         </div>
-
 
         <div class="flex flex-col gap-4">
             {{-- NAMA MENU --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="nama_menu" class="mx-5 font-semibold">Nama Menu</label>
-                <input type="text" class="rounded-lg mx-5" name="nama" placeholder="Masukkan Nama Menu Baru">
+                <label for="menu_name" class="mx-5 font-semibold">Nama Menu</label>
+                <input autocomplete="off" type="text" wire:model="menu_name"
+                class="rounded-lg mx-5" name="menu_name">
+                @error('menu_name')
+                <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
+                    *{{ $message }}
+                </i>
+                @enderror
             </div>
-    
-            {{-- HARGA MENU --}}
-            <div class="flex flex-col w-full gap-2">
-                <label for="harga_menu" class="mx-5 font-semibold">Harga Menu</label>
-                <input type="text" class="w-[25%] rounded-lg mx-5" name="harga" placeholder="Masukkan Harga">
+            <div class="flex  gap-2">
+                {{-- HARGA MENU --}}
+                <div class="flex flex-col gap-2">
+                    <label for="menu_category" class="mx-5 font-semibold">Kategori Menu</label>
+                    <select class="mx-5  rounded-lg w-full max-w-xs" wire:model="menu_category" name="menu_category">
+                        <option selected>Pilih kategori menu</option>
+                        @foreach ($menu_categories as $category)
+                            <option value="{{ $category->menu_category_id }}">{{ $category->menu_category_name }}</option>
+                        @endforeach
+                      </select>
+                    @error('menu_category')
+                    <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
+                        *{{ $message }}
+                    </i>
+                    @enderror
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="harga_menu" class="mx-5 font-semibold">Harga Menu</label>
+                    <input autocomplete="off" type="number" 
+                        wire:model="menu_price"
+                    class="rounded-lg mx-5" name="menu_price" placeholder="Masukkan Harga">
+                    @error('menu_price')
+                    <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
+                        *{{ $message }}
+                    </i>
+                    @enderror
+                </div>
             </div>
 
-            {{-- ALERGEN MENU --}}
+            {{-- ALERGEN --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="alergen_menu" class="mx-5 font-semibold">Alergen</label>
-                <input type="text" class="rounded-lg mx-5" name="alergen" placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
+                <label for="alergen_menu" class="mx-5 font-semibold">Alergen <i class="font-medium text-slate-500">*Gunakan format koma. Cth: Udang, Susu</i></label>
+                <input  autocomplete="off" type="text" wire:model.live.debounce.300ms="menu_allergen"class="rounded-lg mx-5" name="menu_allergen" placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
+                @error('menu_allergen')
+                <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
+                    *{{ $message }}
+                </i>
+                @enderror
             </div>
-    
             {{-- WYSWYG Deskripsi --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="deskripsi" class="mx-5 font-semibold">Deskripsi</label>
+                <label for="menu_description" class="mx-5 font-semibold">Bahan Menu <i class="font-medium text-slate-500">*Gunakan format koma. Cth: Nasi, 3 Butir Bakso</i></label>
                 <div class="mx-5">
-                    <textarea
-                        class="h-[180px] w-full rounded-md p-2 border border-black focus:outline-none focus:border-primaryColor"
-                        id="deskripsi_menu" name="deskripsi_menu" placeholder="Masukkan Deskripsi"
-                        row="10">{{ old('deskripsi_paket') }}</textarea>
-                    @error('deskripsi_paket')
-                    <p class="text-red-500 mt-0 mb-0 font-bold">
-                        *({{ $message }})
-                    </p>
+                    <input wire:model.live.debounce.300ms="menu_description"
+                    autocomplete="off" class="w-full rounded-md p-2 border border-black focus:outline-none focus:border-primaryColor"
+                        id="menu_description" name="menu_description" placeholder="Masukkan Bahan Menu"/>
+                    @error('menu_description')
+                    <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
+                        *{{ $message }}
+                    </i>
                     @enderror
                 </div>
             </div>
         </div>
         <div class="mx-5 flex justify-end my-4">
-            {{-- <button class="bg-greenConfirm px-4 py-1 rounded-md text-white">
-                Simpan
-            </button> --}}
-            <button type="button" onclick="modal_submit.showModal()" 
-            class="bg-greenConfirm px-8 py-1 rounded-md text-white">Simpan</button>
-            <dialog id="modal_submit" class="modal">
-                    <div class="modal-box bg-background">
-                    <div class="flex flex-col bg-background items-center">
-                        {{-- <div class="border-4 border-greenConfirm p-8 rounded-full">
-                            <i class='icon-[ic--outline-question-mark] text-6xl text-greenConfirm'></i>
-                        </div> --}}
-                        <h3 class="font-dalfitra text-[30px] md:text-[50px] max-sm:text-[30px]">Simpan?</h3>
-                        <p class="font-poppins text-[18px] md:text-[20px] max-sm:text-[18px] text-center mb-5">
-                            Apakah anda yakin ingin menyimpan <br>perubahan pada menu ini?</p>
-                        <div class="flex flex-row-reverse justify-center gap-4 w-full">
-                            <button type="submit"
-                                class="flex justify-center items-center w-full text-xl font-poppins bg-greenConfirm text-center text-white rounded-md h-12">
-                                SIMPAN
-                            </button>
-        </form>
-                        <form method="dialog" class="w-full">
-                            <button
-                                class="w-full text-[20px] font-poppins h-12 rounded-md  bg-red-500 text-white text-center">
-                                BATAL
-                            </button>
-                        </form>
+            <button type="button" wire:click="modal_tambah" 
+                class="bg-green-500 hover:bg-green-600 px-8 py-1 rounded-md text-white">Simpan</button>
+            {{-- MODAL TAMBAH  --}}
+                @if($modalTambah)
+                <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                    <div class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-greenConfirm font-semibold">
+                        <p>Apakah Anda yakin ingin menambah menu ini?</p>
+                        <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                            <button wire:click="$set('modalTambah', false)"
+                                class="bg-red-500 hover:bg-red-600 px-8 py-2 text-white rounded-md">Tidak</button>
+                            <button wire:click="editMenu" class="bg-greenConfirm hover:bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
                         </div>
                     </div>
                 </div>
-                <form method="dialog" class="modal-backdrop">
-                    <button>close</button>
-                </form>
-            </dialog>
+                @endif
+            {{-- AKHIR MODAL TAMBAH --}}
         </div>
     </div>
-    <style>
+    {{-- <style>
         .tox-tinymce {
         border: 1px solid #000000; /* Warna hitam */
       }
-    </style>
-</div>
-{{-- PREVIEW EDIT GAMBAR --}}
-<!-- preview.src = "asset('storage/paket_donasi/'.$paket_donasi->gambar) ";*/  -->
+    </style> --}}
+    @livewireScripts
 
-<script>
-    function previewFile() {
-        const preview = document.getElementById('previewImage');
-        const fileInput = document.getElementById('gambar');
-        const fileInfo = document.getElementById('fileInfo');
-
-        const file = fileInput.files[0];
-
-        // Menampilkan nama file yang dipilih
-        fileInfo.textContent = file ? `File terpilih: ${file.name}` : '';
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = function () {
-                preview.src = reader.result;
-            };
-            reader.readAsDataURL(file);
-        } else {
-            // Jika file tidak dipilih, kembalikan ke gambar default
-            preview.src = "{{ asset('img/Makanan.png') }}";
+    <script>
+        function previewFile() {
+            var fileInput = document.getElementById('gambar');
+            var placeholderIcon = document.getElementById('placeholderIcon');
+            var previewImage = document.getElementById('previewImage');
+            const fileInfo = document.getElementById('fileInfo');
+            
+            const file = fileInput.files[0];
+    
+            // Menampilkan nama file yang dipilih
+            fileInfo.textContent = file ? `File terpilih: ${file.name}` : '';
+    
+            if (fileInput.files && fileInput.files[0]) {
+                var reader = new FileReader();
+    
+                reader.onload = function (e) {
+                    placeholderIcon.style.display = 'none';  // Sembunyikan elemen i
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';  // Tampilkan elemen gambar
+                };
+    
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                // Jika tidak ada file yang diupload, tampilkan kembali elemen i dan sembunyikan gambar
+                placeholderIcon.style.display = 'block';
+                previewImage.style.display = 'none';
+            }
         }
-    }
-</script>
+    </script>
+</div>
+
 {{-- WYSIWYG EDITOR START --}}
 {{-- <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 

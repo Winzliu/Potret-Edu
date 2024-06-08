@@ -24,7 +24,7 @@ return new class extends Migration {
             $table->string('menu_price')->nullable();
             $table->string('menu_image')->nullable();
             $table->enum('menu_state', ['aktif', 'tidak_aktif']);
-            
+            $table->timestamps();
         });
     }
 
