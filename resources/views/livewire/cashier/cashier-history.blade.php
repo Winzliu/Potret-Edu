@@ -1,6 +1,15 @@
 <div class="mt-8 w-[95%] xl:w-full">
     <div class="flex justify-between items-start pb-5 ">
         <h1 class="text-2xl font-bold">Riwayat Pesanan</h1>
+        <div class="w-96 h-10">
+            {{-- Search Bar --}}
+            <label
+                class="input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
+                <input wire:model="search" wire:keydown="searchHistory" type="text" class="grow text-xs border-0 input"
+                    placeholder="Cari History Pesanan" />
+            </label>
+            {{-- Akhir Search Bar --}}
+        </div>
     </div>
     <div class="flex flex-col w-full">
         <div class="overflow-x-auto rounded-lg shadow-[0_0_5px_0_rgba(0,0,0,0.1)]">
