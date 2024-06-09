@@ -25,6 +25,7 @@ export default {
         animation: {
             scale: 'scale 3s infinite linear',
             notif: 'notif 2s linear',
+            notifKitchen: 'notif 3s linear',
         },
         keyframes: {
             scale: {

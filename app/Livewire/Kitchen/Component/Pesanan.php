@@ -19,8 +19,8 @@ class Pesanan extends Component
     public function mount()
     {
         $this->pesanans = Order::where('order_type', 'Dine In')->where('order_status', 'masak')
-        ->orderBy('date', 'asc')
-        ->get();
+            ->orderBy('date', 'asc')
+            ->get();
     }
 
 
@@ -62,7 +62,7 @@ class Pesanan extends Component
     public function refreshPesanan()
     {
         $this->pesanans = Order::where('order_type', 'Dine In')->where('order_status', 'masak')
-        ->orderBy('date', 'asc')
-        ->get();
+            ->orderBy('date', 'asc')
+            ->get();
     }
 }
