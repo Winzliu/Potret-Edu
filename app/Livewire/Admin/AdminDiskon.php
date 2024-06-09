@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\DB;
 class AdminDiskon extends Component
 {
     use WithPagination;
-    public $discounts;
+    // public $discounts;
     public $discount_id;
     public $modalHapus = false;
     protected $paginationTheme = 'tailwind'; // Pastikan theme pagination diatur ke tailwind
     protected $listeners = ['refresh' => 'refresh'];
     
 
-    public function mount(){
-            $this->discounts=discount::get();
-        }  
+    // public function mount(){
+    //         $this->discounts=discount::get();
+    //     }  
 
     public function modal_hapus($discount_id){
         $this->discount_id = $discount_id;
@@ -48,7 +48,7 @@ class AdminDiskon extends Component
         $discounts = discount::orderBy('discount_name', 'asc')->paginate(5);
         // dd($discounts);
         return view('livewire.admin.admin-diskon',[
-            'discountz'=>$discounts,
+            'discounts'=>$discounts,
         ])
     ->layout('components.layouts.app', ['title' => 'Admin | Diskon', 'active' => 'admin-diskon', 'role' => 'admin']);
     }

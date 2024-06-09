@@ -21,7 +21,7 @@
     @endif
     {{-- AKHIR ALERT HAPUS --}}
     <div class="flex justify-between items-start pb-5">
-        <h1 class="text-2xl font-bold">Discount</h1>
+        <h1 class="text-2xl font-bold">Diskon</h1>
         <a href="/admin/tambah-discount" wire:navigate data-tip="Tambah Diskon baru"
         class="tooltip tooltip-bottom bg-purpleRed hover:bg-red-700 px-4 py-1 flex rounded-md text-white items-center justify-center">
             <i class="icon-[ic--round-add] text-2xl font-mediumd text-white px-4"></i>
@@ -46,7 +46,7 @@
                     @foreach($discounts as $discount)
                     <tr class="hover:bg-fourthColor/40  Color transition-all duration-300 even:bg-slate-200">
                         <th class="whitespace-nowrap text-center cursor-default font-medium">
-                            {{ ($discountz->currentPage() - 1) * $discountz->perPage() + $loop->iteration }}
+                            {{ ($discounts->currentPage() - 1) * $discounts->perPage() + $loop->iteration }}
                         </th>
                         <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{ $discount->discount_name }}</th>
                         <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{ $discount->discount_rate }}</th>
@@ -84,7 +84,7 @@
     </div>
     {{-- pagination --}}
     <div class="flex justify-end items-center gap-10">
-        {{ $discountz->links('livewire.admin.component.admin-pagination-link') }}
+        {{ $discounts->links('livewire.admin.component.admin-pagination-link') }}
     </div>
     {{-- akhir pagination --}}
 </div>

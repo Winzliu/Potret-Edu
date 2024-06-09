@@ -51,7 +51,7 @@
       {{-- akhir logo --}}
 
       {{-- menu --}}
-      <div class="mt-7 flex flex-col w-32 items-center gap-10 xl:gap-7 overflow-y-scroll h-[50vh] scrollbar-hidden">
+      <div class="mt-7 flex flex-col w-32 items-center gap-10 xl:gap-7 overflow-y-scroll h-[55vh] scrollbar-hidden">
         @if ($role == 'waiter')
         {{-- menu waiter --}}
         <a href="/waiter" wire:navigate
