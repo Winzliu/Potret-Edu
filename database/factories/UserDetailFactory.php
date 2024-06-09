@@ -24,6 +24,7 @@ class UserDetailFactory extends Factory
             'user_detail_id'  => fake()->uuid(),
             'user_id'         => $user_id,
             'name'            => fake()->name(),
+            'position'        => fake()->word(),
             'custom'          => 'normal',
             'description'     => fake()->sentence(10),
             'phone_number'    => '08' . strval(fake()->numberBetween(10, 99)) . strval(fake()->numberBetween(10, 99)) . strval(fake()->numberBetween(10, 99)) . strval(fake()->numberBetween(10, 99)) . strval(fake()->numberBetween(10, 99)),

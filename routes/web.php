@@ -1,20 +1,33 @@
 <?php
 
 use App\Http\Controllers\UserController;
-use App\Livewire\Admin\DetailHistory;
+
 use App\Livewire\Cashier\CashierCartMenu;
 use App\Livewire\Cashier\CashierDetailHistory;
 use App\Livewire\Cashier\CashierPembayaran;
 use App\Livewire\Cashier\CashierProgressOrder;
+use App\Livewire\Cashier\CashierDetailOrder;
+use App\Livewire\Cashier\CashierHistory;
+
 use App\Livewire\Profil\Profil;
+
 use App\Livewire\Admin\AdminHome;
 use App\Livewire\Admin\AdminMenu;
 use App\Livewire\Admin\AdminMenuDetail;
 use App\Livewire\Admin\AdminMenuEdit;
 use App\Livewire\Admin\AdminKaryawan;
+use App\Livewire\Admin\AdminKaryawanTambah;
 use App\Livewire\Admin\AdminOrderHistory;
-use App\Livewire\Cashier\CashierDetailOrder;
-use App\Livewire\Cashier\CashierHistory;
+use App\Livewire\Admin\AdminMetodePembayaran;
+use App\Livewire\Admin\AdminDiskon;
+use App\Livewire\Admin\AdminKaryawanEdit;
+use App\Livewire\Admin\AdminMetodePembayaranEdit;
+use App\Livewire\Admin\AdminMetodePembayaranTambah;
+use App\Livewire\Admin\DetailHistory;
+use App\Livewire\Admin\AdminDiskonTambah;
+use App\Livewire\Admin\AdminDiskonEdit;
+
+
 use App\Livewire\Cashier\Home;
 use App\Livewire\Kitchen\KitchenMenu;
 use App\Livewire\Kitchen\KitchenOrder;
@@ -87,16 +100,25 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', AdminHome::class);
 
     Route::get('/admin/menu', AdminMenu::class);
+    Route::get('/admin/diskon', AdminDiskon::class);
+    Route::get('/admin/karyawan', AdminKaryawan::class);
+    Route::get('/admin/metode-pembayaran', AdminMetodePembayaran::class);
+
 
     Route::get('/admin/tambah-menu', AdminMenuDetail::class);
+    Route::get('/admin/tambah-karyawan', AdminKaryawanTambah::class);
+    Route::get('/admin/tambah-diskon', AdminDiskonTambah::class);
+    Route::get('/admin/tambah-metode-pembayaran', AdminMetodePembayaranTambah::class);
 
+    
     Route::get('/admin/edit-menu/{id_pesanan}', AdminMenuEdit::class);
+    Route::get('/admin/edit-karyawan/{id_karyawan}', AdminKaryawanEdit::class);
+    Route::get('/admin/edit-diskon/{id_diskon}', AdminDiskonEdit::class);
+    Route::get('/admin/edit-metode-pembayaran/{id_metode_pembayaran}', AdminMetodePembayaranEdit::class);
+
 
     Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
-
     Route::get('/admin/riwayat/{history}', DetailHistory::class);
-
-    Route::get('/admin/karyawan', AdminKaryawan::class);
   });
   // Akhir Admin
 

@@ -34,8 +34,8 @@
                 <!-- head -->
                 <thead>
                     <tr class="text-base text-black bg-fourthColor">
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">No</th>
-                        <th scope="col" class="px-10 py-3 text-center cursor-default">Nama</th>
+                        <th scope="col" class="px-3 py-3 text-center cursor-default">No</th>
+                        <th scope="col" class="py-3 text-start cursor-default">Nama</th>
                         <th scope="col" class="py-3 text-center cursor-default">Gambar</th>
                         <th scope="col" class="px-6 py-3 text-center cursor-default">Harga</th>
                         <th scope="col" class="px-6 py-3 text-center cursor-default">Alergen</th>
@@ -47,9 +47,9 @@
                     @foreach($menus as $menu)
                     <!-- row 1 -->
                     <tr class="hover:bg-fourthColor/40  Color transition-all duration-300 even:bg-slate-200">
-                        <th class="whitespace-nowrap text-center cursor-default">{{ ($menus->currentPage() - 1) *
+                        <th class="whitespace-nowrap text-center cursor-default font-medium">{{ ($menus->currentPage() - 1) *
                             $menus->perPage() + $loop->iteration }}</th>
-                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate">{{ $menu->menu_name }}</th>
+                        <th class="max-w-10 whitespace-nowrap text-start cursor-default truncate font-medium">{{ $menu->menu_name }}</th>
                         <th class=" whitespace-nowrap text-center cursor-default flex justify-center">
                             <img src="{{ asset('storage/menu-images/' . $menu->menu_image) }}" alt='menu' class="w-7 rounded-full">
                         </th>

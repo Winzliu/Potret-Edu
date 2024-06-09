@@ -1,4 +1,5 @@
 <div class="pt-8 pe-8 xl:pe-0">
+    {{-- START --}}
     <a href="/admin/karyawan" wire:navigate class="flex items-center gap-2 font-bold">
         <svg class="
             @if(auth()->user()->userDetail->custom == 'kecil')
@@ -13,7 +14,7 @@
         </svg>                
         <p>Kembali</p>
     </a>
-    <p class="font-bold text-3xl text-center">Tambah Karyawan</p>
+    <p class="font-bold text-3xl text-center">Edit Karyawan</p>
     {{-- form --}}
     <div
         class="bg-tertiaryColor mb-8 flex flex-col justify-center rounded-lg mt-5 overflow-y-scroll h-[100vh] xl:h-[75vh] scrollbar-hidden  shadow-[0_0_60px_0_rgba(0,0,0,0.2)]">
@@ -95,11 +96,12 @@
                     <span class="label-text font-semibold text-white">Role</span>
                 </div>
                 <select id="role" wire:model="role" name="role"
-                    class="bg-gray-50 h-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block text-bold p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-full text-left">
-                    <option value="" selected>Choose Role</option>
-                    <option value="Waiter">Waiter</option>
-                    <option value="Cashier">Cashier</option>
-                    <option value="Kitchen">Kitchen</option>
+                    class="bg-gray-50 h-full border border-gray-300 
+                       text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block text-bold p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-full text-left">
+                        <option value="" selected class="text-slate-500">Choose Role</option>
+                        <option value="Waiter"  class="text-black">Waiter</option>
+                        <option value="Cashier"  class="text-black">Cashier</option>
+                        <option value="Kitchen" class="text-black">Kitchen</option>
                 </select>
                 @error('role')
                 <i class="text-left text-red-500 ms-4 mt-0 mb-0 font-medium">
@@ -179,11 +181,11 @@
         @if($modalTambah)
         <div class="fixed top-0 left-0 w-full h-full bg-slate-500 bg-opacity-30 flex justify-center items-center">
             <div class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-tertiaryColor font-semibold">
-                <p>Apakah Anda yakin ingin menambah Karyawan?</p>
+                <p>Apakah Anda yakin ingin mengedit Karyawan ini?</p>
                 <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
                     <button wire:click="$set('modalTambah', false)"
                         class="bg-red-500 hover:bg-red-600  px-8 py-2 text-white rounded-md">Tidak</button>
-                    <button wire:click="buatKaryawan" class="bg-greenConfirm hover:bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
+                    <button wire:click="editKaryawan" class="bg-greenConfirm hover:bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
                 </div>
             </div>
         </div>
@@ -191,7 +193,7 @@
     {{-- AKHIR MODAL HAPUS --}}
 
     {{-- loading --}}
-    <dialog wire:loading wire:target="buatKaryawan" wire:loading.attr="open"
+    <dialog wire:loading wire:target="editKaryawan" wire:loading.attr="open"
     class="modal bg-black/30">
     <span
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
@@ -220,7 +222,25 @@
     // akhir show password
   </script>
 
+<script>
+    document.addEventListener('livewire:load', function () {
+        var roleSelect = document.getElementById('role');
+        
+        // Set the initial value of the select element based on Livewire model
+        roleSelect.value = @this.role;
+        
+        // Add an event listener to update Livewire model when the value changes
+        roleSelect.addEventListener('change', function (event) {
+            @this.set('role', event.target.value);
+        });
+    });
 
+    // Optionally, listen for Livewire updates
+    Livewire.hook('message.processed', (message, component) => {
+        var roleSelect = document.getElementById('role');
+        roleSelect.value = @this.role;
+    });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize datepicker
@@ -240,25 +260,4 @@
             });
         });
     </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize datepicker
-            $('#datepicker').datepicker({
-                dateFormat: 'yy-mm-dd', // Adjust date format
-                onSelect: function (employment_date) {
-                    // Update Livewire property
-                    @this.set('employment_date', employment_date);
-                }
-            });
-    
-            // Update datepicker when Livewire property changes
-            window.livewire.hook('message.processed', (message, component) => {
-                const date = @this.get('employment_date');
-                if (date) {
-                    $('#datepicker').datepicker('setDate', date);
-                }
-            });
-        });
-    </script>
-    
 </div>

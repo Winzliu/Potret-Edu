@@ -76,6 +76,7 @@ class AdminMenuEdit extends Component
         DB::beginTransaction();
 
         try {
+            sleep(1);
             // Jika ada gambar yang diunggah, simpan gambar baru
             if ($this->gambar) {
                 // Hapus gambar lama dari penyimpanan
@@ -110,7 +111,7 @@ class AdminMenuEdit extends Component
             return redirect('/admin/menu');
         } catch (\Exception $e) {
             DB::rollBack();
-            throw $e;
+            session()->flash('error', 'Terjadi kesalahan saat menambahkan menu!');
         }
 
     }
