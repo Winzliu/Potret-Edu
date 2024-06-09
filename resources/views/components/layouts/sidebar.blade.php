@@ -112,9 +112,9 @@
           <p>Karyawan</p>
         </a>
         <a href="/admin/metode-pembayaran" wire:navigate
-          class="flex flex-col items-center text-center{{ ($active == 'admin-metode-pembayaran') ? 'text-tertiaryColor' : 'text-black opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }} text-center leading-3  rounded-lg py-2 w-full">
-          <svg class="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path  fill="currentColor" d="M4.75 4A2.75 2.75 0 0 0 2 6.75V8h16V6.75A2.75 2.75 0 0 0 15.25 4zM18 9H2v4.25A2.75 2.75 0 0 0 4.75 16h10.5A2.75 2.75 0 0 0 18 13.25zm-4.5 4h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1" />
+          class="flex flex-col items-center text-center{{ ($active == 'admin-metodePembayaran') ? 'text-tertiaryColor' : 'text-black opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }} text-center leading-3  rounded-lg py-2 w-full">
+          <svg class="w-8 text-tertiaryColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M4.75 4A2.75 2.75 0 0 0 2 6.75V8h16V6.75A2.75 2.75 0 0 0 15.25 4zM18 9H2v4.25A2.75 2.75 0 0 0 4.75 16h10.5A2.75 2.75 0 0 0 18 13.25zm-4.5 4h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1" />
           </svg>              
           <p>Metode Pembayaran</p>
         </a>

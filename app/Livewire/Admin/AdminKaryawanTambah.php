@@ -70,7 +70,7 @@ class AdminKaryawanTambah extends Component
                 'user_id' => $this->user_id,
                 'username' => $this->username,
                 'password' => $this->password,
-                'role' => $this->role,
+                'role' => $this->role,  
             ]);
             userDetail::create([
                 'user_detail_id' => str()->uuid(),
@@ -89,15 +89,15 @@ class AdminKaryawanTambah extends Component
             $this->reset(['username', 'password', 'user_id', 'name', 'custom', 'phone_number',
             'address', 'position', 'description', 'employment_date'
         ]);
+            // Close the modal
+            $this->modalTambah = false;
+            request()->session()->flash('success', 'Karyawan berhasil ditambahkan1');
+           return redirect('/admin/karyawan');
         } catch (\Exception $e) {
             DB::rollBack();
             // throw $e;
             session()->flash('error', 'Terjadi kesalahan saat menambahkan karyawan!');
         }
-        // Close the modal
-        $this->modalTambah = false;
-            request()->session()->flash('success', 'Menu berhasil ditambahkan.');
-        return redirect('/admin/karyawan');
     }
     public function render()
     {

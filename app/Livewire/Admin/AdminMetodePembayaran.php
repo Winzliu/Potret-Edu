@@ -24,13 +24,14 @@ class AdminMetodePembayaran extends Component
 
         DB::beginTransaction();
         try{
-            paymentMethod::find($this->payment_method_id_id)->delete();
-                request()->session()->flash('success', 'Diskon berhasil dihapus.');
+            sleep(1);
+            paymentMethod::find($this->payment_method_id)->delete();
+                request()->session()->flash('success', 'Metode pembayaran berhasil dihapus!');
             DB::commit();
             $this->modalHapus = false;
             $this->render();
         } catch (\Exception $e) {
-                request()->session()->flash('error', 'Gagal menghapus Diskon!' . $e->getMessage());
+                request()->session()->flash('error', 'Gagal menghapus metode pembayaran!' . $e->getMessage());
             DB::rollBack();
         }    
         // $this->dispatch('refresh_notif');
@@ -40,8 +41,8 @@ class AdminMetodePembayaran extends Component
         $payment_methods = paymentMethod::orderBy('method', 'asc')->paginate(5);
         // dd($discounts);
         return view('livewire.admin.admin-metode-pembayaran',[
-            'discounts'=>$payment_methods,
+            'payment_methods'=>$payment_methods,
         ])
-    ->layout('components.layouts.app', ['title' => 'Admin | Metode Pembayaran', 'active' => 'admin-diskon', 'role' => 'admin']);
+    ->layout('components.layouts.app', ['title' => 'Admin | Metode Pembayaran', 'active' => 'admin-metodePembayaran', 'role' => 'admin']);
     }    
 }

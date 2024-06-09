@@ -1,6 +1,6 @@
 <div class="pt-8 pe-8 xl:pe-0">
     {{-- START --}}
-    <a href="/admin/menu" wire:navigate class="flex items-center gap-2 font-bold">
+    <a href="/admin/karyawan" wire:navigate class="flex items-center gap-2 font-bold">
         <svg class="
             @if(auth()->user()->userDetail->custom == 'kecil')
                 w-4
@@ -191,6 +191,16 @@
         </div>
         @endif
     {{-- AKHIR MODAL HAPUS --}}
+
+    {{-- loading --}}
+    <dialog wire:loading wire:target="editKaryawan" wire:loading.attr="open"
+    class="modal bg-black/30">
+    <span
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
+    </dialog>
+    {{-- akhir loading --}}
+
+
           <script>
     // show password
     function showPassword() {

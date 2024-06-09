@@ -1,6 +1,16 @@
 <div class="pt-8 pe-8 xl:pe-0">
-    <a href="/admin/karyawan" wire:navigate class="flex items-center font-bold text-lg gap-1">
-        <ion-icon name="arrow-back"></ion-icon>
+    <a href="/admin/karyawan" wire:navigate class="flex items-center gap-2 font-bold">
+        <svg class="
+            @if(auth()->user()->userDetail->custom == 'kecil')
+                w-4
+            @elseif(auth()->user()->userDetail->custom == 'normal')
+                w-6
+            @elseif(auth()->user()->userDetail->custom == 'besar')
+                w-8
+            @endif"
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292" />
+        </svg>                
         <p>Kembali</p>
     </a>
     <p class="font-bold text-3xl text-center">Tambah Karyawan</p>
@@ -179,6 +189,16 @@
         </div>
         @endif
     {{-- AKHIR MODAL HAPUS --}}
+
+    {{-- loading --}}
+    <dialog wire:loading wire:target="buatKaryawan" wire:loading.attr="open"
+    class="modal bg-black/30">
+    <span
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
+    </dialog>
+    {{-- akhir loading --}}
+
+
           <script>
     // show password
     function showPassword() {
@@ -220,4 +240,25 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize datepicker
+            $('#datepicker').datepicker({
+                dateFormat: 'yy-mm-dd', // Adjust date format
+                onSelect: function (employment_date) {
+                    // Update Livewire property
+                    @this.set('employment_date', employment_date);
+                }
+            });
+    
+            // Update datepicker when Livewire property changes
+            window.livewire.hook('message.processed', (message, component) => {
+                const date = @this.get('employment_date');
+                if (date) {
+                    $('#datepicker').datepicker('setDate', date);
+                }
+            });
+        });
+    </script>
+    
 </div>
