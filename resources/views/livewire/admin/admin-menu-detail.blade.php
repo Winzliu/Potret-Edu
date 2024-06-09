@@ -34,7 +34,7 @@
                         text-9xl text-center rounded-md'></i>
 
                 @endif
-                <input wire:model="gambar" type="file" id="gambar" name="gambar" class="hidden" accept="image/*">
+                <input wire:model="gambar" type="file" id="gambar" name="gambar" data-tip="Klik untuk upload gambar menu"class="tooltip hidden" accept="image/*">
             </label>
             
             <div class="text-start mx-5 2xl:mx-40 mt-2 font-semibold">
@@ -52,7 +52,8 @@
             {{-- NAMA MENU --}}
             <div class="flex flex-col w-full gap-2">
                 <label for="menu_name" class="mx-5 font-semibold">Nama Menu</label>
-                <input autocomplete="off" type="text" wire:model="menu_name" class="rounded-lg mx-5" name="menu_name" placeholder="Masukkan Nama Menu Baru">
+                <input autocomplete="off" type="text" wire:model="menu_name" data-tip="Isi kolom ini dengan nama menu baru"
+                class="tooltip rounded-lg mx-5 text-start" name="menu_name" placeholder="Masukkan Nama Menu Baru">
                 @error('menu_name')
                 <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
                     *{{ $message }}

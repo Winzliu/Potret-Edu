@@ -83,7 +83,7 @@
                                     $harga = $pesanan->price;
                                 @endphp
                             @endforeach
-                            <p class="font-bold ">Meja {{ $pesanan->table_number }} ({{ $j }} Pesanan)</p>
+                            <p class="font-bold ">Meja {{ $history->table_number }} ({{ $j }} Pesanan)</p>
                             <p class="text-sm">{{ date('d F Y, H:i', strtotime($history->payment_date)) }}</p>
                         </div>
                     </div>

@@ -17,8 +17,8 @@ return new class extends Migration {
             $table->foreign('user_id')
                 ->references('user_id')
                 ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->string('table_number', 2)->notNullable();
             $table->enum('order_type', ['Dine In', 'Take Away']);
             $table->enum('order_status', ['masak', 'saji', 'selesai', 'batal']);

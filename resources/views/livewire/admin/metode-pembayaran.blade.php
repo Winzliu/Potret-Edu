@@ -1,3 +1,6 @@
+<div>
+    {{-- Do your work, then step back. --}}
+</div>
 <div class="xl:mt-6 mt-8 w-[95%] xl:w-full">
     {{-- ALERT HAPUS --}}
     @if (session()->has('error'))

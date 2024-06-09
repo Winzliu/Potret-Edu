@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
-use App\Livewire\Admin\DetailHistory;
+
 use App\Livewire\Cashier\CashierCartMenu;
 use App\Livewire\Cashier\CashierDetailHistory;
 use App\Livewire\Cashier\CashierPembayaran;
@@ -12,7 +12,12 @@ use App\Livewire\Admin\AdminMenu;
 use App\Livewire\Admin\AdminMenuDetail;
 use App\Livewire\Admin\AdminMenuEdit;
 use App\Livewire\Admin\AdminKaryawan;
+use App\Livewire\Admin\AdminKaryawanTambah;
 use App\Livewire\Admin\AdminOrderHistory;
+use App\Livewire\Admin\AdminMetodePembayaran;
+use App\Livewire\Admin\AdminDiskon;
+use App\Livewire\Admin\AdminKaryawanEdit;
+use App\Livewire\Admin\DetailHistory;
 use App\Livewire\Cashier\CashierDetailOrder;
 use App\Livewire\Cashier\CashierHistory;
 use App\Livewire\Cashier\Home;
@@ -89,6 +94,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/menu', AdminMenu::class);
 
     Route::get('/admin/tambah-menu', AdminMenuDetail::class);
+    Route::get('/admin/tambah-karyawan', AdminKaryawanTambah::class);
+    Route::get('/admin/edit-karyawan/{id_karyawan}', AdminKaryawanEdit::class);
 
     Route::get('/admin/edit-menu/{id_pesanan}', AdminMenuEdit::class);
 
@@ -97,6 +104,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/riwayat/{history}', DetailHistory::class);
 
     Route::get('/admin/karyawan', AdminKaryawan::class);
+    Route::get('/admin/metode-pembayaran', AdminMetodePembayaran::class);
+    Route::get('/admin/diskon', AdminDiskon::class);
   });
   // Akhir Admin
 

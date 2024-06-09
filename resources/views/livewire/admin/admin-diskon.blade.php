@@ -21,11 +21,11 @@
     @endif
     {{-- AKHIR ALERT HAPUS --}}
     <div class="flex justify-between items-start pb-5">
-        <h1 class="text-2xl font-bold">Karyawan</h1>
-        <a href="/admin/tambah-karyawan" wire:navigate data-tip="Tambah karyawan baru"
+        <h1 class="text-2xl font-bold">Discount</h1>
+        <a href="/admin/tambah-discount" wire:navigate data-tip="Tambah Diskon baru"
         class="tooltip tooltip-bottom bg-purpleRed hover:bg-red-700 px-4 py-1 flex rounded-md text-white items-center justify-center">
             <i class="icon-[ic--round-add] text-2xl font-mediumd text-white px-4"></i>
-            <p class="font-medium pt-[2px]">Tambah Karyawan</p>
+            <p class="font-medium pt-[2px]">Tambah Diskon</p>
         </a>
     </div>
     <div class="flex flex-col w-full">
@@ -35,53 +35,28 @@
                 <thead>
                     <tr class="text-base text-black bg-fourthColor">
                         <th scope="col" class="px-6 py-3 text-center cursor-default">No</th>
-                        <th scope="col" class="pe-10 py-3 text-start cursor-default">Nama</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Role</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Posisi</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Nomor Telepon</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Alamat</th>
-                        <th scope="col" class="px-2 py-3 text-center cursor-default">Mulai Kerja</th>
+                        <th scope="col" class="px-6 py-3 text-center cursor-default">Nama Diskon</th>
+                        <th scope="col" class="px-6 py-3 text-center cursor-default">Persentase</th>
                         <th scope="col" class="px-6 py-3 text-center cursor-default">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($employees as $karyawan)
                     <!-- row 1 -->
+                    {{-- @dd($discounts) --}}
+                    @foreach($discounts as $discount)
                     <tr class="hover:bg-fourthColor/40  Color transition-all duration-300 even:bg-slate-200">
-                        <th class="whitespace-nowrap text-center cursor-default font-medium">{{ ($employees->currentPage() - 1) *
-                            $employees->perPage() + $loop->iteration }}</th>
-                    <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{ $karyawan->userDetail->name }}</th>
-                    <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">
-                        @if($karyawan->role == 'cashier')
-                            Kasir
-                        @elseif($karyawan->role == 'waiter')
-                            Pelayan
-                        @elseif($karyawan->role == 'kitchen')
-                            Dapur
-                        @endif
-                    </th>
-                        <td class="whitespace-nowrap text-center cursor-default">{{ $karyawan->userDetail->position  }}</td>
-                        <td class="whitespace-nowrap text-center cursor-default">{{ $karyawan->userDetail->formatted_phone  }}</td>
-                        <td class="max-w-10 whitespace-nowrap text-center cursor-default truncate">{{ $karyawan->userDetail->address}}</td>
-                        <td class="max-w-10 whitespace-nowrap text-center cursor-default truncate">
-                            @php
-                                try {
-                                    $dateTime = new \Carbon\Carbon($karyawan->userDetail->employment_date);
-                                    \Carbon\Carbon::setLocale('id'); // Mengatur lokal ke bahasa Indonesia
-                                    $employment_date = $dateTime->translatedFormat('l, d F Y'); // Format dengan hari, tanggal, bulan, tahun
-                                } catch (\Exception $e) {
-                                    $employment_date = 'Invalid date format';
-                                }
-                            @endphp       
-                        {{ $karyawan->userDetail->employment_date }}            
-                        </td>
-                        <td class="whitespace-nowrap">
+                        <th class="whitespace-nowrap text-center cursor-default font-medium">
+                            {{ ($discountz->currentPage() - 1) * $discountz->perPage() + $loop->iteration }}
+                        </th>
+                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{ $discount->discount_name }}</th>
+                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{ $discount->discount_rate }}</th>
+                        <th class="whitespace-nowrap">
                             <div class="text-center flex justify-center gap-2">
-                                <a href="/admin/edit-karyawan/{{ $karyawan->userDetail->user_id }}" wire-navigate data-tip="Edit Karyawan"
+                                <a href="/admin/edit-discount/{{ $discount->discount_id }}" wire-navigate data-tip="Edit Diskon"
                                     class="tooltip bg-mainColor hover:bg-yellow-500 flex items-center justify-center px-3 py-2 rounded-md transition-all duration-300 ">
                                     <i class="icon-[tabler--edit] rounded-md text-white text-xl">H</i>
                                 </a>
-                                    <button wire:click="modal_hapus('{{ $karyawan->userDetail->user_id }}')" data-tip="Hapus Karyawan"
+                                    <button wire:click="modal_hapus('{{ $discount->discount_id }}')" data-tip="Hapus Diskon"
                                         class="tooltip bg-red-500 flex items-center justify-center px-3 py-2 h-full hover:bg-red-700 rounded-md transition-all duration-300">
                                         <i class="icon-[typcn--trash] text-white text-xl"></i>
                                     </button>
@@ -90,7 +65,7 @@
                                 @if($modalHapus)
                                 <div class="fixed top-0 left-0 w-full h-full bg-slate-500 bg-opacity-10 flex justify-center items-center">
                                     <div class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
-                                        <p>Apakah Anda yakin ingin menghapus karyawan ini?</p>
+                                        <p>Apakah Anda yakin ingin menghapus discount ini?</p>
                                         <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
                                             <button wire:click="$set('modalHapus', false)"
                                                 class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
@@ -100,7 +75,7 @@
                                 </div>
                                 @endif
                             {{-- AKHIR MODAL HAPUS --}}
-                        </td>
+                        </th>
                     </tr>
                     @endforeach
                 </tbody>
@@ -109,7 +84,7 @@
     </div>
     {{-- pagination --}}
     <div class="flex justify-end items-center gap-10">
-        {{ $employees->links('livewire.admin.component.admin-pagination-link') }}
+        {{ $discountz->links('livewire.admin.component.admin-pagination-link') }}
     </div>
     {{-- akhir pagination --}}
 </div>
