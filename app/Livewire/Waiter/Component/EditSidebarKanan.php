@@ -157,7 +157,6 @@ class EditSidebarKanan extends Component
     public function editPesanan($id)
     {
         sleep(2);
-
         if (
             $this->input_nomor_meja != null && $this->input_service == "Dine In" && order::where('table_number', $this->input_nomor_meja)->where('order_type', 'Dine In')
                 ->where('order_id', '!=', $this->pesanan->order_id)->exists()
@@ -166,7 +165,6 @@ class EditSidebarKanan extends Component
             $this->dispatch('refresh_notif_edit');
             return;
         }
-
         DB::beginTransaction();
 
         try {

@@ -62,7 +62,7 @@ class AdminKaryawanEdit extends Component
             'role'            => 'required|string',
             'position'        => 'required|string',
             'description'     => 'required|string',
-            'password'        => 'required|string',
+            'password'        => 'string',
         ];
         if ($this->username !== $this->employee->username) {
             $rules['username'] = 'required|string|unique:users';
@@ -88,7 +88,6 @@ class AdminKaryawanEdit extends Component
             'description.required'        => 'Deskripsi harus diisi',
             'username.required'           => 'Username harus diisi',
             'username.unique'             => 'Username ini sudah ada.',
-            'password.required'           => 'Password harus diisi',
         ]);
         // dd($this->position);
         DB::beginTransaction();
@@ -98,10 +97,10 @@ class AdminKaryawanEdit extends Component
             user::where('user_id', $this->karyawan_id)->update([
                 'user_id'  => $this->user_id,
                 'username' => $this->username,
-                'password' => $this->password,
+                'password' => $this->password ? bcrypt($this->password) : $this->employee->password,
                 'role'     => $this->role,
             ]);
-            userDetail::where('user_detail_id', $this->karyawan_id)->update([
+            userDetail::where('user_id', $this->karyawan_id)->update([
                 'user_detail_id'  => str()->uuid(),
                 'name'            => $this->name,
                 'custom'          => 'normal',
