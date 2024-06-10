@@ -16,19 +16,24 @@ class AdminMenu extends Component
 
     public $modalHapus = false;
     public $menu_id;
+    public $search;
     protected $listeners = ['refresh' => 'refresh'];
 
-    public function mount(){
-        $this->menus=menu::orderBy('created_at', 'desc')->get();
+    public function mount()
+    {
+        $this->menus = menu::orderBy('created_at', 'desc')->get();
+        $this->search = '';
     }
-    public function modal_hapus($menu_id){
+    public function modal_hapus($menu_id)
+    {
         $this->menu_id = $menu_id;
-        $this->modalHapus=true;
-    }    
+        $this->modalHapus = true;
+    }
 
-    public function hapusMenu(){
+    public function hapusMenu()
+    {
         DB::beginTransaction();
-        try{
+        try {
             Menu::find($this->menu_id)->delete();
             request()->session()->flash('success', 'Menu berhasil dihapus.');
             DB::commit();
@@ -37,20 +42,26 @@ class AdminMenu extends Component
         } catch (\Exception $e) {
             request()->session()->flash('error', 'Gagal mengubah status!' . $e->getMessage());
             DB::rollBack();
-        }    
+        }
         $this->dispatch('refresh_notif');
     }
+
+    public function searchMenu()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $menus = Menu::orderBy('created_at', 'desc')->paginate(7);
+        $this->menus = Menu::where('menu_name', 'like', '%' . $this->search . '%')->orderBy('created_at', 'desc')->paginate(7);
 
-        return view('livewire.admin.admin-menu',[
-            'menus'=> $menus,
+        return view('livewire.admin.admin-menu', [
+            'menus' => $this->menus,
         ])
             ->layout('components.layouts.app', [
-                'title' => 'Admin | Menu',
+                'title'  => 'Admin | Menu',
                 'active' => 'admin-menu',
-                'role' => 'admin'
+                'role'   => 'admin'
             ]);
     }
     // public function boot()
