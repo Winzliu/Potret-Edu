@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->uuid('payment_method_id')->primary();
             $table->string('method')->notNullable();
-            $table->float('taxes');
+            $table->float('taxes', 10, 5);
         });
     }
 

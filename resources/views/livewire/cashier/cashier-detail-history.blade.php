@@ -223,7 +223,7 @@ text-lg mt-10
         {{-- bagian bawah --}}
         <div class="mb-10 flex gap-5 justify-end w-11/12">
             {{-- button print --}}
-            @if ($history->status == 'selesai')
+            @if ($history->order_status == 'selesai')
             <button
                 class="w-24 py-2 rounded-lg bg-white hover:bg-slate-200 text-black border-2 border-black transition-all duration-300 font-bold"
                 onclick="StrukButton.showModal()">Struk</button>

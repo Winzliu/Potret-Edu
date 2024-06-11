@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('discounts', function (Blueprint $table) {
             $table->uuid('discount_id')->primary();
             $table->string('discount_name')->notNullable();
-            $table->float('discount_rate');
+            $table->float('discount_rate', 10, 5);
         });
     }
 
