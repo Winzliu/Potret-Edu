@@ -88,7 +88,7 @@ text-lg
                     <div class="flex">
                         <div class="w-full @if ($cart->menu_status == 'kosong') w-10/12 @endif">
                             <div class="flex">
-                                <figure><img src="{{ asset('img/'.$cart->menu->menu_image) }}"
+                                <figure><img src="{{ asset('storage/menu-images/' . $cart->menu_image) }}"
                                         class="mask mask-squircle w-14 me-4" alt="Movie" />
                                 </figure>
                                 <div class="self-center w-10/12">
@@ -201,7 +201,7 @@ text-lg
                     <div class="flex">
                         <div class="w-10/12">
                             <div class="flex">
-                                <figure><img src="{{ asset('img/' . $pBaru['menu_image']) }}"
+                                <figure><img src="{{ asset('storage/menu-images/' . $pBaru['menu_image']) }}"
                                         class="mask mask-squircle w-14 me-4" alt="Movie" />
                                 </figure>
                                 <div class="self-center w-10/12">
