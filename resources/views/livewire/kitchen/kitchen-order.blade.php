@@ -1,4 +1,4 @@
-<div class="md:mt-7 pe-10 mb-[1.3175rem]" wire:poll.3s>
+<div class="md:mt-7 pe-10 mb-[1.654rem]" wire:poll.3s>
     {{-- search --}}
     @livewire('kitchen.component.search-pesanan', ['status' => $status, 'type' => $type])
     {{-- akhir search --}}

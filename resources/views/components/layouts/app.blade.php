@@ -41,7 +41,7 @@ text-lg
     {{-- akhir sidebar --}}
 
     {{-- sidebar position --}}
-    <div class="md:block hidden w-[22%] xl:w-1/6"></div>
+    <div class="md:block hidden w-[22%] xl:w-1/6 noprint"></div>
     {{-- akhir sidebar position --}}
 
     <div class="w-[80%] ps-5 z-50">
