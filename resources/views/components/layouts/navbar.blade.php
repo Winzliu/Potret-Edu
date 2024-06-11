@@ -1,6 +1,6 @@
 @if ($active == 'waiter-home' || $active == 'waiter-pesanan' || $active == 'kitchen-pesanan' || $active ==
 'kitchen-kelolaMenu' || $active == 'cashier-riwayat' || $active == "admin-riwayat" || $active == "admin-menu" )
-<div class="my-6 w-96 h-10">
+<div class="my-6 w-96 h-10 noprint">
   {{-- Search Bar --}}
   <form action="">
     <label class=" input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
