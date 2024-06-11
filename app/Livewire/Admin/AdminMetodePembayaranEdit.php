@@ -31,7 +31,6 @@ class AdminMetodePembayaranEdit extends Component
     }
     public function editMetodePembayaran()
     {
-        // dd($this->karyawan_id);
         $this->modalTambah = false;
         $this->payment_method = paymentMethod::findOrFail($this->payment_method_id);
         $rules = [
@@ -50,6 +49,8 @@ class AdminMetodePembayaranEdit extends Component
             'taxes.between'   => 'Rentang yang diterima adalah 1-100',
         ]);
 
+        $this->taxes = $this->taxes / 100;
+
         // dd($this->position);
         DB::beginTransaction();
         // $this->discount_rate_conversion = (double) $this->taxes / 100;
@@ -57,7 +58,7 @@ class AdminMetodePembayaranEdit extends Component
             sleep(1);
             paymentMethod::where('payment_method_id', $this->payment_method_id)->update([
                 'method' => $this->method,
-                'taxes'  => $this->taxes / 100,
+                'taxes'  => $this->taxes,
             ]);
             DB::commit();
             $this->reset(['method', 'taxes']);
