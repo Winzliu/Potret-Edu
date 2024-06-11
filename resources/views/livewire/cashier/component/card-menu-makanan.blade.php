@@ -28,7 +28,7 @@
     <div
         class="card min-w-1/4 w-[15.5rem] h-[17rem] px-4 py-4 bg-base-100 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl">
         <figure class="mb-3 cursor-pointer" onclick="my_modal_{{ $i }}.showModal()">
-            <img src="{{ asset('img/makanan.jpg') }}" alt="Shoes"
+            <img src="{{ asset('storage/menu-images/' . $menu->menu_image) }}" alt="Shoes"
                 class="rounded-xl h-36 w-full object-cover @if($menu->menu_state == 'tidak_aktif') filter grayscale @endif"
                 onclick="my_modal_{{ $i }}.showModal()" />
         </figure>

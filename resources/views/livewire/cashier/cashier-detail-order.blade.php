@@ -384,7 +384,7 @@ text-lg mt-10
                             @endforeach
                         </div>
                         <div class="divider my-4"></div>
-                        <p class="text-center font-bold text-xl mb-6">Pilih Discount</p>
+                        <p class="text-center font-bold text-xl mb-6">Pilih Diskon</p>
                         <div class="flex flex-wrap gap-y-5 gap-10">
                             @foreach ($discounts as $discount)
                             <div class="flex items-center justify-center ">

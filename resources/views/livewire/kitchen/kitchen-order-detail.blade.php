@@ -115,8 +115,8 @@ text-lg mt-10
                     <div class="flex items-center me-4 font-medium">
                         <p>{{ $i }}</p>
                     </div>
-                    <div class="flex">
-                        <img class="mask mask-squircle w-14" src="{{ asset('img/'. $menu->menu->menu_image) }}" />
+                    <div class="flex z-0">
+                        <img class="mask mask-squircle w-14" src="{{ asset('storage/menu-images/' . $menu->menu_image) }}" />
                     </div>
                     <div class="flex flex-col mx-4 font-semibold items-start justify-center w-2/3">
                         <div class="flex gap-4 justify-center">
@@ -147,7 +147,7 @@ text-lg mt-10
 
                                 {{-- MODAL POPUP KOSONG --}}
                                 @if($modalKosong)
-                                <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
+                                <div class="fixed z-50 top-0 left-0 w-full h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
                                     <div class="bg-white px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
                                         <p>Apakah Anda yakin ingin menu ini kosong?</p>
                                         <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
@@ -168,7 +168,7 @@ text-lg mt-10
 
                         {{-- MODAL POPUP SELESAI --}}
                             @if($modalSelesai)
-                            <div class="fixed z-0 top-0 left-0 w-full h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
+                            <div class="fixed z-50 top-0 left-0 w-full h-full bg-gray-900 bg-opacity-10 flex justify-center items-center">
                                 <div class="bg-white p-6 py-10 rounded-xl shadow-lg text-center border-4 border-green-500 font-semibold">
                                     <p>Apakah Anda yakin ingin menyelesaikan menu ini?</p>
                                     <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
@@ -238,7 +238,7 @@ text-lg mt-10
     </div>
     {{-- Akhir Pesanan --}}
         {{-- <script>
-        document.addEventListener('livewire:init', () => {
+    document.addEventListener('livewire:init', () => {
             Livewire.on('refresh_notif', (event) => {
                 setTimeout(() => {
                     Livewire.dispatch('refresh');
