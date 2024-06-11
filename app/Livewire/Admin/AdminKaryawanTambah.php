@@ -44,7 +44,7 @@ class AdminKaryawanTambah extends Component
                 'role'            => 'required|string',
                 'position'        => 'required|string',
                 'description'     => 'required|string',
-                'password'        => 'required|string',
+                'password'        => 'required|string|min:8',
             ],
             [
                 'name.required'               => 'Harus diisi',
@@ -60,6 +60,7 @@ class AdminKaryawanTambah extends Component
                 'username.required'           => 'Harus diisi',
                 'username.unique'             => 'Sudah ada.',
                 'password.required'           => 'Harus diisi',
+                'password.min'           => 'Minimal 8 karakter',
             ]
         );
 

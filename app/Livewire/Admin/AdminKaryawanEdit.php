@@ -62,7 +62,7 @@ class AdminKaryawanEdit extends Component
             'role'            => 'required|string',
             'position'        => 'required|string',
             'description'     => 'required|string',
-            'password'        => 'required|string',
+            'password'        => 'required|string|min:8',
         ];
         if ($this->username !== $this->employee->username) {
             $rules['username'] = 'required|string|unique:users';
@@ -89,6 +89,7 @@ class AdminKaryawanEdit extends Component
             'username.required'           => 'Username harus diisi',
             'username.unique'             => 'Username ini sudah ada.',
             'password.required'           => 'Password harus diisi',
+            'password.min'           => 'Minimal 8 karakter',
         ]);
         // dd($this->position);
         DB::beginTransaction();

@@ -51,7 +51,7 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[73vh] overflow-y-scroll scrollbar-hidden r
             {{-- Menu 1 --}}
             <div class="flex flex-col gap-1 items-center">
                 <div class="relative">
-                    <img class="mask mask-squircle w-20 h-20" src="{{ asset('img/' . $menu->menu->menu_image) }}" />
+                    <img class="mask mask-squircle w-20 h-20" src="{{ asset('storage/menu-images/' . $menu->menu_image) }}" />
                     @if($menu->menu_status == 'selesai')
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="25px"
                         class="absolute -right-1 -top-1 bg-green-600 text-white rounded-full p-1" width="25px"
