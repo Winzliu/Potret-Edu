@@ -112,17 +112,21 @@
           <p>Karyawan</p>
         </a>
         <a href="/admin/metode-pembayaran" wire:navigate
-          class="flex flex-col items-center text-center{{ ($active == 'admin-metodePembayaran') ? 'text-tertiaryColor' : 'text-black opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }} text-center leading-3  rounded-lg py-2 w-full">
-          <svg class="w-8 text-tertiaryColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path d="M4.75 4A2.75 2.75 0 0 0 2 6.75V8h16V6.75A2.75 2.75 0 0 0 15.25 4zM18 9H2v4.25A2.75 2.75 0 0 0 4.75 16h10.5A2.75 2.75 0 0 0 18 13.25zm-4.5 4h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1" />
-          </svg>              
+          class="flex flex-col items-center text-center {{ ($active == 'admin-metodePembayaran') ? 'text-tertiaryColor' : 'text-black opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }} text-center leading-3  rounded-lg py-2 w-full">
+          <svg class="w-8" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M928 160H96c-17.7 0-32 14.3-32 32v160h896V192c0-17.7-14.3-32-32-32zM64 832c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V440H64v392zm579-184c0-4.4 3.6-8 8-8h165c4.4 0 8 3.6 8 8v72c0 4.4-3.6 8-8 8H651c-4.4 0-8-3.6-8-8v-72z">
+            </path>
+          </svg>
           <p>Metode Pembayaran</p>
         </a>
         <a href="/admin/diskon" wire:navigate
           class="flex flex-col items-center text-center {{ ($active == 'admin-diskon') ? 'text-tertiaryColor' : 'text-black opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }} text-center leading-3  rounded-lg py-2 w-full">
-          <svg class="w-7 mb-2 flex text-center"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M13.946 2.094a3 3 0 0 0-3.892 0L8.706 3.243a1 1 0 0 1-.569.236l-1.765.14A3 3 0 0 0 3.62 6.371l-.14 1.766a1 1 0 0 1-.237.569l-1.148 1.348a3 3 0 0 0 0 3.891l1.148 1.349a1 1 0 0 1 .236.569l.141 1.765a3 3 0 0 0 2.752 2.752l1.765.14a1 1 0 0 1 .57.237l1.347 1.148a3 3 0 0 0 3.892 0l1.348-1.148a1 1 0 0 1 .57-.236l1.765-.141a3 3 0 0 0 2.752-2.752l.14-1.765a1 1 0 0 1 .236-.57l1.149-1.347a3 3 0 0 0 0-3.892l-1.149-1.348a1 1 0 0 1-.236-.57l-.14-1.765a3 3 0 0 0-2.752-2.752l-1.766-.14a1 1 0 0 1-.569-.236zm.882 5.663l1.415 1.414l-7.071 7.072l-1.415-1.415zm-4.596 2.475a1.5 1.5 0 1 1-2.121-2.121a1.5 1.5 0 0 1 2.121 2.121m3.536 5.657a1.5 1.5 0 1 1 2.12-2.121a1.5 1.5 0 0 1-2.12 2.12" />
-          </svg>          
+          <svg class="w-7 mb-2 flex text-center" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="M13.946 2.094a3 3 0 0 0-3.892 0L8.706 3.243a1 1 0 0 1-.569.236l-1.765.14A3 3 0 0 0 3.62 6.371l-.14 1.766a1 1 0 0 1-.237.569l-1.148 1.348a3 3 0 0 0 0 3.891l1.148 1.349a1 1 0 0 1 .236.569l.141 1.765a3 3 0 0 0 2.752 2.752l1.765.14a1 1 0 0 1 .57.237l1.347 1.148a3 3 0 0 0 3.892 0l1.348-1.148a1 1 0 0 1 .57-.236l1.765-.141a3 3 0 0 0 2.752-2.752l.14-1.765a1 1 0 0 1 .236-.57l1.149-1.347a3 3 0 0 0 0-3.892l-1.149-1.348a1 1 0 0 1-.236-.57l-.14-1.765a3 3 0 0 0-2.752-2.752l-1.766-.14a1 1 0 0 1-.569-.236zm.882 5.663l1.415 1.414l-7.071 7.072l-1.415-1.415zm-4.596 2.475a1.5 1.5 0 1 1-2.121-2.121a1.5 1.5 0 0 1 2.121 2.121m3.536 5.657a1.5 1.5 0 1 1 2.12-2.121a1.5 1.5 0 0 1-2.12 2.12" />
+          </svg>
           <p>Diskon</p>
         </a>
         {{-- akhir role admin --}}

@@ -22,14 +22,24 @@
     {{-- AKHIR ALERT HAPUS --}}
     <div class="flex justify-between items-start pb-5">
         <h1 class="text-2xl font-bold">Diskon</h1>
-        <a href="/admin/tambah-diskon" wire:navigate data-tip="Tambah Diskon baru"
-        class="tooltip tooltip-bottom bg-purpleRed hover:bg-red-700 px-4 py-1 flex rounded-md text-white items-center justify-center">
-            <i class="icon-[ic--round-add] text-2xl font-mediumd text-white px-4"></i>
-            <p class="font-medium pt-[2px]">Tambah Diskon</p>
-        </a>
+        <div class="flex gap-5">
+            <a href="/admin/tambah-diskon" wire:navigate data-tip="Tambah Diskon baru"
+                class="tooltip tooltip-bottom bg-purpleRed hover:bg-red-700 px-4 py-1 flex rounded-md text-white items-center justify-center">
+                <i class="icon-[ic--round-add] text-2xl font-mediumd text-white px-4"></i>
+                <p class="font-medium pt-[2px]">Tambah</p>
+            </a>
+            {{-- Search Bar --}}
+            <label
+                class="input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
+                <input wire:model="search" wire:keydown="searchDiskon" type="text" class="grow text-xs border-0 input"
+                    placeholder="Cari Diskon" />
+            </label>
+            {{-- Akhir Search Bar --}}
+        </div>
     </div>
     <div class="flex flex-col w-full">
-        <div class="xl:overflow-x-hidden overflow-x-auto scrollbar-hidden rounded-lg shadow-[0_0_5px_0_rgba(0,0,0,0.1)]">
+        <div
+            class="xl:overflow-x-hidden overflow-x-auto scrollbar-hidden rounded-lg shadow-[0_0_5px_0_rgba(0,0,0,0.1)]">
             <table class="table">
                 <!-- head -->
                 <thead>
@@ -48,32 +58,38 @@
                         <th class="whitespace-nowrap text-center cursor-default font-medium">
                             {{ ($discounts->currentPage() - 1) * $discounts->perPage() + $loop->iteration }}
                         </th>
-                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{ $discount->discount_name }}</th>
-                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{ $discount->discount_rate }}</th>
+                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{
+                            $discount->discount_name }}</th>
+                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{
+                            $discount->discount_rate }}</th>
                         <th class="whitespace-nowrap">
                             <div class="text-center flex justify-center gap-2">
-                                <a href="/admin/edit-diskon/{{ $discount->discount_id }}" wire-navigate data-tip="Edit Diskon"
+                                <a href="/admin/edit-diskon/{{ $discount->discount_id }}" wire-navigate
+                                    data-tip="Edit Diskon"
                                     class="tooltip bg-mainColor hover:bg-yellow-500 flex items-center justify-center px-3 py-2 rounded-md transition-all duration-300 ">
                                     <i class="icon-[tabler--edit] rounded-md text-white text-xl">H</i>
                                 </a>
-                                    <button wire:click="modal_hapus('{{ $discount->discount_id }}')" data-tip="Hapus Diskon"
-                                        class="tooltip bg-red-500 flex items-center justify-center px-3 py-2 h-full hover:bg-red-700 rounded-md transition-all duration-300">
-                                        <i class="icon-[typcn--trash] text-white text-xl"></i>
-                                    </button>
+                                <button wire:click="modal_hapus('{{ $discount->discount_id }}')" data-tip="Hapus Diskon"
+                                    class="tooltip bg-red-500 flex items-center justify-center px-3 py-2 h-full hover:bg-red-700 rounded-md transition-all duration-300">
+                                    <i class="icon-[typcn--trash] text-white text-xl"></i>
+                                </button>
                             </div>
-                            {{-- MODAL HAPUS  --}}
-                                @if($modalHapus)
-                                <div class="fixed top-0 left-0 w-full h-full bg-slate-500 bg-opacity-10 flex justify-center items-center">
-                                    <div class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
-                                        <p>Apakah Anda yakin ingin menghapus discount ini?</p>
-                                        <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
-                                            <button wire:click="$set('modalHapus', false)"
-                                                class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
-                                            <button wire:click="hapusDiskon" class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
-                                        </div>
+                            {{-- MODAL HAPUS --}}
+                            @if($modalHapus)
+                            <div
+                                class="fixed top-0 left-0 w-full h-full bg-slate-500 bg-opacity-10 flex justify-center items-center">
+                                <div
+                                    class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
+                                    <p>Apakah Anda yakin ingin menghapus discount ini?</p>
+                                    <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                                        <button wire:click="$set('modalHapus', false)"
+                                            class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
+                                        <button wire:click="hapusDiskon"
+                                            class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
                                     </div>
                                 </div>
-                                @endif
+                            </div>
+                            @endif
                             {{-- AKHIR MODAL HAPUS --}}
                         </th>
                     </tr>
@@ -83,10 +99,9 @@
         </div>
     </div>
     {{-- loading --}}
-    <dialog wire:loading wire:target="hapusDiskon" wire:loading.attr="open"
-    class="modal bg-black/30">
-    <span
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
+    <dialog wire:loading wire:target="hapusDiskon" wire:loading.attr="open" class="modal bg-black/30">
+        <span
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
     </dialog>
     {{-- akhir loading --}}
     {{-- pagination --}}

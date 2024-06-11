@@ -13,6 +13,11 @@ return new class extends Migration {
         Schema::create('user_details', function (Blueprint $table) {
             $table->uuid('user_detail_id')->primary();
             $table->uuid('user_id');
+            $table->foreign('user_id')
+                ->references('user_id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('name', 200)->notNullable();
             $table->string('custom');
             $table->string('position');

@@ -99,10 +99,10 @@ class AdminKaryawanEdit extends Component
             user::where('user_id', $this->karyawan_id)->update([
                 'user_id'  => $this->user_id,
                 'username' => $this->username,
-                'password' => $this->password,
+                'password' => $this->password ? bcrypt($this->password) : $this->employee->password,
                 'role'     => $this->role,
             ]);
-            userDetail::where('user_detail_id', $this->karyawan_id)->update([
+            userDetail::where('user_id', $this->karyawan_id)->update([
                 'user_detail_id'  => str()->uuid(),
                 'name'            => $this->name,
                 'custom'          => 'normal',
