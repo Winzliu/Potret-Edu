@@ -13,6 +13,7 @@ use App\Livewire\Profil\Profil;
 
 use App\Livewire\Admin\AdminHome;
 use App\Livewire\Admin\AdminMenu;
+use App\Livewire\Admin\AdminKategoriMenu;
 use App\Livewire\Admin\AdminMenuDetail;
 use App\Livewire\Admin\AdminMenuEdit;
 use App\Livewire\Admin\AdminKaryawan;
@@ -20,8 +21,10 @@ use App\Livewire\Admin\AdminKaryawanTambah;
 use App\Livewire\Admin\AdminOrderHistory;
 use App\Livewire\Admin\AdminMetodePembayaran;
 use App\Livewire\Admin\AdminDiskon;
+use App\Livewire\Admin\AdminKategoriMenuEdit;
 use App\Livewire\Admin\AdminKaryawanEdit;
 use App\Livewire\Admin\AdminMetodePembayaranEdit;
+use App\Livewire\Admin\AdminKategoriMenuTambah;
 use App\Livewire\Admin\AdminMetodePembayaranTambah;
 use App\Livewire\Admin\DetailHistory;
 use App\Livewire\Admin\AdminDiskonTambah;
@@ -103,18 +106,21 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/diskon', AdminDiskon::class);
     Route::get('/admin/karyawan', AdminKaryawan::class);
     Route::get('/admin/metode-pembayaran', AdminMetodePembayaran::class);
+    Route::get('/admin/kategori-menu', AdminKategoriMenu::class);
 
 
     Route::get('/admin/tambah-menu', AdminMenuDetail::class);
     Route::get('/admin/tambah-karyawan', AdminKaryawanTambah::class);
     Route::get('/admin/tambah-diskon', AdminDiskonTambah::class);
     Route::get('/admin/tambah-metode-pembayaran', AdminMetodePembayaranTambah::class);
+    Route::get('/admin/tambah-kategori-menu', AdminKategoriMenuTambah::class);
 
     
     Route::get('/admin/edit-menu/{id_pesanan}', AdminMenuEdit::class);
     Route::get('/admin/edit-karyawan/{id_karyawan}', AdminKaryawanEdit::class);
     Route::get('/admin/edit-diskon/{id_diskon}', AdminDiskonEdit::class);
     Route::get('/admin/edit-metode-pembayaran/{id_metode_pembayaran}', AdminMetodePembayaranEdit::class);
+    Route::get('/admin/edit-kategori-menu/{id_kategori_menu}', AdminKategoriMenuEdit::class);
 
 
     Route::get('/admin/riwayat-pesanan', AdminOrderHistory::class);
