@@ -42,10 +42,10 @@ class KitchenOrder extends Component
     {
         $this->pesanans = order::all();
 
-        if ($this->count_dinein != order::where('order_type', 'Dine In')->count()) {
+        if ($this->count_dinein < order::where('order_type', 'Dine In')->count()) {
             request()->session()->flash('notif_berhasil', 'Ada Pesanan Dine In Baru Ni!!');
             $this->count_dinein = order::where('order_type', 'Dine In')->count();
-        } elseif ($this->count_takeaway != order::where('order_type', 'Take Away')->count()) {
+        } elseif ($this->count_takeaway < order::where('order_type', 'Take Away')->count()) {
             request()->session()->flash('notif_berhasil', 'Ada Pesanan Take Away Baru Ni!!');
             $this->count_takeaway = order::where('order_type', 'Take Away')->count();
         } else {

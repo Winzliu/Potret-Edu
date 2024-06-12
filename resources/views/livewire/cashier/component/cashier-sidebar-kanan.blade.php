@@ -80,8 +80,8 @@
                     <div class="flex">
                         <div class="w-10/12">
                             <div class="flex">
-                                <figure><img src="{{ asset('storage/menu-images/' . $cart->menu_image) }}"
-                                        class="mask mask-squircle w-14 me-4" alt="Movie" />
+                                <figure><img src="{{ asset('storage/menu-images/' . $cart->menu->menu_image) }}"
+                                        class="mask mask-squircle w-14 h-14 object-cover me-4" alt="Movie" />
                                 </figure>
                                 <div class="self-center w-10/12">
                                     <p class="font-semibold mb-2 @if(auth()->user()->userDetail->custom == 'kecil')
@@ -206,7 +206,8 @@
                 </label>
                 <div class="flex justify-between mb-5">
                     <input wire:change="changeService" wire:model="input_service" type="radio" name="service"
-                        id="DineIn" value="Dine In" data-tip="Pesanan Dine-In hanya bisa dibuat pelayan!" class="tooltip peer/DineIn hidden" disabled>
+                        id="DineIn" value="Dine In" data-tip="Pesanan Dine-In hanya bisa dibuat pelayan!"
+                        class="tooltip peer/DineIn hidden" disabled>
                     <label for="DineIn"
                         class="text-center py-2  cursor-not-allowed rounded-lg bg-base-300 w-[48%] shadow-xl  peer-checked/DineIn:bg-mainColor">Dine
                         In</label>
