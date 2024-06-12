@@ -77,7 +77,8 @@ text-lg mt-10
                         </path>
                     </svg>
                     @endif
-                    <img class="mask mask-squircle w-14" src="{{ asset('img/' . $menu->menu->menu_image) }}" />
+                    <img class="mask mask-squircle w-14 h-14 object-cover"
+                        src="{{ asset('storage/menu-images/' . $menu->menu->menu_image) }}" />
                     <div class="flex justify-between w-full items-center">
                         <div class="">
                             <p class="font-bold

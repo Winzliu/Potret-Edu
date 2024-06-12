@@ -88,8 +88,8 @@ text-lg
                     <div class="flex">
                         <div class="w-full">
                             <div class="flex">
-                                <figure><img src="{{ asset('storage/menu-images/' . $cart->menu_image) }}"
-                                        class="mask mask-squircle w-14 me-4" alt="Movie" />
+                                <figure><img src="{{ asset('storage/menu-images/' . $cart->menu->menu_image) }}"
+                                        class="mask mask-squircle w-14 h-14 object-cover me-4" alt="Movie" />
                                 </figure>
                                 <div class="self-center w-10/12">
                                     <p class="font-semibold
@@ -202,7 +202,7 @@ text-lg
                         <div class="w-10/12">
                             <div class="flex">
                                 <figure><img src="{{ asset('storage/menu-images/' . $pBaru['menu_image']) }}"
-                                        class="mask mask-squircle w-14 me-4" alt="Movie" />
+                                        class="mask mask-squircle w-14 h-14 object-cover me-4" alt="Movie" />
                                 </figure>
                                 <div class="self-center w-10/12">
                                     <p class="font-semibold
