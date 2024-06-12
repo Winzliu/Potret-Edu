@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        // User::factory(10)->create();
 
         User::factory()->create([
             'user_id'  => fake()->uuid(),
@@ -51,35 +51,35 @@ class DatabaseSeeder extends Seeder
             'role'     => 'kitchen',
         ]);
 
-        userDetail::factory(14)->create();
-        discount::factory(3)->create();
-        menuCategory::factory(5)->create();
-        menu::factory(40)->create();
-        order::factory(20)->create();
-        orderDetail::factory(200)->create();
-        history::factory(30)->create();
-        historyDetail::factory(80)->create();
-        cart::factory(10)->create();
+        userDetail::factory(4)->create();
+    //     discount::factory(3)->create();
+    //     menuCategory::factory(5)->create();
+    //     menu::factory(40)->create();
+    //     order::factory(20)->create();
+    //     orderDetail::factory(200)->create();
+    //     history::factory(30)->create();
+    //     historyDetail::factory(80)->create();
+    //     cart::factory(10)->create();
 
-        paymentMethod::factory()->create([
-            'payment_method_id' => Str::uuid(),
-            'method'            => 'Cash',
-            'taxes'             => 0,
-        ]);
-        paymentMethod::factory()->create([
-            'payment_method_id' => Str::uuid(),
-            'method'            => 'QRIS',
-            'taxes'             => 0,
-        ]);
-        paymentMethod::factory()->create([
-            'payment_method_id' => Str::uuid(),
-            'method'            => 'BRI',
-            'taxes'             => 0.02,
-        ]);
-        paymentMethod::factory()->create([
-            'payment_method_id' => Str::uuid(),
-            'method'            => 'BCA',
-            'taxes'             => 0,
-        ]);
+    //     paymentMethod::factory()->create([
+    //         'payment_method_id' => Str::uuid(),
+    //         'method'            => 'Cash',
+    //         'taxes'             => 0,
+    //     ]);
+    //     paymentMethod::factory()->create([
+    //         'payment_method_id' => Str::uuid(),
+    //         'method'            => 'QRIS',
+    //         'taxes'             => 0,
+    //     ]);
+    //     paymentMethod::factory()->create([
+    //         'payment_method_id' => Str::uuid(),
+    //         'method'            => 'BRI',
+    //         'taxes'             => 0.02,
+    //     ]);
+    //     paymentMethod::factory()->create([
+    //         'payment_method_id' => Str::uuid(),
+    //         'method'            => 'BCA',
+    //         'taxes'             => 0,
+    //     ]);
     }
 }

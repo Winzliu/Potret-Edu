@@ -106,6 +106,13 @@
           <ion-icon name="restaurant" class="text-2xl"></ion-icon>
           <p>Menu</p>
         </a>
+        <a href="/admin/kategori-menu" wire:navigate
+          class="flex flex-col items-center text-center {{ ($active == 'admin-kategori-menu') ? 'text-tertiaryColor' : 'text-black opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }} text-center leading-3  rounded-lg py-2 w-full">
+          <svg class="w-8 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1m10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1M4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1m13 0c2.206 0 4-1.794 4-4s-1.794-4-4-4s-4 1.794-4 4s1.794 4 4 4" />
+          </svg>          
+          <p>Kategori <br> Menu</p>
+        </a>
         <a href="/admin/karyawan" wire:navigate
           class="{{ ($active == 'admin-karyawan') ? 'text-tertiaryColor' : 'text-black opacity-60 hover:bg-slate-200 hover:-translate-y-1 transition-all duration-200 hover:shadow-xl' }} text-center leading-3  rounded-lg py-2 w-full">
           <ion-icon name="person" class="text-2xl"></ion-icon>

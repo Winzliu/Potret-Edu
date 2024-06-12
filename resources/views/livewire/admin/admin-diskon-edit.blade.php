@@ -35,7 +35,7 @@
         </svg>
         <p>Kembali</p>
     </a>
-    <p class="font-bold text-3xl text-center">Tambah Diskon</p>
+    <p class="font-bold text-3xl text-center">Edit Diskon</p>
     {{-- form --}}
     <div
         class="bg-tertiaryColor mb-8 flex flex-col justify-start mt-5 rounded-lg overflow-y-scroll scrollbar-hidden h-[33vh] xl:h-[33vh] shadow-[0_0_60px_0_rgba(0,0,0,0.2)]">

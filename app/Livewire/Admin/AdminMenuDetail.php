@@ -5,8 +5,7 @@ namespace App\Livewire\Admin;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Menu;
-use App\Models\menuCategory;
-use Illuminate\Support\Facades\DB;
+use App\Models\menuCategory;use Illuminate\Support\Facades\DB;
 
 class AdminMenuDetail extends Component
 {

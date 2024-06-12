@@ -21,9 +21,9 @@
     @endif
     {{-- AKHIR ALERT HAPUS --}}
     <div class="flex justify-between items-start pb-5">
-        <h1 class="text-2xl font-bold">Karyawan</h1>
+        <h1 class="text-2xl font-bold">Kategori Menu</h1>
         <div class="flex gap-5">
-            <a href="/admin/tambah-karyawan" wire:navigate data-tip="Tambah karyawan baru"
+            <a href="/admin/tambah-kategori-menu" wire:navigate data-tip="Tambah Kategori Menu baru"
                 class="tooltip tooltip-bottom bg-purpleRed hover:bg-red-700 px-4 py-1 flex rounded-md text-white items-center justify-center">
                 <i class="icon-[ic--round-add] text-2xl font-mediumd text-white px-4"></i>
                 <p class="font-medium pt-[2px]">Tambah</p>
@@ -31,8 +31,8 @@
             {{-- Search Bar --}}
             <label
                 class="input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
-                <input wire:model="search" wire:keydown="searchKaryawan" type="text" class="grow text-xs border-0 input"
-                    placeholder="Cari Karyawan" />
+                <input wire:model="search" wire:keydown="searchPembayaran" type="text"
+                    class="grow text-xs border-0 input" placeholder="Cari Kategori Menu" />
             </label>
             {{-- Akhir Search Bar --}}
         </div>
@@ -45,79 +45,69 @@
                 <thead>
                     <tr class="text-base text-black bg-fourthColor">
                         <th scope="col" class="px-6 py-3 text-center cursor-default">No</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Nama</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Username</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Role</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Posisi</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Nomor Telepon</th>
-                        <th scope="col" class="px-6 py-3 text-center cursor-default">Alamat</th>
-                        <th scope="col" class="px-2 py-3 text-center cursor-default">Mulai Kerja</th>
+                        <th scope="col" class="px-6 py-3 text-center cursor-default">Kategori Menu</th>
                         <th scope="col" class="px-6 py-3 text-center cursor-default">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($employees as $karyawan)
                     <!-- row 1 -->
+                    {{-- @dd($discounts) --}}
+                    @foreach($menu_categories as $menu_category)
                     <tr class="hover:bg-fourthColor/40  Color transition-all duration-300 even:bg-slate-200">
-                        <th class="whitespace-nowrap text-center cursor-default font-medium">{{
-                            ($employees->currentPage() - 1) *
-                            $employees->perPage() + $loop->iteration }}</th>
-                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{
-                            $karyawan->userDetail->name }}</th>
-                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{
-                            $karyawan->username }}</th>
-                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">
-                            {{$karyawan->role}}
+                        <th class="whitespace-nowrap text-center cursor-default font-medium">
+                            {{ ($menu_categories->currentPage() - 1) * $menu_categories->perPage() + $loop->iteration }}
                         </th>
-                        <td class="whitespace-nowrap text-center cursor-default">{{ $karyawan->userDetail->position }}
-                        </td>
-                        <td class="whitespace-nowrap text-center cursor-default">{{
-                            $karyawan->userDetail->formatted_phone }}</td>
-                        <td class="max-w-10 whitespace-nowrap text-center cursor-default truncate">{{
-                            $karyawan->userDetail->address}}</td>
-                        <td class="max-w-10 whitespace-nowrap text-center cursor-default truncate">
-                            @php
-                            try {
-                            $dateTime = new \Carbon\Carbon($karyawan->userDetail->employment_date);
-                            \Carbon\Carbon::setLocale('id');
-                            $employment_date = $dateTime->translatedFormat('l, d F Y');
-                            } catch (\Exception $e) {
-                            $employment_date = 'Invalid date format';
-                            }
-                            @endphp
-                            {{ $karyawan->userDetail->employment_date }}
-                        </td>
-                        <td class="whitespace-nowrap">
+                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{
+                            $menu_category->menu_category_name }}</th>
+                        <th class="whitespace-nowrap">
                             <div class="text-center flex justify-center gap-2">
-                                <a href="/admin/edit-karyawan/{{ $karyawan->userDetail->user_id }}" wire-navigate
-                                    data-tip="Edit Karyawan"
+                                <a href="/admin/edit-kategori-menu/{{ $menu_category->menu_category_id }}" wire-navigate
+                                    data-tip="Edit Kategori Menu"
                                     class="tooltip bg-mainColor hover:bg-yellow-500 flex items-center justify-center px-3 py-2 rounded-md transition-all duration-300 ">
-                                    <i class="icon-[tabler--edit] rounded-md text-white text-xl">H</i>
+                                    <i class="icon-[tabler--edit] rounded-md text-white text-xl"></i>
                                 </a>
-                                <button wire:click="modal_hapus('{{ $karyawan->userDetail->user_id }}')"
-                                    data-tip="Hapus Karyawan"
+                                <button wire:click="modal_warnHapus('{{ $menu_category->menu_category_id }}')"
+                                    data-tip="Hapus Kategori Menu"
                                     class="tooltip bg-red-500 flex items-center justify-center px-3 py-2 h-full hover:bg-red-700 rounded-md transition-all duration-300">
                                     <i class="icon-[typcn--trash] text-white text-xl"></i>
                                 </button>
                             </div>
+                            {{-- MODAL WARN HAPUS --}}
+                            @if($warnHapus)
+                            <div
+                                class="fixed top-0 left-0 w-full h-full bg-slate-500 bg-opacity-10 flex justify-center items-center">
+                                <div
+                                    class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
+                                    <p>Apakah Anda yakin ingin menghapus kategori "<span class="text-red-500">{{ $categoryName->menu_category_name }}</span>"?</p>
+                                    <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                                        <button wire:click="$set('warnHapus', false)"
+                                            class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
+                                        <button wire:click="modal_hapus()"
+                                            class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                            {{-- AKHIR MODAL WARN HAPUS --}}
                             {{-- MODAL HAPUS --}}
                             @if($modalHapus)
                             <div
                                 class="fixed top-0 left-0 w-full h-full bg-slate-500 bg-opacity-10 flex justify-center items-center">
                                 <div
                                     class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
-                                    <p>Apakah Anda yakin ingin menghapus karyawan ini?</p>
+                                    <p class="text-red-500 text-lg">HATI-HATI!</p>
+                                    <p>PERINTAH INI AKAN IKUT MENGHAPUS <span class="text-red-500">SELURUH MENU</span> <br> YANG MEMILIKI KATEGORI "<span class="text-red-500">{{ $categoryName->menu_category_name }}</span>". <br> Yakin Ingin Menghapus?</p>
                                     <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                                        <button wire:click="hapusKategoriMenu"
+                                            class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
                                         <button wire:click="$set('modalHapus', false)"
                                             class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
-                                        <button wire:click="hapusKaryawan"
-                                            class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
                                     </div>
                                 </div>
                             </div>
                             @endif
                             {{-- AKHIR MODAL HAPUS --}}
-                        </td>
+                        </th>
                     </tr>
                     @endforeach
                 </tbody>
@@ -126,7 +116,13 @@
     </div>
     {{-- pagination --}}
     <div class="flex justify-end items-center gap-10">
-        {{ $employees->links('livewire.admin.component.admin-pagination-link') }}
+        {{ $menu_categories->links('livewire.admin.component.admin-pagination-link') }}
     </div>
     {{-- akhir pagination --}}
+    {{-- loading --}}
+    <dialog wire:loading wire:target="hapusKategoriMenu" wire:loading.attr="open" class="modal bg-black/30">
+        <span
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
+    </dialog>
+    {{-- akhir loading --}}
 </div>
