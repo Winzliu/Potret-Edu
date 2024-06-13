@@ -87,19 +87,6 @@
                 </div>
             </div>
 
-            {{-- ALERGEN --}}
-            <div class="flex flex-col w-full gap-2">
-                <label for="alergen_menu" class="mx-5 font-semibold text-white">Alergen <i
-                        class="font-medium text-slate-200">*Gunakan format koma. Cth: Udang, Susu</i></label>
-                <input autocomplete="off" type="text" wire:model.live.debounce.300ms="menu_allergen"
-                    class="rounded-lg mx-5" name="menu_allergen"
-                    placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
-                @error('menu_allergen')
-                <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
-                    *{{ $message }}
-                </i>
-                @enderror
-            </div>
             {{-- WYSWYG Deskripsi --}}
             <div class="flex flex-col w-full gap-2">
                 <label for="menu_description" class="mx-5 font-semibold text-white">Bahan Menu <i
@@ -114,6 +101,19 @@
                     </i>
                     @enderror
                 </div>
+            </div>
+            {{-- ALERGEN --}}
+            <div class="flex flex-col w-full gap-2">
+                <label for="alergen_menu" class="mx-5 font-semibold text-white">Alergen <i
+                        class="font-medium text-slate-200">*Gunakan format koma. Cth: Udang, Susu</i></label>
+                <input autocomplete="off" type="text" wire:model.live.debounce.300ms="menu_allergen"
+                    class="rounded-lg mx-5" name="menu_allergen"
+                    placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
+                @error('menu_allergen')
+                <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
+                    *{{ $message }}
+                </i>
+                @enderror
             </div>
         </div>
         <div class="mx-5 flex justify-end my-4">

@@ -79,8 +79,8 @@ text-lg
             @php
             $total_harga = 0;
             @endphp
+            @if ($pesanan->orderDetail->count() > 0 || !empty($pesananBaru))
             {{-- kumpulan card --}}
-            @if ($pesanan->orderDetail->count() > 0)
             <div class="overflow-y-scroll h-3/5 fixed w-full left-0 top-14 px-10 py-5">
                 {{-- card --}}
                 @foreach ($pesanan->orderDetail as $cart)

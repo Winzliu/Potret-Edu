@@ -20,7 +20,7 @@
     <div class="px-6 w-full mt-8 font-medium h-[80vh] overflow-y-scroll scrollbar-hidden bg-tertiaryColor rounded-xl">
         <p class="mx-5 mb-2 font-semibold text-white text-center my-6">Gambar Menu</p>
         <div class="flex flex-col justify-center items-center mx-6">
-        {{-- FORM --}}
+            {{-- FORM --}}
             {{-- GAMBAR --}}
             <label id="label_gambar" for="gambar" class="bg-background w-5/12 cursor-pointer relative h-[200px] 
             shadow-[0_0_10px_0px_rgba(0,0,0,0.3)] rounded-xl flex items-center justify-center">
@@ -50,8 +50,9 @@
             {{-- NAMA MENU --}}
             <div class="flex flex-col w-full gap-2">
                 <label for="menu_name" class="mx-5 font-semibold text-white">Nama Menu</label>
-                <input autocomplete="off" type="text" wire:model="menu_name" data-tip="Isi kolom ini dengan nama menu baru"
-                class="tooltip rounded-lg mx-5 text-start" name="menu_name" placeholder="Masukkan Nama Menu Baru">
+                <input autocomplete="off" type="text" wire:model="menu_name"
+                    data-tip="Isi kolom ini dengan nama menu baru" class="tooltip rounded-lg mx-5 text-start"
+                    name="menu_name" placeholder="Masukkan Nama Menu Baru">
                 @error('menu_name')
                 <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
                     *{{ $message }}
@@ -76,8 +77,8 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="harga_menu" class="mx-5 font-semibold text-white">Harga Menu</label>
-                    <input autocomplete="off" type="number" wire:model.live.debounce.150ms="menu_price" 
-                    class="rounded-lg mx-5" name="menu_price" placeholder="Masukkan Harga">
+                    <input autocomplete="off" type="number" wire:model.live.debounce.150ms="menu_price"
+                        class="rounded-lg mx-5" name="menu_price" placeholder="Masukkan Harga">
                     @error('menu_price')
                     <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
                         *{{ $message }}
@@ -87,7 +88,8 @@
             </div>
             {{-- WYSWYG Deskripsi --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="menu_description" class="mx-5 font-semibold text-white">Bahan Menu <i class="font-medium text-slate-200">*Gunakan format koma. Cth: Nasi, 3 Butir Bakso</i></label>
+                <label for="menu_description" class="mx-5 font-semibold text-white">Bahan Menu <i
+                        class="font-medium text-slate-200">*Gunakan format koma. Cth: Nasi, 3 Butir Bakso</i></label>
                 <div class="mx-5">
                     <input wire:model.live.debounce.300ms="menu_description" autocomplete="off"
                         class="w-full rounded-md p-2 border border-black focus:outline-none focus:border-primaryColor"
@@ -101,8 +103,8 @@
             </div>
             {{-- ALERGEN --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="alergen_menu" class="mx-5 font-semibold">Alergen <i
-                        class="font-medium text-slate-500">*Gunakan format koma. Cth: Udang, Susu</i></label>
+                <label for="alergen_menu" class="mx-5 font-semibold text-white">Alergen <i
+                        class="font-medium text-white">*Gunakan format koma. Cth: Udang, Susu</i></label>
                 <input autocomplete="off" type="text" wire:model.live.debounce.300ms="menu_allergen"
                     class="rounded-lg mx-5" name="menu_allergen"
                     placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
@@ -115,41 +117,42 @@
 
         </div>
         <div class="mx-5 flex justify-end my-4">
-            <button type="button" wire:click="modal_tambah" 
+            <button type="button" wire:click="modal_tambah"
                 class="bg-mainColor hover:bg-yellow-500 px-8 py-2 rounded-md font-semibold text-black">Simpan</button>
-            {{-- MODAL TAMBAH  --}}
-                @if($modalTambah)
-                <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
-                    <div class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-tertiaryColor font-semibold">
-                        <p>Apakah Anda yakin ingin menambah menu ini?</p>
-                        <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
-                            <button wire:click="$set('modalTambah', false)"
-                                class="bg-red-500 hover:bg-red-600 px-8 py-2 text-white rounded-md">Tidak</button>
-                            <button wire:click="buatMenu" class="bg-greenConfirm hover:bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
-                        </div>
+            {{-- MODAL TAMBAH --}}
+            @if($modalTambah)
+            <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                <div
+                    class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-tertiaryColor font-semibold">
+                    <p>Apakah Anda yakin ingin menambah menu ini?</p>
+                    <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                        <button wire:click="$set('modalTambah', false)"
+                            class="bg-red-500 hover:bg-red-600 px-8 py-2 text-white rounded-md">Tidak</button>
+                        <button wire:click="buatMenu"
+                            class="bg-greenConfirm hover:bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
                     </div>
                 </div>
             </div>
-            @endif
-            {{-- AKHIR MODAL TAMBAH --}}
         </div>
+        @endif
+        {{-- AKHIR MODAL TAMBAH --}}
     </div>
-    {{-- loading --}}
-    <dialog wire:loading wire:target="buatMenu" wire:loading.attr="open" class="modal bg-black/30">
-        <span
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
-    </dialog>
-    {{-- akhir loading --}}
-    {{-- <style>
-        .tox-tinymce {
-            border: 1px solid #000000;
-            /* Warna hitam */
-        }
-    </style> --}}
-    @livewireScripts
+</div>
+{{-- loading --}}
+<dialog wire:loading wire:target="buatMenu" wire:loading.attr="open" class="modal bg-black/30">
+    <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
+</dialog>
+{{-- akhir loading --}}
+{{-- <style>
+    .tox-tinymce {
+        border: 1px solid #000000;
+        /* Warna hitam */
+    }
+</style> --}}
+@livewireScripts
 
-    <script>
-        function previewFile() {
+<script>
+    function previewFile() {
             var fileInput = document.getElementById('gambar');
             var placeholderIcon = document.getElementById('placeholderIcon');
             var previewImage = document.getElementById('previewImage');
@@ -176,7 +179,7 @@
                 previewImage.style.display = 'none';
             }
         }
-    </script>
+</script>
 </div>
 
 {{-- WYSIWYG EDITOR START --}}
