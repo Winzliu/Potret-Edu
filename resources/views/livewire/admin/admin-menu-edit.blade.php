@@ -18,7 +18,7 @@
         <p class="text-3xl font-bold">Edit Menu</p>
     </div>
     <div class="w-full mt-8 font-medium h-[80vh] overflow-y-scroll scrollbar-hidden bg-tertiaryColor rounded-xl">
-        <p class="mx-5 mb-2 font-semibold text-white my-6">Gambar Menu</p>
+        <p class="mx-5 mb-2 font-semibold text-white my-6 text-center">Gambar Menu</p>
         <div class="flex flex-col justify-center items-center mx-6">
         {{-- FORM --}}
             {{-- GAMBAR --}}
