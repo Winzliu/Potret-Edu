@@ -29,8 +29,8 @@
                 <p class="font-medium pt-[2px]">Tambah</p>
             </a>
             {{-- Search Bar --}}
-            <label
-                class="input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
+            <label data-tip="Cari karyawan berdasarkan nama"
+                class="tooltip tooltip-bottom input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
                 <input wire:model="search" wire:keydown="searchKaryawan" type="text" class="grow text-xs border-0 input"
                     placeholder="Cari Karyawan" />
             </label>
@@ -40,7 +40,7 @@
     <div class="flex flex-col w-full">
         <div
             class="xl:overflow-x-hidden overflow-x-auto scrollbar-hidden rounded-lg shadow-[0_0_5px_0_rgba(0,0,0,0.1)]">
-            <table class="table">
+            <table class="table z-0">
                 <!-- head -->
                 <thead>
                     <tr class="text-base text-black bg-fourthColor">
@@ -87,7 +87,7 @@
                             @endphp
                             {{ $karyawan->userDetail->employment_date }}
                         </td>
-                        <td class="whitespace-nowrap">
+                        <td class="whitespace-nowrap z-50">
                             <div class="text-center flex justify-center gap-2">
                                 <a href="/admin/edit-karyawan/{{ $karyawan->userDetail->user_id }}" wire-navigate
                                     data-tip="Edit Karyawan"
@@ -96,7 +96,7 @@
                                 </a>
                                 <button wire:click="modal_hapus('{{ $karyawan->userDetail->user_id }}')"
                                     data-tip="Hapus Karyawan"
-                                    class="tooltip bg-red-500 flex items-center justify-center px-3 py-2 h-full hover:bg-red-700 rounded-md transition-all duration-300">
+                                    class="z-50 tooltip bg-red-500 flex items-center justify-center px-3 py-2 h-full hover:bg-red-700 rounded-md transition-all duration-300">
                                     <i class="icon-[typcn--trash] text-white text-xl"></i>
                                 </button>
                             </div>

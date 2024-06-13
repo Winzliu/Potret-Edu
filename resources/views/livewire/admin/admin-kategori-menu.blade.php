@@ -23,14 +23,14 @@
     <div class="flex justify-between items-start pb-5">
         <h1 class="text-2xl font-bold">Kategori Menu</h1>
         <div class="flex gap-5">
-            <a href="/admin/tambah-kategori-menu" wire:navigate data-tip="Tambah Kategori Menu baru"
+            <a href="/admin/tambah-kategori-menu" wire:navigate data-tip="Tambah Kategori baru"
                 class="tooltip tooltip-bottom bg-purpleRed hover:bg-red-700 px-4 py-1 flex rounded-md text-white items-center justify-center">
                 <i class="icon-[ic--round-add] text-2xl font-mediumd text-white px-4"></i>
                 <p class="font-medium pt-[2px]">Tambah</p>
             </a>
             {{-- Search Bar --}}
-            <label
-                class="input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
+            <label  data-tip="Cari kategori berdasarkan nama"
+                class="tooltip tooltip-bottom input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
                 <input wire:model="search" wire:keydown="searchPembayaran" type="text"
                     class="grow text-xs border-0 input" placeholder="Cari Kategori Menu" />
             </label>

@@ -1,4 +1,4 @@
-<div class="flex flex-wrap gap-4 justify-start overflow-y-scroll md:h-[75vh] xl:h-[75vh] scrollbar-hidden">
+<div class="flex flex-wrap gap-4 justify-start overflow-y-scroll pt-6 md:h-[75vh] xl:h-[77vh] scrollbar-hidden">
     {{-- notif --}}
     @if (session()->has('aktif_gagal'))
     <div role="alert" 
@@ -45,15 +45,17 @@
     {{-- card 1 --}}
     <div
         class="card min-w-1/4 w-[15.5rem] h-[17rem] px-4 py-4 bg-base-100 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl">
-        <figure class="mb-3 cursor-pointer filter-grayscale" onclick="my_modal_{{ $i }}.showModal()">
-            <img src="{{ asset('storage/menu-images/' . $menu->menu_image) }}" alt="Shoes"
-                @if($menu->menu_state == 'aktif')
-                    class="rounded-xl h-36 w-full object-cover" 
-                @elseif($menu->menu_state == 'tidak_aktif') 
-                    class="filter grayscale rounded-xl h-36 w-full object-cover" 
-                @endif
-                />
-        </figure>
+        <div class="tooltip" data-tip="Detail">
+            <figure class="mb-3 cursor-pointer filter-grayscale" onclick="my_modal_{{ $i }}.showModal()">
+                <img src="{{ asset('storage/menu-images/' . $menu->menu_image) }}" alt="Shoes"
+                    @if($menu->menu_state == 'aktif')
+                        class="rounded-xl h-36 w-full object-cover" 
+                    @elseif($menu->menu_state == 'tidak_aktif') 
+                        class="filter grayscale rounded-xl h-36 w-full object-cover" 
+                    @endif
+                    />
+            </figure>
+        </div>
         <div class="items-center text-left">
             <h2 class="
             @if(auth()->user()->userDetail->custom == 'kecil')
@@ -63,7 +65,7 @@
             @elseif(auth()->user()->userDetail->custom == 'besar')
             text-xl
             @endif
-            font-bold">{{ $menu->menu_name }}</h2>
+            font-bold">{{ str()->limit($menu->menu_name,18) }}</h2>
             <div class="flex items-end justify-between mt-2">
                 <div class="">
                     <p class="

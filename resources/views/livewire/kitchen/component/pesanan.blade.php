@@ -35,7 +35,7 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[70vh] overflow-y-scroll overflow-x-hidden 
     @endphp
     @foreach ($pesanans as $pesanan)
     {{-- Pesanan 1 --}}
-    <div class="bg-secondaryColor rounded-lg flex flex-col items-center py-3 px-8 shadow-[0_0_20px_0_rgba(0,0,0,0.1)]">
+    <div class="z-0 bg-secondaryColor rounded-lg flex flex-col items-center py-3 px-8 shadow-[0_0_20px_0_rgba(0,0,0,0.1)]">
         <p class="font-bold">ID Pesanan: #{{ strtoupper(substr($pesanan->order_id, 0, 8)) }}</p>
         <div class="flex justify-between w-full items-center">
             <div class="">
@@ -126,7 +126,7 @@ flex flex-col gap-7 md:h-[75vh] xl:h-[70vh] overflow-y-scroll overflow-x-hidden 
                 @if ($pesanan->order_status == 'masak')
                 @if ($count > 0)
                 {{-- Pesanan belum siap --}}
-                <button data-tip="Semua menu belum selesai/kosong" class="tooltip px-7 py-2 text-white bg-slate-400 hover:bg-slate-500 
+                <button data-tip="Semua menu belum selesai/kosong" class="z-50 tooltip px-7 py-2 text-white bg-slate-400 hover:bg-slate-500 
                         transition-all duration-300 rounded-lg font-bold">Selesai
                 </button>
                 @endif

@@ -2,9 +2,9 @@
     <div class="flex justify-between items-start pb-5 noprint">
         <h1 class="text-2xl font-bold">Riwayat Pesanan</h1>
         {{-- Search Bar --}}
-        <label
-            class="input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] noprint">
-            <input wire:model="search" wire:keydown="searchHistory" type="text" class="grow text-xs border-0 input"
+        <label data-tip="Cari riwayat berdasarkan id/status"
+            class="tooltip tooltip-bottom input input-bordered flex items-center gap-2 rounded-lg h-9 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] noprint">
+            <input  wire:model="search" wire:keydown="searchHistory" type="text" class="grow text-xs border-0 input"
                 placeholder="Cari History Pesanan" />
         </label>
         {{-- Akhir Search Bar --}}
@@ -81,8 +81,8 @@
         </div>
     </div>
     <div class="flex w-full justify-end gap-5 items-center mt-5 noprint">
-        <button onclick="printStruks()"
-            class="w-24 h-10 rounded-lg bg-white hover:bg-slate-200 text-black border-2 border-black transition-all duration-300 font-bold">Print</button>
+        <button onclick="printStruks()" data-tip="Cetak Riwayat Pesanan"
+            class="tooltip w-24 h-10 rounded-lg bg-white hover:bg-slate-200 text-black border-2 border-black transition-all duration-300 font-bold">Print</button>
         {{ $histories->links('livewire.admin.component.admin-pagination-link') }}
     </div>
 
