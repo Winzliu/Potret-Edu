@@ -40,17 +40,18 @@ class KitchenOrder extends Component
 
     public function render()
     {
-        $this->pesanans = order::all();
 
         if ($this->count_dinein < order::where('order_type', 'Dine In')->count()) {
             request()->session()->flash('notif_berhasil', 'Ada Pesanan Dine In Baru Ni!!');
             $this->count_dinein = order::where('order_type', 'Dine In')->count();
+            $this->dispatch('refreshPesanan');
         } elseif ($this->count_takeaway < order::where('order_type', 'Take Away')->count()) {
             request()->session()->flash('notif_berhasil', 'Ada Pesanan Take Away Baru Ni!!');
             $this->count_takeaway = order::where('order_type', 'Take Away')->count();
-        } else {
-            '$refresh';
+            $this->dispatch('refreshPesanan');
         }
+        '$refresh';
+        $this->pesanans = order::all();
 
         return view('livewire.kitchen.kitchen-order')
             ->layout('components.layouts.app', ['title' => 'Dapur | Pesanan', 'active' => 'kitchen-pesanan', 'role' => 'kitchen']);

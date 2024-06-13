@@ -8,10 +8,10 @@
                 w-6
             @elseif(auth()->user()->userDetail->custom == 'besar')
                 w-8
-            @endif"
-        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292" />
-        </svg>                
+            @endif" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48"
+                d="M244 400L100 256l144-144M120 256h292" />
+        </svg>
         <p>Kembali</p>
     </a>
     <div class="flex items-center gap-5 my-2">
@@ -20,23 +20,22 @@
     <div class="w-full mt-8 font-medium h-[80vh] overflow-y-scroll scrollbar-hidden">
         <p class="mx-5 mb-2 font-semibold">Gambar Menu</p>
         <div class="flex flex-col justify-center items-center">
-        {{-- FORM --}}
+            {{-- FORM --}}
             {{-- GAMBAR --}}
             <label id="label_gambar" for="gambar" class="w-5/12 cursor-pointer relative h-[200px] 
             shadow-[0_0_10px_0px_rgba(0,0,0,0.3)] rounded-xl flex items-center justify-center">
-            @if ($gambar) 
-                    <img id="previewImage"
-                    class="object-contain h-[200px] "
-                    src="{{ $gambar->temporaryUrl() }}" alt="Preview Image">
-                    @else
-                    <i id="placeholderIcon"
-                        class='icon-[icon-park-outline--add-picture] text-gray-400   
+                @if ($gambar)
+                <img id="previewImage" class="object-contain h-[200px] " src="{{ $gambar->temporaryUrl() }}"
+                    alt="Preview Image">
+                @else
+                <i id="placeholderIcon" class='icon-[icon-park-outline--add-picture] text-gray-400   
                         text-9xl text-center rounded-md'></i>
 
                 @endif
-                <input wire:model="gambar" type="file" id="gambar" name="gambar" data-tip="Klik untuk upload gambar menu"class="tooltip hidden" accept="image/*">
+                <input wire:model="gambar" type="file" id="gambar" name="gambar"
+                    data-tip="Klik untuk upload gambar menu" class="tooltip hidden" accept="image/*">
             </label>
-            
+
             <div class="text-start mx-5 2xl:mx-40 mt-2 font-semibold">
                 <p id="fileInfo" class="mt-0 mb-0 font-medium"></p>
                 @error('gambar')
@@ -52,8 +51,9 @@
             {{-- NAMA MENU --}}
             <div class="flex flex-col w-full gap-2">
                 <label for="menu_name" class="mx-5 font-semibold">Nama Menu</label>
-                <input autocomplete="off" type="text" wire:model="menu_name" data-tip="Isi kolom ini dengan nama menu baru"
-                class="tooltip rounded-lg mx-5 text-start" name="menu_name" placeholder="Masukkan Nama Menu Baru">
+                <input autocomplete="off" type="text" wire:model="menu_name"
+                    data-tip="Isi kolom ini dengan nama menu baru" class="tooltip rounded-lg mx-5 text-start"
+                    name="menu_name" placeholder="Masukkan Nama Menu Baru">
                 @error('menu_name')
                 <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
                     *{{ $message }}
@@ -67,9 +67,9 @@
                     <select class="mx-5  rounded-lg w-full max-w-xs" wire:model="menu_category" name="menu_category">
                         <option selected>Pilih kategori menu</option>
                         @foreach ($menu_categories as $category)
-                            <option value="{{ $category->menu_category_id }}">{{ $category->menu_category_name }}</option>
+                        <option value="{{ $category->menu_category_id }}">{{ $category->menu_category_name }}</option>
                         @endforeach
-                      </select>
+                    </select>
                     @error('menu_category')
                     <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
                         *{{ $message }}
@@ -78,8 +78,8 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="harga_menu" class="mx-5 font-semibold">Harga Menu</label>
-                    <input autocomplete="off" type="number" wire:model.live.debounce.150ms="menu_price" 
-                    class="rounded-lg mx-5" name="menu_price" placeholder="Masukkan Harga">
+                    <input autocomplete="off" type="number" wire:model.live.debounce.150ms="menu_price"
+                        class="rounded-lg mx-5" name="menu_price" placeholder="Masukkan Harga">
                     @error('menu_price')
                     <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
                         *{{ $message }}
@@ -87,24 +87,14 @@
                     @enderror
                 </div>
             </div>
-
-            {{-- ALERGEN --}}
-            <div class="flex flex-col w-full gap-2">
-                <label for="alergen_menu" class="mx-5 font-semibold">Alergen <i class="font-medium text-slate-500">*Gunakan format koma. Cth: Udang, Susu</i></label>
-                <input  autocomplete="off" type="text" wire:model.live.debounce.300ms="menu_allergen"class="rounded-lg mx-5" name="menu_allergen" placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
-                @error('menu_allergen')
-                <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
-                    *{{ $message }}
-                </i>
-                @enderror
-            </div>
             {{-- WYSWYG Deskripsi --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="menu_description" class="mx-5 font-semibold">Bahan Menu <i class="font-medium text-slate-500">*Gunakan format koma. Cth: Nasi, 3 Butir Bakso</i></label>
+                <label for="menu_description" class="mx-5 font-semibold">Bahan Menu <i
+                        class="font-medium text-slate-500">*Gunakan format koma. Cth: Nasi, 3 Butir Bakso</i></label>
                 <div class="mx-5">
-                    <input wire:model.live.debounce.300ms="menu_description"
-                    autocomplete="off" class="w-full rounded-md p-2 border border-black focus:outline-none focus:border-primaryColor"
-                        id="menu_description" name="menu_description" placeholder="Masukkan Bahan Menu"/>
+                    <input wire:model.live.debounce.300ms="menu_description" autocomplete="off"
+                        class="w-full rounded-md p-2 border border-black focus:outline-none focus:border-primaryColor"
+                        id="menu_description" name="menu_description" placeholder="Masukkan Bahan Menu" />
                     @error('menu_description')
                     <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
                         *{{ $message }}
@@ -112,37 +102,53 @@
                     @enderror
                 </div>
             </div>
+            {{-- ALERGEN --}}
+            <div class="flex flex-col w-full gap-2">
+                <label for="alergen_menu" class="mx-5 font-semibold">Alergen <i
+                        class="font-medium text-slate-500">*Gunakan format koma. Cth: Udang, Susu</i></label>
+                <input autocomplete="off" type="text" wire:model.live.debounce.300ms="menu_allergen"
+                    class="rounded-lg mx-5" name="menu_allergen"
+                    placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
+                @error('menu_allergen')
+                <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
+                    *{{ $message }}
+                </i>
+                @enderror
+            </div>
+
         </div>
         <div class="mx-5 flex justify-end my-4">
-            <button type="button" wire:click="modal_tambah" 
+            <button type="button" wire:click="modal_tambah"
                 class="bg-green-500 hover:bg-green-600 px-8 py-1 rounded-md text-white">Simpan</button>
-            {{-- MODAL TAMBAH  --}}
-                @if($modalTambah)
-                <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
-                    <div class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-greenConfirm font-semibold">
-                        <p>Apakah Anda yakin ingin menambah menu ini?</p>
-                        <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
-                            <button wire:click="$set('modalTambah', false)"
-                                class="bg-red-500 hover:bg-red-600 px-8 py-2 text-white rounded-md">Tidak</button>
-                            <button wire:click="buatMenu" class="bg-greenConfirm hover:bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
-                        </div>
+            {{-- MODAL TAMBAH --}}
+            @if($modalTambah)
+            <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                <div
+                    class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-greenConfirm font-semibold">
+                    <p>Apakah Anda yakin ingin menambah menu ini?</p>
+                    <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                        <button wire:click="$set('modalTambah', false)"
+                            class="bg-red-500 hover:bg-red-600 px-8 py-2 text-white rounded-md">Tidak</button>
+                        <button wire:click="buatMenu"
+                            class="bg-greenConfirm hover:bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
                     </div>
                 </div>
-                @endif
+            </div>
+            @endif
             {{-- AKHIR MODAL TAMBAH --}}
         </div>
     </div>
     {{-- loading --}}
-    <dialog wire:loading wire:target="buatMenu" wire:loading.attr="open"
-        class="modal bg-black/30">
+    <dialog wire:loading wire:target="buatMenu" wire:loading.attr="open" class="modal bg-black/30">
         <span
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 loading loading-spinner loading-lg"></span>
     </dialog>
-        {{-- akhir loading --}}
+    {{-- akhir loading --}}
     {{-- <style>
         .tox-tinymce {
-        border: 1px solid #000000; /* Warna hitam */
-      }
+            border: 1px solid #000000;
+            /* Warna hitam */
+        }
     </style> --}}
     @livewireScripts
 
