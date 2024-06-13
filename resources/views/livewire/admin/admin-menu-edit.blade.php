@@ -120,7 +120,7 @@
         </div>
         <div class="mx-5 flex justify-end my-4">
             <button type="button" wire:click="modal_tambah" 
-                class="bg-mainColor hover:bg-yellow-500 px-8 py-1 rounded-md text-black">Simpan</button>
+                class="bg-mainColor hover:bg-yellow-500 px-8 py-2 rounded-md font-semibold text-black">Simpan</button>
             {{-- MODAL TAMBAH  --}}
                 @if($modalTambah)
                 <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
