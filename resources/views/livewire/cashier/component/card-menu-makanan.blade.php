@@ -98,7 +98,7 @@
             @elseif(auth()->user()->userDetail->custom == 'besar')
             text-3xl
             @endif
-            text-center">{{ $menu->menu_name }}</h3>
+            text-center">{{ str()->limit($menu->menu_name, 18) }}</h3>
             <div class="flex justify-evenly">
                 <div class="w-32">
                     <p class="pt-4 font-semibold">Bahan :</p>
