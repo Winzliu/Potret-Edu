@@ -17,12 +17,12 @@
     <div class="flex items-center gap-5 my-2">
         <p class="text-3xl font-bold">Edit Menu</p>
     </div>
-    <div class="w-full mt-8 font-medium h-[80vh] overflow-y-scroll scrollbar-hidden">
-        <p class="mx-5 mb-2 font-semibold">Gambar Menu</p>
-        <div class="flex flex-col justify-center items-center">
+    <div class="w-full mt-8 font-medium h-[80vh] overflow-y-scroll scrollbar-hidden bg-tertiaryColor rounded-xl">
+        <p class="mx-5 mb-2 font-semibold text-white my-6 text-center">Gambar Menu</p>
+        <div class="flex flex-col justify-center items-center mx-6">
         {{-- FORM --}}
             {{-- GAMBAR --}}
-            <label id="label_gambar" for="gambar" class="w-5/12 cursor-pointer relative h-[200px] 
+            <label id="label_gambar" for="gambar" class="bg-background  w-5/12 cursor-pointer relative h-[200px] 
             shadow-[0_0_10px_0px_rgba(0,0,0,0.3)] rounded-xl flex items-center justify-center">
             @if ($gambar)
             <img id="previewImage"
@@ -48,14 +48,14 @@
                     *{{ $message }}
                 </i><br>
                 @enderror
-                <i class="text-red-500">*klik gambar di atas untuk mengunggah file</i>
+                <i class="text-slate-200">*klik gambar di atas untuk mengunggah file</i>
             </div>
         </div>
 
         <div class="flex flex-col gap-4">
             {{-- NAMA MENU --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="menu_name" class="mx-5 font-semibold">Nama Menu</label>
+                <label for="menu_name" class="mx-5 font-semibold text-white">Nama Menu</label>
                 <input autocomplete="off" type="text" wire:model="menu_name"
                 class="rounded-lg mx-5" name="menu_name">
                 @error('menu_name')
@@ -67,7 +67,7 @@
             <div class="flex  gap-2">
                 {{-- HARGA MENU --}}
                 <div class="flex flex-col gap-2">
-                    <label for="menu_category" class="mx-5 font-semibold">Kategori Menu</label>
+                    <label for="menu_category" class="mx-5 font-semibold text-white">Kategori Menu</label>
                     <select class="mx-5  rounded-lg w-full max-w-xs" wire:model="menu_category" name="menu_category">
                         <option selected>Pilih kategori menu</option>
                         @foreach ($menu_categories as $category)
@@ -81,7 +81,7 @@
                     @enderror
                 </div>
                 <div class="flex flex-col gap-2">
-                    <label for="harga_menu" class="mx-5 font-semibold">Harga Menu</label>
+                    <label for="harga_menu" class="mx-5 font-semibold text-white">Harga Menu</label>
                     <input autocomplete="off" type="number" 
                         wire:model="menu_price"
                     class="rounded-lg mx-5" name="menu_price" placeholder="Masukkan Harga">
@@ -95,7 +95,7 @@
 
             {{-- ALERGEN --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="alergen_menu" class="mx-5 font-semibold">Alergen <i class="font-medium text-slate-500">*Gunakan format koma. Cth: Udang, Susu</i></label>
+                <label for="alergen_menu" class="mx-5 font-semibold text-white">Alergen <i class="font-medium text-slate-200">*Gunakan format koma. Cth: Udang, Susu</i></label>
                 <input  autocomplete="off" type="text" wire:model.live.debounce.300ms="menu_allergen"class="rounded-lg mx-5" name="menu_allergen" placeholder="Masukkan bahan makanan yang berpotensi memicu alergi">
                 @error('menu_allergen')
                 <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">
@@ -105,7 +105,7 @@
             </div>
             {{-- WYSWYG Deskripsi --}}
             <div class="flex flex-col w-full gap-2">
-                <label for="menu_description" class="mx-5 font-semibold">Bahan Menu <i class="font-medium text-slate-500">*Gunakan format koma. Cth: Nasi, 3 Butir Bakso</i></label>
+                <label for="menu_description" class="mx-5 font-semibold text-white">Bahan Menu <i class="font-medium text-slate-200">*Gunakan format koma. Cth: Nasi, 3 Butir Bakso</i></label>
                 <div class="mx-5">
                     <input wire:model.live.debounce.300ms="menu_description"
                     autocomplete="off" class="w-full rounded-md p-2 border border-black focus:outline-none focus:border-primaryColor"
@@ -120,11 +120,11 @@
         </div>
         <div class="mx-5 flex justify-end my-4">
             <button type="button" wire:click="modal_tambah" 
-                class="bg-green-500 hover:bg-green-600 px-8 py-1 rounded-md text-white">Simpan</button>
+                class="bg-mainColor hover:bg-yellow-500 px-8 py-2 rounded-md font-semibold text-black">Simpan</button>
             {{-- MODAL TAMBAH  --}}
                 @if($modalTambah)
                 <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
-                    <div class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-greenConfirm font-semibold">
+                    <div class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-tertiaryColor font-semibold">
                         <p>Apakah Anda yakin ingin menambah menu ini?</p>
                         <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
                             <button wire:click="$set('modalTambah', false)"
