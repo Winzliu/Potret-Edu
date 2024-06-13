@@ -52,70 +52,70 @@
                 <tbody>
                     <!-- row 1 -->
                     {{-- @dd($discounts) --}}
-                    @foreach($menu_categories as $menu_category)
-                    <tr class="hover:bg-fourthColor/40  Color transition-all duration-300 even:bg-slate-200">
-                        <th class="whitespace-nowrap text-center cursor-default font-medium">
-                            {{ ($menu_categories->currentPage() - 1) * $menu_categories->perPage() + $loop->iteration }}
-                        </th>
-                        <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{
-                            $menu_category->menu_category_name }}</th>
-                        <th class="whitespace-nowrap">
-                            <div class="text-center flex justify-center gap-2">
-                                <a href="/admin/edit-kategori-menu/{{ $menu_category->menu_category_id }}" wire-navigate
-                                    data-tip="Edit Kategori Menu"
-                                    class="tooltip bg-mainColor hover:bg-yellow-500 flex items-center justify-center px-3 py-2 rounded-md transition-all duration-300 ">
-                                    <i class="icon-[tabler--edit] rounded-md text-white text-xl"></i>
-                                </a>
-                                <button wire:click="modal_warnHapus('{{ $menu_category->menu_category_id }}')"
-                                    data-tip="Hapus Kategori Menu"
-                                    class="tooltip bg-red-500 flex items-center justify-center px-3 py-2 h-full hover:bg-red-700 rounded-md transition-all duration-300">
-                                    <i class="icon-[typcn--trash] text-white text-xl"></i>
-                                </button>
-                            </div>
-                            {{-- MODAL WARN HAPUS --}}
-                            @if($warnHapus)
-                            <div
-                                class="fixed top-0 left-0 w-full h-full bg-slate-500 bg-opacity-10 flex justify-center items-center">
+                        @foreach($menu_categories as $menu_category)
+                        <tr class="hover:bg-fourthColor/40  Color transition-all duration-300 even:bg-slate-200">
+                            <th class="whitespace-nowrap text-center cursor-default font-medium">
+                                {{ ($menu_categories->currentPage() - 1) * $menu_categories->perPage() + $loop->iteration }}
+                            </th>
+                            <th class="max-w-10 whitespace-nowrap text-center cursor-default truncate font-medium">{{
+                                $menu_category->menu_category_name }}</th>
+                            <th class="whitespace-nowrap">
+                                <div class="text-center flex justify-center gap-2">
+                                    <a href="/admin/edit-kategori-menu/{{ $menu_category->menu_category_id }}" wire-navigate
+                                        data-tip="Edit Kategori Menu"
+                                        class="tooltip bg-mainColor hover:bg-yellow-500 flex items-center justify-center px-3 py-2 rounded-md transition-all duration-300 ">
+                                        <i class="icon-[tabler--edit] rounded-md text-white text-xl"></i>
+                                    </a>
+                                    <button wire:click="modal_warnHapus('{{ $menu_category->menu_category_id }}')"
+                                        data-tip="Hapus Kategori Menu"
+                                        class="tooltip bg-red-500 flex items-center justify-center px-3 py-2 h-full hover:bg-red-700 rounded-md transition-all duration-300">
+                                        <i class="icon-[typcn--trash] text-white text-xl"></i>
+                                    </button>
+                                </div>
+                                {{-- MODAL WARN HAPUS --}}
+                                @if($warnHapus)
                                 <div
-                                    class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
-                                    <p>Apakah Anda yakin ingin menghapus kategori "<span class="text-red-500">{{ $categoryName->menu_category_name }}</span>"?</p>
-                                    <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
-                                        <button wire:click="$set('warnHapus', false)"
-                                            class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
-                                        <button wire:click="modal_hapus()"
-                                            class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
+                                    class="fixed top-0 left-0 w-full h-full bg-slate-500 bg-opacity-10 flex justify-center items-center">
+                                    <div
+                                        class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
+                                        <p>Apakah Anda yakin ingin menghapus kategori "<span class="text-red-500">{{ $categoryName->menu_category_name }}</span>"?</p>
+                                        <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                                            <button wire:click="$set('warnHapus', false)"
+                                                class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
+                                            <button wire:click="modal_hapus()"
+                                                class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            @endif
-                            {{-- AKHIR MODAL WARN HAPUS --}}
-                            {{-- MODAL HAPUS --}}
-                            @if($modalHapus)
-                            <div
-                                class="fixed top-0 left-0 w-full h-full bg-slate-500 bg-opacity-10 flex justify-center items-center">
+                                @endif
+                                {{-- AKHIR MODAL WARN HAPUS --}}
+                                {{-- MODAL HAPUS --}}
+                                @if($modalHapus)
                                 <div
-                                    class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
-                                    <p class="text-red-500 text-lg">HATI-HATI!</p>
-                                    <p>PERINTAH INI AKAN IKUT MENGHAPUS <span class="text-red-500">SELURUH MENU</span> <br> YANG MEMILIKI KATEGORI "<span class="text-red-500">{{ $categoryName->menu_category_name }}</span>". <br> Yakin Ingin Menghapus?</p>
-                                    <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
-                                        <button wire:click="hapusKategoriMenu"
-                                            class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
-                                        <button wire:click="$set('modalHapus', false)"
-                                            class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
+                                    class="fixed top-0 left-0 w-full h-full bg-slate-500 bg-opacity-10 flex justify-center items-center">
+                                    <div
+                                        class="bg-background px-12 py-10 rounded-xl shadow-lg text-center border-4 border-purpleRed font-semibold">
+                                        <p class="text-red-500 text-lg">HATI-HATI!</p>
+                                        <p>PERINTAH INI AKAN IKUT MENGHAPUS <span class="text-red-500">SELURUH MENU</span> <br> YANG MEMILIKI KATEGORI "<span class="text-red-500">{{ $categoryName->menu_category_name }}</span>". <br> Yakin Ingin Menghapus?</p>
+                                        <div class="mt-4 flex flex-row justify-center gap-8 font-medium">
+                                            <button wire:click="hapusKategoriMenu"
+                                                class="bg-green-500 text-white px-10 py-2 rounded-md mr-2">Ya</button>
+                                            <button wire:click="$set('modalHapus', false)"
+                                                class="bg-red-500 px-8 py-2 text-white rounded-md">Tidak</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            @endif
-                            {{-- AKHIR MODAL HAPUS --}}
-                        </th>
-                    </tr>
-                    @endforeach
-                </tbody>
+                                @endif
+                                {{-- AKHIR MODAL HAPUS --}}
+                            </th>
+                        </tr>
+                        @endforeach
+                    </tbody>
             </table>
         </div>
     </div>
     {{-- pagination --}}
-    <div class="flex justify-end items-center gap-10">
+    <div class="mt-6 flex justify-end items-center gap-10">
         {{ $menu_categories->links('livewire.admin.component.admin-pagination-link') }}
     </div>
     {{-- akhir pagination --}}
