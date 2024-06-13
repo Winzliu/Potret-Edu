@@ -49,12 +49,12 @@ class AdminKategoriMenu extends Component
             request()->session()->flash('success', 'Kategori Menu berhasil dihapus!');
             DB::commit();
             $this->modalHapus = false;
+            $this->resetState();
             $this->render();
         } catch (\Exception $e) {
-            request()->session()->flash('error', 'Gagal menghapus Kategori Menu!' . $e->getMessage());
+            request()->session()->flash('error', 'Gagal menghapus Kategori Menu!');
             DB::rollBack();
         }
-        // $this->dispatch('refresh_notif');
     }
 
     public function searchPembayaran()
@@ -62,9 +62,17 @@ class AdminKategoriMenu extends Component
         $this->resetPage();
     }
 
+    public function resetState()
+    {
+        $this->warnHapus = false;
+        $this->modalHapus = false;
+        $this->menu_category_id = null;
+        $this->categoryName = '';
+    }
+
     public function render()
     {
-        $menu_categories = menuCategory::where('menu_category_name', 'like', '%' . $this->search . '%')->orderBy('menu_category_name', 'asc')->paginate(5);
+        $menu_categories = menuCategory::where('menu_category_name', 'like', '%' . $this->search . '%')->orderBy('menu_category_name', 'asc')->paginate(7);
 
         return view('livewire..admin.admin-kategori-menu',[
             'menu_categories' => $menu_categories,
