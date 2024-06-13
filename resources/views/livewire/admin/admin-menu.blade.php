@@ -63,7 +63,7 @@
                             $menu->menu_name }}</th>
                         <th class=" whitespace-nowrap text-center cursor-default flex justify-center">
                             <img src="{{ asset('storage/menu-images/' . $menu->menu_image) }}" alt='menu'
-                                class="w-7 rounded-full">
+                                class="w-7 h-7 object-cover rounded-full">
                         </th>
                         <td class="whitespace-nowrap text-center cursor-default">Rp{{number_format($menu->menu_price, 0,
                             ',', '.')}}</td>

@@ -34,7 +34,7 @@ class AdminHome extends Component
 
         $this->histories = history::all();
         $this->menus = menu::all();
-        $this->pesanans = history::whereDate('payment_date', $startOfDay)->orderBy('payment_date', 'desc')->get();
+        $this->pesanans = history::whereDate('payment_date', $startOfDay)->where('order_status', 'selesai')->orderBy('payment_date', 'desc')->get();
         $this->users = user::where('role', '!=', 'admin')->get();
         $this->totalMenu = $this->menus->count();
         $this->totalUser = $this->users->count();
