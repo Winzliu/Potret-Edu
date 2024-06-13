@@ -107,7 +107,7 @@
         </div>
     </div>
     {{-- pagination --}}
-    <div class="flex justify-end items-center gap-10">
+    <div class="flex justify-end items-center gap-10 mt-5">
         {{ $menus->links('livewire.admin.component.admin-pagination-link') }}
     </div>
     {{-- akhir pagination --}}

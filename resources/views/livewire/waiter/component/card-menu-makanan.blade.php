@@ -1,4 +1,4 @@
-<div class="flex flex-wrap gap-4 justify-start overflow-y-scroll h-[75vh] scrollbar-hidden">
+<div class="flex flex-wrap gap-4 justify-start overflow-y-scroll pt-6 h-[77vh] scrollbar-hidden">
     {{-- notif --}}
     @if (session()->has('notif_gagal'))
     <div role="alert"
@@ -27,10 +27,12 @@
     {{-- card 1 --}}
     <div
         class="card min-w-1/4 w-[15.5rem] h-[17rem] px-4 py-4 bg-base-100 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl">
-        <figure class="mb-3 cursor-pointer" onclick="my_modal_{{ $i }}.showModal()">
-            <img src="{{ asset('storage/menu-images/' . $menu->menu_image) }}" alt="Shoes"
-                class="rounded-xl h-36 w-full object-cover @if($menu->menu_state == 'tidak_aktif') filter grayscale @endif" />
-        </figure>
+        <div class="tooltip" data-tip="Detail">
+            <figure class="mb-3 cursor-pointer" onclick="my_modal_{{ $i }}.showModal()">
+                <img src="{{ asset('storage/menu-images/' . $menu->menu_image) }}" alt="Shoes"
+                    class="rounded-xl h-36 w-full object-cover @if($menu->menu_state == 'tidak_aktif') filter grayscale @endif" />
+            </figure>
+        </div>
         <div class="items-center text-left">
             <h2 class="
             @if(auth()->user()->userDetail->custom == 'kecil')
@@ -40,7 +42,7 @@
             @elseif(auth()->user()->userDetail->custom == 'besar')
             text-xl
             @endif
-            font-bold">{{ $menu->menu_name }}</h2>
+            font-bold">{{ str()->limit($menu->menu_name, 18) }}</h2>
             <div class="flex items-end justify-between mt-2">
                 <div class="">
                     <p class="
@@ -54,20 +56,22 @@
                     w-32">{{ Str::limit($menu->menu_description, 15) }}</p>
                     <p class="font-semibold">Rp. {{ number_format($menu->menu_price,0, ',', '.') }}</p>
                 </div>
-                <button @if($pesanan_id) wire:click="addToPesanan('{{ $menu->menu_id }}')" @else
-                    wire:click="addToCart('{{ $menu->menu_id }}')" @endif class="bg-mainColor w-10 h-10 rounded-full font-bold
-                    @if(auth()->user()->userDetail->custom == 'kecil')
-                    text-xl
-                    @elseif(auth()->user()->userDetail->custom == 'normal')
-                    text-2xl
-                    @elseif(auth()->user()->userDetail->custom == 'besar')
-                    text-3xl
-                    @endif
-
-                    @if($menu->menu_state == 'tidak_aktif') filter grayscale cursor-not-allowed @endif
-                    " @if($menu->menu_state == 'tidak_aktif') disabled @endif>
-                    +
-                </button>
+                <div class="tooltip" data-tip="Tambah">
+                    <button @if($pesanan_id) wire:click="addToPesanan('{{ $menu->menu_id }}')" @else
+                        wire:click="addToCart('{{ $menu->menu_id }}')" @endif class="bg-mainColor w-10 h-10 rounded-full font-bold
+                        @if(auth()->user()->userDetail->custom == 'kecil')
+                        text-xl
+                        @elseif(auth()->user()->userDetail->custom == 'normal')
+                        text-2xl
+                        @elseif(auth()->user()->userDetail->custom == 'besar')
+                        text-3xl
+                        @endif
+    
+                        @if($menu->menu_state == 'tidak_aktif') filter grayscale cursor-not-allowed @endif
+                        " @if($menu->menu_state == 'tidak_aktif') disabled @endif>
+                        +
+                    </button>
+                </div>
             </div>
         </div>
     </div>
