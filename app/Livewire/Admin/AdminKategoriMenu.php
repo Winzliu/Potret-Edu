@@ -24,14 +24,14 @@ class AdminKategoriMenu extends Component
     {
         $this->search = '';
     }
-    
+
     public function modal_warnHapus($menu_category_id)
     {
         $this->menu_category_id = $menu_category_id;
         $this->categoryName = menuCategory::where('menu_category_id', $menu_category_id)->first();
         $this->warnHapus = true;
     }
-    
+
     public function modal_hapus()
     {
         $this->warnHapus = false;
@@ -74,7 +74,7 @@ class AdminKategoriMenu extends Component
     {
         $menu_categories = menuCategory::where('menu_category_name', 'like', '%' . $this->search . '%')->orderBy('menu_category_name', 'asc')->paginate(7);
 
-        return view('livewire..admin.admin-kategori-menu',[
+        return view('livewire..admin.admin-kategori-menu', [
             'menu_categories' => $menu_categories,
         ])->layout('components.layouts.app', ['title' => 'Admin | Kategori Menu', 'active' => 'admin-kategori-menu', 'role' => 'admin']);
     }

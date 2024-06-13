@@ -61,7 +61,8 @@
                                 d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                         </svg>
                     </div>
-                    <input id="datepicker" datepicker type="text" wire:model="employment_date"
+                    <input x-on:blur="$wire.employment_date = document.getElementById('datepicker').value"
+                        id="datepicker" datepicker type="text" wire:model="employment_date"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer"
                         placeholder="Tanggal Masuk Karyawan">
                 </div>
@@ -79,8 +80,8 @@
                 </div>
                 <input type="text" id="alamat" placeholder="Alamat Lengkap Karyawan" wire:model="address"
                     class="input input-bordered w-full max-w-md cursor-pointer text-sm" autocomplete="off" />
-                <div id="pelengkap-alamat" wire:click="selectAddress(suggestion)"
-                    class="absolute z-50 bg-white w-full max-w-md rounded-lg">
+                <div id="pelengkap-alamat" x-on:click="$wire.address = document.getElementById('alamat').value"
+                    wire:click="selectAddress(suggestion)" class="absolute z-50 bg-white w-full max-w-md rounded-lg">
                 </div>
                 @error('address')
                 <i class="text-red-500 ms-4 mt-0 mb-0 font-medium">

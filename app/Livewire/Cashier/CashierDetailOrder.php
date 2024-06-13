@@ -50,6 +50,7 @@ class CashierDetailOrder extends Component
             foreach ($this->pesanan->orderDetail as $orderDetail) {
                 historyDetail::create([
                     'history_detail_id' => Str::uuid(),
+                    'menu_date'         => NOW(),
                     'history_id'        => $history_id,
                     'menu_name'         => $orderDetail->menu->menu_name,
                     'menu_notes'        => $orderDetail->notes,
@@ -64,7 +65,6 @@ class CashierDetailOrder extends Component
         } catch (\Throwable $th) {
             DB::rollBack();
             request()->session()->flash('notif_berbayar', 'Pesanan Gagal Dibatalkan');
-            dd($th);
         }
 
         return redirect('/cashier/pesanan');

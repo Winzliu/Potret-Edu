@@ -32,52 +32,59 @@ text-lg mt-10
                 @foreach ($pesanan->orderDetail as $menu)
                 <div class="flex items-center gap-4 ">
                     @if($menu->menu_status == 'selesai')
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="25px"
-                        class="
-                        @if(auth()->user()->userDetail->custom == 'kecil')
-                        text-4xl
-                        @elseif(auth()->user()->userDetail->custom == 'normal')
-                        text-5xl
-                        @elseif(auth()->user()->userDetail->custom == 'besar')
-                        text-6xl
-                        @endif
-                        text-green-600" width="25px" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
-                        </path>
-                    </svg>
+                    <div class="tooltip tooltip-bottom" data-tip="Selesai">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                            height="25px" class="
+                            @if(auth()->user()->userDetail->custom == 'kecil')
+                            text-4xl
+                            @elseif(auth()->user()->userDetail->custom == 'normal')
+                            text-5xl
+                            @elseif(auth()->user()->userDetail->custom == 'besar')
+                            text-6xl
+                            @endif
+                            text-green-600" width="25px" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                            </path>
+                        </svg>
+                    </div>
                     @elseif($menu->menu_status == 'kosong')
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 352 512" height="25px"
-                        class="
-                        @if(auth()->user()->userDetail->custom == 'kecil')
-                        text-4xl
-                        @elseif(auth()->user()->userDetail->custom == 'normal')
-                        text-5xl
-                        @elseif(auth()->user()->userDetail->custom == 'besar')
-                        text-6xl
-                        @endif
-                        text-red-500" width="25px" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
-                        </path>
-                    </svg>
+                    <div class="tooltip tooltip-bottom" data-tip="Kosong">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 352 512"
+                            height="25px" class="
+                            @if(auth()->user()->userDetail->custom == 'kecil')
+                            text-4xl
+                            @elseif(auth()->user()->userDetail->custom == 'normal')
+                            text-5xl
+                            @elseif(auth()->user()->userDetail->custom == 'besar')
+                            text-6xl
+                            @endif
+                            text-red-500" width="25px" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+                            </path>
+                        </svg>
+                    </div>
                     @else
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="25px"
-                        class="
-                        @if(auth()->user()->userDetail->custom == 'kecil')
-                        text-4xl
-                        @elseif(auth()->user()->userDetail->custom == 'normal')
-                        text-5xl
-                        @elseif(auth()->user()->userDetail->custom == 'besar')
-                        text-6xl
-                        @endif
-                        text-yellow-500" width="25px" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M414.9 161.5C340.2 29 121.1 0 121.1 0S222.2 110.4 93 197.7C11.3 252.8-21 324.4 14 402.6c26.8 59.9 83.5 84.3 144.6 93.4-29.2-55.1-6.6-122.4-4.1-129.6 57.1 86.4 165 0 110.8-93.9 71 15.4 81.6 138.6 27.1 215.5 80.5-25.3 134.1-88.9 148.8-145.6 15.5-59.3 3.7-127.9-26.3-180.9z">
-                        </path>
-                    </svg>
+                    <div class="tooltip tooltip-bottom" data-tip="Masak">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                            height="25px" class="
+                            @if(auth()->user()->userDetail->custom == 'kecil')
+                            text-4xl
+                            @elseif(auth()->user()->userDetail->custom == 'normal')
+                            text-5xl
+                            @elseif(auth()->user()->userDetail->custom == 'besar')
+                            text-6xl
+                            @endif
+                            text-yellow-500" width="25px" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M414.9 161.5C340.2 29 121.1 0 121.1 0S222.2 110.4 93 197.7C11.3 252.8-21 324.4 14 402.6c26.8 59.9 83.5 84.3 144.6 93.4-29.2-55.1-6.6-122.4-4.1-129.6 57.1 86.4 165 0 110.8-93.9 71 15.4 81.6 138.6 27.1 215.5 80.5-25.3 134.1-88.9 148.8-145.6 15.5-59.3 3.7-127.9-26.3-180.9z">
+                            </path>
+                        </svg>
+                    </div>
                     @endif
-                    <img class="mask mask-squircle w-14" src="{{ asset('img/' . $menu->menu->menu_image) }}" />
+                    <img class="mask mask-squircle w-14 h-14 object-cover"
+                        src="{{ asset('storage/menu-images/' . $menu->menu->menu_image) }}" />
                     <div class="flex justify-between w-full items-center">
                         <div class="">
                             <p class="font-bold

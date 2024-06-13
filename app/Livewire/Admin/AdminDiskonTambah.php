@@ -29,10 +29,10 @@ class AdminDiskonTambah extends Component
                 'discount_rate' => 'required|numeric|between: 0,100',
             ],
             [
-                'discount_name.required'       => 'Kolom nama diskon harus diisi.',
-                'discount_name.unique'         => 'Nama diskon sudah ada.',
-                'discount_rate.required'       => 'Kolom persentase diskon harus diisi.',
-                'discount_rate.digits_between' => 'Rentang yang diterima adalah 1-100',
+                'discount_name.required' => 'Kolom nama diskon harus diisi.',
+                'discount_name.unique'   => 'Nama diskon sudah ada.',
+                'discount_rate.required' => 'Kolom persentase diskon harus diisi.',
+                'discount_rate.between'  => 'Rentang yang diterima adalah 1-100',
             ]
         );
         DB::beginTransaction();

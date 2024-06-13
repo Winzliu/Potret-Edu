@@ -44,10 +44,10 @@ class AdminDiskonEdit extends Component
             $rules['discount_name'] = 'required|string';
         }
         $this->validate($rules, [
-            'discount_name.required'       => 'Kolom nama diskon harus diisi.',
-            'discount_name.unique'         => 'Nama diskon sudah ada.',
-            'discount_rate.required'       => 'Kolom persentase diskon harus diisi.',
-            'discount_rate.digits_between' => 'Rentang yang diterima adalah 1-100',
+            'discount_name.required' => 'Kolom nama diskon harus diisi.',
+            'discount_name.unique'   => 'Nama diskon sudah ada.',
+            'discount_rate.required' => 'Kolom persentase diskon harus diisi.',
+            'discount_rate.between'  => 'Rentang yang diterima adalah 1-100',
         ]);
 
         // dd($this->position);
