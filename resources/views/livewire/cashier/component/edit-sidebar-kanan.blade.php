@@ -103,28 +103,32 @@ text-lg
                                     mb-2">{{ $cart->menu->menu_name }}</p>
                                     <div class="flex me-2 h-7 justify-between">
                                         <div class="h-5">
-                                            <button wire:click="decrement('{{ $cart->order_detail_id }}')" class="bg-red-500 rounded-full w-7 h-7 font-bold 
-                                                @if(auth()->user()->userDetail->custom == 'kecil')
-                                                text-base
-                                                @elseif(auth()->user()->userDetail->custom == 'normal')
-                                                text-lg
-                                                @elseif(auth()->user()->userDetail->custom == 'besar')
-                                                text-xl
-                                                @endif
-                                                disabled:opacity-70" @if($quantity[$cart->order_detail_id] <= 1)
-                                                    disabled @endif>-</button>
+                                            <div class="tooltip" data-tip="Kurang">
+                                                <button wire:click="decrement('{{ $cart->order_detail_id }}')" class="bg-red-500 rounded-full w-7 h-7 font-bold 
+                                                    @if(auth()->user()->userDetail->custom == 'kecil')
+                                                    text-base
+                                                    @elseif(auth()->user()->userDetail->custom == 'normal')
+                                                    text-lg
+                                                    @elseif(auth()->user()->userDetail->custom == 'besar')
+                                                    text-xl
+                                                    @endif
+                                                    disabled:opacity-70" @if($quantity[$cart->order_detail_id] <= 1)
+                                                        disabled @endif>-</button>
+                                            </div>
                                             <input wire:model="quantity.{{ $cart->order_detail_id }}" type="text"
                                                 name="" id=""
                                                 class="mx-1 w-5 h-7 text-center p-0 border-0 bg-transparent" disabled>
-                                            <button wire:click="increment('{{ $cart->order_detail_id }}')" class="bg-green-600 rounded-full w-7 h-7 font-bold 
-                                                @if(auth()->user()->userDetail->custom == 'kecil')
-                                                text-base
-                                                @elseif(auth()->user()->userDetail->custom == 'normal')
-                                                text-lg
-                                                @elseif(auth()->user()->userDetail->custom == 'besar')
-                                                text-xl
-                                                @endif
-                                                ">+</button>
+                                            <div class="tooltip" data-tip="Tambah">
+                                                <button wire:click="increment('{{ $cart->order_detail_id }}')" class="bg-green-600 rounded-full w-7 h-7 font-bold 
+                                                        @if(auth()->user()->userDetail->custom == 'kecil')
+                                                        text-base
+                                                        @elseif(auth()->user()->userDetail->custom == 'normal')
+                                                        text-lg
+                                                        @elseif(auth()->user()->userDetail->custom == 'besar')
+                                                        text-xl
+                                                        @endif
+                                                        ">+</button>
+                                            </div>
                                         </div>
                                         <p class="self-center font-semibold text-nowrap">Rp {{
                                             number_format($cart->menu->menu_price * $quantity[$cart->order_detail_id],
@@ -148,7 +152,7 @@ text-lg
                         </div>
                         @if ($cart->menu_status == 'kosong')
                         <button wire:click="deletePopup('{{ $cart->order_detail_id }}')"
-                            class="w-1/12 h-12 self-center ms-5">
+                            class="w-1/12 h-12 self-center ms-5 tooltip" data-tip='Hapus'>
                             <svg stroke="currentColor" class="text-red-500 ps-2" fill="currentColor" stroke-width="0"
                                 viewBox="0 0 448 512" height="35px" width="35px" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -216,28 +220,32 @@ text-lg
                                     mb-2">{{ $pBaru['menu_name'] }}</p>
                                     <div class="flex me-2 h-7 justify-between">
                                         <div class="h-5">
-                                            <button wire:click="decrement('{{ $pBaru['order_detail_id'] }}')" class="bg-red-500 rounded-full w-7 h-7 font-bold
-                                                @if(auth()->user()->userDetail->custom == 'kecil')
-                                                text-md
-                                                @elseif(auth()->user()->userDetail->custom == 'normal')
-                                                text-lg
-                                                @elseif(auth()->user()->userDetail->custom == 'besar')
-                                                text-xl
-                                                @endif
-                                                disabled:opacity-70" @if($quantity[$pBaru['order_detail_id']] <=1)
-                                                disabled @endif>-</button>
+                                            <div class="tooltip" data-tip="Kurang">
+                                                <button wire:click="decrement('{{ $pBaru['order_detail_id'] }}')" class="bg-red-500 rounded-full w-7 h-7 font-bold
+                                                    @if(auth()->user()->userDetail->custom == 'kecil')
+                                                    text-md
+                                                    @elseif(auth()->user()->userDetail->custom == 'normal')
+                                                    text-lg
+                                                    @elseif(auth()->user()->userDetail->custom == 'besar')
+                                                    text-xl
+                                                    @endif
+                                                    disabled:opacity-70" @if($quantity[$pBaru['order_detail_id']] <=1)
+                                                    disabled @endif>-</button>
+                                            </div>
                                             <input wire:model="quantity.{{ $pBaru['order_detail_id'] }}" type="text"
                                                 name="" id=""
                                                 class="mx-1 w-5 h-7 text-center p-0 border-0 bg-transparent" disabled>
-                                            <button wire:click="increment('{{ $pBaru['order_detail_id'] }}')" class="bg-green-600 rounded-full w-7 h-7 font-bold 
-                                                @if(auth()->user()->userDetail->custom == 'kecil')
-                                                text-md
-                                                @elseif(auth()->user()->userDetail->custom == 'normal')
-                                                text-lg
-                                                @elseif(auth()->user()->userDetail->custom == 'besar')
-                                                text-xl
-                                                @endif
-                                                ">+</button>
+                                            <div class="tooltip" data-tip='Tambah'>
+                                                <button wire:click="increment('{{ $pBaru['order_detail_id'] }}')" class="bg-green-600 rounded-full w-7 h-7 font-bold 
+                                                        @if(auth()->user()->userDetail->custom == 'kecil')
+                                                        text-md
+                                                        @elseif(auth()->user()->userDetail->custom == 'normal')
+                                                        text-lg
+                                                        @elseif(auth()->user()->userDetail->custom == 'besar')
+                                                        text-xl
+                                                        @endif
+                                                        ">+</button>
+                                            </div>
                                         </div>
                                         <p class="self-center font-semibold text-nowrap
                                         @if(auth()->user()->userDetail->custom == 'kecil')
@@ -268,7 +276,7 @@ text-lg
                             </div>
                         </div>
                         <button wire:click="deletePopup('{{ $pBaru['order_detail_id'] }}')"
-                            class="w-1/12 h-12 self-center ms-5">
+                            class="w-1/12 h-12 self-center ms-5 tooltip" data-tip="Hapus">
                             <svg stroke="currentColor" class="text-red-500 ps-2" fill="currentColor" stroke-width="0"
                                 viewBox="0 0 448 512" height="35px" width="35px" xmlns="http://www.w3.org/2000/svg">
                                 <path

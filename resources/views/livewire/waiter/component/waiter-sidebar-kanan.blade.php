@@ -93,28 +93,32 @@
                                         @endif">{{ $cart->menu->menu_name }}</p>
                                     <div class="flex me-2 h-7 justify-between">
                                         <div class="h-5">
-                                            <button wire:click="decrement('{{ $cart->cart_id }}')" class="bg-red-500 rounded-full w-7 h-7 font-bold 
-                                                @if(auth()->user()->userDetail->custom == 'kecil')
-                                                text-md
-                                                @elseif(auth()->user()->userDetail->custom == 'normal')
-                                                text-lg
-                                                @elseif(auth()->user()->userDetail->custom == 'besar')
-                                                text-xl
-                                                @endif
-                                                disabled:opacity-70" @if($cart->quantity <= 1) disabled @endif>
-                                                    -</button>
+                                            <div class="tooltip" data-tip='Kurang'>
+                                                <button wire:click="decrement('{{ $cart->cart_id }}')" class="bg-red-500 rounded-full w-7 h-7 font-bold 
+                                                    @if(auth()->user()->userDetail->custom == 'kecil')
+                                                    text-md
+                                                    @elseif(auth()->user()->userDetail->custom == 'normal')
+                                                    text-lg
+                                                    @elseif(auth()->user()->userDetail->custom == 'besar')
+                                                    text-xl
+                                                    @endif
+                                                    disabled:opacity-70" @if($cart->quantity <= 1) disabled @endif>
+                                                        -</button>
+                                            </div>
                                             <input type="text" name="" id=""
                                                 class="mx-1 w-5 h-7 text-center p-0 border-0 bg-transparent"
                                                 value="{{ $cart->quantity }}" disabled>
-                                            <button wire:click="increment('{{ $cart->cart_id }}')" class="bg-green-600 rounded-full w-7 h-7 font-bold 
-                                                @if(auth()->user()->userDetail->custom == 'kecil')
-                                                text-md
-                                                @elseif(auth()->user()->userDetail->custom == 'normal')
-                                                text-lg
-                                                @elseif(auth()->user()->userDetail->custom == 'besar')
-                                                text-xl
-                                                @endif
-                                                ">+</button>
+                                            <div class="tooltip" data-tip="Tambah">
+                                                <button wire:click="increment('{{ $cart->cart_id }}')" class="bg-green-600 rounded-full w-7 h-7 font-bold 
+                                                        @if(auth()->user()->userDetail->custom == 'kecil')
+                                                        text-md
+                                                        @elseif(auth()->user()->userDetail->custom == 'normal')
+                                                        text-lg
+                                                        @elseif(auth()->user()->userDetail->custom == 'besar')
+                                                        text-xl
+                                                        @endif
+                                                        ">+</button>
+                                            </div>
                                         </div>
                                         <p class="self-center font-semibold text-nowrap 
                                         @if(auth()->user()->userDetail->custom == 'kecil')
@@ -143,7 +147,8 @@
                                     mt-3 rounded-lg" autocomplete="off" />
                             </div>
                         </div>
-                        <button wire:click="deleteCart('{{ $cart->cart_id }}')" class="w-1/12 h-12 self-center ms-5">
+                        <button wire:click="deleteCart('{{ $cart->cart_id }}')"
+                            class="w-1/12 h-12 self-center ms-5 tooltip" data-tip="Hapus">
                             <svg stroke="currentColor" class="text-red-500 ps-2" fill="currentColor" stroke-width="0"
                                 viewBox="0 0 448 512" height="35px" width="35px" xmlns="http://www.w3.org/2000/svg">
                                 <path
