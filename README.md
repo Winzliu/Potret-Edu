@@ -1,66 +1,58 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# [Intro](#intro)
+Potret-Edu adalah sistem manajemen kafe yang komprehensif, dirancang untuk memperlancar operasi dengan melibatkan berbagai peran pengguna, termasuk Admin, Kasir, Pelayan, dan Staf Dapur. Proyek ini memastikan sinkronisasi data secara real-time untuk mencegah masalah dalam pemrosesan pesanan, sehingga meningkatkan efisiensi dan akurasi operasional kafe. Dari pengelolaan peran pengguna hingga penanganan pesanan secara mulus, Potret-Edu bertujuan untuk menyediakan solusi yang kokoh untuk manajemen kafe modern.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Instalasi Dan Konfigurasi
+- ## Tech
+   #### - [Laravel 10]
+   #### - [Tailwind CSS]
+   #### - [Laravel Livewire]
 
-## About Laravel
+ - ## Instalasi
+   - #### Lakukan Clone pada Github Repositori ini
+        - Klik tombol "Code" (berwarna hijau) untuk mendapatkan URL repository. Jika menggunakan HTTPS, salin URL tersebut. Jika menggunakan SSH, klik ikon SSH dan salin URL SSH.
+        - Buka terminal, command prompt atau Git Bash(rekomendasi) di komputer Anda.
+        - Pindah ke direktori di mana Anda ingin menyimpan salinan lokal repository. Gunakan perintah cd untuk berpindah ke direktori tersebut.
+          #### Contoh:
+              cd path/ke/direktori/tujuan
+        - Gunakan perintah git clone dengan menyertakan URL repository yang telah Anda salin sebelumnya.
+          #### Contoh untuk HTTPS:
+              git clone https://github.com/nama-akun/nama-repo.git
+          #### Atau untuk SSH:
+              git clone git@github.com:nama-akun/nama-repo.git
+   - #### Jalankan Di Code Editor
+       - Buka Terminal di direktori penyimpanan project.
+   - #### Install Dependensi
+     #### - Jalankan perintah berikut:
+         composer install
+     #### - Selanjutnya, jalankan perintah berikut:
+         npm install
+   - #### Buat Salinan File Konfigurasi
+     - Salin file `.env.example` dan beri nama baru menjadi `.env`
+       #### Jalankan Perintah Berikut:
+           cp .env.example .env
+   - #### Konfigurasi file `.env`
+     - # Masukkan pengaturan untuk storage file .env
+             FILESYSTEM_DISK=public
+   - #### Generate Application Key
+     #### Jalankan perintah berikut di terminal:
+         php artisan key:generate
+   - #### Jalankan Migrasi dan Seeder
+     Jalankan perintah migrasi untuk membuat struktur table
+     #### jalankan perintah berikut:
+         php artisan migrate
+     Jalankan perintah seeder untuk mengisi data pada table dengan data dummy
+     #### jalankan perintah berikut:
+         php artisan db:seed
+   - #### Jalankan Server Lokal
+     #### jalankan perintah berikut:
+         php artisan serve
+     #### lalu
+         php artisan storage:link
+     #### dan
+         npm run dev
+   - #### Buka Proyek di Browser
+      Buka browser dan kunjungi alamat yang ditampilkan di terminal. Biasanya, ini adalah `http://127.0.0.1:8000`.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+     #### NB:
+         Username: -cek dimysql-
+         Password: password
